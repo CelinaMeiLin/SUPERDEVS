@@ -1,0 +1,118 @@
+[gd_scene load_steps=21 format=3 uid="uid://c8iv3ojysfds"]
+
+[ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
+[ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
+[ext_resource type="Texture2D" uid="uid://d372k0kffqi82" path="res://art/characters/crouch/crouch.png" id="2_vihl7"]
+[ext_resource type="Texture2D" uid="uid://blv3lb4cwn4wu" path="res://art/characters/idle/idle-2.png" id="3_20qpd"]
+[ext_resource type="Texture2D" uid="uid://x3x4liwp3gwx" path="res://art/characters/idle/idle-3.png" id="4_unx43"]
+[ext_resource type="Texture2D" uid="uid://de8usj8bw043w" path="res://art/characters/idle/idle-4.png" id="5_sk2dr"]
+[ext_resource type="Texture2D" uid="uid://bitf2cf81vkv0" path="res://art/characters/jump/jump-1.png" id="7_w6ybe"]
+[ext_resource type="Texture2D" uid="uid://dfu0inors20rm" path="res://art/characters/jump/jump-2.png" id="8_7smn7"]
+[ext_resource type="Texture2D" uid="uid://bdkr4il1ishwp" path="res://art/characters/jump/jump-3.png" id="9_nnhsy"]
+[ext_resource type="Texture2D" uid="uid://rl4cceyp6kt3" path="res://art/characters/jump/jump-4.png" id="10_hcb5b"]
+[ext_resource type="Texture2D" uid="uid://55lgeqd8tcyw" path="res://art/characters/run-right/run-1.png" id="11_bo5ps"]
+[ext_resource type="Texture2D" uid="uid://c0w7y8rlrinip" path="res://art/characters/run-right/run-2.png" id="12_6wv1j"]
+[ext_resource type="Texture2D" uid="uid://mc5fofdv262s" path="res://art/characters/run-right/run-3.png" id="13_t65ym"]
+[ext_resource type="Texture2D" uid="uid://dvylrv81qsmqf" path="res://art/characters/run-right/run-4.png" id="14_vp8rd"]
+[ext_resource type="Texture2D" uid="uid://h8aib04lp0ws" path="res://art/characters/run-right/run-5.png" id="15_mp1tr"]
+[ext_resource type="Texture2D" uid="uid://eogvybjftohf" path="res://art/characters/run-right/run-6.png" id="16_gvr37"]
+[ext_resource type="Texture2D" uid="uid://jefdbnydxcyf" path="res://art/characters/run-right/run-7.png" id="17_xaf8q"]
+[ext_resource type="Texture2D" uid="uid://d3m6ysgf4m3bo" path="res://art/characters/run-right/run-8.png" id="18_t6nuq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhe2b"]
+size = Vector2(17, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ifo5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vihl7")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_78wnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_20qpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_unx43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sk2dr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_w6ybe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7smn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nnhsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hcb5b")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_bo5ps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6wv1j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_t65ym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vp8rd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mp1tr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_gvr37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xaf8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_t6nuq")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Astra" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_4ovnt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1.5, 7.5)
+shape = SubResource("RectangleShape2D_hhe2b")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Astra" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(-1, -7)
+scale = Vector2(1.61268, 1.60821)
+sprite_frames = SubResource("SpriteFrames_ifo5n")
+animation = &"jump"
+autoplay = "idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Node" type="Node" parent="."]
