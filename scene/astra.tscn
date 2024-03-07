@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=21 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
@@ -18,11 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://eogvybjftohf" path="res://art/characters/run-right/run-6.png" id="16_gvr37"]
 [ext_resource type="Texture2D" uid="uid://jefdbnydxcyf" path="res://art/characters/run-right/run-7.png" id="17_xaf8q"]
 [ext_resource type="Texture2D" uid="uid://d3m6ysgf4m3bo" path="res://art/characters/run-right/run-8.png" id="18_t6nuq"]
-[ext_resource type="Script" path="res://scene/CameraPlayer.cs" id="19_rmg25"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osw1a"]
-radius = 12.0
-height = 73.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhe2b"]
+size = Vector2(17, 75)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ifo5n"]
 animations = [{
@@ -49,7 +47,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -66,7 +64,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -95,34 +93,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [node name="Astra" type="Node2D"]
 
-[node name="AstraBody" type="CharacterBody2D" parent="."]
-collision_layer = 3
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_4ovnt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AstraBody"]
-position = Vector2(2, 5.5)
-shape = SubResource("CapsuleShape2D_osw1a")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1.5, 7.5)
+shape = SubResource("RectangleShape2D_hhe2b")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="Astra" type="AnimatedSprite2D" parent="AstraBody"]
-texture_filter = 1
-position = Vector2(-1, -11.5625)
-scale = Vector2(1.473, 1.593)
+[node name="Astra" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(-1, -7)
+scale = Vector2(1.61268, 1.60821)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
-animation = &"idle"
+animation = &"jump"
 autoplay = "idle"
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("ObjectToFollow")]
-zoom = Vector2(2, 2)
-limit_left = -800
-limit_bottom = 700
-position_smoothing_enabled = true
-position_smoothing_speed = 20.0
-editor_draw_limits = true
-script = ExtResource("19_rmg25")
-ObjectToFollow = NodePath("../AstraBody")
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Node" type="Node" parent="."]
