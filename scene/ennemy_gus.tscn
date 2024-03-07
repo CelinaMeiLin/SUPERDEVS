@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://qboac6ykujwn"]
+
+[ext_resource type="Script" path="res://script/GusBody.cs" id="1_a84fu"]
+[ext_resource type="Texture2D" uid="uid://trcls6u4x5vm" path="res://art/enemy/Player-idle/player-idle1.png" id="2_65u8l"]
+[ext_resource type="Texture2D" uid="uid://bbfce73liw0gd" path="res://art/enemy/Player-idle/player-idle2.png" id="3_ub2i5"]
+[ext_resource type="Texture2D" uid="uid://dacy06xjgk8or" path="res://art/enemy/Player-idle/player-idle3.png" id="4_nwov0"]
+[ext_resource type="Texture2D" uid="uid://djx0qe6sttbwf" path="res://art/enemy/Player-idle/player-idle4.png" id="5_xrnsy"]
+[ext_resource type="Texture2D" uid="uid://tqr0aujltawf" path="res://art/enemy/Player-idle/player-idle5.png" id="6_ylh20"]
+[ext_resource type="Texture2D" uid="uid://civi313ww0yfk" path="res://art/enemy/Player-idle/player-idle6.png" id="7_ylme0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tvfth"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_65u8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ub2i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nwov0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xrnsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ylh20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ylme0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j35yh"]
+radius = 15.0
+height = 55.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o8de2"]
+radius = 224.009
+
+[node name="EnnemyGus" type="Node2D"]
+
+[node name="GusBody" type="CharacterBody2D" parent="."]
+collision_layer = 4
+script = ExtResource("1_a84fu")
+
+[node name="Gus" type="AnimatedSprite2D" parent="GusBody"]
+texture_filter = 1
+scale = Vector2(1.6, 1.6)
+sprite_frames = SubResource("SpriteFrames_tvfth")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GusBody"]
+position = Vector2(0, 4.5)
+shape = SubResource("CapsuleShape2D_j35yh")
+
+[node name="detectionArea" type="Area2D" parent="GusBody"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GusBody/detectionArea"]
+shape = SubResource("CircleShape2D_o8de2")
+
+[connection signal="body_entered" from="GusBody/detectionArea" to="GusBody" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="GusBody/detectionArea" to="GusBody" method="_on_detection_area_body_exited"]
