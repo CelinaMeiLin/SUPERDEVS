@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=30 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://mc5fofdv262s" path="res://art/characters/run-right/run-3.png" id="13_t65ym"]
 [ext_resource type="Texture2D" uid="uid://dvylrv81qsmqf" path="res://art/characters/run-right/run-4.png" id="14_vp8rd"]
 [ext_resource type="Texture2D" uid="uid://h8aib04lp0ws" path="res://art/characters/run-right/run-5.png" id="15_mp1tr"]
+[ext_resource type="Texture2D" uid="uid://ndu37beyntiq" path="res://art/characters/back-jump/back-jump-5.png" id="15_xotao"]
 [ext_resource type="Texture2D" uid="uid://eogvybjftohf" path="res://art/characters/run-right/run-6.png" id="16_gvr37"]
 [ext_resource type="Texture2D" uid="uid://jefdbnydxcyf" path="res://art/characters/run-right/run-7.png" id="17_xaf8q"]
 [ext_resource type="Texture2D" uid="uid://d3m6ysgf4m3bo" path="res://art/characters/run-right/run-8.png" id="18_t6nuq"]
@@ -70,6 +71,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("15_xotao")
+}],
+"loop": true,
+"name": &"jumpfirst",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("11_bo5ps")
 }, {
 "duration": 1.0,
@@ -98,6 +107,40 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Curve" id="Curve_fj8mm"]
+_data = [Vector2(0, 1), 0.0, -1.47873, 0, 1, Vector2(0.47561, 0.296703), -0.321821, -0.321821, 0, 0, Vector2(1, 0), -1.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1fu5r"]
+curve = SubResource("Curve_fj8mm")
+
+[sub_resource type="Gradient" id="Gradient_jovsj"]
+offsets = PackedFloat32Array(0, 0.985294, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.455882, 0.455882, 0.455882, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hfin5"]
+gradient = SubResource("Gradient_jovsj")
+
+[sub_resource type="Curve" id="Curve_dbsrr"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kjkte"]
+curve = SubResource("Curve_dbsrr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_syuq0"]
+lifetime_randomness = 0.19
+direction = Vector3(0, 1, 0)
+spread = 31.875
+initial_velocity_min = 156.24
+initial_velocity_max = 156.24
+gravity = Vector3(0, 98, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_kjkte")
+color_ramp = SubResource("GradientTexture1D_hfin5")
+alpha_curve = SubResource("CurveTexture_1fu5r")
+
 [node name="Astra" type="Node2D"]
 
 [node name="AstraBody" type="CharacterBody2D" parent="."]
@@ -114,8 +157,15 @@ texture_filter = 1
 position = Vector2(-1, -11.5625)
 scale = Vector2(1.473, 1.593)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
-animation = &"idle"
+animation = &"jump"
 autoplay = "idle"
+
+[node name="jumpparticles" type="GPUParticles2D" parent="AstraBody"]
+position = Vector2(1, 13)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_syuq0")
+lifetime = 0.6
+explosiveness = 0.84
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("ObjectToFollow")]
 zoom = Vector2(2, 2)

@@ -10,6 +10,8 @@ public partial class astra : CharacterBody2D
 	private int _jumpcount = 0; // Number of jumps remaining
 	private bool jumped = true;
 	private AnimatedSprite2D _animatedSprite; //LA VARIABLE D'ASTRA
+	private GpuParticles2D jumpdust;
+	private string jumpanimation = "jumpfirst";
 	
 	Player Astra = new Player(1000, 250, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
 	
@@ -32,6 +34,8 @@ public partial class astra : CharacterBody2D
 	{
 		//initialize le sprite Astra
 		_animatedSprite = GetNode<AnimatedSprite2D>("Astra");
+		jumpdust = GetNode<GpuParticles2D>("jumpparticles");
+		jumpdust.OneShot = true;
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -53,6 +57,11 @@ public partial class astra : CharacterBody2D
 		{
 			if (Input.IsActionJustPressed("Up"))
 			{
+				if (_jumpcount == 1 && !jumped)
+				{
+					jumpdust.Emitting = true;
+					jumpanimation = "jump";
+				}
 				velocity.Y = Astra.JumpVelocity;
 				_jumpcount += 1;
 			}
@@ -60,6 +69,7 @@ public partial class astra : CharacterBody2D
 
 		if (IsOnFloor())
 		{
+			jumpanimation = "jumpfirst";
 			if (_jumpcount != 0)
 			{
 				_jumpcount = 0;
@@ -93,7 +103,7 @@ public partial class astra : CharacterBody2D
 			}
 			else
 			{
-				_animatedSprite.Play("jump");
+				_animatedSprite.Play(jumpanimation);
 			}
 		}
 		

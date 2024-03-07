@@ -15,6 +15,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_right = 171.0
 offset_bottom = 76.0
 text = "tutorial"
