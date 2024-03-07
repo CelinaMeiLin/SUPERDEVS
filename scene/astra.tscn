@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=33 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
@@ -10,12 +10,15 @@
 [ext_resource type="Texture2D" uid="uid://dfu0inors20rm" path="res://art/characters/jump/jump-2.png" id="8_7smn7"]
 [ext_resource type="Texture2D" uid="uid://bdkr4il1ishwp" path="res://art/characters/jump/jump-3.png" id="9_nnhsy"]
 [ext_resource type="Texture2D" uid="uid://rl4cceyp6kt3" path="res://art/characters/jump/jump-4.png" id="10_hcb5b"]
+[ext_resource type="Texture2D" uid="uid://c0v0qw0o0jw50" path="res://art/characters/jumpfirst/jumpfirst-4.png" id="11_0jqm2"]
 [ext_resource type="Texture2D" uid="uid://55lgeqd8tcyw" path="res://art/characters/run-right/run-1.png" id="11_bo5ps"]
 [ext_resource type="Texture2D" uid="uid://c0w7y8rlrinip" path="res://art/characters/run-right/run-2.png" id="12_6wv1j"]
+[ext_resource type="Texture2D" uid="uid://cq6x8c2uxhfj6" path="res://art/characters/jumpfirst/jumpfirst-3.png" id="12_khbcv"]
+[ext_resource type="Texture2D" uid="uid://t1agbmd1spqd" path="res://art/characters/jumpfirst/jumpfirst-2.png" id="13_31eyt"]
 [ext_resource type="Texture2D" uid="uid://mc5fofdv262s" path="res://art/characters/run-right/run-3.png" id="13_t65ym"]
+[ext_resource type="Texture2D" uid="uid://t7qukvpr1cl4" path="res://art/characters/jumpfirst/jumpfirst-1.png" id="14_220ng"]
 [ext_resource type="Texture2D" uid="uid://dvylrv81qsmqf" path="res://art/characters/run-right/run-4.png" id="14_vp8rd"]
 [ext_resource type="Texture2D" uid="uid://h8aib04lp0ws" path="res://art/characters/run-right/run-5.png" id="15_mp1tr"]
-[ext_resource type="Texture2D" uid="uid://ndu37beyntiq" path="res://art/characters/back-jump/back-jump-5.png" id="15_xotao"]
 [ext_resource type="Texture2D" uid="uid://eogvybjftohf" path="res://art/characters/run-right/run-6.png" id="16_gvr37"]
 [ext_resource type="Texture2D" uid="uid://jefdbnydxcyf" path="res://art/characters/run-right/run-7.png" id="17_xaf8q"]
 [ext_resource type="Texture2D" uid="uid://d3m6ysgf4m3bo" path="res://art/characters/run-right/run-8.png" id="18_t6nuq"]
@@ -71,7 +74,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_xotao")
+"texture": ExtResource("11_0jqm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_khbcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_31eyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_220ng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_220ng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_220ng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_31eyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_khbcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0jqm2")
 }],
 "loop": true,
 "name": &"jumpfirst",
@@ -157,8 +184,10 @@ texture_filter = 1
 position = Vector2(-1, -11.5625)
 scale = Vector2(1.473, 1.593)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
-animation = &"jump"
+animation = &"jumpfirst"
 autoplay = "idle"
+frame = 6
+frame_progress = 0.987847
 
 [node name="jumpparticles" type="GPUParticles2D" parent="AstraBody"]
 position = Vector2(1, 13)
