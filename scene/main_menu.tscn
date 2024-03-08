@@ -14,14 +14,24 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="CanvasLayer/Control"]
+[node name="Tuto" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_right = 171.0
 offset_bottom = 76.0
 text = "tutorial"
 
+[node name="Exit" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 112.0
+offset_right = 127.0
+offset_bottom = 214.0
+text = "exit
+"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_x0qjy")
 autoplay = true
 
-[connection signal="button_up" from="CanvasLayer/Control/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/Control/Tuto" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="CanvasLayer/Control/Exit" to="." method="_on_exit_pressed"]

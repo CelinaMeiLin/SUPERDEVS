@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class MainMenu : Node2D
+public partial class UI_Pause_Menu : Control
 {
-	[Export] public eSceneNames MyeSceneNames;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -12,23 +12,25 @@ public partial class MainMenu : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		
+		if (Input.IsActionPressed("Exit"))
+		{
+			Visible = true;
+			GetTree().Paused = true;
+		}
 	}
 	
-	public void _on_button_button_up()
+	private void _on_resume_pressed()
 	{
-		SceneManager.instance.ChangeScene(eSceneNames.Tuto);
+		
+	}
+	
+	private void _on_exit_pressed()
+	{
+		SceneManager.instance.ChangeScene(eSceneNames.MainMenu);
 		// Replace with function body.
 	}
-	private void _on_exit_pressed()
-	 {
-	 	GetTree().Quit();
-	 }
 }
-
-
-
-
-
 
 
 
