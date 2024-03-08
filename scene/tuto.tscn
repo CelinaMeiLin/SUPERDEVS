@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://de83xqqu4f7bq"]
+[gd_scene load_steps=13 format=3 uid="uid://de83xqqu4f7bq"]
 
 [ext_resource type="Texture2D" uid="uid://t4o8wxghw8il" path="res://art/background/parallax-industrial-pack/Sprites/bg.png" id="1_iqdgb"]
 [ext_resource type="Texture2D" uid="uid://bj8tlydmjh1er" path="res://art/background/parallax-industrial-pack/Sprites/far-buildings.png" id="2_m146g"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c8iv3ojysfds" path="res://scene/astra.tscn" id="3_w336t"]
 [ext_resource type="Texture2D" uid="uid://d0ogswyv07uug" path="res://art/background/parallax-industrial-pack/Sprites/skill-foreground.png" id="4_hk6k7"]
 [ext_resource type="PackedScene" uid="uid://qboac6ykujwn" path="res://scene/ennemy_gus.tscn" id="7_eu5w7"]
+[ext_resource type="Script" path="res://scene/CameraPlayer.cs" id="7_y84n5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4qeyc"]
 texture = ExtResource("2_srho6")
@@ -678,101 +679,52 @@ sources/0 = SubResource("TileSetAtlasSource_s2tx2")
 
 [node name="Tuto" type="Node2D"]
 
-[node name="background" type="TextureRect" parent="."]
-texture_filter = 1
-offset_right = 1007.0
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="sky" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1253, 0)
+
+[node name="background" type="TextureRect" parent="Background/sky"]
+offset_top = -84.0
+offset_right = 1253.0
 offset_bottom = 612.0
 texture = ExtResource("1_iqdgb")
 
-[node name="backbuildings" type="TextureRect" parent="background"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 20.0
-offset_right = 957.0
-offset_bottom = 601.0
+[node name="backbamboos" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1253, 0)
+
+[node name="backbuildings" type="TextureRect" parent="Background/backbamboos"]
+texture_filter = 1
+offset_left = 17.0
+offset_top = -51.0
+offset_right = 1228.0
+offset_bottom = 608.0
 texture = ExtResource("2_m146g")
 
-[node name="blackbuildings" type="TextureRect" parent="background"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 82.0
-offset_right = 1007.0
-offset_bottom = 605.0
-texture = ExtResource("3_rf10u")
+[node name="backbuildings" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1254, 0)
 
-[node name="foreground" type="TextureRect" parent="background"]
-layout_mode = 0
-offset_top = 228.0
-offset_right = 881.0
-offset_bottom = 597.0
-texture = ExtResource("4_hk6k7")
-
-[node name="background2" type="TextureRect" parent="."]
+[node name="blackbuildings" type="TextureRect" parent="Background/backbuildings"]
 texture_filter = 1
-offset_left = -1007.0
+offset_top = 58.0
+offset_right = 1254.0
 offset_bottom = 612.0
-texture = ExtResource("1_iqdgb")
-
-[node name="backbuildings" type="TextureRect" parent="background2"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 20.0
-offset_right = 957.0
-offset_bottom = 601.0
-texture = ExtResource("2_m146g")
-
-[node name="blackbuildings" type="TextureRect" parent="background2"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 82.0
-offset_right = 1007.0
-offset_bottom = 605.0
 texture = ExtResource("3_rf10u")
 
-[node name="foreground" type="TextureRect" parent="background2"]
-layout_mode = 0
-offset_top = 228.0
-offset_right = 881.0
-offset_bottom = 597.0
-texture = ExtResource("4_hk6k7")
+[node name="foreground" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1007, 0)
 
-[node name="background3" type="TextureRect" parent="."]
+[node name="foreground" type="TextureRect" parent="Background/foreground"]
 texture_filter = 1
-offset_left = 1007.0
-offset_right = 2014.0
-offset_bottom = 612.0
-texture = ExtResource("1_iqdgb")
-
-[node name="backbuildings" type="TextureRect" parent="background3"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 20.0
-offset_right = 957.0
-offset_bottom = 601.0
-texture = ExtResource("2_m146g")
-
-[node name="blackbuildings" type="TextureRect" parent="background3"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 82.0
-offset_right = 1007.0
-offset_bottom = 605.0
-texture = ExtResource("3_rf10u")
-
-[node name="foreground" type="TextureRect" parent="background3"]
-layout_mode = 0
-offset_top = 228.0
-offset_right = 881.0
-offset_bottom = 597.0
+offset_left = 84.0
+offset_top = 240.0
+offset_right = 990.0
+offset_bottom = 599.0
 texture = ExtResource("4_hk6k7")
-
-[node name="Sky" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = -1003.0
-offset_top = -3215.0
-offset_right = 2051.0
-texture = ExtResource("1_iqdgb")
-flip_v = true
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -790,8 +742,20 @@ tile_set = SubResource("TileSet_e6ix8")
 format = 2
 layer_0/tile_data = PackedInt32Array(1114120, 458752, 11, 1114121, 458752, 11, 1114122, 458752, 11, 1114123, 458752, 11, 1114124, 458752, 11, 1114125, 458752, 11, 1114126, 458752, 11, 1114127, 458752, 11, 1114128, 458752, 11, 1114129, 458752, 11, 1114119, 393216, 11, 1114130, 589824, 11, 786439, 393216, 11, 786440, 458752, 11, 786441, 458752, 11, 786442, 458752, 11, 786443, 458752, 11, 786444, 458752, 11, 786445, 458752, 11, 786446, 458752, 11, 786447, 458752, 11, 786448, 458752, 11, 786449, 458752, 11, 786450, 589824, 11, 786453, 393216, 11, 1114133, 393216, 11, 786454, 458752, 11, 786455, 458752, 11, 786456, 458752, 11, 786457, 458752, 11, 786458, 458752, 11, 786459, 458752, 11, 786460, 458752, 11, 786461, 458752, 11, 786462, 458752, 11, 786463, 458752, 11, 1114134, 458752, 11, 1114135, 458752, 11, 1114136, 458752, 11, 1114137, 458752, 11, 1114138, 458752, 11, 1114139, 458752, 11, 1114140, 458752, 11, 1114141, 458752, 11, 1114142, 458752, 11, 1114143, 458752, 11, 1114144, 589824, 11, 786464, 589824, 11)
 
+[node name="EnnemyGus" parent="." instance=ExtResource("7_eu5w7")]
+position = Vector2(-395, 545)
+
 [node name="Astra" parent="." instance=ExtResource("3_w336t")]
 position = Vector2(-37, 541)
 
-[node name="EnnemyGus" parent="." instance=ExtResource("7_eu5w7")]
-position = Vector2(-395, 545)
+[node name="CamTUTO" type="Camera2D" parent="Astra" node_paths=PackedStringArray("ObjectToFollow")]
+zoom = Vector2(2, 2)
+limit_left = -800
+limit_bottom = 700
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+editor_draw_limits = true
+script = ExtResource("7_y84n5")
+ObjectToFollow = NodePath("../AstraBody")
+
+[editable path="Astra"]

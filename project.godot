@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 SceneManager="*res://script/SceneManager.cs"
 
+[display]
+
+window/size/mode=2
+
 [dotnet]
 
 project/assembly_name="Devs.project"
