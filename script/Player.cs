@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Devs.project.script;
 
-public class Player : Entity
+public partial class Player : Entity
 {
 	public Dictionary<int, Inventory> Inventory { get; set; }
 	public int Argent { get; set; }

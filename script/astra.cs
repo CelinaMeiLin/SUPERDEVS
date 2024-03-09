@@ -12,8 +12,8 @@ public partial class astra : CharacterBody2D
 	private AnimatedSprite2D _animatedSprite; //LA VARIABLE D'ASTRA
 	private GpuParticles2D jumpdust;
 	private string jumpanimation = "jumpfirst";
-	
-	Player Astra = new Player(1000, 250, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
+
+	public Player Astra = new Player(1000, 250, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
 	
 	public void MovementPerformed(Vector2 input)
 	{

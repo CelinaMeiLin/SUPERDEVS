@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://qboac6ykujwn"]
+[gd_scene load_steps=34 format=3 uid="uid://qboac6ykujwn"]
 
 [ext_resource type="Script" path="res://script/GusBody.cs" id="1_a84fu"]
 [ext_resource type="Texture2D" uid="uid://trcls6u4x5vm" path="res://art/enemy/Player-idle/player-idle1.png" id="2_65u8l"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://casgvg6cqv7fd" path="res://art/enemy/Player-run-shoot/player-run-shoott4.png" id="24_2wm07"]
 [ext_resource type="Texture2D" uid="uid://c2lsa7ik3doyj" path="res://art/enemy/Player-run-shoot/player-run-shoott5.png" id="25_feyho"]
 [ext_resource type="Texture2D" uid="uid://de1l7g0wo38gh" path="res://art/enemy/Player-run-shoot/player-run-shoott6.png" id="26_8ybx1"]
+[ext_resource type="PackedScene" uid="uid://b6altf6xtkxqg" path="res://scene/health_bar_enemy.tscn" id="30_cl7nu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvfth"]
 animations = [{
@@ -237,6 +238,12 @@ frame_progress = 0.764365
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GusBody"]
 position = Vector2(0, 4.5)
 shape = SubResource("CapsuleShape2D_j35yh")
+
+[node name="HealthBar" parent="GusBody" instance=ExtResource("30_cl7nu")]
+offset_left = -13.0
+offset_top = -32.0
+offset_right = 18.0
+offset_bottom = -28.0
 
 [node name="detectionArea" type="Area2D" parent="GusBody"]
 collision_layer = 2

@@ -5,20 +5,30 @@ using Devs.project.script;
 
 public partial class GusBody : CharacterBody2D
 {
-	Entity Enemy = new Entity(200, 50, 2, 120, -350);
+	Entity Enemy = new Entity(600, 250, 2, 120, -350);
 	public bool player_chase = false;
 	public CharacterBody2D player = null;
 	float temp;
 	Vector2 dir;
 	private bool direction = false;
 	private AnimatedSprite2D _animatedSprite;
+	private HealthBar healthbar;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_animatedSprite = GetNode<AnimatedSprite2D>("Gus");
+		healthbar = GetNode<HealthBar>("HealthBar");
+		healthbar.health_init(Enemy.Vie);
 	}
-	
+
+	public override void _Process(double delta)
+	{
+		if (Enemy.Vie <= 0)
+		{
+			QueueFree();
+		}
+	}
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -47,7 +57,7 @@ public partial class GusBody : CharacterBody2D
 	}
 	
 	
-	private void _on_detection_area_body_entered(CharacterBody2D body)
+	private void _on_detection_area_body_entered(astra body)
 	{
 		GD.Print("entered");
 		player = body;
@@ -68,15 +78,30 @@ public partial class GusBody : CharacterBody2D
 			GD.Print(dir.X);
 		}
 		player_chase = true;
+		
+		Enemy.Vie -= body.Astra.Attaque;
+		healthbar.set_health(Enemy.Vie);
 	}
 
 
-	private void _on_detection_area_body_exited(CharacterBody2D body)
+	private void _on_detection_area_body_exited(astra body)
 	{
 		GD.Print("exited");
 		player_chase = false;
 		dir = Vector2.Zero;
 		player = null;
+		
+	}
+
+	public void set_health(float value)
+	{
+		Enemy.set_health(value);
+		if (Enemy.Vie <= 0 && Enemy.is_alive)
+		{
+			Enemy._die();
+		}
+
+		healthbar.Health = Enemy.Vie;
 	}
 }
 
