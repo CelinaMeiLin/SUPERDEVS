@@ -230,10 +230,8 @@ script = ExtResource("1_a84fu")
 texture_filter = 1
 scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_tvfth")
-animation = &"run-shoot"
+animation = &"hurt"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.764365
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GusBody"]
 position = Vector2(0, 4.5)

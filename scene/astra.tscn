@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=33 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
 [ext_resource type="Texture2D" uid="uid://d372k0kffqi82" path="res://art/characters/crouch/crouch.png" id="2_vihl7"]
 [ext_resource type="Texture2D" uid="uid://blv3lb4cwn4wu" path="res://art/characters/idle/idle-2.png" id="3_20qpd"]
+[ext_resource type="Texture2D" uid="uid://f3igtfvfb8k3" path="res://art/characters/hurt/hurt.png" id="3_lcn04"]
 [ext_resource type="Texture2D" uid="uid://x3x4liwp3gwx" path="res://art/characters/idle/idle-3.png" id="4_unx43"]
 [ext_resource type="Texture2D" uid="uid://de8usj8bw043w" path="res://art/characters/idle/idle-4.png" id="5_sk2dr"]
 [ext_resource type="Texture2D" uid="uid://bitf2cf81vkv0" path="res://art/characters/jump/jump-1.png" id="7_w6ybe"]
@@ -36,6 +37,26 @@ animations = [{
 "loop": true,
 "name": &"crouch",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lcn04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lcn04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lcn04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lcn04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lcn04")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -183,9 +204,8 @@ texture_filter = 1
 position = Vector2(-1, -11.5625)
 scale = Vector2(1.473, 1.593)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
-animation = &"run"
+animation = &"hurt"
 autoplay = "idle"
-frame_progress = 0.226318
 
 [node name="jumpparticles" type="GPUParticles2D" parent="AstraBody"]
 position = Vector2(1, 13)

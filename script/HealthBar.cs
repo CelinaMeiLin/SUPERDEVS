@@ -5,7 +5,7 @@ public partial class HealthBar : ProgressBar
 {
 	private ProgressBar damage_bar;
 	private Timer timer;
-	public bool visible = true;
+	public bool visible = false;
 
 	public float Health { get; set; }
 

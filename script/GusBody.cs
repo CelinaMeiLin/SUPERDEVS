@@ -13,6 +13,7 @@ public partial class GusBody : CharacterBody2D
 	private bool direction = false;
 	private AnimatedSprite2D _animatedSprite;
 	private HealthBar healthbar;
+	private bool gettinghurt = false;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -40,12 +41,18 @@ public partial class GusBody : CharacterBody2D
 		if (player_chase)
 		{
 			velocity.X = dir.X * Enemy.Speed;
-			_animatedSprite.Play("run-shoot");
+			if (gettinghurt == false)
+			{
+				_animatedSprite.Play("run-shoot");
+			}
 		}
 		else
 		{
 			velocity.X = 0;
-			_animatedSprite.Play("idle");
+			if (gettinghurt == false)
+			{
+				_animatedSprite.Play("idle");	
+			}
 		}
 		
 		//pour orienter Gus
@@ -79,8 +86,9 @@ public partial class GusBody : CharacterBody2D
 		}
 		player_chase = true;
 		
-		Enemy.Vie -= body.Astra.Attaque;
-		healthbar.set_health(Enemy.Vie);
+		//attack simulation
+		set_health(Enemy.Vie -= body.Astra.Attaque);
+		body.set_health(body.Astra.Vie-Enemy.Attaque);
 	}
 
 
@@ -93,15 +101,19 @@ public partial class GusBody : CharacterBody2D
 		
 	}
 
-	public void set_health(float value)
+	public async void set_health(float value)
 	{
+		gettinghurt = true;
+		_animatedSprite.Play("hurt");
 		Enemy.set_health(value);
 		if (Enemy.Vie <= 0 && Enemy.is_alive)
 		{
 			Enemy._die();
 		}
 
-		healthbar.Health = Enemy.Vie;
+		healthbar.set_health(Enemy.Vie);
+		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+		gettinghurt = false;
 	}
 }
 

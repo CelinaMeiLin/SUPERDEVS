@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Devs.project.script;
 public partial class astra : CharacterBody2D
 {
+	[Export] private myhealthbar HealthBar;
 	private Vector2 _movementInput = Vector2.Zero;
 	private Vector2 _lastDirection = Vector2.Zero;
 	private int _maxJumps = 2; // Maximum number of jumps
@@ -12,6 +13,7 @@ public partial class astra : CharacterBody2D
 	private AnimatedSprite2D _animatedSprite; //LA VARIABLE D'ASTRA
 	private GpuParticles2D jumpdust;
 	private string jumpanimation = "jumpfirst";
+	private bool gettinghurt = false;
 
 	public Player Astra = new Player(1000, 250, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
 	
@@ -36,6 +38,7 @@ public partial class astra : CharacterBody2D
 		_animatedSprite = GetNode<AnimatedSprite2D>("Astra");
 		jumpdust = GetNode<GpuParticles2D>("jumpparticles");
 		jumpdust.OneShot = true;
+		HealthBar.health_init(Astra.Vie);
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -75,20 +78,24 @@ public partial class astra : CharacterBody2D
 				_jumpcount = 0;
 				jumped = true;
 			}
-			//Pour jouer l'animation de run
-			if ((Input.IsActionPressed("Right") || Input.IsActionPressed("Left")))
+			
+			if (gettinghurt == false)
 			{
-				_animatedSprite.Play("run");
-			}
-			//Pour crouch
-			else if (Input.IsActionPressed("Down") && IsOnFloor())
-			{
-				_animatedSprite.Play("crouch");
-			}
-			//Animation de idle donc lobby
-			else
-			{
-				_animatedSprite.Play("idle");
+				//Pour jouer l'animation de run
+				if ((Input.IsActionPressed("Right") || Input.IsActionPressed("Left")))
+				{
+					_animatedSprite.Play("run");
+				}
+				//Pour crouch
+				else if (Input.IsActionPressed("Down") && IsOnFloor())
+				{
+					_animatedSprite.Play("crouch");
+				}
+				//Animation de idle donc lobby
+				else
+				{
+					_animatedSprite.Play("idle");
+				}
 			}
 		}
 		//Add the gravity.
@@ -103,7 +110,10 @@ public partial class astra : CharacterBody2D
 			}
 			else
 			{
-				_animatedSprite.Play(jumpanimation);
+				if (gettinghurt == false)
+				{
+					_animatedSprite.Play(jumpanimation);
+				}
 			}
 		}
 		
@@ -119,11 +129,34 @@ public partial class astra : CharacterBody2D
 	
 	public override void _Process(double delta)
 	{
+		//Mourir
+		if (Astra.Vie <= 0)
+		{
+			QueueFree();
+		}
 		//MovementInput
 		_movementInput = new Vector2(
 			Input.GetAxis("Left" ,"Right"),
 			Input.GetAxis("Up", "Down")
 		);
 		MovementPerformed(_movementInput);
+	}
+	
+	public async void set_health(float value)
+	{
+		gettinghurt = true;
+		_animatedSprite.Play("hurt");
+		Color defaultt = _animatedSprite.Modulate;
+		_animatedSprite.Modulate = new Color(255, 0, 0);
+		Astra.set_health(value);
+		if (Astra.Vie <= 0 && Astra.is_alive)
+		{
+			Astra._die();
+		}
+		
+		HealthBar.set_health(Astra.Vie);
+		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
+		gettinghurt = false;
+		_animatedSprite.Modulate = defaultt;
 	}
 }
