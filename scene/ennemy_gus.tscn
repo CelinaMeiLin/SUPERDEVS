@@ -222,9 +222,10 @@ radius = 187.131
 
 [node name="EnnemyGus" type="Node2D"]
 
-[node name="GusBody" type="CharacterBody2D" parent="."]
+[node name="GusBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character")]
 collision_layer = 4
 script = ExtResource("1_a84fu")
+Character = NodePath("..")
 
 [node name="Gus" type="AnimatedSprite2D" parent="GusBody"]
 texture_filter = 1

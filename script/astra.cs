@@ -4,18 +4,41 @@ using System.Collections.Generic;
 using Devs.project.script;
 public partial class astra : CharacterBody2D
 {
+	//------------------------------- V a r i a b l e s ------------------------------------------//
+	// Get Node2D Parent
+	[Export] public Node2D Character;
+	public Vector2 baseposition;
+	
+	// Astra Variables
+	public Player Astra = new Player(1000, 250, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
+	private AnimatedSprite2D _animatedSprite; //LA VARIABLE D'ASTRA BODY
 	[Export] private myhealthbar HealthBar;
+	
+	// Mouvement Variables
 	private Vector2 _movementInput = Vector2.Zero;
 	private Vector2 _lastDirection = Vector2.Zero;
+	
+	// Jump Variables
 	private int _maxJumps = 2; // Maximum number of jumps
 	private int _jumpcount = 0; // Number of jumps remaining
 	private bool jumped = true;
-	private AnimatedSprite2D _animatedSprite; //LA VARIABLE D'ASTRA
-	private GpuParticles2D jumpdust;
 	private string jumpanimation = "jumpfirst";
+	private GpuParticles2D jumpdust;
+	
+	// Status
 	private bool gettinghurt = false;
-
-	public Player Astra = new Player(1000, 250, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
+	//--------------------------------------------------------------------------------------------//
+	
+	public override void _Ready()
+	{
+		//------ Initialisation -------//
+		_animatedSprite = GetNode<AnimatedSprite2D>("Astra");
+		jumpdust = GetNode<GpuParticles2D>("jumpparticles");
+		jumpdust.OneShot = true;
+		HealthBar.health_init(Astra.Vie);
+		baseposition = Character.Position;
+		//-----------------------------//
+	}
 	
 	public void MovementPerformed(Vector2 input)
 	{
@@ -32,14 +55,6 @@ public partial class astra : CharacterBody2D
 		_movementInput = Vector2.Zero;
 	}
 	
-	public override void _Ready()
-	{
-		//initialize le sprite Astra
-		_animatedSprite = GetNode<AnimatedSprite2D>("Astra");
-		jumpdust = GetNode<GpuParticles2D>("jumpparticles");
-		jumpdust.OneShot = true;
-		HealthBar.health_init(Astra.Vie);
-	}
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;

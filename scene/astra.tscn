@@ -190,9 +190,10 @@ alpha_curve = SubResource("CurveTexture_1fu5r")
 
 [node name="Astra" type="Node2D"]
 
-[node name="AstraBody" type="CharacterBody2D" parent="."]
+[node name="AstraBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character")]
 collision_layer = 3
 script = ExtResource("1_4ovnt")
+Character = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AstraBody"]
 position = Vector2(2, 5.5)
