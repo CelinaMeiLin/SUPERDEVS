@@ -3,24 +3,21 @@ using System;
 
 public partial class myhealthbar : TextureProgressBar
 {
-
 	public float Health { get; set; }
+	public float MaxHealth { get; set; }
 
 	public void set_health(float _health)
 	{
-		Health = Math.Min((float)MaxValue, _health);
-		Value = (double)Health;
-		
-		if (Health <= 0)
-		{
-			QueueFree();
-		}
+		Health = Math.Min(MaxHealth, _health);
+		Value = Health/MaxHealth *55; // Scale to Health bar cause it's borken :/
 	}
 	public void health_init(float _health)
 	{
 		Health = _health;
-		MaxValue = _health;
-		Value = _health;
+		MaxHealth = _health;
+		// Vie affichée buguée ???
+		MaxValue = 100; 
+		Value = 55;
 	}
 	public override void _Ready()
 	{

@@ -157,21 +157,38 @@ public partial class astra : CharacterBody2D
 		MovementPerformed(_movementInput);
 	}
 	
-	public async void set_health(float value)
+	public async void hurt(float value)
 	{
 		gettinghurt = true;
+		//animation1
 		_animatedSprite.Play("hurt");
 		Color defaultt = _animatedSprite.Modulate;
 		_animatedSprite.Modulate = new Color(255, 0, 0);
-		Astra.set_health(value);
+		
+		//set health
+		Astra.set_health(Astra.Vie - value);
+		HealthBar.set_health(Astra.Vie);
 		if (Astra.Vie <= 0 && Astra.is_alive)
 		{
 			Astra._die();
 		}
-		
-		HealthBar.set_health(Astra.Vie);
+		//animation2
 		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
+		_animatedSprite.Modulate = defaultt;
+		
 		gettinghurt = false;
+	}
+
+	public async void heal(float value)
+	{
+		//set health
+		Astra.set_health(Astra.Vie + value);
+		HealthBar.set_health(Astra.Vie);
+		
+		//animation
+		Color defaultt = _animatedSprite.Modulate;
+		_animatedSprite.Modulate = new Color(0, 255, 0);
+		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
 		_animatedSprite.Modulate = defaultt;
 	}
 }

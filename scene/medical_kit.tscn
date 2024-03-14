@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://bimka61kji8gv"]
+
+[ext_resource type="Texture2D" uid="uid://dodda2rg3g581" path="res://art/items/medicalkit.png" id="1_bud8v"]
+[ext_resource type="Script" path="res://script/medical_kit.cs" id="2_26ck8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m37fm"]
+size = Vector2(265, 305)
+
+[sub_resource type="Animation" id="Animation_cotbl"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -4.81404), Vector2(0, -25)]
+}
+
+[sub_resource type="Animation" id="Animation_qeiiv"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pyynq"]
+_data = {
+"RESET": SubResource("Animation_qeiiv"),
+"idle": SubResource("Animation_cotbl")
+}
+
+[node name="Medical Kit" type="Sprite2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("2_26ck8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -18.9815)
+scale = Vector2(1, 1)
+texture = ExtResource("1_bud8v")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-2.5, -2.49999)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_m37fm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pyynq")
+}
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

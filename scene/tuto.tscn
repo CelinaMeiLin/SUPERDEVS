@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://de83xqqu4f7bq"]
+[gd_scene load_steps=15 format=3 uid="uid://de83xqqu4f7bq"]
 
 [ext_resource type="Texture2D" uid="uid://t4o8wxghw8il" path="res://art/background/parallax-industrial-pack/Sprites/bg.png" id="1_iqdgb"]
 [ext_resource type="Texture2D" uid="uid://bj8tlydmjh1er" path="res://art/background/parallax-industrial-pack/Sprites/far-buildings.png" id="2_m146g"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://qboac6ykujwn" path="res://scene/ennemy_gus.tscn" id="7_eu5w7"]
 [ext_resource type="Script" path="res://scene/CameraPlayer.cs" id="7_y84n5"]
 [ext_resource type="PackedScene" uid="uid://blj5nfok2go75" path="res://scene/health_bar.tscn" id="9_5n14n"]
+[ext_resource type="PackedScene" uid="uid://bimka61kji8gv" path="res://scene/medical_kit.tscn" id="9_d320v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4qeyc"]
 texture = ExtResource("2_srho6")
@@ -752,6 +753,11 @@ position = Vector2(-37, 541)
 [node name="AstraBody" parent="Astra" index="0" node_paths=PackedStringArray("HealthBar")]
 HealthBar = NodePath("../../interface/HealthBar")
 
+[node name="Astra" parent="Astra/AstraBody" index="1"]
+animation = &"idle"
+frame = 0
+frame_progress = 0.0
+
 [node name="CamTUTO" type="Camera2D" parent="Astra" node_paths=PackedStringArray("ObjectToFollow")]
 zoom = Vector2(2, 2)
 limit_left = -800
@@ -765,5 +771,8 @@ ObjectToFollow = NodePath("../AstraBody")
 [node name="interface" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="interface" instance=ExtResource("9_5n14n")]
+
+[node name="Medical Kit" parent="." instance=ExtResource("9_d320v")]
+position = Vector2(731, 404)
 
 [editable path="Astra"]

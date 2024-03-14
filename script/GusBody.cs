@@ -97,8 +97,8 @@ public partial class GusBody : CharacterBody2D
 		player_chase = true;
 		
 		//attack simulation
-		set_health(Enemy.Vie -= body.Astra.Attaque);
-		body.set_health(body.Astra.Vie-Enemy.Attaque);
+		set_health(body.Astra.Attaque);
+		body.hurt(Enemy.Attaque);
 	}
 
 
@@ -116,7 +116,7 @@ public partial class GusBody : CharacterBody2D
 		_animatedSprite.Play("hurt");
 		Color defaultt = _animatedSprite.Modulate;
 		_animatedSprite.Modulate = new Color(255, 255, 255);
-		Enemy.set_health(value);
+		Enemy.set_health(Enemy.Vie - value);
 		if (Enemy.Vie <= 0 && Enemy.is_alive)
 		{
 			Enemy._die();
