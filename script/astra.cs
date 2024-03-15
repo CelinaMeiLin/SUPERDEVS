@@ -25,6 +25,7 @@ public partial class astra : CharacterBody2D
 	private static double DOUBLETAP_DELAY = 0.25;
 	private double doubletap_time = DOUBLETAP_DELAY;
 	private string last_input;
+	private GpuParticles2D ghost;
 	
 	// Jump Variables
 	private int _maxJumps = 2; // Maximum number of jumps
@@ -47,6 +48,8 @@ public partial class astra : CharacterBody2D
 		jumpdust.OneShot = true;
 		HealthBar.health_init(Astra.Vie);
 		baseposition = Character.Position;
+		ghost = GetNode<GpuParticles2D>("Ghost");
+		ghost.OneShot = true;
 		//-----------------------------//
 	}
 	
@@ -198,6 +201,7 @@ public partial class astra : CharacterBody2D
 		//Timer de reload
 		await ToSignal(GetTree().CreateTimer(dash_reload), "timeout");
 		CanDash = true;
+		ghost.Emitting = true;
 	}
 	
 	

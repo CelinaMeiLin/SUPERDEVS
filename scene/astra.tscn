@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=46 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://eogvybjftohf" path="res://art/characters/run-right/run-6.png" id="16_gvr37"]
 [ext_resource type="Texture2D" uid="uid://jefdbnydxcyf" path="res://art/characters/run-right/run-7.png" id="17_xaf8q"]
 [ext_resource type="Texture2D" uid="uid://d3m6ysgf4m3bo" path="res://art/characters/run-right/run-8.png" id="18_t6nuq"]
+[ext_resource type="Texture2D" uid="uid://bdwquqa2e2xdd" path="res://art/items/Ghost.png" id="31_4iogi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osw1a"]
 radius = 12.0
@@ -221,6 +222,32 @@ scale_curve = SubResource("CurveTexture_kjkte")
 color_ramp = SubResource("GradientTexture1D_hfin5")
 alpha_curve = SubResource("CurveTexture_1fu5r")
 
+[sub_resource type="Curve" id="Curve_8hdw4"]
+_data = [Vector2(0, 0.813187), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_obxks"]
+curve = SubResource("Curve_8hdw4")
+
+[sub_resource type="Curve" id="Curve_2ddun"]
+_data = [Vector2(0, 1), 0.0, -0.300366, 0, 0, Vector2(1, 0.714286), -0.394231, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_48lvd"]
+curve = SubResource("Curve_2ddun")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e3o3y"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_48lvd")
+alpha_curve = SubResource("CurveTexture_obxks")
+
 [node name="Astra" type="Node2D"]
 
 [node name="AstraBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character")]
@@ -229,6 +256,7 @@ script = ExtResource("1_4ovnt")
 Character = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AstraBody"]
+visible = false
 position = Vector2(2, 5.5)
 shape = SubResource("CapsuleShape2D_osw1a")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
@@ -238,12 +266,11 @@ texture_filter = 1
 position = Vector2(-1, -11.5625)
 scale = Vector2(1.473, 1.593)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
-animation = &"dash"
+animation = &"idle"
 autoplay = "idle"
-frame = 3
-frame_progress = 0.715475
 
 [node name="jumpparticles" type="GPUParticles2D" parent="AstraBody"]
+visible = false
 position = Vector2(1, 13)
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_syuq0")
@@ -252,3 +279,12 @@ explosiveness = 0.84
 
 [node name="DashTimer" type="Timer" parent="AstraBody"]
 one_shot = true
+
+[node name="Ghost" type="GPUParticles2D" parent="AstraBody"]
+position = Vector2(1, -45)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_e3o3y")
+texture = ExtResource("31_4iogi")
+one_shot = true
+local_coords = true
