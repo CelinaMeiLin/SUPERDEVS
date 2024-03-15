@@ -249,3 +249,6 @@ amount = 16
 process_material = SubResource("ParticleProcessMaterial_syuq0")
 lifetime = 0.6
 explosiveness = 0.84
+
+[node name="DashTimer" type="Timer" parent="AstraBody"]
+one_shot = true

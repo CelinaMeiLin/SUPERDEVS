@@ -19,7 +19,9 @@ public partial class astra : CharacterBody2D
 	
 	// Dash Variables
 	private bool Dashing = false;
+	private bool CanDash = true;
 	private float dash_speed = 1000;
+	private double dash_reload = 1.5;
 	private static double DOUBLETAP_DELAY = 0.25;
 	private double doubletap_time = DOUBLETAP_DELAY;
 	private string last_input;
@@ -56,6 +58,7 @@ public partial class astra : CharacterBody2D
 		Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
 		if (Dashing)
 		{
+			CanDash = false;
 			_animatedSprite.Play("dash");
 			velocity.X = (direction.X * dash_speed);
 			DashTimer();
@@ -159,7 +162,7 @@ public partial class astra : CharacterBody2D
 	{
 		if (@event.IsActionPressed("Right"))
 		{
-			if (last_input == "Right" && doubletap_time >= 0)
+			if (CanDash && last_input == "Right" && doubletap_time >= 0)
 			{
 				Dashing = true;
 			}
@@ -172,7 +175,7 @@ public partial class astra : CharacterBody2D
 		}
 		else if (@event.IsActionPressed("Left"))
 		{
-			if (last_input == "Left" && doubletap_time >= 0)
+			if (CanDash && last_input == "Left" && doubletap_time >= 0)
 			{
 				Dashing = true;
 			}
@@ -189,8 +192,12 @@ public partial class astra : CharacterBody2D
 	
 	public async void DashTimer()
 	{
+		//Timer de durée Max
 		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
 		Dashing = false;
+		//Timer de reload
+		await ToSignal(GetTree().CreateTimer(dash_reload), "timeout");
+		CanDash = true;
 	}
 	
 	
