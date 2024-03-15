@@ -748,7 +748,7 @@ layer_0/tile_data = PackedInt32Array(1114120, 458752, 11, 1114121, 458752, 11, 1
 position = Vector2(325, 547)
 
 [node name="Astra" parent="." instance=ExtResource("3_w336t")]
-position = Vector2(-37, 541)
+position = Vector2(-500, 541)
 
 [node name="AstraBody" parent="Astra" index="0" node_paths=PackedStringArray("HealthBar")]
 HealthBar = NodePath("../../interface/HealthBar")

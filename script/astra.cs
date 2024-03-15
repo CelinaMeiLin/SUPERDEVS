@@ -7,7 +7,7 @@ public partial class astra : CharacterBody2D
 	//------------------------------- V a r i a b l e s ------------------------------------------//
 	// Get Node2D Parent
 	[Export] public Node2D Character;
-	public Vector2 baseposition;
+	public Vector2 baseposition; //Localisation sur la map
 	
 	// Astra Variables
 	public Player Astra = new Player(1000, 250, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
@@ -15,8 +15,14 @@ public partial class astra : CharacterBody2D
 	[Export] private myhealthbar HealthBar;
 	
 	// Mouvement Variables
-	private Vector2 _movementInput = Vector2.Zero;
 	private Vector2 _lastDirection = Vector2.Zero;
+	
+	// Dash Variables
+	private bool Dashing = false;
+	private float dash_speed = 1000;
+	private static double DOUBLETAP_DELAY = 0.25;
+	private double doubletap_time = DOUBLETAP_DELAY;
+	private string last_input;
 	
 	// Jump Variables
 	private int _maxJumps = 2; // Maximum number of jumps
@@ -29,6 +35,8 @@ public partial class astra : CharacterBody2D
 	private bool gettinghurt = false;
 	//--------------------------------------------------------------------------------------------//
 	
+	
+	//----------------------------------GODOT FUNCTIONS-------------------------------------------//
 	public override void _Ready()
 	{
 		//------ Initialisation -------//
@@ -40,29 +48,25 @@ public partial class astra : CharacterBody2D
 		//-----------------------------//
 	}
 	
-	public void MovementPerformed(Vector2 input)
-	{
-		_movementInput = input.Normalized();
-
-		if (input.X != 0f)
-		{
-			_lastDirection = _movementInput;
-		}
-	}
-
-	public void Stop()
-	{
-		_movementInput = Vector2.Zero;
-	}
-	
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 		
-		//Mouvements fonctionnelsgit 
+		//Mouvements fonctionnels
 		Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
-		if (direction != Vector2.Zero)
+		if (Dashing)
 		{
+			_animatedSprite.Play("dash");
+			velocity.X = (direction.X * dash_speed);
+			DashTimer();
+		}
+		else if (direction != Vector2.Zero)
+		{
+			//pour tourner le perso à gauche
+			_lastDirection = direction.Normalized();
+			bool isLeft = _lastDirection.X < 0;
+			_animatedSprite.FlipH = isLeft;
+			
 			velocity.X = direction.X * Astra.Speed;
 		}
 		else
@@ -84,7 +88,8 @@ public partial class astra : CharacterBody2D
 				_jumpcount += 1;
 			}
 		}
-
+		
+		//     - Animations - 
 		if (IsOnFloor())
 		{
 			jumpanimation = "jumpfirst";
@@ -94,7 +99,7 @@ public partial class astra : CharacterBody2D
 				jumped = true;
 			}
 			
-			if (gettinghurt == false)
+			if (gettinghurt == false && Dashing == false)
 			{
 				//Pour jouer l'animation de run
 				if ((Input.IsActionPressed("Right") || Input.IsActionPressed("Left")))
@@ -118,25 +123,24 @@ public partial class astra : CharacterBody2D
 		{
 			velocity.Y += Astra.gravity * (float)delta;
 			//Animation jump
-			if (jumped)
+			if (gettinghurt == false && Dashing == false)
 			{
-				_jumpcount = 1;
-				jumped = false;
-			}
-			else
-			{
-				if (gettinghurt == false)
+				if (jumped)
 				{
-					_animatedSprite.Play(jumpanimation);
+					_jumpcount = 1;
+					jumped = false;
 				}
+				else
+				{
+					if (gettinghurt == false)
+					{
+						_animatedSprite.Play(jumpanimation);
+					}
+				}	
 			}
 		}
-		
-		
-		//pour tourner le perso à gauche
-		bool isLeft = _lastDirection.X < 0;
-		_animatedSprite.FlipH = isLeft;
 
+		doubletap_time -= delta;
 		Velocity = velocity;
 		MoveAndSlide();
 		
@@ -149,14 +153,48 @@ public partial class astra : CharacterBody2D
 		{
 			QueueFree();
 		}
-		//MovementInput
-		_movementInput = new Vector2(
-			Input.GetAxis("Left" ,"Right"),
-			Input.GetAxis("Up", "Down")
-		);
-		MovementPerformed(_movementInput);
 	}
 	
+	public override void _Input(InputEvent @event)
+	{
+		if (@event.IsActionPressed("Right"))
+		{
+			if (last_input == "Right" && doubletap_time >= 0)
+			{
+				Dashing = true;
+			}
+			else
+			{
+				last_input = "Right";
+			}
+
+			doubletap_time = DOUBLETAP_DELAY;
+		}
+		else if (@event.IsActionPressed("Left"))
+		{
+			if (last_input == "Left" && doubletap_time >= 0)
+			{
+				Dashing = true;
+			}
+			else
+			{
+				last_input = "Left";
+			}
+
+			doubletap_time = DOUBLETAP_DELAY;
+		}
+	}
+	//--------------------------------------------------------------------------------------//
+
+	
+	public async void DashTimer()
+	{
+		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
+		Dashing = false;
+	}
+	
+	
+	//--------------------------------- HP SYSTEM -----------------------------------------//
 	public async void hurt(float value)
 	{
 		gettinghurt = true;
@@ -178,7 +216,6 @@ public partial class astra : CharacterBody2D
 		
 		gettinghurt = false;
 	}
-
 	public async void heal(float value)
 	{
 		//set health
@@ -191,4 +228,5 @@ public partial class astra : CharacterBody2D
 		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
 		_animatedSprite.Modulate = defaultt;
 	}
+	//---------------------------------------------------------------//
 }
