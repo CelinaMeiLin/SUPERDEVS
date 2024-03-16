@@ -752,6 +752,10 @@ position = Vector2(-500, 541)
 
 [node name="AstraBody" parent="Astra" index="0" node_paths=PackedStringArray("HealthBar")]
 HealthBar = NodePath("../../interface/HealthBar")
+Bullet_scn = null
+
+[node name="Astra" parent="Astra/AstraBody" index="1"]
+animation = &"idle"
 
 [node name="CamTUTO" type="Camera2D" parent="Astra" node_paths=PackedStringArray("ObjectToFollow")]
 zoom = Vector2(2, 2)

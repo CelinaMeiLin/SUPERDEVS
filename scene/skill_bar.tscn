@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://botvouyo77woe"]
+
+[ext_resource type="Script" path="res://script/skill_bar.cs" id="1_bxtfg"]
+
+[node name="SkillBar" type="Container"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 308.0
+offset_top = 557.0
+offset_right = 308.0
+offset_bottom = 557.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bxtfg")
+
+[node name="SkillBarPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SkillBarPanel"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 104.0
+offset_bottom = 35.0
+
+[node name="Skill1" type="Button" parent="SkillBarPanel/HBoxContainer"]
+custom_minimum_size = Vector2(20, 2.08165e-12)
+layout_mode = 2
+
+[node name="Skill2" type="Button" parent="SkillBarPanel/HBoxContainer"]
+custom_minimum_size = Vector2(20, 2.08165e-12)
+layout_mode = 2
+
+[node name="Skill3" type="Button" parent="SkillBarPanel/HBoxContainer"]
+custom_minimum_size = Vector2(20, 2.08165e-12)
+layout_mode = 2
+
+[node name="Skill4" type="Button" parent="SkillBarPanel/HBoxContainer"]
+custom_minimum_size = Vector2(20, 2.08165e-12)
+layout_mode = 2

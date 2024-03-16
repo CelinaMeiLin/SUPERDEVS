@@ -23,6 +23,8 @@ public partial class MainMenu : Node2D
 	 {
 	 	GetTree().Quit();
 	 }
+	
+	
 }
 
 
