@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://de83xqqu4f7bq"]
+[gd_scene load_steps=16 format=3 uid="uid://de83xqqu4f7bq"]
 
 [ext_resource type="Texture2D" uid="uid://t4o8wxghw8il" path="res://art/background/parallax-industrial-pack/Sprites/bg.png" id="1_iqdgb"]
 [ext_resource type="Texture2D" uid="uid://bj8tlydmjh1er" path="res://art/background/parallax-industrial-pack/Sprites/far-buildings.png" id="2_m146g"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scene/CameraPlayer.cs" id="7_y84n5"]
 [ext_resource type="PackedScene" uid="uid://blj5nfok2go75" path="res://scene/health_bar.tscn" id="9_5n14n"]
 [ext_resource type="PackedScene" uid="uid://bimka61kji8gv" path="res://scene/medical_kit.tscn" id="9_d320v"]
+[ext_resource type="PackedScene" uid="uid://botvouyo77woe" path="res://scene/skill_bar.tscn" id="9_o7wms"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4qeyc"]
 texture = ExtResource("2_srho6")
@@ -770,6 +771,17 @@ ObjectToFollow = NodePath("../AstraBody")
 [node name="interface" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="interface" instance=ExtResource("9_5n14n")]
+
+[node name="SkillBar" parent="interface" instance=ExtResource("9_o7wms")]
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.9
+anchor_right = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_vertical = 0
 
 [node name="Medical Kit" parent="." instance=ExtResource("9_d320v")]
 position = Vector2(731, 404)

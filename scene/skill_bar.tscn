@@ -1,21 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://botvouyo77woe"]
+[gd_scene load_steps=6 format=3 uid="uid://botvouyo77woe"]
 
 [ext_resource type="Script" path="res://script/skill_bar.cs" id="1_bxtfg"]
+[ext_resource type="Texture2D" uid="uid://bj3skw0ctggnp" path="res://art/items/skills/Skillicon14_02.png" id="2_fkpns"]
+[ext_resource type="Texture2D" uid="uid://cy1kfiutkbpvv" path="res://art/items/skills/Skillicon14_18.png" id="3_npxv3"]
+[ext_resource type="Texture2D" uid="uid://c0qm6lyeinkll" path="res://art/items/skills/Skillicon14_14.png" id="4_ofuwl"]
+[ext_resource type="Texture2D" uid="uid://dnbwrhntgiyhp" path="res://art/items/skills/Skillicon14_28.png" id="5_pwm7s"]
 
 [node name="SkillBar" type="Container"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 308.0
-offset_top = 557.0
-offset_right = 308.0
-offset_bottom = 557.0
+offset_left = 361.0
+offset_top = 638.0
+offset_right = -791.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bxtfg")
 
 [node name="SkillBarPanel" type="Panel" parent="."]
-custom_minimum_size = Vector2(100, 30)
+custom_minimum_size = Vector2(530, 130)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SkillBarPanel"]
@@ -23,21 +27,30 @@ custom_minimum_size = Vector2(100, 30)
 layout_mode = 0
 offset_left = 4.0
 offset_top = 5.0
-offset_right = 104.0
-offset_bottom = 35.0
+offset_right = 176.0
+offset_bottom = 45.0
+scale = Vector2(3, 3)
 
 [node name="Skill1" type="Button" parent="SkillBarPanel/HBoxContainer"]
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
+icon = ExtResource("2_fkpns")
+vertical_icon_alignment = 0
 
 [node name="Skill2" type="Button" parent="SkillBarPanel/HBoxContainer"]
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
+icon = ExtResource("3_npxv3")
+vertical_icon_alignment = 0
 
 [node name="Skill3" type="Button" parent="SkillBarPanel/HBoxContainer"]
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
+icon = ExtResource("4_ofuwl")
+vertical_icon_alignment = 0
 
 [node name="Skill4" type="Button" parent="SkillBarPanel/HBoxContainer"]
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
+icon = ExtResource("5_pwm7s")
+vertical_icon_alignment = 0
