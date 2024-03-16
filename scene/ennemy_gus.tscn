@@ -234,7 +234,7 @@ sprite_frames = SubResource("SpriteFrames_tvfth")
 animation = &"hurt"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GusBody"]
+[node name="Hitbox" type="CollisionShape2D" parent="GusBody"]
 position = Vector2(0, 4.5)
 shape = SubResource("CapsuleShape2D_j35yh")
 

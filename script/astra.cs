@@ -18,7 +18,6 @@ public partial class astra : CharacterBody2D
 	private Vector2 _lastDirection = Vector2.Zero;
 	
 	// Dash Variables
-	private bool Dashing = false;
 	private bool CanDash = true;
 	private float dash_speed = 1000;
 	private double dash_reload = 1.5;
@@ -34,8 +33,22 @@ public partial class astra : CharacterBody2D
 	private string jumpanimation = "jumpfirst";
 	private GpuParticles2D jumpdust;
 	
+	// Shoot Variables
+	[Export] PackedScene Bullet_scn;
+	private CollisionShape2D Bullet_spawnerG;
+	private CollisionShape2D Bullet_spawnerD;
+	private CollisionShape2D Bullet_spawnerGLow;
+	private CollisionShape2D Bullet_spawnerDLow;
+	private float bullet_speed = 600f;
+	private float bullet_per_second { get; }= 5f;
+	private float fire_rate = 1f / 5f; //bullet_per_second
+	private float time_until_fire = 0f;
+	private bool shoot_anim = false;
+	
 	// Status
 	private bool gettinghurt = false;
+	private bool isShooting = false;
+	private bool Dashing = false;
 	//--------------------------------------------------------------------------------------------//
 	
 	
@@ -50,6 +63,10 @@ public partial class astra : CharacterBody2D
 		baseposition = Character.Position;
 		ghost = GetNode<GpuParticles2D>("Ghost");
 		ghost.OneShot = true;
+		Bullet_spawnerG = GetNode<CollisionShape2D>("bulletspawnerG");
+		Bullet_spawnerD = GetNode<CollisionShape2D>("bulletspawnerD");
+		Bullet_spawnerGLow = GetNode<CollisionShape2D>("bulletspawnerGLow");
+		Bullet_spawnerDLow = GetNode<CollisionShape2D>("bulletspawnerDLow");
 		//-----------------------------//
 	}
 	
@@ -94,6 +111,53 @@ public partial class astra : CharacterBody2D
 				_jumpcount += 1;
 			}
 		}
+
+		// Shoot
+		if (Input.IsActionJustPressed("Shoot") && time_until_fire > fire_rate)
+		{
+			isShooting = true;
+			RigidBody2D bullet = Bullet_scn.Instantiate<RigidBody2D>();
+
+			Vector2 Spawn;
+			int b_direction = 1;
+			bool isLeft = _lastDirection.X < 0;
+			bool isCrouch = _animatedSprite.Animation == "crouch";
+			if (isLeft)
+			{
+				if (isCrouch)
+				{
+					Spawn = Bullet_spawnerGLow.GlobalPosition;
+				}
+				else
+				{
+					Spawn = Bullet_spawnerG.GlobalPosition;
+				}
+				b_direction = -1;
+			}
+			else
+			{
+				if (isCrouch)
+				{
+					Spawn = Bullet_spawnerDLow.GlobalPosition;
+				}
+				else
+				{
+					Spawn = Bullet_spawnerD.GlobalPosition;
+				}
+				b_direction = 1;
+			}
+			bullet.GlobalPosition = Spawn;
+			bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
+			
+			GetTree().Root.AddChild(bullet);
+
+			time_until_fire = 0f;
+			ShootStatusTimer();
+		}
+		else
+		{
+			time_until_fire += (float)delta;
+		}
 		
 		//     - Animations - 
 		if (IsOnFloor())
@@ -104,8 +168,8 @@ public partial class astra : CharacterBody2D
 				_jumpcount = 0;
 				jumped = true;
 			}
-			
-			if (gettinghurt == false && Dashing == false)
+
+			if (gettinghurt == false && Dashing == false && isShooting == false)
 			{
 				//Pour jouer l'animation de run
 				if ((Input.IsActionPressed("Right") || Input.IsActionPressed("Left")))
@@ -121,6 +185,24 @@ public partial class astra : CharacterBody2D
 				else
 				{
 					_animatedSprite.Play("idle");
+				}
+			}
+			else if (isShooting && gettinghurt == false)
+			{
+				// Run & Shoot
+				if ((Input.IsActionPressed("Right") || Input.IsActionPressed("Left")))
+				{
+					_animatedSprite.Play("run-shoot");
+				}
+				// Crouch
+				else if (Input.IsActionPressed("Down") && IsOnFloor())
+				{
+					_animatedSprite.Play("crouch");
+				}
+				// Shoot
+				else
+				{
+					_animatedSprite.Play("shoot");
 				}
 			}
 		}
@@ -202,6 +284,22 @@ public partial class astra : CharacterBody2D
 		await ToSignal(GetTree().CreateTimer(dash_reload), "timeout");
 		CanDash = true;
 		ghost.Emitting = true;
+	}
+
+	public async void ShootStatusTimer()
+	{
+		if (shoot_anim)
+		{
+			return;
+		}
+		if (isShooting == false)
+		{
+			return;
+		}
+		shoot_anim = true;
+		await ToSignal(GetTree().CreateTimer(1), "timeout");
+		isShooting = false;
+		shoot_anim = false;
 	}
 	
 	

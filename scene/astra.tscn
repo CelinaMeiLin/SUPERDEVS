@@ -1,8 +1,9 @@
-[gd_scene load_steps=46 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=57 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
 [ext_resource type="Texture2D" uid="uid://d372k0kffqi82" path="res://art/characters/crouch/crouch.png" id="2_vihl7"]
+[ext_resource type="PackedScene" uid="uid://b1ai6u7657apo" path="res://scene/bullet.tscn" id="2_x14kn"]
 [ext_resource type="Texture2D" uid="uid://bxil18cxwxe1e" path="res://art/characters/AstraDash/Dash-7.png" id="3_17yna"]
 [ext_resource type="Texture2D" uid="uid://blv3lb4cwn4wu" path="res://art/characters/idle/idle-2.png" id="3_20qpd"]
 [ext_resource type="Texture2D" uid="uid://f3igtfvfb8k3" path="res://art/characters/hurt/hurt.png" id="3_lcn04"]
@@ -31,6 +32,15 @@
 [ext_resource type="Texture2D" uid="uid://jefdbnydxcyf" path="res://art/characters/run-right/run-7.png" id="17_xaf8q"]
 [ext_resource type="Texture2D" uid="uid://d3m6ysgf4m3bo" path="res://art/characters/run-right/run-8.png" id="18_t6nuq"]
 [ext_resource type="Texture2D" uid="uid://bdwquqa2e2xdd" path="res://art/items/Ghost.png" id="31_4iogi"]
+[ext_resource type="Texture2D" uid="uid://bxiophc0vnxpy" path="res://art/characters/run-shoot/run-shoot-1.png" id="31_qngdk"]
+[ext_resource type="Texture2D" uid="uid://bfo8guf8vujmj" path="res://art/characters/run-shoot/run-shoot-2.png" id="32_2xt87"]
+[ext_resource type="Texture2D" uid="uid://dh0ywjdepbl5v" path="res://art/characters/run-shoot/run-shoot-3.png" id="33_32wfw"]
+[ext_resource type="Texture2D" uid="uid://cp7ffl8rbmwna" path="res://art/characters/run-shoot/run-shoot-4.png" id="34_s72sl"]
+[ext_resource type="Texture2D" uid="uid://dp5c5ww4qq1ef" path="res://art/characters/run-shoot/run-shoot-5.png" id="35_i1cbh"]
+[ext_resource type="Texture2D" uid="uid://dhr382qbhlbs0" path="res://art/characters/run-shoot/run-shoot-6.png" id="36_88auv"]
+[ext_resource type="Texture2D" uid="uid://cfyudd876fpqn" path="res://art/characters/run-shoot/run-shoot-7.png" id="37_4p303"]
+[ext_resource type="Texture2D" uid="uid://moxrx8figdwn" path="res://art/characters/run-shoot/run-shoot-8.png" id="38_h74hs"]
+[ext_resource type="Texture2D" uid="uid://bpgjcrqcfewvy" path="res://art/characters/shoot/shoot.png" id="39_ju0qc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osw1a"]
 radius = 12.0
@@ -186,6 +196,43 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_qngdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_2xt87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_32wfw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_s72sl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_i1cbh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_88auv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_4p303")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_h74hs")
+}],
+"loop": true,
+"name": &"run-shoot",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_ju0qc")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
 }]
 
 [sub_resource type="Curve" id="Curve_fj8mm"]
@@ -248,15 +295,18 @@ scale_max = 0.05
 scale_curve = SubResource("CurveTexture_48lvd")
 alpha_curve = SubResource("CurveTexture_obxks")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mpcf"]
+size = Vector2(5, 8)
+
 [node name="Astra" type="Node2D"]
 
 [node name="AstraBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character")]
 collision_layer = 3
 script = ExtResource("1_4ovnt")
 Character = NodePath("..")
+Bullet_scn = ExtResource("2_x14kn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AstraBody"]
-visible = false
 position = Vector2(2, 5.5)
 shape = SubResource("CapsuleShape2D_osw1a")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
@@ -266,11 +316,10 @@ texture_filter = 1
 position = Vector2(-1, -11.5625)
 scale = Vector2(1.473, 1.593)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
-animation = &"idle"
+animation = &"shoot"
 autoplay = "idle"
 
 [node name="jumpparticles" type="GPUParticles2D" parent="AstraBody"]
-visible = false
 position = Vector2(1, 13)
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_syuq0")
@@ -281,6 +330,7 @@ explosiveness = 0.84
 one_shot = true
 
 [node name="Ghost" type="GPUParticles2D" parent="AstraBody"]
+texture_filter = 1
 position = Vector2(1, -45)
 emitting = false
 amount = 1
@@ -288,3 +338,23 @@ process_material = SubResource("ParticleProcessMaterial_e3o3y")
 texture = ExtResource("31_4iogi")
 one_shot = true
 local_coords = true
+
+[node name="bulletspawnerD" type="CollisionShape2D" parent="AstraBody"]
+position = Vector2(40, -16)
+shape = SubResource("RectangleShape2D_5mpcf")
+disabled = true
+
+[node name="bulletspawnerG" type="CollisionShape2D" parent="AstraBody"]
+position = Vector2(-41, -16)
+shape = SubResource("RectangleShape2D_5mpcf")
+disabled = true
+
+[node name="bulletspawnerDLow" type="CollisionShape2D" parent="AstraBody"]
+position = Vector2(26, 5)
+shape = SubResource("RectangleShape2D_5mpcf")
+disabled = true
+
+[node name="bulletspawnerGLow" type="CollisionShape2D" parent="AstraBody"]
+position = Vector2(-28, 5)
+shape = SubResource("RectangleShape2D_5mpcf")
+disabled = true

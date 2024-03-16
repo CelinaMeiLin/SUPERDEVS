@@ -97,7 +97,7 @@ public partial class GusBody : CharacterBody2D
 		player_chase = true;
 		
 		//attack simulation
-		set_health(body.Astra.Attaque);
+		hurt(body.Astra.Attaque);
 		body.hurt(Enemy.Attaque);
 	}
 
@@ -110,7 +110,7 @@ public partial class GusBody : CharacterBody2D
 		
 	}
 
-	public async void set_health(float value)
+	public async void hurt(float value)
 	{
 		gettinghurt = true;
 		_animatedSprite.Play("hurt");
