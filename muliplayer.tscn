@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://4jj2dq4n2po4"]
+
+[ext_resource type="Script" path="res://script/Multiplayer.cs" id="1_7icq2"]
+
+[node name="Muliplayer" type="Node2D"]
+script = ExtResource("1_7icq2")
+
+[node name="host" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Host"
+
+[node name="join" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 88.0
+offset_right = 40.0
+offset_bottom = 119.0
+text = "Join
+"
+
+[connection signal="pressed" from="host" to="." method="_on_host_pressed"]
