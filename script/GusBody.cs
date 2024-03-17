@@ -11,11 +11,12 @@ public partial class GusBody : CharacterBody2D
 	public Vector2 baseposition;
 	
 	// Gus Variables
-	Entity Enemy = new Entity(600, 250, 2, 120, -350);
+	public Entity Enemy = new Entity(600, 250, 2, 120, -350);
 	private AnimatedSprite2D _animatedSprite;
 	Vector2 dir; //direction actuelle de Gus
 	private HealthBar healthbar;
 	float temp;
+	private GpuParticles2D Death_particles;
 	
 	// Player Variables
 	public CharacterBody2D player = null;
@@ -27,7 +28,8 @@ public partial class GusBody : CharacterBody2D
 	public bool player_chase = false;
 	//--------------------------------------------------------------------------------------------//
 	
-	// Called when the node enters the scene tree for the first time.
+	
+	//----------------------------------GODOT FUNCTIONS-------------------------------------------//
 	public override void _Ready()
 	{
 		//------ Initialisation -------//
@@ -35,16 +37,12 @@ public partial class GusBody : CharacterBody2D
 		healthbar = GetNode<HealthBar>("HealthBar");
 		healthbar.health_init(Enemy.Vie);
 		baseposition = Character.Position;
+		Death_particles = GetNode<GpuParticles2D>("DeathParticles");
+		Death_particles.OneShot = true;
+		Enemy.queuefree = false;
 		//-----------------------------//
 	}
-
-	public override void _Process(double delta)
-	{
-		if (Enemy.Vie <= 0)
-		{
-			QueueFree();
-		}
-	}
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -88,6 +86,7 @@ public partial class GusBody : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+	//--------------------------------------------------------------------------------------//
 	
 	
 	private void _on_detection_area_body_entered(astra body)
@@ -95,10 +94,11 @@ public partial class GusBody : CharacterBody2D
 		player = body;
 		playerbaseposition = body.baseposition;
 		player_chase = true;
-		
+		GetNode<GpuParticles2D>("Exclamation").Emitting = true;
+
 		//attack simulation
-		hurt(body.Astra.Attaque);
-		body.hurt(Enemy.Attaque);
+		//hurt(body.Astra.Attaque);
+		//body.hurt(Enemy.Attaque);
 	}
 
 
@@ -107,9 +107,18 @@ public partial class GusBody : CharacterBody2D
 		player_chase = false;
 		dir = Vector2.Zero;
 		player = null;
+		GetNode<GpuParticles2D>("Interrogation").Emitting = true;
 		
 	}
 
+	//--------------------------------- HP SYSTEM -----------------------------------------//
+	private async void _die()
+	{
+		Death_particles.Emitting = true;
+		_animatedSprite.Visible = false;
+		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
+		QueueFree();
+	}
 	public async void hurt(float value)
 	{
 		gettinghurt = true;
@@ -117,9 +126,9 @@ public partial class GusBody : CharacterBody2D
 		Color defaultt = _animatedSprite.Modulate;
 		_animatedSprite.Modulate = new Color(255, 255, 255);
 		Enemy.set_health(Enemy.Vie - value);
-		if (Enemy.Vie <= 0 && Enemy.is_alive)
+		if (Enemy.Vie <= 0)
 		{
-			Enemy._die();
+			_die();
 		}
 
 		healthbar.set_health(Enemy.Vie);
@@ -127,6 +136,7 @@ public partial class GusBody : CharacterBody2D
 		gettinghurt = false;
 		_animatedSprite.Modulate = defaultt;
 	}
+	//---------------------------------------------------------------//
 }
 
 

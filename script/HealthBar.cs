@@ -17,6 +17,8 @@ public partial class HealthBar : ProgressBar
 		
 		if (Health <= 0)
 		{
+			visible = false;
+			Visible = false;
 			QueueFree();
 		}
 
@@ -46,14 +48,7 @@ public partial class HealthBar : ProgressBar
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (visible)
-		{
-			Visible = true;
-		}
-		else
-		{
-			Visible = false;
-		}
+		Visible = visible;
 
 		if (Health < MaxValue)
 		{

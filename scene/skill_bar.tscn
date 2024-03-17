@@ -32,24 +32,28 @@ offset_bottom = 45.0
 scale = Vector2(3, 3)
 
 [node name="Skill1" type="Button" parent="SkillBarPanel/HBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
 icon = ExtResource("2_fkpns")
 vertical_icon_alignment = 0
 
 [node name="Skill2" type="Button" parent="SkillBarPanel/HBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
 icon = ExtResource("3_npxv3")
 vertical_icon_alignment = 0
 
 [node name="Skill3" type="Button" parent="SkillBarPanel/HBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
 icon = ExtResource("4_ofuwl")
 vertical_icon_alignment = 0
 
 [node name="Skill4" type="Button" parent="SkillBarPanel/HBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
 icon = ExtResource("5_pwm7s")

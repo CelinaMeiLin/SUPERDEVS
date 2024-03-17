@@ -13,6 +13,7 @@ public partial class astra : CharacterBody2D
 	public Player Astra = new Player(1000, 250, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
 	private AnimatedSprite2D _animatedSprite; //LA VARIABLE D'ASTRA BODY
 	[Export] private myhealthbar HealthBar;
+	private GpuParticles2D Death_particles;
 	
 	// Mouvement Variables
 	private Vector2 _lastDirection = Vector2.Zero;
@@ -39,7 +40,7 @@ public partial class astra : CharacterBody2D
 	private CollisionShape2D Bullet_spawnerD;
 	private CollisionShape2D Bullet_spawnerGLow;
 	private CollisionShape2D Bullet_spawnerDLow;
-	private float bullet_speed = 600f;
+	private float bullet_speed = 800f;
 	private float bullet_per_second { get; }= 5f;
 	private float fire_rate = 1f / 5f; //bullet_per_second
 	private float time_until_fire = 0f;
@@ -57,6 +58,7 @@ public partial class astra : CharacterBody2D
 	{
 		//------ Initialisation -------//
 		_animatedSprite = GetNode<AnimatedSprite2D>("Astra");
+		Astra.queuefree = false;
 		jumpdust = GetNode<GpuParticles2D>("jumpparticles");
 		jumpdust.OneShot = true;
 		HealthBar.health_init(Astra.Vie);
@@ -67,6 +69,8 @@ public partial class astra : CharacterBody2D
 		Bullet_spawnerD = GetNode<CollisionShape2D>("bulletspawnerD");
 		Bullet_spawnerGLow = GetNode<CollisionShape2D>("bulletspawnerGLow");
 		Bullet_spawnerDLow = GetNode<CollisionShape2D>("bulletspawnerDLow");
+		Death_particles = GetNode<GpuParticles2D>("DeathParticles");
+		Death_particles.OneShot = true;
 		//-----------------------------//
 	}
 	
@@ -315,9 +319,9 @@ public partial class astra : CharacterBody2D
 		//set health
 		Astra.set_health(Astra.Vie - value);
 		HealthBar.set_health(Astra.Vie);
-		if (Astra.Vie <= 0 && Astra.is_alive)
+		if (Astra.Vie <= 0)
 		{
-			Astra._die();
+			_die();
 		}
 		//animation2
 		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
@@ -336,6 +340,13 @@ public partial class astra : CharacterBody2D
 		_animatedSprite.Modulate = new Color(0, 255, 0);
 		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
 		_animatedSprite.Modulate = defaultt;
+	}
+	private async void _die()
+	{
+		Death_particles.Emitting = true;
+		_animatedSprite.Visible = false;
+		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
+		QueueFree();
 	}
 	//---------------------------------------------------------------//
 }

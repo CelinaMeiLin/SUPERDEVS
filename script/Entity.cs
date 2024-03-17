@@ -3,7 +3,8 @@ using System;
 
 public partial class Entity : CharacterBody2D
 {
-	public bool is_alive = true;
+	public bool queuefree { get; set; } = true;
+	
 	public float Vie { get; set; }
 	public float Attaque { get; set; }
 	public float Defense { get; set; }
@@ -30,7 +31,7 @@ public partial class Entity : CharacterBody2D
 			return;
 		}
 		Vie = new_vie;
-		if (Vie <= 0 && is_alive)
+		if (Vie <= 0)
 		{
 			_die();
 		}
@@ -38,8 +39,10 @@ public partial class Entity : CharacterBody2D
 
 	public void _die()
 	{
-		is_alive = false;
-		QueueFree();
+		if (queuefree)
+		{
+			QueueFree();
+		}
 	}
 	
 	

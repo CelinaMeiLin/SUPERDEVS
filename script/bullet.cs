@@ -14,9 +14,12 @@ public partial class bullet : RigidBody2D
 
 	public void OnBodyEntered(Node2D body)
 	{
-		GD.Print(body);
 		if (body is GusBody)
 		{
+			if (((GusBody)body).Enemy.Vie <= 0)
+			{
+				QueueFree();
+			}
 			((GusBody)body).hurt(BulletDamge);
 		}
 		

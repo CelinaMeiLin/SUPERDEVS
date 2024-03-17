@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=62 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
@@ -239,21 +239,21 @@ animations = [{
 _data = [Vector2(0, 1), 0.0, -1.47873, 0, 1, Vector2(0.47561, 0.296703), -0.321821, -0.321821, 0, 0, Vector2(1, 0), -1.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_1fu5r"]
+[sub_resource type="CurveTexture" id="CurveTexture_vfo4u"]
 curve = SubResource("Curve_fj8mm")
 
 [sub_resource type="Gradient" id="Gradient_jovsj"]
 offsets = PackedFloat32Array(0, 0.985294, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.455882, 0.455882, 0.455882, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_hfin5"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bbjjb"]
 gradient = SubResource("Gradient_jovsj")
 
 [sub_resource type="Curve" id="Curve_dbsrr"]
 _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_kjkte"]
+[sub_resource type="CurveTexture" id="CurveTexture_3ul2q"]
 curve = SubResource("Curve_dbsrr")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_syuq0"]
@@ -262,25 +262,25 @@ direction = Vector3(0, 1, 0)
 spread = 31.875
 initial_velocity_min = 156.24
 initial_velocity_max = 156.24
-gravity = Vector3(0, 98, 0)
+gravity = Vector3(0, 9.8, 0)
 scale_min = 3.0
 scale_max = 3.0
-scale_curve = SubResource("CurveTexture_kjkte")
-color_ramp = SubResource("GradientTexture1D_hfin5")
-alpha_curve = SubResource("CurveTexture_1fu5r")
+scale_curve = SubResource("CurveTexture_3ul2q")
+color_ramp = SubResource("GradientTexture1D_bbjjb")
+alpha_curve = SubResource("CurveTexture_vfo4u")
 
 [sub_resource type="Curve" id="Curve_8hdw4"]
 _data = [Vector2(0, 0.813187), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_obxks"]
+[sub_resource type="CurveTexture" id="CurveTexture_o0l4k"]
 curve = SubResource("Curve_8hdw4")
 
 [sub_resource type="Curve" id="Curve_2ddun"]
 _data = [Vector2(0, 1), 0.0, -0.300366, 0, 0, Vector2(1, 0.714286), -0.394231, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_48lvd"]
+[sub_resource type="CurveTexture" id="CurveTexture_6c1e0"]
 curve = SubResource("Curve_2ddun")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e3o3y"]
@@ -292,11 +292,37 @@ initial_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.05
 scale_max = 0.05
-scale_curve = SubResource("CurveTexture_48lvd")
-alpha_curve = SubResource("CurveTexture_obxks")
+scale_curve = SubResource("CurveTexture_6c1e0")
+alpha_curve = SubResource("CurveTexture_o0l4k")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mpcf"]
 size = Vector2(5, 8)
+
+[sub_resource type="Curve" id="Curve_nrfsl"]
+_data = [Vector2(0, 1), 0.0, -0.390476, 0, 1, Vector2(0.731707, 0.714286), -0.867725, -0.867725, 0, 0, Vector2(1, 0), -1.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1fu5r"]
+curve = SubResource("Curve_nrfsl")
+
+[sub_resource type="Curve" id="Curve_6qlvt"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kjkte"]
+curve = SubResource("Curve_6qlvt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4lshf"]
+lifetime_randomness = 0.19
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 156.24
+initial_velocity_max = 156.24
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_kjkte")
+alpha_curve = SubResource("CurveTexture_1fu5r")
 
 [node name="Astra" type="Node2D"]
 
@@ -306,7 +332,7 @@ script = ExtResource("1_4ovnt")
 Character = NodePath("..")
 Bullet_scn = ExtResource("2_x14kn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AstraBody"]
+[node name="Hitbox" type="CollisionShape2D" parent="AstraBody"]
 position = Vector2(2, 5.5)
 shape = SubResource("CapsuleShape2D_osw1a")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
@@ -358,3 +384,13 @@ disabled = true
 position = Vector2(-28, 5)
 shape = SubResource("RectangleShape2D_5mpcf")
 disabled = true
+
+[node name="DeathParticles" type="GPUParticles2D" parent="AstraBody"]
+position = Vector2(0.769231, 10)
+scale = Vector2(0.769231, 0.769231)
+emitting = false
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_4lshf")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
