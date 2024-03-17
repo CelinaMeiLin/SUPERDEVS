@@ -1,37 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjv744p4xwgi8"]
+[gd_scene load_steps=2 format=3 uid="uid://bjv744p4xwgi8"]
 
-[ext_resource type="Script" path="res://script/MainMenu.cs" id="1_cp2jm"]
-[ext_resource type="AudioStream" uid="uid://yno53hkqejo5" path="res://audio/DevsMain_Lobby.mp3" id="2_x0qjy"]
+[ext_resource type="Script" path="res://script/main_menu.cs" id="1_2u6h8"]
 
-[node name="main_menu" type="Node2D"]
-script = ExtResource("1_cp2jm")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("variable")]
+process_mode = 3
+process_priority = 100003390
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2u6h8")
+variable = NodePath(".")
 
-[node name="Tuto" type="Button" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_right = 171.0
-offset_bottom = 76.0
-text = "tutorial"
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -50.5
+offset_right = 124.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Exit" type="Button" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 112.0
-offset_right = 127.0
-offset_bottom = 214.0
-text = "exit
-"
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_x0qjy")
-autoplay = true
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
 
-[connection signal="button_up" from="CanvasLayer/Control/Tuto" to="." method="_on_button_button_up"]
-[connection signal="pressed" from="CanvasLayer/Control/Exit" to="." method="_on_exit_pressed"]
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="OnplayPressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="OnOptionsPressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="OnExitPressed"]

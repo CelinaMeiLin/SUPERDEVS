@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://dju1w020uwm3n"]
+
+[ext_resource type="Script" path="res://script/main_menu.cs" id="1_rcoi1"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_rcoi1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.5
+offset_top = -21.5
+offset_right = 243.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sound" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -31.0
+offset_right = 130.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="OnBackPressed"]

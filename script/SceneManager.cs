@@ -14,7 +14,7 @@ public partial class SceneManager : Node {
 
 	public Dictionary<eSceneNames, SceneData> sceneDictionary = new Dictionary<eSceneNames, SceneData>() {
 		{eSceneNames.MainMenu, new SceneData("res://scene/main_menu.tscn", "main_menu", false) },
-		{eSceneNames.Tuto, new SceneData("res://scene/tuto.tscn", "tuto", true) },
+		{eSceneNames.Tuto, new SceneData("res://scene/tuto.tscn", "tuto", false) },
 	};
 
 	public override void _Ready() {

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d0ogswyv07uug" path="res://art/background/parallax-industrial-pack/Sprites/skill-foreground.png" id="4_hk6k7"]
 [ext_resource type="PackedScene" uid="uid://qboac6ykujwn" path="res://scene/ennemy_gus.tscn" id="7_eu5w7"]
 [ext_resource type="Texture2D" uid="uid://uki2ivssk80w" path="res://art/Animations/doublejump.png" id="7_hauaq"]
-[ext_resource type="Script" path="res://scene/CameraPlayer.cs" id="7_y84n5"]
+[ext_resource type="Script" path="res://script/CameraPlayer.cs" id="7_y84n5"]
 [ext_resource type="Texture2D" uid="uid://diceox2ancs5p" path="res://art/banners/banner-neon/banner-neon-1.png" id="7_ycg1g"]
 [ext_resource type="Texture2D" uid="uid://bgqci4i01trsy" path="res://art/Animations/Dash.png" id="8_f6ogj"]
 [ext_resource type="Texture2D" uid="uid://o2gaf5xcspr6" path="res://art/banners/banner-neon/banner-neon-2.png" id="8_pto2p"]
