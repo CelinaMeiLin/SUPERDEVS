@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpi1gncvsxtsl"]
+
+[ext_resource type="Script" path="res://script/portail.cs" id="1_61s34"]
+[ext_resource type="Texture2D" uid="uid://u4kfj0qu0nq2" path="res://art/portail/PORTAIL1.png" id="2_cv6x6"]
+[ext_resource type="Texture2D" uid="uid://c0oxv7sedguy7" path="res://art/portail/PORTAIL2.png" id="3_su4a2"]
+[ext_resource type="Texture2D" uid="uid://b3hoeg5edgxev" path="res://art/portail/PORTAIL3.png" id="4_5yaui"]
+[ext_resource type="Texture2D" uid="uid://dn6la61m8gog0" path="res://art/portail/PORTAIL4.png" id="5_ytafm"]
+[ext_resource type="Texture2D" uid="uid://b78y6my7dl5ui" path="res://art/portail/PORTAIL5.png" id="6_dc3pt"]
+[ext_resource type="Texture2D" uid="uid://f0xow1jxehpt" path="res://art/portail/PORTAIL6.png" id="7_u2xta"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2dkax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cv6x6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_su4a2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5yaui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ytafm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dc3pt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u2xta")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ehd7f"]
+radius = 11.0
+height = 70.0
+
+[node name="Portail" type="Sprite2D"]
+
+[node name="Portail" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+script = ExtResource("1_61s34")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Portail"]
+sprite_frames = SubResource("SpriteFrames_2dkax")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_ehd7f")
+
+[connection signal="body_entered" from="Area2D" to="Portail" method="_on_area_2d_body_entered"]
