@@ -72,172 +72,186 @@ public partial class astra : CharacterBody2D
 		Death_particles = GetNode<GpuParticles2D>("DeathParticles");
 		Death_particles.OneShot = true;
 		//-----------------------------//
+		//-----Test pour le multi normalement c fait pour le mult synchronizer------//
+		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
+		
 	}
 	
+    //Multi sync 
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
-		
-		//Mouvements fonctionnels
-		Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
-		if (Dashing)
-		{
-			CanDash = false;
-			_animatedSprite.Play("dash");
-			velocity.X = (direction.X * dash_speed);
-			DashTimer();
-		}
-		else if (direction != Vector2.Zero)
-		{
-			//pour tourner le perso à gauche
-			_lastDirection = direction.Normalized();
-			bool isLeft = _lastDirection.X < 0;
-			_animatedSprite.FlipH = isLeft;
-			
-			velocity.X = direction.X * Astra.Speed;
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Astra.Speed);
-		}
-		
-		//Handle Jump.
-		if (_jumpcount < _maxJumps)
-		{
-			if (Input.IsActionJustPressed("Up"))
+
+			Vector2 velocity = Velocity;
+
+			//Mouvements fonctionnels
+			Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
+			if (Dashing)
 			{
-				if (_jumpcount == 1 && !jumped)
-				{
-					jumpdust.Emitting = true;
-					jumpanimation = "jump";
-				}
-				velocity.Y = Astra.JumpVelocity;
-				_jumpcount += 1;
+				CanDash = false;
+				_animatedSprite.Play("dash");
+				velocity.X = (direction.X * dash_speed);
+				DashTimer();
 			}
-		}
-
-		// Shoot
-		if (Input.IsActionJustPressed("Shoot") && time_until_fire > fire_rate)
-		{
-			isShooting = true;
-			RigidBody2D bullet = Bullet_scn.Instantiate<RigidBody2D>();
-
-			Vector2 Spawn;
-			int b_direction = 1;
-			bool isLeft = _lastDirection.X < 0;
-			bool isCrouch = _animatedSprite.Animation == "crouch";
-			if (isLeft)
+			else if (direction != Vector2.Zero)
 			{
-				if (isCrouch)
-				{
-					Spawn = Bullet_spawnerGLow.GlobalPosition;
-				}
-				else
-				{
-					Spawn = Bullet_spawnerG.GlobalPosition;
-				}
-				b_direction = -1;
+				//pour tourner le perso à gauche
+				_lastDirection = direction.Normalized();
+				bool isLeft = _lastDirection.X < 0;
+				_animatedSprite.FlipH = isLeft;
+
+				velocity.X = direction.X * Astra.Speed;
 			}
 			else
 			{
-				if (isCrouch)
-				{
-					Spawn = Bullet_spawnerDLow.GlobalPosition;
-				}
-				else
-				{
-					Spawn = Bullet_spawnerD.GlobalPosition;
-				}
-				b_direction = 1;
-			}
-			bullet.GlobalPosition = Spawn;
-			bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
-			
-			GetTree().Root.AddChild(bullet);
-
-			time_until_fire = 0f;
-			ShootStatusTimer();
-		}
-		else
-		{
-			time_until_fire += (float)delta;
-		}
-		
-		//     - Animations - 
-		if (IsOnFloor())
-		{
-			jumpanimation = "jumpfirst";
-			if (_jumpcount != 0)
-			{
-				_jumpcount = 0;
-				jumped = true;
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, Astra.Speed);
 			}
 
-			if (gettinghurt == false && Dashing == false && isShooting == false)
+			//Handle Jump.
+			if (_jumpcount < _maxJumps)
 			{
-				//Pour jouer l'animation de run
-				if ((Input.IsActionPressed("Right") || Input.IsActionPressed("Left")))
+				if (Input.IsActionJustPressed("Up"))
 				{
-					_animatedSprite.Play("run");
-				}
-				//Pour crouch
-				else if (Input.IsActionPressed("Down") && IsOnFloor())
-				{
-					_animatedSprite.Play("crouch");
-				}
-				//Animation de idle donc lobby
-				else
-				{
-					_animatedSprite.Play("idle");
-				}
-			}
-			else if (isShooting && gettinghurt == false)
-			{
-				// Run & Shoot
-				if ((Input.IsActionPressed("Right") || Input.IsActionPressed("Left")))
-				{
-					_animatedSprite.Play("run-shoot");
-				}
-				// Crouch
-				else if (Input.IsActionPressed("Down") && IsOnFloor())
-				{
-					_animatedSprite.Play("crouch");
-				}
-				// Shoot
-				else
-				{
-					_animatedSprite.Play("shoot");
-				}
-			}
-		}
-		//Add the gravity.
-		else
-		{
-			velocity.Y += Astra.gravity * (float)delta;
-			//Animation jump
-			if (gettinghurt == false && Dashing == false)
-			{
-				if (jumped)
-				{
-					_jumpcount = 1;
-					jumped = false;
-				}
-				else
-				{
-					if (gettinghurt == false)
+					if (_jumpcount == 1 && !jumped)
 					{
-						_animatedSprite.Play(jumpanimation);
+						jumpdust.Emitting = true;
+						jumpanimation = "jump";
 					}
-				}	
-			}
-		}
 
-		doubletap_time -= delta;
-		Velocity = velocity;
-		MoveAndSlide();
+					velocity.Y = Astra.JumpVelocity;
+					_jumpcount += 1;
+				}
+			}
+
+			// Shoot
+			if (Input.IsActionJustPressed("Shoot") && time_until_fire > fire_rate)
+			{
+				isShooting = true;
+				RigidBody2D bullet = Bullet_scn.Instantiate<RigidBody2D>();
+
+				Vector2 Spawn;
+				int b_direction = 1;
+				bool isLeft = _lastDirection.X < 0;
+				bool isCrouch = _animatedSprite.Animation == "crouch";
+				if (isLeft)
+				{
+					if (isCrouch)
+					{
+						Spawn = Bullet_spawnerGLow.GlobalPosition;
+					}
+					else
+					{
+						Spawn = Bullet_spawnerG.GlobalPosition;
+					}
+
+					b_direction = -1;
+				}
+				else
+				{
+					if (isCrouch)
+					{
+						Spawn = Bullet_spawnerDLow.GlobalPosition;
+					}
+					else
+					{
+						Spawn = Bullet_spawnerD.GlobalPosition;
+					}
+
+					b_direction = 1;
+				}
+
+				bullet.GlobalPosition = Spawn;
+				bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
+
+				GetTree().Root.AddChild(bullet);
+
+				time_until_fire = 0f;
+				ShootStatusTimer();
+			}
+			else
+			{
+				time_until_fire += (float)delta;
+			}
+
+			//     - Animations - 
+			if (IsOnFloor())
+			{
+				jumpanimation = "jumpfirst";
+				if (_jumpcount != 0)
+				{
+					_jumpcount = 0;
+					jumped = true;
+				}
+
+				if (gettinghurt == false && Dashing == false && isShooting == false)
+				{
+					//Pour jouer l'animation de run
+					if ((Input.IsActionPressed("Right") || Input.IsActionPressed("Left")))
+					{
+						_animatedSprite.Play("run");
+					}
+					//Pour crouch
+					else if (Input.IsActionPressed("Down") && IsOnFloor())
+					{
+						_animatedSprite.Play("crouch");
+					}
+					//Animation de idle donc lobby
+					else
+					{
+						_animatedSprite.Play("idle");
+					}
+				}
+				else if (isShooting && gettinghurt == false)
+				{
+					// Run & Shoot
+					if ((Input.IsActionPressed("Right") || Input.IsActionPressed("Left")))
+					{
+						_animatedSprite.Play("run-shoot");
+					}
+					// Crouch
+					else if (Input.IsActionPressed("Down") && IsOnFloor())
+					{
+						_animatedSprite.Play("crouch");
+					}
+					// Shoot
+					else
+					{
+						_animatedSprite.Play("shoot");
+					}
+				}
+			}
+			//Add the gravity.
+			else
+			{
+				velocity.Y += Astra.gravity * (float)delta;
+				//Animation jump
+				if (gettinghurt == false && Dashing == false)
+				{
+					if (jumped)
+					{
+						_jumpcount = 1;
+						jumped = false;
+					}
+					else
+					{
+						if (gettinghurt == false)
+						{
+							_animatedSprite.Play(jumpanimation);
+						}
+					}
+				}
+			}
+
+			doubletap_time -= delta;
+			Velocity = velocity;
+			MoveAndSlide();
 		
 	}
 	
+	//Fonction pour le multi
+	public void _enter_tree()
+	{
+		SetMultiplayerAuthority(Name.ToString().ToInt());
+	}
 	public override void _Process(double delta)
 	{
 		//Mourir

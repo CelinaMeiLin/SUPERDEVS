@@ -1,5 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://de83xqqu4f7bq"]
+[gd_scene load_steps=32 format=3 uid="uid://de83xqqu4f7bq"]
 
+[ext_resource type="Script" path="res://script/SceneManager.cs" id="1_5vi0l"]
 [ext_resource type="Texture2D" uid="uid://t4o8wxghw8il" path="res://art/background/parallax-industrial-pack/Sprites/bg.png" id="1_iqdgb"]
 [ext_resource type="Texture2D" uid="uid://bj8tlydmjh1er" path="res://art/background/parallax-industrial-pack/Sprites/far-buildings.png" id="2_m146g"]
 [ext_resource type="Texture2D" uid="uid://cwwddqg6jnmwr" path="res://art/tilesets/tileset.png" id="2_srho6"]
@@ -741,6 +742,8 @@ animations = [{
 }]
 
 [node name="Tuto" type="Node2D"]
+script = ExtResource("1_5vi0l")
+playerScene = ExtResource("3_w336t")
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
@@ -897,25 +900,6 @@ position = Vector2(2354, 551)
 [node name="Medical Kit" parent="." instance=ExtResource("9_d320v")]
 position = Vector2(731, 404)
 
-[node name="Astra" parent="." instance=ExtResource("3_w336t")]
-position = Vector2(-500, 541)
-
-[node name="AstraBody" parent="Astra" index="0" node_paths=PackedStringArray("HealthBar")]
-HealthBar = NodePath("../../interface/HealthBar")
-
-[node name="Astra" parent="Astra/AstraBody" index="1"]
-animation = &"idle"
-
-[node name="CamTUTO" type="Camera2D" parent="Astra" node_paths=PackedStringArray("ObjectToFollow")]
-zoom = Vector2(2, 2)
-limit_left = -800
-limit_bottom = 700
-position_smoothing_enabled = true
-position_smoothing_speed = 20.0
-editor_draw_limits = true
-script = ExtResource("7_y84n5")
-ObjectToFollow = NodePath("../AstraBody")
-
 [node name="interface" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="interface" instance=ExtResource("9_5n14n")]
@@ -931,4 +915,30 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_vertical = 0
 
-[editable path="Astra"]
+[node name="PlayerSpawnPoints" type="Node2D" parent="."]
+
+[node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("3_w336t")]
+position = Vector2(-500, 541)
+
+[node name="AstraBody" parent="PlayerSpawnPoints/Astra" index="0" node_paths=PackedStringArray("HealthBar")]
+HealthBar = NodePath("../../../interface/HealthBar")
+
+[node name="Astra" parent="PlayerSpawnPoints/Astra/AstraBody" index="1"]
+animation = &"idle"
+
+[node name="CamTUTO" type="Camera2D" parent="PlayerSpawnPoints/Astra" node_paths=PackedStringArray("ObjectToFollow")]
+zoom = Vector2(2, 2)
+limit_left = -800
+limit_bottom = 700
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+editor_draw_limits = true
+script = ExtResource("7_y84n5")
+ObjectToFollow = NodePath("../AstraBody")
+
+[node name="1" type="Node2D" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"]]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
+
+[editable path="PlayerSpawnPoints/Astra"]

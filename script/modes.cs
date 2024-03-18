@@ -45,4 +45,13 @@ public partial class modes : Control
 		GetParent().AddChild(gameScenebackNode);
 		
 	}
+	
+	private void OnMultiPressed()
+	{
+
+		Visible=false;
+		var gameScene=GD.Load<PackedScene>("res://scene/Server.tscn");
+		var gameScenebackNode=gameScene.Instantiate();
+		GetParent().AddChild(gameScenebackNode);
+	}
 }

@@ -48,4 +48,5 @@ grow_vertical = 0
 text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/Solo" to="." method="OnSoloPressed"]
+[connection signal="pressed" from="VBoxContainer/Multiplayer" to="." method="OnMultiPressed"]
 [connection signal="pressed" from="Back" to="." method="OnBackPressed"]
