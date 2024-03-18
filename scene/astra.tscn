@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=65 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
@@ -41,6 +41,8 @@
 [ext_resource type="Texture2D" uid="uid://cfyudd876fpqn" path="res://art/characters/run-shoot/run-shoot-7.png" id="37_4p303"]
 [ext_resource type="Texture2D" uid="uid://moxrx8figdwn" path="res://art/characters/run-shoot/run-shoot-8.png" id="38_h74hs"]
 [ext_resource type="Texture2D" uid="uid://bpgjcrqcfewvy" path="res://art/characters/shoot/shoot.png" id="39_ju0qc"]
+[ext_resource type="AudioStream" uid="uid://bcfcs5tbn3jrb" path="res://audio/sfx/shoot-6-81136.mp3" id="42_8i16n"]
+[ext_resource type="AudioStream" uid="uid://dcjdxoldj6nvl" path="res://audio/sfx/secondstep.mp3" id="43_q0p3b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osw1a"]
 radius = 12.0
@@ -399,6 +401,14 @@ process_material = SubResource("ParticleProcessMaterial_4lshf")
 lifetime = 0.6
 one_shot = true
 explosiveness = 1.0
+
+[node name="Audio_gun" type="AudioStreamPlayer2D" parent="AstraBody"]
+stream = ExtResource("42_8i16n")
+bus = &"SFX"
+
+[node name="Audio_Run" type="AudioStreamPlayer2D" parent="AstraBody"]
+stream = ExtResource("43_q0p3b")
+bus = &"SFX"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_25ery")

@@ -50,6 +50,10 @@ public partial class astra : CharacterBody2D
 	private bool gettinghurt = false;
 	private bool isShooting = false;
 	private bool Dashing = false;
+	
+	//Sound 
+	private AudioStreamPlayer2D audio_gun;
+	private AudioStreamPlayer2D audio_run;
 	//--------------------------------------------------------------------------------------------//
 	
 	
@@ -71,13 +75,15 @@ public partial class astra : CharacterBody2D
 		Bullet_spawnerDLow = GetNode<CollisionShape2D>("bulletspawnerDLow");
 		Death_particles = GetNode<GpuParticles2D>("DeathParticles");
 		Death_particles.OneShot = true;
+		audio_gun = GetNode<AudioStreamPlayer2D>("Audio_gun");
+		audio_run = GetNode<AudioStreamPlayer2D>("Audio_Run");
 		//-----------------------------//
 		//-----Test pour le multi normalement c fait pour le mult synchronizer------//
 		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
 		
 	}
 	
-    //Multi sync 
+	//Multi sync 
 	public override void _PhysicsProcess(double delta)
 	{
 
@@ -144,6 +150,7 @@ public partial class astra : CharacterBody2D
 					}
 
 					b_direction = -1;
+					
 				}
 				else
 				{
@@ -162,6 +169,7 @@ public partial class astra : CharacterBody2D
 				bullet.GlobalPosition = Spawn;
 				bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
 
+				audio_gun.Play();
 				GetTree().Root.AddChild(bullet);
 
 				time_until_fire = 0f;
@@ -187,7 +195,9 @@ public partial class astra : CharacterBody2D
 					//Pour jouer l'animation de run
 					if ((Input.IsActionPressed("Right") || Input.IsActionPressed("Left")))
 					{
+						audio_run.Play();
 						_animatedSprite.Play("run");
+						
 					}
 					//Pour crouch
 					else if (Input.IsActionPressed("Down") && IsOnFloor())
