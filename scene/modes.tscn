@@ -1,18 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dju1w020uwm3n"]
+[gd_scene load_steps=2 format=3 uid="uid://dpj52dxct34yq"]
 
-[ext_resource type="Script" path="res://script/main_menu.cs" id="1_rcoi1"]
+[ext_resource type="Script" path="res://script/modes.cs" id="1_mf5a3"]
 
-[node name="Options" type="Control"]
-z_index = 4096
-z_as_relative = false
+[node name="Modes" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-script = ExtResource("1_rcoi1")
+script = ExtResource("1_mf5a3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -21,20 +18,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -243.5
-offset_top = -21.5
-offset_right = 243.5
-offset_bottom = 21.5
+offset_left = -86.0
+offset_top = -62.0
+offset_right = 86.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sound" type="Label" parent="VBoxContainer"]
+[node name="Solo" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Master Volume"
+text = "Solo"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+[node name="Multiplayer" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+text = "Multiplayer"
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 1
@@ -43,11 +40,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -130.0
+offset_left = -89.0
 offset_top = -31.0
-offset_right = 130.0
+offset_right = 89.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Back"
 
+[connection signal="pressed" from="VBoxContainer/Solo" to="." method="OnSoloPressed"]
 [connection signal="pressed" from="Back" to="." method="OnBackPressed"]
