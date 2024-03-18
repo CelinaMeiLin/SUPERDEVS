@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=64 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
@@ -326,11 +326,6 @@ scale_max = 5.0
 scale_curve = SubResource("CurveTexture_kjkte")
 alpha_curve = SubResource("CurveTexture_1fu5r")
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_25ery"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-
 [node name="Astra" type="Node2D"]
 
 [node name="AstraBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character")]
@@ -409,6 +404,3 @@ bus = &"SFX"
 [node name="Audio_Run" type="AudioStreamPlayer2D" parent="AstraBody"]
 stream = ExtResource("43_q0p3b")
 bus = &"SFX"
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_25ery")
