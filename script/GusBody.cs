@@ -1,7 +1,9 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using Devs.project.script;
+using Vector2 = Godot.Vector2;
 
 public partial class GusBody : CharacterBody2D
 {
@@ -22,6 +24,16 @@ public partial class GusBody : CharacterBody2D
 	public CharacterBody2D player = null;
 	public Vector2 playerbaseposition;
 	
+	// Shoot Variables
+	[Export] PackedScene Bullet_scn;
+	private CollisionShape2D Bullet_spawnerG;
+	private CollisionShape2D Bullet_spawnerD;
+	private float bullet_speed = 800f;
+	private float bullet_per_second { get; }= 0.5f;
+	private float fire_rate = 1f / 0.5f; //bullet_per_second
+	private float time_until_fire = 0f;
+	private bool shoot_anim = false;
+	
 	// Status
 	private bool gettinghurt = false;
 	private bool direction = false;
@@ -40,6 +52,8 @@ public partial class GusBody : CharacterBody2D
 		Death_particles = GetNode<GpuParticles2D>("DeathParticles");
 		Death_particles.OneShot = true;
 		Enemy.queuefree = false;
+		Bullet_spawnerG = GetNode<CollisionShape2D>("bulletspawnerG");
+		Bullet_spawnerD = GetNode<CollisionShape2D>("bulletspawnerD");
 		//-----------------------------//
 	}
 	
@@ -68,6 +82,38 @@ public partial class GusBody : CharacterBody2D
 			if (gettinghurt == false)
 			{
 				_animatedSprite.Play("run-shoot");
+			}
+			
+			// Shoot
+			if (time_until_fire > fire_rate)
+			{
+				RigidBody2D bullet = Bullet_scn.Instantiate<RigidBody2D>();
+
+				Vector2 Spawn;
+				int b_direction = 1;
+				bool isLeft = dir.X <= -1;
+				bool isCrouch = _animatedSprite.Animation == "crouch";
+				if (isLeft)
+				{
+					Spawn = Bullet_spawnerG.GlobalPosition;
+					b_direction = -1;
+				}
+				else
+				{
+					Spawn = Bullet_spawnerD.GlobalPosition;
+					b_direction = 1;
+				}
+
+				bullet.GlobalPosition = Spawn;
+				bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
+
+				GetTree().Root.AddChild(bullet);
+
+				time_until_fire = 0f;
+			}
+			else
+			{
+				time_until_fire += (float)delta;
 			}
 		}
 		else

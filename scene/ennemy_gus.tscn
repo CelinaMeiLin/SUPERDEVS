@@ -1,7 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://qboac6ykujwn"]
+[gd_scene load_steps=46 format=3 uid="uid://qboac6ykujwn"]
 
 [ext_resource type="Script" path="res://script/GusBody.cs" id="1_a84fu"]
 [ext_resource type="Texture2D" uid="uid://trcls6u4x5vm" path="res://art/enemy/Player-idle/player-idle1.png" id="2_65u8l"]
+[ext_resource type="PackedScene" uid="uid://68n260cyn1o7" path="res://scene/GusShot.tscn" id="2_cp2tc"]
 [ext_resource type="Texture2D" uid="uid://bofyjg7xrpycs" path="res://art/enemy/Player-Hurt/player-hurt1.png" id="2_ebqbf"]
 [ext_resource type="Texture2D" uid="uid://564hoil23ulx" path="res://art/enemy/Player-Hurt/player-hurt2.png" id="3_aw31r"]
 [ext_resource type="Texture2D" uid="uid://bbfce73liw0gd" path="res://art/enemy/Player-idle/player-idle2.png" id="3_ub2i5"]
@@ -268,6 +269,12 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.3
 scale_max = 0.3
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2dhh"]
+size = Vector2(4.80769, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5beq5"]
+size = Vector2(5, 8)
+
 [node name="EnnemyGus" type="Node2D"]
 
 [node name="GusBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character")]
@@ -275,12 +282,13 @@ scale = Vector2(1.3, 1.3)
 collision_layer = 4
 script = ExtResource("1_a84fu")
 Character = NodePath("..")
+Bullet_scn = ExtResource("2_cp2tc")
 
 [node name="Gus" type="AnimatedSprite2D" parent="GusBody"]
 texture_filter = 1
 scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_tvfth")
-animation = &"run"
+animation = &"run-shoot"
 autoplay = "idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="GusBody"]
@@ -331,6 +339,16 @@ texture = ExtResource("32_8oq1i")
 lifetime = 0.3
 one_shot = true
 local_coords = true
+
+[node name="bulletspawnerD" type="CollisionShape2D" parent="GusBody"]
+position = Vector2(23.0769, 3.84616)
+shape = SubResource("RectangleShape2D_k2dhh")
+disabled = true
+
+[node name="bulletspawnerG" type="CollisionShape2D" parent="GusBody"]
+position = Vector2(-21.5385, 3.84615)
+shape = SubResource("RectangleShape2D_5beq5")
+disabled = true
 
 [connection signal="body_entered" from="GusBody/detectionArea" to="GusBody" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="GusBody/detectionArea" to="GusBody" method="_on_detection_area_body_exited"]
