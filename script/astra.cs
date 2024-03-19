@@ -62,6 +62,7 @@ public partial class astra : CharacterBody2D
 	public override void _Ready()
 	{
 		//------ Initialisation -------//
+		Input.MouseMode = Input.MouseModeEnum.Hidden;
 		_animatedSprite = GetNode<AnimatedSprite2D>("Astra");
 		Astra.queuefree = false;
 		jumpdust = GetNode<GpuParticles2D>("jumpparticles");

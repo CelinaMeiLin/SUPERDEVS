@@ -19,7 +19,7 @@ public partial class main_menu : Control
     {
         if(Input.IsActionJustPressed("ui_cancel")){
             variable.Visible=true;
-            
+            Input.MouseMode = Input.MouseModeEnum.Visible;
         }
     }
     
