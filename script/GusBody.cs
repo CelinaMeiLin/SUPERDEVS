@@ -121,8 +121,10 @@ public partial class GusBody : CharacterBody2D
 				time_until_fire += (float)delta;
 			}
 		}
+		/*
 		else
 		{
+			
 			bool isLeft = dir.X <= -1;
 			direction = isLeft;
 			if (isLeft)
@@ -151,10 +153,18 @@ public partial class GusBody : CharacterBody2D
 				_animatedSprite.Play("run");
 			}	
 		}
+		*/
+		else
+		{
+			velocity.X = 0;
+			if (gettinghurt == false)
+			{
+				_animatedSprite.Play("idle");	
+			}
+		}
 		
 		//pour orienter Gus
 		_animatedSprite.FlipH = direction;
-		//_animatedSprite.FlipH = dir.X < 0;
 		
 		Velocity = velocity;
 		MoveAndSlide();
