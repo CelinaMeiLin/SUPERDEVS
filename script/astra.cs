@@ -54,6 +54,7 @@ public partial class astra : CharacterBody2D
 	//Sound 
 	private AudioStreamPlayer2D audio_gun;
 	private AudioStreamPlayer2D audio_run;
+	private AudioStreamPlayer2D audio_dash;
 	//--------------------------------------------------------------------------------------------//
 	
 	
@@ -77,6 +78,7 @@ public partial class astra : CharacterBody2D
 		Death_particles.OneShot = true;
 		audio_gun = GetNode<AudioStreamPlayer2D>("Audio_gun");
 		audio_run = GetNode<AudioStreamPlayer2D>("Audio_Run");
+		audio_dash = GetNode<AudioStreamPlayer2D>("Audio_Dash");
 		//-----------------------------//
 		//-----Test pour le multi normalement c fait pour le mult synchronizer------//
 		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
@@ -94,6 +96,7 @@ public partial class astra : CharacterBody2D
 			if (Dashing)
 			{
 				CanDash = false;
+				audio_dash.Play();
 				_animatedSprite.Play("dash");
 				velocity.X = (direction.X * dash_speed);
 				DashTimer();

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://de83xqqu4f7bq"]
+[gd_scene load_steps=32 format=3 uid="uid://de83xqqu4f7bq"]
 
 [ext_resource type="Texture2D" uid="uid://t4o8wxghw8il" path="res://art/background/parallax-industrial-pack/Sprites/bg.png" id="1_iqdgb"]
 [ext_resource type="Texture2D" uid="uid://bj8tlydmjh1er" path="res://art/background/parallax-industrial-pack/Sprites/far-buildings.png" id="2_m146g"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://i8fut2xj5n4u" path="res://art/Animations/ZQSD.png" id="12_058y6"]
 [ext_resource type="Texture2D" uid="uid://cbhfi5j3l74x6" path="res://art/banners/banner-big/banner-big-3.png" id="13_siyek"]
 [ext_resource type="Texture2D" uid="uid://cd5142j3awg0v" path="res://art/banners/banner-big/banner-big-4.png" id="14_0kncy"]
+[ext_resource type="AudioStream" uid="uid://blw74ef3qi31x" path="res://audio/music/8-bit-arcade-mode-158814.mp3" id="24_xk3yu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttwpk"]
 bg_color = Color(0.101961, 1, 0.996078, 0.290196)
@@ -932,5 +933,9 @@ position_smoothing_speed = 20.0
 editor_draw_limits = true
 script = ExtResource("7_y84n5")
 ObjectToFollow = NodePath("../AstraBody")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_xk3yu")
+bus = &"Music"
 
 [editable path="PlayerSpawnPoints/Astra"]

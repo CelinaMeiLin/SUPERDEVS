@@ -38,6 +38,9 @@ public partial class GusBody : CharacterBody2D
 	private bool gettinghurt = false;
 	private bool direction = false;
 	public bool player_chase = false;
+	
+	//Sound
+	private AudioStreamPlayer2D audio_gun;
 	//--------------------------------------------------------------------------------------------//
 	
 	
@@ -55,6 +58,7 @@ public partial class GusBody : CharacterBody2D
 		Bullet_spawnerG = GetNode<CollisionShape2D>("bulletspawnerG");
 		Bullet_spawnerD = GetNode<CollisionShape2D>("bulletspawnerD");
 		//-----------------------------//
+		audio_gun = GetNode<AudioStreamPlayer2D>("Audio_gun");
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -107,6 +111,7 @@ public partial class GusBody : CharacterBody2D
 				bullet.GlobalPosition = Spawn;
 				bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
 
+				audio_gun.Play();
 				GetTree().Root.AddChild(bullet);
 
 				time_until_fire = 0f;
@@ -118,11 +123,36 @@ public partial class GusBody : CharacterBody2D
 		}
 		else
 		{
-			velocity.X = 0;
-			if (gettinghurt == false)
+			bool isLeft = dir.X <= -1;
+			if (isLeft)
 			{
-				_animatedSprite.Play("idle");	
+				if (dir.X != -20)
+				{
+					velocity.X = 60 * -1;
+				}
+				else
+				{
+					velocity.X = 60;
+				}
+				_animatedSprite.Play("run");
+				
 			}
+			else
+			{
+				if (dir.X != 20)
+				{
+					velocity.X = 60;
+				}
+				else
+				{
+					velocity.X = 60* -1;
+				}
+				_animatedSprite.Play("run");
+			}
+			//if (gettinghurt == false)
+			//{
+			//	_animatedSprite.Play("idle");	
+			//}
 		}
 		
 		//pour orienter Gus

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://qboac6ykujwn"]
+[gd_scene load_steps=47 format=3 uid="uid://qboac6ykujwn"]
 
 [ext_resource type="Script" path="res://script/GusBody.cs" id="1_a84fu"]
 [ext_resource type="Texture2D" uid="uid://trcls6u4x5vm" path="res://art/enemy/Player-idle/player-idle1.png" id="2_65u8l"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://b6altf6xtkxqg" path="res://scene/health_bar_enemy.tscn" id="30_cl7nu"]
 [ext_resource type="Texture2D" uid="uid://l6t88g5oovd" path="res://art/Animations/PointsExclamation.png" id="31_nwovk"]
 [ext_resource type="Texture2D" uid="uid://ihslg3nf410s" path="res://art/Animations/PointInterrogation.png" id="32_8oq1i"]
+[ext_resource type="AudioStream" uid="uid://b2g0dymemfoob" path="res://audio/sfx/gus_shoot.mp3" id="34_pwha5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvfth"]
 animations = [{
@@ -290,6 +291,9 @@ scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_tvfth")
 animation = &"run-shoot"
 autoplay = "idle"
+frame = 3
+frame_progress = 0.823418
+speed_scale = 0.7
 
 [node name="Hitbox" type="CollisionShape2D" parent="GusBody"]
 position = Vector2(0, 4.5)
@@ -349,6 +353,11 @@ disabled = true
 position = Vector2(-21.5385, 3.84615)
 shape = SubResource("RectangleShape2D_5beq5")
 disabled = true
+
+[node name="Audio_gun" type="AudioStreamPlayer2D" parent="GusBody"]
+scale = Vector2(0.769231, 0.769231)
+stream = ExtResource("34_pwha5")
+bus = &"SFX"
 
 [connection signal="body_entered" from="GusBody/detectionArea" to="GusBody" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="GusBody/detectionArea" to="GusBody" method="_on_detection_area_body_exited"]

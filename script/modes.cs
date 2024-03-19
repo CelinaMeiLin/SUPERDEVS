@@ -18,6 +18,7 @@ public partial class modes : Control
 
 	private void OnSoloPressed()
 	{
+		
 		if (backgroundMusic != null && backgroundMusic.Playing)
 		{
 			backgroundMusic.Stop();
