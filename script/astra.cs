@@ -81,7 +81,7 @@ public partial class astra : CharacterBody2D
 		audio_dash = GetNode<AudioStreamPlayer2D>("Audio_Dash");
 		//-----------------------------//
 		//-----Test pour le multi normalement c fait pour le mult synchronizer------//
-		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
+		//GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
 		
 	}
 	
@@ -263,7 +263,7 @@ public partial class astra : CharacterBody2D
 	//Fonction pour le multi
 	public void _enter_tree()
 	{
-		SetMultiplayerAuthority(Name.ToString().ToInt());
+		//SetMultiplayerAuthority(Name.ToString().ToInt());
 	}
 	public override void _Process(double delta)
 	{

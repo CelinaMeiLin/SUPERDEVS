@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce4lxd0isjcyk"
-path="res://.godot/imported/skillsbar.png-8f6317c19c673f4856b7b91fced52414.ctex"
+uid="uid://bfmeu5shy6g82"
+path="res://.godot/imported/PORTAIL1.png-a54886c5a7eb524ce88efde93a83151e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/skillsbar.png"
-dest_files=["res://.godot/imported/skillsbar.png-8f6317c19c673f4856b7b91fced52414.ctex"]
+source_file="res://art/portail/PORTAIL1.png"
+dest_files=["res://.godot/imported/PORTAIL1.png-a54886c5a7eb524ce88efde93a83151e.ctex"]
 
 [params]
 
