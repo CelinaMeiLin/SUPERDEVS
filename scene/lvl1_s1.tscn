@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://8r48ql334q42"]
 
-[ext_resource type="Texture2D" uid="uid://c1g1yn5n03ryi" path="res://art/background/city 8/1.png" id="1_27fjh"]
-[ext_resource type="Texture2D" uid="uid://cmq8ax15nalxv" path="res://art/background/city 8/2.png" id="2_61ade"]
-[ext_resource type="Texture2D" uid="uid://ev1s7b4y8aqv" path="res://art/background/city 8/3.png" id="3_7i6ov"]
-[ext_resource type="Texture2D" uid="uid://baumfejbrbwr7" path="res://art/background/city 8/4.png" id="4_xn2r5"]
-[ext_resource type="Texture2D" uid="uid://vfbakwo83yy7" path="res://art/background/city 8/5.png" id="5_ury7w"]
-[ext_resource type="Texture2D" uid="uid://cwwddqg6jnmwr" path="res://art/tilesets/tileset.png" id="8_ei4tf"]
+[ext_resource type="Texture2D" uid="uid://c1g1yn5n03ryi" path="res://art/background/city 8/1.png" id="1_k1w1i"]
+[ext_resource type="Texture2D" uid="uid://cmq8ax15nalxv" path="res://art/background/city 8/2.png" id="2_plfyu"]
+[ext_resource type="Texture2D" uid="uid://ev1s7b4y8aqv" path="res://art/background/city 8/3.png" id="3_gxxeq"]
+[ext_resource type="Texture2D" uid="uid://baumfejbrbwr7" path="res://art/background/city 8/4.png" id="4_q3g3v"]
+[ext_resource type="Texture2D" uid="uid://vfbakwo83yy7" path="res://art/background/city 8/5.png" id="5_qv3fb"]
+[ext_resource type="Texture2D" uid="uid://cwwddqg6jnmwr" path="res://art/tilesets/tileset.png" id="6_a4qxt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dyhla"]
-texture = ExtResource("8_ei4tf")
+texture = ExtResource("6_a4qxt")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -359,7 +359,7 @@ motion_mirroring = Vector2(1253, 0)
 offset_top = -84.0
 offset_right = 1253.0
 offset_bottom = 612.0
-texture = ExtResource("1_27fjh")
+texture = ExtResource("1_k1w1i")
 
 [node name="backbamboos" type="ParallaxLayer" parent="Background"]
 motion_scale = Vector2(0.2, 0.2)
@@ -371,7 +371,7 @@ offset_left = -3.0
 offset_top = -148.0
 offset_right = 1320.0
 offset_bottom = 601.0
-texture = ExtResource("2_61ade")
+texture = ExtResource("2_plfyu")
 
 [node name="backbuildings" type="ParallaxLayer" parent="Background"]
 motion_scale = Vector2(0.5, 0.5)
@@ -382,7 +382,7 @@ texture_filter = 1
 offset_top = 58.0
 offset_right = 1254.0
 offset_bottom = 612.0
-texture = ExtResource("3_7i6ov")
+texture = ExtResource("3_gxxeq")
 
 [node name="foreground" type="ParallaxLayer" parent="Background"]
 motion_scale = Vector2(0.8, 0.8)
@@ -394,7 +394,7 @@ offset_left = 1.0
 offset_top = 247.0
 offset_right = 1064.0
 offset_bottom = 624.0
-texture = ExtResource("4_xn2r5")
+texture = ExtResource("4_q3g3v")
 
 [node name="foreground2" type="ParallaxLayer" parent="Background"]
 motion_scale = Vector2(0.8, 0.8)
@@ -406,7 +406,7 @@ offset_left = 1.0
 offset_top = 247.0
 offset_right = 1064.0
 offset_bottom = 624.0
-texture = ExtResource("5_ury7w")
+texture = ExtResource("5_qv3fb")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_qmjbr")

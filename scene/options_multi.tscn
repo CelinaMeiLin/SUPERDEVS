@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dngpgpxcf7sdd"]
 
-[ext_resource type="Script" path="res://options_multi.cs" id="1_fas7e"]
+[ext_resource type="Script" path="res://script/options_multi.cs" id="1_fas7e"]
 
 [node name="OptionsMulti" type="Control"]
 layout_mode = 3
