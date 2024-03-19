@@ -124,6 +124,7 @@ public partial class GusBody : CharacterBody2D
 		else
 		{
 			bool isLeft = dir.X <= -1;
+			direction = isLeft;
 			if (isLeft)
 			{
 				if (dir.X != -20)
@@ -148,11 +149,7 @@ public partial class GusBody : CharacterBody2D
 					velocity.X = 60* -1;
 				}
 				_animatedSprite.Play("run");
-			}
-			//if (gettinghurt == false)
-			//{
-			//	_animatedSprite.Play("idle");	
-			//}
+			}	
 		}
 		
 		//pour orienter Gus
@@ -184,6 +181,10 @@ public partial class GusBody : CharacterBody2D
 		dir = Vector2.Zero;
 		player = null;
 		GetNode<GpuParticles2D>("Interrogation").Emitting = true;
+		if (gettinghurt == false)
+		{
+			_animatedSprite.Play("idle");	
+		}
 		
 	}
 
