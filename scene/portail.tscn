@@ -31,7 +31,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qsb5"]
@@ -45,6 +45,8 @@ texture_filter = 1
 position = Vector2(5, 1)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6owu3")
+autoplay = "default"
+frame_progress = 0.149876
 
 [node name="Area2D" type="Area2D" parent="."]
 

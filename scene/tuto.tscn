@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://de83xqqu4f7bq"]
+[gd_scene load_steps=34 format=3 uid="uid://de83xqqu4f7bq"]
 
 [ext_resource type="Script" path="res://scene/tuto.cs" id="1_570br"]
 [ext_resource type="Texture2D" uid="uid://t4o8wxghw8il" path="res://art/background/parallax-industrial-pack/Sprites/bg.png" id="1_iqdgb"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://i8fut2xj5n4u" path="res://art/Animations/ZQSD.png" id="12_058y6"]
 [ext_resource type="Texture2D" uid="uid://cbhfi5j3l74x6" path="res://art/banners/banner-big/banner-big-3.png" id="13_siyek"]
 [ext_resource type="Texture2D" uid="uid://cd5142j3awg0v" path="res://art/banners/banner-big/banner-big-4.png" id="14_0kncy"]
+[ext_resource type="PackedScene" uid="uid://bpi1gncvsxtsl" path="res://scene/portail.tscn" id="24_uypk0"]
 [ext_resource type="AudioStream" uid="uid://blw74ef3qi31x" path="res://audio/music/8-bit-arcade-mode-158814.mp3" id="24_xk3yu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttwpk"]
@@ -898,7 +899,7 @@ position = Vector2(2427, 555)
 position = Vector2(2354, 551)
 
 [node name="Medical Kit" parent="." instance=ExtResource("9_d320v")]
-position = Vector2(731, 404)
+position = Vector2(2906, 558)
 
 [node name="interface" type="CanvasLayer" parent="."]
 
@@ -925,6 +926,9 @@ HealthBar = NodePath("../../../interface/HealthBar")
 
 [node name="Astra" parent="PlayerSpawnPoints/Astra/AstraBody" index="1"]
 animation = &"idle"
+
+[node name="Portail" parent="PlayerSpawnPoints/Astra" instance=ExtResource("24_uypk0")]
+position = Vector2(3839, 13)
 
 [node name="CamTUTO" type="Camera2D" parent="PlayerSpawnPoints/Astra" node_paths=PackedStringArray("ObjectToFollow")]
 zoom = Vector2(2, 2)
