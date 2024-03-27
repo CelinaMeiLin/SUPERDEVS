@@ -306,8 +306,6 @@ offset_right = 18.0
 offset_bottom = -28.0
 
 [node name="detectionArea" type="Area2D" parent="GusBody"]
-collision_layer = 2
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GusBody/detectionArea"]
 shape = SubResource("CircleShape2D_o8de2")

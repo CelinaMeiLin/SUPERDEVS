@@ -1,29 +1,28 @@
 using Godot;
 using System;
 
-public partial class portail : tuto
+public partial class portail : Sprite2D
 {
+    
+    private CollisionShape2D collision_shape;
 
-    private void _on_area_2d_body_entered(Node2D body)
-    {
-        Visible=false;
-        var gameScene = GD.Load<PackedScene>(path:"res://scene/main_menu.tscn");
-        var gameScenebackNode = gameScene.Instantiate();
-        GetTree().Root.AddChild(gameScenebackNode);
-        //CurrentScene.QueueFree();
-    }
-
-
-    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        //Visible=false;
-        //var gameScene=GD.Load<PackedScene>("res://scene/main_menu.tscn");
-        //var gameScenebackNode=gameScene.Instantiate();
-        //GetTree().ChangeSceneToFile("res://scene/main_menu.tscn");
+        collision_shape = GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
+        GD.Print("Portail ready!");
+       
     }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    
+   // public void _on_portail_body_entered(CharacterBody2D body)
+    //{
+        //collision_shape.SetDeferred("disabled", true);
+        //GD.Print("Portail body entered!");
+        //SceneTransistor sceneTransistor = GetNode<SceneTransistor>("/root/SceneTransistor");
+        //sceneTransistor.StartTransitionTo("res://scene/main_menu.tscn");
+        //GetTree().ChangeSceneToFile("res://scene/main_menu.tscn");
+    //}
+    
+    
     public override void _Process(double delta)
     {
     }
