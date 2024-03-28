@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneTransistor="res://Autoloads/SceneTransistor.tscn"
+SceneManager="*res://Autoloads/SceneManager.cs"
 
 [display]
 

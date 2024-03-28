@@ -13,9 +13,19 @@ public partial class portail : Sprite2D
        
     }
 
-    public void _on_area_2d_body_entered(astra body)
+    public void _on_area_2d_body_entered(Node body)
     {
+        if (body is CharacterBody2D)
+        {
+            GD.Print("Portail body entered!");
+            var nextScene = (PackedScene)ResourceLoader.Load("res://scene/main_menu.tscn");
+            GetTree().ChangeSceneToPacked(nextScene);
+        }
+        //var global = GetNode<SceneManager>("res://Autoloads/SceneManager.cs");
+        //global.GotoScene("res://scene/main_menu.tscn");
         
+        //var nextScene = (PackedScene)ResourceLoader.Load("res://scene/main_menu.tscn");
+        //GetTree().ChangeSceneToPacked(nextScene);
     }
    // public void _on_portail_body_entered(CharacterBody2D body)
     //{
