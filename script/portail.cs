@@ -12,7 +12,11 @@ public partial class portail : Sprite2D
         GD.Print("Portail ready!");
        
     }
-    
+
+    public void _on_area_2d_body_entered(astra body)
+    {
+        
+    }
    // public void _on_portail_body_entered(CharacterBody2D body)
     //{
         //collision_shape.SetDeferred("disabled", true);
