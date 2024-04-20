@@ -18,23 +18,9 @@ public partial class portail : Sprite2D
         if (body is CharacterBody2D)
         {
             GD.Print("Portail body entered!");
-            var nextScene = (PackedScene)ResourceLoader.Load("res://scene/main_menu.tscn");
-            GetTree().ChangeSceneToPacked(nextScene);
+            GetTree().ChangeSceneToFile("res://scene/main_menu.tscn");
         }
-        //var global = GetNode<SceneManager>("res://Autoloads/SceneManager.cs");
-        //global.GotoScene("res://scene/main_menu.tscn");
-        
-        //var nextScene = (PackedScene)ResourceLoader.Load("res://scene/main_menu.tscn");
-        //GetTree().ChangeSceneToPacked(nextScene);
     }
-   // public void _on_portail_body_entered(CharacterBody2D body)
-    //{
-        //collision_shape.SetDeferred("disabled", true);
-        //GD.Print("Portail body entered!");
-        //SceneTransistor sceneTransistor = GetNode<SceneTransistor>("/root/SceneTransistor");
-        //sceneTransistor.StartTransitionTo("res://scene/main_menu.tscn");
-        //GetTree().ChangeSceneToFile("res://scene/main_menu.tscn");
-    //}
     
     
     public override void _Process(double delta)

@@ -19,8 +19,9 @@ public partial class options_multi : Control
 	public void _on_back_button_down()
 	{
 		Visible=false;
-		var gameScene=GD.Load<PackedScene>("res://scene/main_menu.tscn");
-		var gameScenebackNode=gameScene.Instantiate();
-		GetParent().AddChild(gameScenebackNode);
+		GetTree().ChangeSceneToFile("res://scene/main_menu.tscn");
+		//var gameScene=GD.Load<PackedScene>("res://scene/main_menu.tscn");
+		//var gameScenebackNode=gameScene.Instantiate();
+		//GetParent().AddChild(gameScenebackNode);
 	}
 }

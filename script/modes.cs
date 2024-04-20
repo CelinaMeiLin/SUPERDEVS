@@ -33,17 +33,20 @@ public partial class modes : Control
                 return;
             }
         }
-        var gameScene=GD.Load<PackedScene>("res://scene/tuto.tscn");
-        var gameSceneNode=gameScene.Instantiate();
-        GetParent().AddChild(gameSceneNode);
+
+        GetTree().ChangeSceneToFile("res://scene/tuto.tscn");
+        //var gameScene=GD.Load<PackedScene>("res://scene/tuto.tscn");
+        //var gameSceneNode=gameScene.Instantiate();
+        //GetParent().AddChild(gameSceneNode);
     }
     
     private void OnBackPressed()
     {
         Visible=false;
-        var gameScene=GD.Load<PackedScene>("res://scene/main_menu.tscn");
-        var gameScenebackNode=gameScene.Instantiate();
-        GetParent().AddChild(gameScenebackNode);
+        GetTree().ChangeSceneToFile("res://scene/main_menu.tscn");
+        //var gameScene=GD.Load<PackedScene>("res://scene/main_menu.tscn");
+        //var gameScenebackNode=gameScene.Instantiate();
+        //GetParent().AddChild(gameScenebackNode);
         
     }
     
@@ -51,8 +54,9 @@ public partial class modes : Control
     {
 
         Visible=false;
-        var gameScene=GD.Load<PackedScene>("res://scene/Server.tscn");
-        var gameScenebackNode=gameScene.Instantiate();
-        GetParent().AddChild(gameScenebackNode);
+        GetTree().ChangeSceneToFile("res://scene/Server.tscn");
+        //var gameScene=GD.Load<PackedScene>("res://scene/Server.tscn");
+        //var gameScenebackNode=gameScene.Instantiate();
+        //GetParent().AddChild(gameScenebackNode);
     }
 }
