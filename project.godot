@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://Autoloads/SceneManager.cs"
+Global="*res://Autoloads/Global.cs"
 
 [display]
 
