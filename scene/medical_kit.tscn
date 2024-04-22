@@ -36,7 +36,7 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("2_26ck8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -18.9815)
+position = Vector2(0, -4.81404)
 texture = ExtResource("1_bud8v")
 
 [node name="DetectionArea" type="Area2D" parent="."]
