@@ -15,6 +15,7 @@ public partial class astra : CharacterBody2D
 	[Export] private myhealthbar HealthBar;
 	private GpuParticles2D Death_particles;
 	
+	
 	// Mouvement Variables
 	private Vector2 _lastDirection = Vector2.Zero;
 	
@@ -377,4 +378,5 @@ public partial class astra : CharacterBody2D
 		QueueFree();
 	}
 	//---------------------------------------------------------------//
+	
 }

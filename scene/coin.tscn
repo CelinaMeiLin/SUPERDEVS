@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1x6w8v3n1bn7"]
+[gd_scene load_steps=18 format=3 uid="uid://c1x6w8v3n1bn7"]
 
 [ext_resource type="Script" path="res://script/coin.cs" id="1_ejt1p"]
 [ext_resource type="Texture2D" uid="uid://b71dd7y6m0nfm" path="res://art/money/money-1.png" id="1_ho88l"]
@@ -61,24 +61,35 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_f47i1"]
 radius = 93.0215
 
-[node name="coin" type="Sprite2D"]
+[sub_resource type="Animation" id="Animation_syu8m"]
+resource_name = "collected"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fccbj"]
+_data = {
+"collected": SubResource("Animation_syu8m")
+}
+
+[node name="coin" type="Sprite2D" groups=["coins"]]
 position = Vector2(0, -4)
 script = ExtResource("1_ejt1p")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_oxuua")
-autoplay = "default"
-frame_progress = 0.496575
-
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Area2D"]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_oxuua")
+autoplay = "default"
+frame_progress = 0.38527
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -1)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_f47i1")
 
-[node name="AnimationTree" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fccbj")
+}
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

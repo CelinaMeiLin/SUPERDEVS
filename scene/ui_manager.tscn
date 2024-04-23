@@ -1,26 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlk28wid3ryi6"]
+[gd_scene load_steps=5 format=3 uid="uid://dlk28wid3ryi6"]
 
+[ext_resource type="Script" path="res://script/UIManager.cs" id="1_4u3bj"]
 [ext_resource type="Texture2D" uid="uid://b71dd7y6m0nfm" path="res://art/money/money-1.png" id="1_ntem1"]
+[ext_resource type="FontFile" uid="uid://be21ej3m55cb4" path="res://art/fonts/Silkscreen-Regular.ttf" id="2_ikfw4"]
+
+[sub_resource type="FontVariation" id="FontVariation_gd520"]
+base_font = ExtResource("2_ikfw4")
 
 [node name="UIManager" type="CanvasLayer"]
 offset = Vector2(2.08165e-12, 2.08165e-12)
-scale = Vector2(0.18, 0.18)
-transform = Transform2D(0.18, 0, 0, 0.18, 2.08165e-12, 2.08165e-12)
+scale = Vector2(0.25, 0.25)
+transform = Transform2D(0.25, 0, 0, 0.25, 2.08165e-12, 2.08165e-12)
+script = ExtResource("1_4u3bj")
 
 [node name="CoinIcon" type="TextureRect" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 4736.89
-offset_right = 5250.89
+offset_left = 5240.0
+offset_right = 5754.0
 offset_bottom = 485.0
 grow_horizontal = 0
 texture = ExtResource("1_ntem1")
 
 [node name="CoinDisplay" type="Label" parent="."]
-offset_left = 5594.44
-offset_top = 44.4444
-offset_right = 6020.44
-offset_bottom = 453.444
+offset_left = 6672.0
+offset_top = 32.0
+offset_right = 7198.0
+offset_bottom = 441.0
+theme_override_fonts/font = SubResource("FontVariation_gd520")
 theme_override_font_sizes/font_size = 300
 text = "0"

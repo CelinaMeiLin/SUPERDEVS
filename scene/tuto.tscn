@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://de83xqqu4f7bq"]
+[gd_scene load_steps=36 format=3 uid="uid://de83xqqu4f7bq"]
 
 [ext_resource type="Script" path="res://script/tuto.cs" id="1_570br"]
 [ext_resource type="Texture2D" uid="uid://t4o8wxghw8il" path="res://art/background/parallax-industrial-pack/Sprites/bg.png" id="1_iqdgb"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bni3f51is1dg1" path="res://scene/portail.tscn" id="16_0w5hx"]
 [ext_resource type="AudioStream" uid="uid://blw74ef3qi31x" path="res://audio/music/8-bit-arcade-mode-158814.mp3" id="24_xk3yu"]
 [ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="26_ww4qh"]
+[ext_resource type="PackedScene" uid="uid://c1x6w8v3n1bn7" path="res://scene/coin.tscn" id="27_4r4h1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttwpk"]
 bg_color = Color(0.101961, 1, 0.996078, 0.290196)
@@ -946,5 +947,8 @@ ObjectToFollow = NodePath("../AstraBody")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_xk3yu")
 bus = &"Music"
+
+[node name="coin" parent="." instance=ExtResource("27_4r4h1")]
+position = Vector2(-299, 571)
 
 [editable path="PlayerSpawnPoints/Astra"]
