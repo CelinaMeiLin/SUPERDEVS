@@ -10,10 +10,10 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 361.0
-offset_top = 638.0
-offset_right = -791.0
-offset_bottom = -10.0
+offset_left = 605.0
+offset_top = 706.0
+offset_right = -547.0
+offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bxtfg")
@@ -53,6 +53,43 @@ icon = ExtResource("4_ofuwl")
 vertical_icon_alignment = 0
 
 [node name="Skill4" type="Button" parent="SkillBarPanel/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(20, 2.08165e-12)
+layout_mode = 2
+icon = ExtResource("5_pwm7s")
+vertical_icon_alignment = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SkillBarPanel"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 176.0
+offset_bottom = 45.0
+scale = Vector2(3, 3)
+
+[node name="Skill1" type="Button" parent="SkillBarPanel/HBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(20, 2.08165e-12)
+layout_mode = 2
+icon = ExtResource("2_fkpns")
+vertical_icon_alignment = 0
+
+[node name="Skill2" type="Button" parent="SkillBarPanel/HBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(20, 2.08165e-12)
+layout_mode = 2
+icon = ExtResource("3_npxv3")
+vertical_icon_alignment = 0
+
+[node name="Skill3" type="Button" parent="SkillBarPanel/HBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(20, 2.08165e-12)
+layout_mode = 2
+icon = ExtResource("4_ofuwl")
+vertical_icon_alignment = 0
+
+[node name="Skill4" type="Button" parent="SkillBarPanel/HBoxContainer2"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2

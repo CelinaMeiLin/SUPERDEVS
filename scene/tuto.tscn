@@ -488,6 +488,8 @@ tile_set = SubResource("TileSet_e6ix8")
 format = 2
 layer_0/tile_data = PackedInt32Array(1114120, 458752, 11, 1114121, 458752, 11, 1114122, 458752, 11, 1114123, 458752, 11, 1114124, 458752, 11, 1114125, 458752, 11, 1114126, 458752, 11, 1114127, 458752, 11, 1114128, 458752, 11, 1114129, 458752, 11, 1114119, 393216, 11, 1114130, 589824, 11, 786439, 393216, 11, 786440, 458752, 11, 786441, 458752, 11, 786442, 458752, 11, 786443, 458752, 11, 786444, 458752, 11, 786445, 458752, 11, 786446, 458752, 11, 786447, 458752, 11, 786448, 458752, 11, 786449, 458752, 11, 786450, 589824, 11, 786453, 393216, 11, 1114133, 393216, 11, 786454, 458752, 11, 786455, 458752, 11, 786456, 458752, 11, 786457, 458752, 11, 786458, 458752, 11, 786459, 458752, 11, 786460, 458752, 11, 786461, 458752, 11, 786462, 458752, 11, 786463, 458752, 11, 1114134, 458752, 11, 1114135, 458752, 11, 1114136, 458752, 11, 1114137, 458752, 11, 1114138, 458752, 11, 1114139, 458752, 11, 1114140, 458752, 11, 1114141, 458752, 11, 1114142, 458752, 11, 1114143, 458752, 11, 1114144, 589824, 11, 786464, 589824, 11)
 
+[node name="batiments_tuto" parent="." instance=ExtResource("22_pv3xr")]
+
 [node name="PanneauAsia" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(465, 370)
@@ -567,8 +569,6 @@ position = Vector2(2906, 558)
 [node name="Portail" parent="." instance=ExtResource("16_0w5hx")]
 position = Vector2(3197, 545)
 
-[node name="batiments_tuto" parent="." instance=ExtResource("22_pv3xr")]
-
 [node name="interface" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="interface" instance=ExtResource("9_5n14n")]
@@ -578,10 +578,10 @@ anchors_preset = -1
 anchor_left = 0.4
 anchor_top = 0.9
 anchor_right = 0.5
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = -6.00001
+offset_top = -27.0
+offset_right = -6.0
+offset_bottom = -27.0
 grow_vertical = 0
 
 [node name="PlayerSpawnPoints" type="Node2D" parent="."]
