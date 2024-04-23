@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvbvhcttveqmn"]
+
+[ext_resource type="PackedScene" uid="uid://q1snnkpbyqru" path="res://scene/sol.tscn" id="1_lfuap"]
+
+[node name="level_1" type="Node2D"]
+
+[node name="sol" parent="." instance=ExtResource("1_lfuap")]
