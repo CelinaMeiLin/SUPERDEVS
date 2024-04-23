@@ -13,6 +13,24 @@
 
 [node name="sol" parent="." instance=ExtResource("1_lfuap")]
 
+[node name="PlayerSpawnPoints" type="Node2D" parent="."]
+
+[node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("2_un3p5")]
+position = Vector2(-500, 541)
+
+[node name="Astra" parent="PlayerSpawnPoints/Astra/AstraBody" index="1"]
+animation = &"idle"
+
+[node name="CamTUTO" type="Camera2D" parent="PlayerSpawnPoints/Astra" node_paths=PackedStringArray("ObjectToFollow")]
+zoom = Vector2(2, 2)
+limit_left = -800
+limit_bottom = 700
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+editor_draw_limits = true
+script = ExtResource("3_gulq7")
+ObjectToFollow = NodePath("../AstraBody")
+
 [node name="Medical Kit" parent="." instance=ExtResource("2_mffbe")]
 position = Vector2(2906, 558)
 
@@ -33,23 +51,6 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 grow_vertical = 0
-
-[node name="PlayerSpawnPoints" type="Node2D" parent="."]
-
-[node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("2_un3p5")]
-position = Vector2(-500, 541)
-
-[node name="Astra" parent="PlayerSpawnPoints/Astra/AstraBody" index="1"]
-animation = &"idle"
-
-[node name="CamTUTO" type="Camera2D" parent="PlayerSpawnPoints/Astra"]
-zoom = Vector2(2, 2)
-limit_left = -800
-limit_bottom = 700
-position_smoothing_enabled = true
-position_smoothing_speed = 20.0
-editor_draw_limits = true
-script = ExtResource("3_gulq7")
 
 [node name="UIManager" parent="." instance=ExtResource("6_omt8t")]
 

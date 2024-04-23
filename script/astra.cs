@@ -98,7 +98,7 @@ public partial class astra : CharacterBody2D
 			if (Dashing)
 			{
 				CanDash = false;
-				audio_dash.Play();
+				//audio_dash.Play();   (mis en commentaire car faisait bugger le lvl1)
 				_animatedSprite.Play("dash");
 				velocity.X = (direction.X * dash_speed);
 				DashTimer();
@@ -200,7 +200,7 @@ public partial class astra : CharacterBody2D
 					//Pour jouer l'animation de run
 					if ((Input.IsActionPressed("Right") || Input.IsActionPressed("Left")))
 					{
-						audio_run.Play();
+						//audio_run.Play();   (en commentaire car faisait bugger le lvl1)
 						_animatedSprite.Play("run");
 						
 					}
