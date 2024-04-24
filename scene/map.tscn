@@ -14,10 +14,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 463.0
-offset_top = 248.0
-offset_right = 723.0
-offset_bottom = 443.0
+offset_left = 836.0
+offset_top = 489.5
+offset_right = 1096.0
+offset_bottom = 684.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -29,6 +29,10 @@ text = "Inventory"
 layout_mode = 2
 text = "Tuto"
 
+[node name="Level 1" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 1"
+
 [node name="Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Options"
@@ -39,3 +43,5 @@ text = "Exit"
 
 [connection signal="pressed" from="VBoxContainer/Inventory" to="." method="OnInventoryPressed"]
 [connection signal="pressed" from="VBoxContainer/Tuto" to="." method="OnTutoPressed"]
+[connection signal="pressed" from="VBoxContainer/Level 1" to="." method="OnLevel1Pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="OnOptionsPressed"]

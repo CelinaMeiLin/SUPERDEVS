@@ -17,6 +17,11 @@ public partial class Map : Node
 	{
 		GetTree().ChangeSceneToFile("res://scene/tuto.tscn");
 	}
+
+	public void OnLevel1Pressed()
+	{
+		GetTree().ChangeSceneToFile("res://scene/level_1.tscn");
+	}
 	
 	public void OnOptionsPressed()
 	{
