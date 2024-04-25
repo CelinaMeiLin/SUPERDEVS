@@ -1,0 +1,78 @@
+[gd_scene load_steps=14 format=3 uid="uid://xti855xtxy8g"]
+
+[ext_resource type="Script" path="res://script/Enemies/PowBody.cs" id="1_de8qo"]
+[ext_resource type="Texture2D" uid="uid://bumntks0clcp0" path="res://art/powennemy/Attack1/Attack1-1.png" id="2_62iww"]
+[ext_resource type="Texture2D" uid="uid://bivsa0a2icwyy" path="res://art/powennemy/Attack1/Attack1-2.png" id="3_vnvta"]
+[ext_resource type="Texture2D" uid="uid://dy86raed4u4x3" path="res://art/powennemy/Attack1/Attack1-3.png" id="4_xn1b3"]
+[ext_resource type="Texture2D" uid="uid://cgox017qhhlh4" path="res://art/powennemy/Attack1/Attack1-4.png" id="5_wefad"]
+[ext_resource type="Texture2D" uid="uid://cp2ialup434c0" path="res://art/powennemy/Attack1/Attack1-5.png" id="6_xv7r6"]
+[ext_resource type="Texture2D" uid="uid://c1ifeo31cdwhs" path="res://art/powennemy/Attack1/Attack1-6.png" id="7_wpq12"]
+[ext_resource type="Texture2D" uid="uid://1tl8r2x1tw6g" path="res://art/powennemy/Idle/Idle-1.png" id="11_c41pe"]
+[ext_resource type="Texture2D" uid="uid://b8e2is4tlbspg" path="res://art/powennemy/Idle/Idle-2.png" id="12_i7aba"]
+[ext_resource type="Texture2D" uid="uid://bjili0dwbkh6u" path="res://art/powennemy/Idle/Idle-3.png" id="13_wr5dr"]
+[ext_resource type="Texture2D" uid="uid://cfdnwuxcl8bvl" path="res://art/powennemy/Idle/Idle-4.png" id="14_7t4wg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aq5ou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_62iww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vnvta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xn1b3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wefad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xv7r6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wpq12")
+}],
+"loop": true,
+"name": &"attack1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_c41pe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_i7aba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wr5dr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7t4wg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qb7em"]
+radius = 26.0
+height = 86.0
+
+[node name="EnnemyPow" type="Node2D"]
+
+[node name="PowBody" type="CharacterBody2D" parent="."]
+script = ExtResource("1_de8qo")
+
+[node name="Pow" type="AnimatedSprite2D" parent="PowBody"]
+texture_filter = 1
+position = Vector2(-2, 3)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_aq5ou")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.954526
+
+[node name="Hitbox" type="CollisionShape2D" parent="PowBody"]
+position = Vector2(-4, 10)
+shape = SubResource("CapsuleShape2D_qb7em")

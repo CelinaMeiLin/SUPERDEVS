@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvbvhcttveqmn"]
+[gd_scene load_steps=15 format=3 uid="uid://bvbvhcttveqmn"]
 
 [ext_resource type="Texture2D" uid="uid://c1g1yn5n03ryi" path="res://art/background/city 8/1.png" id="1_2fndf"]
 [ext_resource type="PackedScene" uid="uid://q1snnkpbyqru" path="res://scene/sol.tscn" id="1_lfuap"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://baumfejbrbwr7" path="res://art/background/city 8/4.png" id="4_drfjn"]
 [ext_resource type="Texture2D" uid="uid://vfbakwo83yy7" path="res://art/background/city 8/5.png" id="5_yt2is"]
 [ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="6_omt8t"]
+[ext_resource type="PackedScene" uid="uid://xti855xtxy8g" path="res://scene/ennemy_pow.tscn" id="14_e6yc3"]
 
 [node name="level_1" type="Node2D"]
 
@@ -125,5 +126,8 @@ position_smoothing_speed = 20.0
 editor_draw_limits = true
 script = ExtResource("3_gulq7")
 ObjectToFollow = NodePath("../AstraBody")
+
+[node name="EnnemyPow" parent="." instance=ExtResource("14_e6yc3")]
+position = Vector2(-281, 548)
 
 [editable path="PlayerSpawnPoints/Astra"]
