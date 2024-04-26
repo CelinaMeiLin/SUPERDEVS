@@ -16,6 +16,7 @@ public partial class portail : Sprite2D
     {
         if (body is astra)
         {
+            //GetTree().CallDeferred("quit");
             GetTree().ChangeSceneToFile("res://scene/map.tscn");
         }
     }
