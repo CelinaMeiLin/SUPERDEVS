@@ -265,7 +265,6 @@ light_mask = 3
 collision_layer = 3
 script = ExtResource("1_2hygk")
 Bullet_scn = ExtResource("2_3skay")
-Character = null
 
 [node name="Hitbox" type="CollisionShape2D" parent="EkkoBody"]
 position = Vector2(-4, 4)
@@ -277,7 +276,7 @@ texture_filter = 1
 position = Vector2(-1, -11.5625)
 scale = Vector2(1.473, 1.593)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
-animation = &"shoot-left"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="jumpparticles" type="GPUParticles2D" parent="EkkoBody"]
