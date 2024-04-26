@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xti855xtxy8g"]
+[gd_scene load_steps=21 format=3 uid="uid://xti855xtxy8g"]
 
 [ext_resource type="Script" path="res://script/Enemies/PowBody.cs" id="1_de8qo"]
 [ext_resource type="Texture2D" uid="uid://bumntks0clcp0" path="res://art/powennemy/Attack1/Attack1-1.png" id="2_62iww"]
@@ -8,9 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://cp2ialup434c0" path="res://art/powennemy/Attack1/Attack1-5.png" id="6_xv7r6"]
 [ext_resource type="Texture2D" uid="uid://c1ifeo31cdwhs" path="res://art/powennemy/Attack1/Attack1-6.png" id="7_wpq12"]
 [ext_resource type="Texture2D" uid="uid://1tl8r2x1tw6g" path="res://art/powennemy/Idle/Idle-1.png" id="11_c41pe"]
+[ext_resource type="Texture2D" uid="uid://x80bcne1nu72" path="res://art/powennemy/Walk/Walk-1.png" id="12_3cs1f"]
 [ext_resource type="Texture2D" uid="uid://b8e2is4tlbspg" path="res://art/powennemy/Idle/Idle-2.png" id="12_i7aba"]
+[ext_resource type="Texture2D" uid="uid://pf8lwape3mem" path="res://art/powennemy/Walk/Walk-2.png" id="13_o17lh"]
 [ext_resource type="Texture2D" uid="uid://bjili0dwbkh6u" path="res://art/powennemy/Idle/Idle-3.png" id="13_wr5dr"]
 [ext_resource type="Texture2D" uid="uid://cfdnwuxcl8bvl" path="res://art/powennemy/Idle/Idle-4.png" id="14_7t4wg"]
+[ext_resource type="Texture2D" uid="uid://du5oden6cah5b" path="res://art/powennemy/Walk/Walk-3.png" id="14_segis"]
+[ext_resource type="Texture2D" uid="uid://bmi1qcobqevdr" path="res://art/powennemy/Walk/Walk-4.png" id="15_8g3wj"]
+[ext_resource type="Texture2D" uid="uid://dhdvjs51f4k4u" path="res://art/powennemy/Walk/Walk-5.png" id="16_3o6jx"]
+[ext_resource type="Texture2D" uid="uid://dyq0im8635xd1" path="res://art/powennemy/Walk/Walk-6.png" id="17_lkta6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aq5ou"]
 animations = [{
@@ -53,11 +59,37 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_3cs1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_o17lh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_segis")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_8g3wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3o6jx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_lkta6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qb7em"]
 radius = 26.0
 height = 86.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gxnwl"]
+radius = 192.629
 
 [node name="EnnemyPow" type="Node2D"]
 
@@ -69,10 +101,18 @@ texture_filter = 1
 position = Vector2(-2, 3)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_aq5ou")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.954526
+frame = 5
 
 [node name="Hitbox" type="CollisionShape2D" parent="PowBody"]
 position = Vector2(-4, 10)
 shape = SubResource("CapsuleShape2D_qb7em")
+
+[node name="DetectionArea2D" type="Area2D" parent="PowBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowBody/DetectionArea2D"]
+shape = SubResource("CircleShape2D_gxnwl")
+
+[connection signal="body_entered" from="PowBody/DetectionArea2D" to="PowBody" method="_on_body_entered"]
+[connection signal="body_exited" from="PowBody/DetectionArea2D" to="PowBody" method="_on_body_exited"]

@@ -174,6 +174,7 @@ public partial class GusBody : CharacterBody2D
 	
 	private void _on_detection_area_body_entered(astra body)
 	{
+		
 		player = body;
 		playerbaseposition = body.baseposition;
 		player_chase = true;
