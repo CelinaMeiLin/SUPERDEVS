@@ -345,7 +345,7 @@ texture_filter = 1
 position = Vector2(-1, -11.5625)
 scale = Vector2(1.473, 1.593)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
-animation = &"shoot"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="jumpparticles" type="GPUParticles2D" parent="AstraBody"]
