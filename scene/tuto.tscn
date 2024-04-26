@@ -557,12 +557,6 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("9_h5f5a")
 
-[node name="EnnemyGus" parent="." instance=ExtResource("7_eu5w7")]
-position = Vector2(2427, 555)
-
-[node name="EnnemyGus2" parent="." instance=ExtResource("7_eu5w7")]
-position = Vector2(2354, 551)
-
 [node name="Medical Kit" parent="." instance=ExtResource("9_d320v")]
 position = Vector2(2906, 558)
 
@@ -613,5 +607,11 @@ bus = &"Music"
 
 [node name="coin" parent="." instance=ExtResource("27_4r4h1")]
 position = Vector2(-299, 571)
+
+[node name="EnnemyGus" parent="." instance=ExtResource("7_eu5w7")]
+position = Vector2(2211, 555)
+
+[node name="EnnemyGus2" parent="." instance=ExtResource("7_eu5w7")]
+position = Vector2(2308, 556)
 
 [editable path="PlayerSpawnPoints/Astra"]

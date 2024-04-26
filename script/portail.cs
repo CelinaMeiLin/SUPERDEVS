@@ -14,9 +14,8 @@ public partial class portail : Sprite2D
 
     public void _on_area_2d_body_entered(Node body)
     {
-        if (body is CharacterBody2D)
+        if (body is astra)
         {
-            GD.Print("Portail body entered!");
             GetTree().ChangeSceneToFile("res://scene/map.tscn");
         }
     }
