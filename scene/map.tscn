@@ -45,3 +45,4 @@ text = "Exit"
 [connection signal="pressed" from="VBoxContainer/Tuto" to="." method="OnTutoPressed"]
 [connection signal="pressed" from="VBoxContainer/Level 1" to="." method="OnLevel1Pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="OnOptionsPressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="OnExitPressed"]
