@@ -34,7 +34,7 @@ public partial class modes : Control
             }
         }
 
-        GetTree().ChangeSceneToFile("res://scene/tuto.tscn");
+        GetTree().ChangeSceneToFile("res://scene/Levels/tuto.tscn");
         //var gameScene=GD.Load<PackedScene>("res://scene/tuto.tscn");
         //var gameSceneNode=gameScene.Instantiate();
         //GetParent().AddChild(gameSceneNode);

@@ -15,12 +15,12 @@ public partial class Map : Node
 	
 	public void OnTutoPressed()
 	{
-		GetTree().ChangeSceneToFile("res://scene/tuto.tscn");
+		GetTree().ChangeSceneToFile("res://scene/Levels/tuto.tscn");
 	}
 
 	public void OnLevel1Pressed()
 	{
-		GetTree().ChangeSceneToFile("res://scene/level_1.tscn");
+		GetTree().ChangeSceneToFile("res://scene/Levels/level_1.tscn");
 	}
 	
 	public void OnOptionsPressed()
