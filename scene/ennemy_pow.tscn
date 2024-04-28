@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://xti855xtxy8g"]
+[gd_scene load_steps=45 format=3 uid="uid://xti855xtxy8g"]
 
 [ext_resource type="Script" path="res://script/Enemies/PowBody.cs" id="1_de8qo"]
+[ext_resource type="PackedScene" uid="uid://68n260cyn1o7" path="res://scene/GusShot.tscn" id="2_6ujto"]
 [ext_resource type="Texture2D" uid="uid://bumntks0clcp0" path="res://art/powennemy/Attack1/Attack1-1.png" id="2_62iww"]
 [ext_resource type="Texture2D" uid="uid://bivsa0a2icwyy" path="res://art/powennemy/Attack1/Attack1-2.png" id="3_vnvta"]
 [ext_resource type="Texture2D" uid="uid://dy86raed4u4x3" path="res://art/powennemy/Attack1/Attack1-3.png" id="4_xn1b3"]
@@ -8,16 +9,22 @@
 [ext_resource type="Texture2D" uid="uid://cp2ialup434c0" path="res://art/powennemy/Attack1/Attack1-5.png" id="6_xv7r6"]
 [ext_resource type="Texture2D" uid="uid://c1ifeo31cdwhs" path="res://art/powennemy/Attack1/Attack1-6.png" id="7_wpq12"]
 [ext_resource type="Texture2D" uid="uid://ddclgfmqjrtqv" path="res://art/powennemy/Death/Death-1.png" id="8_4ifcd"]
+[ext_resource type="Texture2D" uid="uid://dews1wfv38ymd" path="res://art/powennemy/Attack3/attack3-1.png" id="9_em38q"]
 [ext_resource type="Texture2D" uid="uid://cb77dhmtx75ri" path="res://art/powennemy/Death/Death-2.png" id="9_udfxc"]
 [ext_resource type="Texture2D" uid="uid://bp2j7p28x2olm" path="res://art/powennemy/Death/Death-3.png" id="10_kelku"]
+[ext_resource type="Texture2D" uid="uid://do4stwpsq1qd1" path="res://art/powennemy/Attack3/attack3-2.png" id="10_l6h4x"]
 [ext_resource type="Texture2D" uid="uid://1tl8r2x1tw6g" path="res://art/powennemy/Idle/Idle-1.png" id="11_c41pe"]
 [ext_resource type="Texture2D" uid="uid://b3540bpow3sgi" path="res://art/powennemy/Death/Death-4.png" id="11_sxeo7"]
+[ext_resource type="Texture2D" uid="uid://dygh02oshxkh" path="res://art/powennemy/Attack3/attack3-3.png" id="11_xy8n7"]
 [ext_resource type="Texture2D" uid="uid://x80bcne1nu72" path="res://art/powennemy/Walk/Walk-1.png" id="12_3cs1f"]
 [ext_resource type="Texture2D" uid="uid://c7vj8i6vuf4us" path="res://art/powennemy/Death/Death-5.png" id="12_5ifhy"]
+[ext_resource type="Texture2D" uid="uid://gbju4d0bhrc0" path="res://art/powennemy/Attack3/attack3-4.png" id="12_47v7q"]
 [ext_resource type="Texture2D" uid="uid://b8e2is4tlbspg" path="res://art/powennemy/Idle/Idle-2.png" id="12_i7aba"]
+[ext_resource type="Texture2D" uid="uid://b8sdlro3nyun8" path="res://art/powennemy/Attack3/attack3-5.png" id="13_aligq"]
 [ext_resource type="Texture2D" uid="uid://burbuu73sle7b" path="res://art/powennemy/Death/Death-6.png" id="13_fppt2"]
 [ext_resource type="Texture2D" uid="uid://pf8lwape3mem" path="res://art/powennemy/Walk/Walk-2.png" id="13_o17lh"]
 [ext_resource type="Texture2D" uid="uid://bjili0dwbkh6u" path="res://art/powennemy/Idle/Idle-3.png" id="13_wr5dr"]
+[ext_resource type="Texture2D" uid="uid://j1dr8bjbdpd1" path="res://art/powennemy/Attack3/attack3-6.png" id="14_1ii5u"]
 [ext_resource type="Texture2D" uid="uid://bilwy61kxe00b" path="res://art/powennemy/Hurt/Hurt-1.png" id="14_2akd5"]
 [ext_resource type="Texture2D" uid="uid://cfdnwuxcl8bvl" path="res://art/powennemy/Idle/Idle-4.png" id="14_7t4wg"]
 [ext_resource type="Texture2D" uid="uid://du5oden6cah5b" path="res://art/powennemy/Walk/Walk-3.png" id="14_segis"]
@@ -52,6 +59,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_em38q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l6h4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xy8n7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_47v7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_aligq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1ii5u")
+}],
+"loop": true,
+"name": &"attack3",
 "speed": 5.0
 }, {
 "frames": [{
@@ -129,12 +159,20 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qb7em"]
-radius = 26.0
-height = 86.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wvm37"]
+radius = 29.0
+height = 104.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gxnwl"]
-radius = 192.629
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vodeu"]
+radius = 107.0
+height = 214.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0v4qt"]
+radius = 98.0
+height = 196.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gvy4y"]
+radius = 103.697
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2me4l"]
 particle_flag_disable_z = true
@@ -156,35 +194,50 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_max = 0.5
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c21j0"]
+size = Vector2(4.80769, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x83jf"]
+size = Vector2(5, 8)
+
 [node name="EnnemyPow" type="Node2D"]
 
 [node name="PowBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character")]
 script = ExtResource("1_de8qo")
 Character = NodePath("..")
+Bullet_scn = ExtResource("2_6ujto")
 
 [node name="Pow" type="AnimatedSprite2D" parent="PowBody"]
 texture_filter = 1
 position = Vector2(-2, 3)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_aq5ou")
-animation = &"idle"
-autoplay = "walk"
-frame_progress = 0.195633
+animation = &"death"
+autoplay = "idle"
 
-[node name="Hitbox" type="CollisionShape2D" parent="PowBody"]
-position = Vector2(-4, 10)
-shape = SubResource("CapsuleShape2D_qb7em")
+[node name="Hitbox1" type="CollisionShape2D" parent="PowBody"]
+position = Vector2(-1, 10)
+shape = SubResource("CapsuleShape2D_wvm37")
 
 [node name="HealthBar" parent="PowBody" instance=ExtResource("18_mgjjm")]
-offset_left = -15.0
-offset_top = -45.0
-offset_right = 16.0
-offset_bottom = -41.0
+offset_left = -14.0
+offset_top = -50.0
+offset_right = 17.0
+offset_bottom = -46.0
 
 [node name="DetectionArea2D" type="Area2D" parent="PowBody"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PowBody/DetectionArea2D"]
-shape = SubResource("CircleShape2D_gxnwl")
+position = Vector2(4, 1)
+shape = SubResource("CapsuleShape2D_vodeu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PowBody/DetectionArea2D"]
+position = Vector2(92, 1)
+shape = SubResource("CapsuleShape2D_0v4qt")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="PowBody/DetectionArea2D"]
+position = Vector2(-113, 1)
+shape = SubResource("CircleShape2D_gvy4y")
 
 [node name="Interrogation" type="GPUParticles2D" parent="PowBody"]
 texture_filter = 1
@@ -209,6 +262,18 @@ texture = ExtResource("27_3om1c")
 lifetime = 0.3
 one_shot = true
 local_coords = true
+
+[node name="bulletspawnerD" type="CollisionShape2D" parent="PowBody"]
+position = Vector2(49, -2)
+shape = SubResource("RectangleShape2D_c21j0")
+disabled = true
+
+[node name="bulletspawnerG" type="CollisionShape2D" parent="PowBody"]
+position = Vector2(-59, -4)
+shape = SubResource("RectangleShape2D_x83jf")
+disabled = true
+
+[node name="AttackCooldown" type="Timer" parent="PowBody"]
 
 [connection signal="body_entered" from="PowBody/DetectionArea2D" to="PowBody" method="_on_body_entered"]
 [connection signal="body_exited" from="PowBody/DetectionArea2D" to="PowBody" method="_on_body_exited"]

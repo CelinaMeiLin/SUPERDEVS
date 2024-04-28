@@ -58,8 +58,8 @@ public partial class PowBody : CharacterBody2D
 		//Death_particles = GetNode<GpuParticles2D>("DeathParticles");
 		//Death_particles.OneShot = true;
 		Enemy.queuefree = false;
-		//Bullet_spawnerG = GetNode<CollisionShape2D>("bulletspawnerG");
-		//Bullet_spawnerD = GetNode<CollisionShape2D>("bulletspawnerD");
+		Bullet_spawnerG = GetNode<CollisionShape2D>("bulletspawnerG");
+		Bullet_spawnerD = GetNode<CollisionShape2D>("bulletspawnerD");
 		//-----------------------------//
 	}
 
@@ -75,21 +75,68 @@ public partial class PowBody : CharacterBody2D
 		{
 			temp = (playerbaseposition.X + player.Position.X) - (baseposition.X + Position.X); 
 			if (temp > 0)
-			{
-				dir = Vector2.Right;
+			{ 
+				//dir = Vector2.Right;
 				direction = false;
 			}
 			else
 			{
-				dir = Vector2.Left;
+				//dir = Vector2.Left;
 				direction = true;
 			}
 			velocity.X = dir.X * Enemy.Speed;
 			if (gettinghurt == false)
 			{
-				_animatedSprite.Play("attack1");
+				_animatedSprite.Play("attack3");
+			}
+			
+			// Shoot
+			if (time_until_fire > fire_rate)
+			{
+				//RigidBody2D bullet = Bullet_scn.Instantiate<RigidBody2D>();
+
+				//Vector2 Spawn;
+				//int b_direction = 1;
+				//bool isLeft = dir.X <= -1;
+				//bool isCrouch = _animatedSprite.Animation == "crouch";
+				//if (isLeft)
+				{
+					//	Spawn = Bullet_spawnerG.GlobalPosition;
+				//	b_direction = -1;
+				}
+				//else
+				{
+					//	Spawn = Bullet_spawnerD.GlobalPosition;
+				//	b_direction = 1;
+				}
+
+				//bullet.GlobalPosition = Spawn;
+				//bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
+
+				//audio_gun.Play();
+				//GetTree().Root.AddChild(bullet);
+
+				time_until_fire = 0f;
+			}
+			else
+			{
+				time_until_fire += (float)delta;
 			}
 		}
+		else
+		{
+			velocity.X = 0;
+			if (gettinghurt == false)
+			{
+				_animatedSprite.Play("idle");	
+			}
+		}
+		
+		//pour orienter Gus
+		_animatedSprite.FlipH = direction;
+		
+		Velocity = velocity;
+		MoveAndSlide();
 	}
 	
 	public void _on_body_entered(astra body)
@@ -97,7 +144,7 @@ public partial class PowBody : CharacterBody2D
 		player = body;
 		playerbaseposition = body.baseposition;
 		player_chase = true;
-		//GetNode<GpuParticles2D>("Exclamation").Emitting = true;
+		GetNode<GpuParticles2D>("Exclamation").Emitting = true;
 
 	}
 	
@@ -106,7 +153,7 @@ public partial class PowBody : CharacterBody2D
 		player_chase = false;
 		dir = Vector2.Zero;
 		player = null;
-		//GetNode<GpuParticles2D>("Interrogation").Emitting = true;
+		GetNode<GpuParticles2D>("Interrogation").Emitting = true;
 		if (gettinghurt == false)
 		{
 			_animatedSprite.Play("walk");	

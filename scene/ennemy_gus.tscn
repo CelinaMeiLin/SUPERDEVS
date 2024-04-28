@@ -289,9 +289,8 @@ Bullet_scn = ExtResource("2_cp2tc")
 texture_filter = 1
 scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_tvfth")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.326969
 
 [node name="Hitbox" type="CollisionShape2D" parent="GusBody"]
 position = Vector2(0, 4.5)

@@ -452,6 +452,9 @@ offset_right = -6.0
 offset_bottom = -27.0
 grow_vertical = 0
 
+[node name="EnnemyPow" parent="." instance=ExtResource("14_e6yc3")]
+position = Vector2(-171, 534)
+
 [node name="PlayerSpawnPoints" type="Node2D" parent="."]
 
 [node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("2_un3p5")]
@@ -469,8 +472,5 @@ position_smoothing_speed = 20.0
 editor_draw_limits = true
 script = ExtResource("3_gulq7")
 ObjectToFollow = NodePath("../AstraBody")
-
-[node name="EnnemyPow" parent="." instance=ExtResource("14_e6yc3")]
-position = Vector2(-167, 548)
 
 [editable path="PlayerSpawnPoints/Astra"]
