@@ -23,6 +23,14 @@ public partial class bullet : RigidBody2D
 			((GusBody)body).hurt(BulletDamge);
 		}
 		
+		if (body is PowBody)
+		{
+			if (((PowBody)body).Enemy.Vie <= 0)
+			{
+				QueueFree();
+			}
+			((PowBody)body).hurt(BulletDamge);
+		}
 		QueueFree();
 	}
 }

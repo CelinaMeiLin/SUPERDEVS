@@ -13,6 +13,7 @@ public partial class PowBody : CharacterBody2D
 	// Get Node2D Parent
 	[Export] public Node2D Character;
 	public Vector2 baseposition;
+	[Export] public astra Astra;
 	
 	// Gus Variables
 	public Entity Enemy = new Entity(600, 250, 2, 120, -350);
@@ -21,6 +22,7 @@ public partial class PowBody : CharacterBody2D
 	private HealthBar healthbar;
 	float temp;
 	private GpuParticles2D Death_particles;
+	private Color basecolor;
 	
 	// Player Variables
 	public CharacterBody2D player = null;
@@ -60,9 +62,12 @@ public partial class PowBody : CharacterBody2D
 		Enemy.queuefree = false;
 		Bullet_spawnerG = GetNode<CollisionShape2D>("bulletspawnerG");
 		Bullet_spawnerD = GetNode<CollisionShape2D>("bulletspawnerD");
+		basecolor = _animatedSprite.Modulate;
 		//-----------------------------//
+		
 	}
-
+	
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -90,38 +95,6 @@ public partial class PowBody : CharacterBody2D
 				_animatedSprite.Play("attack3");
 			}
 			
-			// Shoot
-			if (time_until_fire > fire_rate)
-			{
-				//RigidBody2D damage = Bullet_scn.Instantiate<RigidBody2D>();
-
-				//Vector2 Spawn;
-				//int b_direction = 1;
-				//bool isLeft = dir.X <= -1;
-				//bool isCrouch = _animatedSprite.Animation == "crouch";
-				//if (isLeft)
-				{
-					//	Spawn = Bullet_spawnerG.GlobalPosition;
-				//	b_direction = -1;
-				}
-				//else
-				{
-					//	Spawn = Bullet_spawnerD.GlobalPosition;
-				//	b_direction = 1;
-				}
-
-				//bullet.GlobalPosition = Spawn;
-				//bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
-
-				//audio_gun.Play();
-				//GetTree().Root.AddChild(bullet);
-
-				time_until_fire = 0f;
-			}
-			else
-			{
-				time_until_fire += (float)delta;
-			}
 		}
 		else
 		{
@@ -132,19 +105,40 @@ public partial class PowBody : CharacterBody2D
 			}
 		}
 		
-		//pour orienter Gus
+		//pour orienter Pow
 		_animatedSprite.FlipH = direction;
 		
 		Velocity = velocity;
 		MoveAndSlide();
 	}
-	
-	public void _on_body_entered(astra body)
+
+	public void _on_attack_animation_looped()
 	{
-		player = body;
-		playerbaseposition = body.baseposition;
-		player_chase = true;
-		GetNode<GpuParticles2D>("Exclamation").Emitting = true;
+		
+		if (_animatedSprite.Animation == "attack3")
+		{
+			Astra.hurt(100);
+		}	
+	}
+
+	public void _on_pow_animation_finished()
+	{
+		if (_animatedSprite.Animation == "death")
+		{
+			QueueFree();
+		}
+	}
+	
+	public void _on_body_entered(Node body)
+	{
+		if (body is astra)
+		{
+			player = body as astra;
+			playerbaseposition = ((astra)body).baseposition;
+			player_chase = true;
+			GetNode<GpuParticles2D>("Exclamation").Emitting = true;
+		}
+		
 
 	}
 	
@@ -162,16 +156,19 @@ public partial class PowBody : CharacterBody2D
 	
 	//--------------------------------- HP SYSTEM -----------------------------------------//
 
-	private async void _die()
+	private void _die()
 	{
-		Death_particles.Emitting = true;
-		_animatedSprite.Visible = false;
-		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
-		QueueFree();
+		_animatedSprite.Modulate = basecolor;
+		//Death_particles.Emitting = true;
+		_animatedSprite.Play("death");
 	}
 	
 	public async void hurt(float value)
 	{
+		if (_animatedSprite.Animation == "death")
+		{
+			return;
+		}
 		gettinghurt = true;
 		_animatedSprite.Play("hurt");
 		Color defaultt = _animatedSprite.Modulate;
