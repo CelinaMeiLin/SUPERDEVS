@@ -274,6 +274,7 @@ shape = SubResource("RectangleShape2D_x83jf")
 disabled = true
 
 [node name="AttackCooldown" type="Timer" parent="PowBody"]
+autostart = true
 
 [connection signal="body_entered" from="PowBody/DetectionArea2D" to="PowBody" method="_on_body_entered"]
 [connection signal="body_exited" from="PowBody/DetectionArea2D" to="PowBody" method="_on_body_exited"]

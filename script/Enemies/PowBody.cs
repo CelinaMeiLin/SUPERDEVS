@@ -93,7 +93,7 @@ public partial class PowBody : CharacterBody2D
 			// Shoot
 			if (time_until_fire > fire_rate)
 			{
-				//RigidBody2D bullet = Bullet_scn.Instantiate<RigidBody2D>();
+				//RigidBody2D damage = Bullet_scn.Instantiate<RigidBody2D>();
 
 				//Vector2 Spawn;
 				//int b_direction = 1;
