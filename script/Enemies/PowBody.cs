@@ -156,11 +156,13 @@ public partial class PowBody : CharacterBody2D
 	
 	//--------------------------------- HP SYSTEM -----------------------------------------//
 
-	private void _die()
+	private async void _die()
 	{
-		_animatedSprite.Modulate = basecolor;
-		//Death_particles.Emitting = true;
 		_animatedSprite.Play("death");
+		//_animatedSprite.Modulate = basecolor;
+		//Death_particles.Emitting = true;
+		//await ToSignal(GetTree().CreateTimer(3), "timeout");
+		//QueueFree();
 	}
 	
 	public async void hurt(float value)
@@ -171,8 +173,8 @@ public partial class PowBody : CharacterBody2D
 		}
 		gettinghurt = true;
 		_animatedSprite.Play("hurt");
-		Color defaultt = _animatedSprite.Modulate;
-		_animatedSprite.Modulate = new Color(255, 255, 255);
+		//Color defaultt = _animatedSprite.Modulate;
+		//_animatedSprite.Modulate = new Color(255, 255, 255);
 		Enemy.set_health(Enemy.Vie - value);
 		if (Enemy.Vie <= 0)
 		{
@@ -182,7 +184,7 @@ public partial class PowBody : CharacterBody2D
 		healthbar.set_health(Enemy.Vie);
 		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
 		gettinghurt = false;
-		_animatedSprite.Modulate = defaultt;
+		//_animatedSprite.Modulate = defaultt;
 	}
 	//---------------------------------------------------------------//
 

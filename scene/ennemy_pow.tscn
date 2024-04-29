@@ -113,9 +113,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("15_1u1qr")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -204,9 +204,8 @@ texture_filter = 1
 position = Vector2(-2, 3)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_aq5ou")
-animation = &"attack3"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.910685
 
 [node name="Hitbox1" type="CollisionShape2D" parent="PowBody"]
 position = Vector2(-1, 10)
