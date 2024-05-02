@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://xti855xtxy8g"]
+[gd_scene load_steps=53 format=3 uid="uid://xti855xtxy8g"]
 
 [ext_resource type="Script" path="res://script/Enemies/PowBody.cs" id="1_de8qo"]
 [ext_resource type="Texture2D" uid="uid://bumntks0clcp0" path="res://art/powennemy/Attack1/Attack1-1.png" id="2_62iww"]
@@ -34,6 +34,11 @@
 [ext_resource type="PackedScene" uid="uid://b6altf6xtkxqg" path="res://scene/health_bar_enemy.tscn" id="18_mgjjm"]
 [ext_resource type="Texture2D" uid="uid://l6t88g5oovd" path="res://art/Animations/PointsExclamation.png" id="27_3om1c"]
 [ext_resource type="Texture2D" uid="uid://ihslg3nf410s" path="res://art/Animations/PointInterrogation.png" id="27_hvg66"]
+[ext_resource type="Texture2D" uid="uid://uhecdwrqwqre" path="res://art/powennemy/attackanimation/attackanimation-1.png" id="35_m6gel"]
+[ext_resource type="Texture2D" uid="uid://bjya2wt1kvudi" path="res://art/powennemy/attackanimation/attackanimation-2.png" id="36_v7a87"]
+[ext_resource type="Texture2D" uid="uid://cy5gu52ak8xyo" path="res://art/powennemy/attackanimation/attackanimation-3.png" id="37_odllg"]
+[ext_resource type="Texture2D" uid="uid://b8d0t1vpfrvuw" path="res://art/powennemy/attackanimation/attackanimation-4.png" id="38_q8ihg"]
+[ext_resource type="Texture2D" uid="uid://ctiy7pw7tmfwc" path="res://art/powennemy/attackanimation/attackanimation-5.png" id="39_s5u52"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aq5ou"]
 animations = [{
@@ -166,6 +171,12 @@ height = 104.0
 radius = 107.0
 height = 214.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vu75i"]
+radius = 114.983
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rmb5n"]
+radius = 112.018
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2me4l"]
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
@@ -192,19 +203,176 @@ size = Vector2(4.80769, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x83jf"]
 size = Vector2(5, 8)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_sdnfv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_m6gel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_v7a87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_odllg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_q8ihg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_s5u52")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_80v7w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("attackanimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attackanimation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("attackanimation:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pow:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("attackanimation:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ruh7y"]
+resource_name = "attack"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("attackanimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.7, 0.9, 1.1, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(50, 2), Vector2(82, 2), Vector2(102, 1), Vector2(120, 0), Vector2(123, 1.13687e-13)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attackanimation:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 0.8, 1, 1.3, 1.4, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("attackanimation:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 0.9, 1.1, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [3.14159, 3.20617, 3.86067, 4.73333, 4.79791]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pow:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("attackanimation:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.7, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gfhqi"]
+_data = {
+"RESET": SubResource("Animation_80v7w"),
+"attack": SubResource("Animation_ruh7y")
+}
+
 [node name="EnnemyPow" type="Node2D"]
 
-[node name="PowBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character")]
+[node name="PowBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character", "AnimationPlayer")]
 collision_layer = 5
 script = ExtResource("1_de8qo")
 Character = NodePath("..")
+AnimationPlayer = NodePath("AnimationPlayer")
 
 [node name="Pow" type="AnimatedSprite2D" parent="PowBody"]
 texture_filter = 1
 position = Vector2(-2, 3)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_aq5ou")
-animation = &"death"
+animation = &"attack3"
 autoplay = "idle"
 
 [node name="Hitbox1" type="CollisionShape2D" parent="PowBody"]
@@ -222,6 +390,14 @@ offset_bottom = -46.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PowBody/DetectionArea2D"]
 position = Vector2(4, 1)
 shape = SubResource("CapsuleShape2D_vodeu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PowBody/DetectionArea2D"]
+position = Vector2(119, 0)
+shape = SubResource("CircleShape2D_vu75i")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="PowBody/DetectionArea2D"]
+position = Vector2(-95, -2)
+shape = SubResource("CircleShape2D_rmb5n")
 
 [node name="Interrogation" type="GPUParticles2D" parent="PowBody"]
 texture_filter = 1
@@ -257,10 +433,21 @@ position = Vector2(-59, -4)
 shape = SubResource("RectangleShape2D_x83jf")
 disabled = true
 
-[node name="AttackCooldown" type="Timer" parent="PowBody"]
-autostart = true
+[node name="attackanimation" type="AnimatedSprite2D" parent="PowBody"]
+visible = false
+position = Vector2(50, 2)
+rotation = 3.14159
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_sdnfv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PowBody"]
+libraries = {
+"": SubResource("AnimationLibrary_gfhqi")
+}
+autoplay = "attack"
 
 [connection signal="animation_finished" from="PowBody/Pow" to="PowBody" method="_on_pow_animation_finished"]
 [connection signal="animation_looped" from="PowBody/Pow" to="PowBody" method="_on_attack_animation_looped"]
 [connection signal="body_entered" from="PowBody/DetectionArea2D" to="PowBody" method="_on_body_entered"]
 [connection signal="body_exited" from="PowBody/DetectionArea2D" to="PowBody" method="_on_body_exited"]
+[connection signal="animation_finished" from="PowBody/AnimationPlayer" to="PowBody" method="_on_animation_player_animation_finished"]

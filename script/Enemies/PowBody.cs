@@ -14,10 +14,12 @@ public partial class PowBody : CharacterBody2D
 	[Export] public Node2D Character;
 	public Vector2 baseposition;
 	[Export] public astra Astra;
+	[Export] public AnimationPlayer AnimationPlayer;
 	
-	// Gus Variables
+	// Pow Variables
 	public Entity Enemy = new Entity(600, 250, 2, 120, -350);
 	private AnimatedSprite2D _animatedSprite;
+	//private AnimatedSprite2D  _attackanimation;
 	Vector2 dir; //direction actuelle de Gus
 	private HealthBar healthbar;
 	float temp;
@@ -54,6 +56,7 @@ public partial class PowBody : CharacterBody2D
 	{
 		//------ Initialisation -------//
 		_animatedSprite = GetNode<AnimatedSprite2D>("Pow");
+		//_attackanimation = GetNode<AnimatedSprite2D>("attackanimation");
 		healthbar = GetNode<HealthBar>("HealthBar");
 		healthbar.health_init(Enemy.Vie); 
 		baseposition = Character.Position; 
@@ -93,6 +96,8 @@ public partial class PowBody : CharacterBody2D
 			if (gettinghurt == false)
 			{
 				_animatedSprite.Play("attack3");
+				//_attackanimation.Visible = true;
+				AnimationPlayer.Play("attack");
 			}
 			
 		}
@@ -126,6 +131,14 @@ public partial class PowBody : CharacterBody2D
 		if (_animatedSprite.Animation == "death")
 		{
 			QueueFree();
+		}
+	}
+	
+	public void _on_animation_player_animation_finished(string animName)
+	{
+		if (animName == "attack")
+		{
+			//Astra.hurt(100);
 		}
 	}
 	
