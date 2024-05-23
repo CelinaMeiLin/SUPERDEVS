@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bug4f57tpssxa"]
+[gd_scene load_steps=10 format=3 uid="uid://bug4f57tpssxa"]
 
 [ext_resource type="Texture2D" uid="uid://unry366cmpt0" path="res://art/background/Level2/back.png" id="1_1ppkt"]
 [ext_resource type="Texture2D" uid="uid://bnsjd6vngxm4x" path="res://art/background/Level2/middle.png" id="2_0u083"]
-[ext_resource type="Texture2D" uid="uid://yrkoafrskwe8" path="res://art/background/Level2/sewers-2.png" id="3_hmk4a"]
+[ext_resource type="Texture2D" uid="uid://dbpnppin5ubto" path="res://art/background/Level2/sewers-2 copie.png" id="3_fcqry"]
 [ext_resource type="PackedScene" uid="uid://q1snnkpbyqru" path="res://scene/sol.tscn" id="6_mqpsp"]
 [ext_resource type="PackedScene" uid="uid://c8iv3ojysfds" path="res://scene/astra.tscn" id="7_16blt"]
 [ext_resource type="Script" path="res://script/CameraPlayer.cs" id="8_muj8b"]
+[ext_resource type="Texture2D" uid="uid://ffhbthbw3bkm" path="res://art/background/Level2/dessus_lvl2.png" id="9_o8ln5"]
 [ext_resource type="PackedScene" uid="uid://blj5nfok2go75" path="res://scene/health_bar.tscn" id="11_h5480"]
 [ext_resource type="PackedScene" uid="uid://botvouyo77woe" path="res://scene/skill_bar.tscn" id="12_jatgv"]
 
@@ -20,9 +21,10 @@ motion_mirroring = Vector2(1253, 0)
 
 [node name="background" type="TextureRect" parent="ParallaxBackground/sky"]
 texture_filter = 1
-offset_top = -84.0
-offset_right = 1253.0
-offset_bottom = 612.0
+offset_left = -3.0
+offset_top = 23.0
+offset_right = 1250.0
+offset_bottom = 719.0
 texture = ExtResource("1_1ppkt")
 metadata/_edit_use_anchors_ = true
 
@@ -33,10 +35,10 @@ motion_mirroring = Vector2(1007, 0)
 
 [node name="foreground" type="TextureRect" parent="ParallaxBackground/foreground"]
 texture_filter = 1
-offset_left = 1.0
-offset_top = 247.0
-offset_right = 1064.0
-offset_bottom = 624.0
+offset_left = 5.0
+offset_top = 299.0
+offset_right = 1068.0
+offset_bottom = 676.0
 texture = ExtResource("2_0u083")
 
 [node name="foreground2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -46,11 +48,24 @@ motion_mirroring = Vector2(1007, 0)
 
 [node name="foreground" type="TextureRect" parent="ParallaxBackground/foreground2"]
 texture_filter = 1
-offset_left = 1.0
-offset_top = 247.0
-offset_right = 1064.0
-offset_bottom = 624.0
-texture = ExtResource("3_hmk4a")
+offset_left = -4.0
+offset_top = 302.0
+offset_right = 1059.0
+offset_bottom = 679.0
+texture = ExtResource("3_fcqry")
+
+[node name="fondnoir" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-6, -96)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1007, 0)
+
+[node name="fondnoir" type="TextureRect" parent="ParallaxBackground/fondnoir"]
+texture_filter = 1
+offset_left = -110.0
+offset_top = -19.0
+offset_right = 1340.0
+offset_bottom = 358.0
+texture = ExtResource("9_o8ln5")
 
 [node name="sol" parent="." instance=ExtResource("6_mqpsp")]
 

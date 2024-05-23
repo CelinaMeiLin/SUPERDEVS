@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgx0fba1370iv"]
+[gd_scene load_steps=10 format=3 uid="uid://dgx0fba1370iv"]
 
 [ext_resource type="Texture2D" uid="uid://unry366cmpt0" path="res://art/background/Level2/back.png" id="1_3opma"]
 [ext_resource type="Texture2D" uid="uid://cktckyex3h4q7" path="res://art/background/Level3/front.png" id="2_ehf03"]
 [ext_resource type="Texture2D" uid="uid://qc2ijac0t3wa" path="res://art/background/Level3/middle.png" id="3_k4l4u"]
+[ext_resource type="Texture2D" uid="uid://dilv1dd5ryhvt" path="res://art/background/Level3/fond.png" id="4_fxwsv"]
 [ext_resource type="PackedScene" uid="uid://q1snnkpbyqru" path="res://scene/sol.tscn" id="4_yaard"]
 [ext_resource type="PackedScene" uid="uid://c8iv3ojysfds" path="res://scene/astra.tscn" id="5_xnhlf"]
 [ext_resource type="Script" path="res://script/CameraPlayer.cs" id="6_a2qjj"]
@@ -51,6 +52,19 @@ offset_top = 247.0
 offset_right = 1064.0
 offset_bottom = 624.0
 texture = ExtResource("3_k4l4u")
+
+[node name="foreground3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-6, -96)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1007, 0)
+
+[node name="foreground" type="TextureRect" parent="ParallaxBackground/foreground3"]
+texture_filter = 1
+offset_left = -51.0
+offset_top = -65.0
+offset_right = 1399.0
+offset_bottom = 312.0
+texture = ExtResource("4_fxwsv")
 
 [node name="sol" parent="." instance=ExtResource("4_yaard")]
 
