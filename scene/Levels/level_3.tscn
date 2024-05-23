@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgx0fba1370iv"]
+
+[ext_resource type="Texture2D" uid="uid://unry366cmpt0" path="res://art/background/Level2/back.png" id="1_3opma"]
+[ext_resource type="Texture2D" uid="uid://cktckyex3h4q7" path="res://art/background/Level3/front.png" id="2_ehf03"]
+[ext_resource type="Texture2D" uid="uid://qc2ijac0t3wa" path="res://art/background/Level3/middle.png" id="3_k4l4u"]
+[ext_resource type="PackedScene" uid="uid://q1snnkpbyqru" path="res://scene/sol.tscn" id="4_yaard"]
+[ext_resource type="PackedScene" uid="uid://c8iv3ojysfds" path="res://scene/astra.tscn" id="5_xnhlf"]
+[ext_resource type="Script" path="res://script/CameraPlayer.cs" id="6_a2qjj"]
+[ext_resource type="PackedScene" uid="uid://blj5nfok2go75" path="res://scene/health_bar.tscn" id="7_csmx0"]
+[ext_resource type="PackedScene" uid="uid://botvouyo77woe" path="res://scene/skill_bar.tscn" id="8_odhwc"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="sky" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-5, -23)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1253, 0)
+
+[node name="background" type="TextureRect" parent="ParallaxBackground/sky"]
+texture_filter = 1
+offset_top = -84.0
+offset_right = 1253.0
+offset_bottom = 612.0
+texture = ExtResource("1_3opma")
+metadata/_edit_use_anchors_ = true
+
+[node name="foreground" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-6, -42)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1007, 0)
+
+[node name="foreground" type="TextureRect" parent="ParallaxBackground/foreground"]
+texture_filter = 1
+offset_left = 1.0
+offset_top = 247.0
+offset_right = 1064.0
+offset_bottom = 624.0
+texture = ExtResource("2_ehf03")
+
+[node name="foreground2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-3, -48)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1007, 0)
+
+[node name="foreground" type="TextureRect" parent="ParallaxBackground/foreground2"]
+texture_filter = 1
+offset_left = 1.0
+offset_top = 247.0
+offset_right = 1064.0
+offset_bottom = 624.0
+texture = ExtResource("3_k4l4u")
+
+[node name="sol" parent="." instance=ExtResource("4_yaard")]
+
+[node name="PlayerSpawnPoints" type="Node2D" parent="."]
+
+[node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("5_xnhlf")]
+position = Vector2(-500, 541)
+
+[node name="AstraBody" parent="PlayerSpawnPoints/Astra" index="0" node_paths=PackedStringArray("HealthBar")]
+HealthBar = NodePath("../../../interface/HealthBar")
+
+[node name="CamTUTO" type="Camera2D" parent="PlayerSpawnPoints/Astra" node_paths=PackedStringArray("ObjectToFollow")]
+zoom = Vector2(2, 2)
+limit_left = -800
+limit_bottom = 700
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+editor_draw_limits = true
+script = ExtResource("6_a2qjj")
+ObjectToFollow = NodePath("../AstraBody")
+
+[node name="interface" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="interface" instance=ExtResource("7_csmx0")]
+
+[node name="SkillBar" parent="interface" instance=ExtResource("8_odhwc")]
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.9
+anchor_right = 0.5
+offset_left = -6.00001
+offset_top = -27.0
+offset_right = -6.0
+offset_bottom = -27.0
+grow_vertical = 0
+
+[editable path="PlayerSpawnPoints/Astra"]

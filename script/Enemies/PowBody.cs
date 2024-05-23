@@ -19,7 +19,7 @@ public partial class PowBody : CharacterBody2D
 	// Pow Variables
 	public Entity Enemy = new Entity(600, 250, 2, 120, -350);
 	private AnimatedSprite2D _animatedSprite;
-	//private AnimatedSprite2D  _attackanimation;
+	private AnimatedSprite2D  _attackanimation;
 	Vector2 dir; //direction actuelle de Gus
 	private HealthBar healthbar;
 	float temp;
@@ -56,7 +56,7 @@ public partial class PowBody : CharacterBody2D
 	{
 		//------ Initialisation -------//
 		_animatedSprite = GetNode<AnimatedSprite2D>("Pow");
-		//_attackanimation = GetNode<AnimatedSprite2D>("attackanimation");
+		_attackanimation = GetNode<AnimatedSprite2D>("attackanimation");
 		healthbar = GetNode<HealthBar>("HealthBar");
 		healthbar.health_init(Enemy.Vie); 
 		baseposition = Character.Position; 
@@ -95,8 +95,7 @@ public partial class PowBody : CharacterBody2D
 			velocity.X = dir.X * Enemy.Speed;
 			if (gettinghurt == false)
 			{
-				_animatedSprite.Play("attack3");
-				//_attackanimation.Visible = true;
+				//_animatedSprite.Play("attack3");
 				AnimationPlayer.Play("attack");
 			}
 			
@@ -113,6 +112,7 @@ public partial class PowBody : CharacterBody2D
 		//pour orienter Pow
 		_animatedSprite.FlipH = direction;
 		
+		
 		Velocity = velocity;
 		MoveAndSlide();
 	}
@@ -122,7 +122,7 @@ public partial class PowBody : CharacterBody2D
 		
 		if (_animatedSprite.Animation == "attack3")
 		{
-			Astra.hurt(100);
+			//Astra.hurt(100);
 		}	
 	}
 
@@ -138,7 +138,7 @@ public partial class PowBody : CharacterBody2D
 	{
 		if (animName == "attack")
 		{
-			//Astra.hurt(100);
+			Astra.hurt(50);
 		}
 	}
 	

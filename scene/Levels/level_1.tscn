@@ -367,6 +367,7 @@ offset_top = -84.0
 offset_right = 1253.0
 offset_bottom = 612.0
 texture = ExtResource("1_2fndf")
+metadata/_edit_use_anchors_ = true
 
 [node name="backbamboos" type="ParallaxLayer" parent="Background"]
 position = Vector2(-5, -48)

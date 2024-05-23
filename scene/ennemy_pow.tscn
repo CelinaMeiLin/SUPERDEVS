@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://xti855xtxy8g"]
+[gd_scene load_steps=54 format=3 uid="uid://xti855xtxy8g"]
 
 [ext_resource type="Script" path="res://script/Enemies/PowBody.cs" id="1_de8qo"]
 [ext_resource type="Texture2D" uid="uid://bumntks0clcp0" path="res://art/powennemy/Attack1/Attack1-1.png" id="2_62iww"]
@@ -86,7 +86,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack3",
-"speed": 6.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -288,6 +288,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pow:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack3"]
+}
 
 [sub_resource type="Animation" id="Animation_ruh7y"]
 resource_name = "attack"
@@ -352,12 +364,28 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pow:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack3"]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gfhqi"]
 _data = {
 "RESET": SubResource("Animation_80v7w"),
 "attack": SubResource("Animation_ruh7y")
 }
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q5pt0"]
+radius = 12.0
+height = 46.0
 
 [node name="EnnemyPow" type="Node2D"]
 
@@ -444,7 +472,10 @@ sprite_frames = SubResource("SpriteFrames_sdnfv")
 libraries = {
 "": SubResource("AnimationLibrary_gfhqi")
 }
-autoplay = "attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowBody"]
+position = Vector2(147, 0)
+shape = SubResource("CapsuleShape2D_q5pt0")
 
 [connection signal="animation_finished" from="PowBody/Pow" to="PowBody" method="_on_pow_animation_finished"]
 [connection signal="animation_looped" from="PowBody/Pow" to="PowBody" method="_on_attack_animation_looped"]

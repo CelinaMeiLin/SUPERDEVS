@@ -289,7 +289,7 @@ Bullet_scn = ExtResource("2_cp2tc")
 texture_filter = 1
 scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_tvfth")
-animation = &"idle"
+animation = &"pos-shoot"
 autoplay = "idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="GusBody"]
