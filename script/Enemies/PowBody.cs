@@ -96,7 +96,14 @@ public partial class PowBody : CharacterBody2D
 			if (gettinghurt == false)
 			{
 				//_animatedSprite.Play("attack3");
-				AnimationPlayer.Play("attack");
+				if (direction)
+				{
+					AnimationPlayer.Play("ATTACKANIMATIONLEFT");
+				}
+				else
+				{
+					AnimationPlayer.Play("attack");
+				}
 			}
 			
 		}
@@ -136,7 +143,7 @@ public partial class PowBody : CharacterBody2D
 	
 	public void _on_animation_player_animation_finished(string animName)
 	{
-		if (animName == "attack")
+		if (animName == "attack" || animName == "ATTACKANIMATIONLEFT")
 		{
 			Astra.hurt(50);
 		}
