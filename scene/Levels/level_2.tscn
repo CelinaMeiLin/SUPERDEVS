@@ -21,11 +21,13 @@ motion_mirroring = Vector2(1253, 0)
 
 [node name="background" type="TextureRect" parent="ParallaxBackground/sky"]
 texture_filter = 1
-offset_left = -3.0
-offset_top = 23.0
-offset_right = 1250.0
-offset_bottom = 719.0
+offset_left = -30.0
+offset_top = -80.0
+offset_right = 1223.0
+offset_bottom = 616.0
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_1ppkt")
+stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="foreground" type="ParallaxLayer" parent="ParallaxBackground"]
