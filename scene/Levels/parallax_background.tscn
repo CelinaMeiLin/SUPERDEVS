@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://nrwpnfhf33q7"]
+
+[ext_resource type="Texture2D" uid="uid://c0tonta3hnorg" path="res://art/background/Level2/back copy.png" id="1_b38fs"]
+[ext_resource type="Texture2D" uid="uid://r4vrspbo3sip" path="res://art/background/Level3/FONDLVL3.png" id="1_u3xiy"]
+[ext_resource type="Texture2D" uid="uid://byvd2nmn5q5ii" path="res://art/background/Level2/water.png" id="2_kx3v5"]
+[ext_resource type="Texture2D" uid="uid://bnsjd6vngxm4x" path="res://art/background/Level2/middle.png" id="3_hmdn5"]
+[ext_resource type="Texture2D" uid="uid://bqat6ajev3c0y" path="res://art/tilesets/tileset 2.png" id="4_jua6x"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_22yjq"]
+texture = ExtResource("4_jua6x")
+1:1/size_in_atlas = Vector2i(3, 3)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/size_in_atlas = Vector2i(3, 3)
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -12, 24, -12, 24, 24, -24, 24)
+9:1/size_in_atlas = Vector2i(3, 3)
+9:1/0 = 0
+9:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:1/0/physics_layer_0/angular_velocity = 0.0
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -12, 24, -12, 24, 24, -24, 24)
+13:1/size_in_atlas = Vector2i(3, 3)
+13:1/0 = 0
+13:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+13:1/0/physics_layer_0/angular_velocity = 0.0
+13:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -12, 24, -12, 24, 24, -24, 24)
+
+[sub_resource type="TileSet" id="TileSet_exljs"]
+tile_size = Vector2i(48, 48)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_22yjq")
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayerHAUT" type="ParallaxLayer" parent="."]
+position = Vector2(2.08165e-12, -70)
+rotation = -6.28319
+scale = Vector2(1.75, 1.75)
+motion_scale = Vector2(0.8, 2.08165e-12)
+motion_mirroring = Vector2(384, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayerHAUT"]
+texture_filter = 1
+offset_right = 384.0
+offset_bottom = 240.0
+texture = ExtResource("1_u3xiy")
+stretch_mode = 1
+
+[node name="ParallaxLayerBack" type="ParallaxLayer" parent="."]
+scale = Vector2(1.75, 1.75)
+motion_scale = Vector2(0.1, 2.08165e-12)
+motion_mirroring = Vector2(384, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayerBack"]
+modulate = Color(0.764706, 0.87451, 0.662745, 1)
+texture_filter = 1
+offset_right = 384.0
+offset_bottom = 240.0
+texture = ExtResource("1_b38fs")
+stretch_mode = 1
+
+[node name="ParallaxLayerWater" type="ParallaxLayer" parent="."]
+scale = Vector2(1.75, 1.75)
+motion_scale = Vector2(0.1, 2.08165e-12)
+motion_mirroring = Vector2(580, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayerWater"]
+texture_filter = 1
+offset_top = 163.0
+offset_right = 580.0
+offset_bottom = 199.0
+texture = ExtResource("2_kx3v5")
+stretch_mode = 1
+
+[node name="ParallaxLayerMid" type="ParallaxLayer" parent="."]
+scale = Vector2(1.75, 1.75)
+motion_scale = Vector2(0.8, 2.08165e-12)
+motion_mirroring = Vector2(928, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayerMid"]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_hmdn5")
+
+[node name="ParallaxLayerWater2" type="ParallaxLayer" parent="."]
+scale = Vector2(1.75, 1.75)
+motion_scale = Vector2(0.7, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="TileMap" type="TileMap" parent="ParallaxLayerWater2"]
+texture_filter = 1
+tile_set = SubResource("TileSet_exljs")
+format = 2
+layer_0/tile_data = PackedInt32Array(262146, 65536, 1, 262147, 65536, 1, 262148, 65536, 1, 262149, 65536, 1, 262150, 65536, 1, 262145, 65536, 1, 262144, 65536, 1, 262151, 65536, 1, 262153, 65536, 1, 262154, 65536, 1, 262155, 65536, 1, 262156, 65536, 1, 262157, 65536, 1, 262158, 65536, 1, 262159, 65536, 1, 262160, 589824, 1, 262161, 589824, 1, 262162, 589824, 1, 262152, 65536, 1)
