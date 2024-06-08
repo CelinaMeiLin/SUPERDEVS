@@ -91,7 +91,9 @@ public partial class RhustBody : CharacterBody2D
 			// Shoot
 			if (time_until_fire > fire_rate)
 			{
-				
+				//_animatedSprite.Stop();
+				_animatedSprite.Play("shoot");
+
 				RigidBody2D bullet = Bullet_scn.Instantiate<RigidBody2D>();
 
 				Vector2 Spawn;
@@ -157,6 +159,7 @@ public partial class RhustBody : CharacterBody2D
 		}
 		
 	}
+	
 
 	//--------------------------------- HP SYSTEM -----------------------------------------//
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://jbr1kh508slo"]
+[gd_scene load_steps=40 format=3 uid="uid://jbr1kh508slo"]
 
 [ext_resource type="Texture2D" uid="uid://ekbje23bel28" path="res://art/rhustenemy/crouch-shoot/crouch-shoot-export1.png" id="1_tv8nv"]
 [ext_resource type="Texture2D" uid="uid://byk8x2vxdfest" path="res://art/rhustenemy/idle.png" id="1_tx4h1"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://j5m5ll2063he" path="res://art/rhustenemy/throw/throw-export5.png" id="17_anah3"]
 [ext_resource type="Texture2D" uid="uid://7dogaqmf3vwe" path="res://art/rhustenemy/throw/throw-export6.png" id="18_bnanr"]
 [ext_resource type="PackedScene" uid="uid://b6altf6xtkxqg" path="res://scene/health_bar_enemy.tscn" id="20_7h4oq"]
+[ext_resource type="Texture2D" uid="uid://dq5etap55urf3" path="res://art/rhustenemy/Rhust-Bullet/muzzle-flash.png" id="22_uc1t2"]
 [ext_resource type="Texture2D" uid="uid://l6t88g5oovd" path="res://art/Animations/PointsExclamation.png" id="23_nn675"]
 [ext_resource type="Texture2D" uid="uid://ihslg3nf410s" path="res://art/Animations/PointInterrogation.png" id="24_3lo44"]
 [ext_resource type="AudioStream" uid="uid://b2g0dymemfoob" path="res://audio/sfx/gus_shoot.mp3" id="25_rv65q"]
@@ -37,7 +38,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"crouch-shoot",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -121,6 +122,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_rrkod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_uc1t2")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uyxc6"]
 height = 44.0
 
@@ -193,9 +211,17 @@ Bullet_scn = ExtResource("2_saqd8")
 texture_filter = 1
 scale = Vector2(0.769231, 0.769231)
 sprite_frames = SubResource("SpriteFrames_cb710")
-animation = &"shoot"
+animation = &"crouch-shoot"
 autoplay = "run"
-frame_progress = 0.142861
+frame_progress = 0.362761
+
+[node name="MuzzleFlashCrouch" type="AnimatedSprite2D" parent="RhustBody"]
+texture_filter = 1
+position = Vector2(24.1026, -5.96046e-08)
+scale = Vector2(0.45, 0.45)
+sprite_frames = SubResource("SpriteFrames_rrkod")
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RhustBody"]
 position = Vector2(-0.769231, 3.84615)
