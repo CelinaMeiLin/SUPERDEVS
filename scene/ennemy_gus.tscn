@@ -228,14 +228,14 @@ radius = 328.462
 _data = [Vector2(0, 1), 0.0, -0.390476, 0, 1, Vector2(0.731707, 0.714286), -0.867725, -0.867725, 0, 0, Vector2(1, 0), -1.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_4c4bn"]
+[sub_resource type="CurveTexture" id="CurveTexture_nsvbu"]
 curve = SubResource("Curve_r2wnh")
 
 [sub_resource type="Curve" id="Curve_ypvgq"]
 _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_p15hw"]
+[sub_resource type="CurveTexture" id="CurveTexture_4bxow"]
 curve = SubResource("Curve_ypvgq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uurpa"]
@@ -247,8 +247,8 @@ initial_velocity_max = 156.24
 gravity = Vector3(0, 0, 0)
 scale_min = 5.0
 scale_max = 5.0
-scale_curve = SubResource("CurveTexture_p15hw")
-alpha_curve = SubResource("CurveTexture_4c4bn")
+scale_curve = SubResource("CurveTexture_4bxow")
+alpha_curve = SubResource("CurveTexture_nsvbu")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wse7x"]
 particle_flag_disable_z = true
@@ -289,8 +289,10 @@ Bullet_scn = ExtResource("2_cp2tc")
 texture_filter = 1
 scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_tvfth")
-animation = &"pos-shoot"
+animation = &"idle"
 autoplay = "idle"
+frame = 3
+frame_progress = 0.0711832
 
 [node name="Hitbox" type="CollisionShape2D" parent="GusBody"]
 position = Vector2(0, 4.5)

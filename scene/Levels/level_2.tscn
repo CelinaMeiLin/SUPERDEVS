@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bug4f57tpssxa"]
+[gd_scene load_steps=11 format=3 uid="uid://bug4f57tpssxa"]
 
 [ext_resource type="Texture2D" uid="uid://unry366cmpt0" path="res://art/background/Level2/back.png" id="1_1ppkt"]
 [ext_resource type="Texture2D" uid="uid://bnsjd6vngxm4x" path="res://art/background/Level2/middle.png" id="2_0u083"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c8iv3ojysfds" path="res://scene/astra.tscn" id="7_16blt"]
 [ext_resource type="Script" path="res://script/CameraPlayer.cs" id="8_muj8b"]
 [ext_resource type="Texture2D" uid="uid://ffhbthbw3bkm" path="res://art/background/Level2/dessus_lvl2.png" id="9_o8ln5"]
+[ext_resource type="PackedScene" uid="uid://jbr1kh508slo" path="res://scene/Enemies/enemy_rhust.tscn" id="10_bn081"]
 [ext_resource type="PackedScene" uid="uid://blj5nfok2go75" path="res://scene/health_bar.tscn" id="11_h5480"]
 [ext_resource type="PackedScene" uid="uid://botvouyo77woe" path="res://scene/skill_bar.tscn" id="12_jatgv"]
 
@@ -103,5 +104,8 @@ offset_top = -27.0
 offset_right = -6.0
 offset_bottom = -27.0
 grow_vertical = 0
+
+[node name="EnemyRhust" parent="." instance=ExtResource("10_bn081")]
+position = Vector2(48, 554)
 
 [editable path="PlayerSpawnPoints/Astra"]

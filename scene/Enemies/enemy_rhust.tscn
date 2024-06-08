@@ -1,0 +1,249 @@
+[gd_scene load_steps=36 format=3 uid="uid://jbr1kh508slo"]
+
+[ext_resource type="Texture2D" uid="uid://ekbje23bel28" path="res://art/rhustenemy/crouch-shoot/crouch-shoot-export1.png" id="1_tv8nv"]
+[ext_resource type="Texture2D" uid="uid://byk8x2vxdfest" path="res://art/rhustenemy/idle.png" id="1_tx4h1"]
+[ext_resource type="Script" path="res://script/Enemies/RhustBody.cs" id="1_yr2tu"]
+[ext_resource type="Texture2D" uid="uid://dx2kh2xcnd056" path="res://art/rhustenemy/hurt.png" id="2_4qftp"]
+[ext_resource type="Texture2D" uid="uid://cjqhu5r36i35r" path="res://art/rhustenemy/crouch-shoot/crouch-shoot-export2.png" id="2_7uhy3"]
+[ext_resource type="Texture2D" uid="uid://bqr7xsbgcr4oi" path="res://art/rhustenemy/run/run-export1.png" id="2_hej1c"]
+[ext_resource type="Texture2D" uid="uid://bsbxrixacp2vj" path="res://art/rhustenemy/run/run-export2.png" id="3_kbfdn"]
+[ext_resource type="Texture2D" uid="uid://dniy5arjegmj3" path="res://art/rhustenemy/run/run-export3.png" id="4_a62ai"]
+[ext_resource type="Texture2D" uid="uid://bo554btdiph50" path="res://art/rhustenemy/jump.png" id="5_t653t"]
+[ext_resource type="Texture2D" uid="uid://dywwnpsvx2gh0" path="res://art/rhustenemy/run/run-export4.png" id="5_x64gm"]
+[ext_resource type="Texture2D" uid="uid://duytx76m0hiba" path="res://art/rhustenemy/run/run-export5.png" id="6_chjfn"]
+[ext_resource type="Texture2D" uid="uid://ddo5rw008svfv" path="res://art/rhustenemy/run/run-export6.png" id="7_s8nww"]
+[ext_resource type="Texture2D" uid="uid://bbxnm4deoafva" path="res://art/rhustenemy/shoot/shoot-export1.png" id="9_v8snq"]
+[ext_resource type="Texture2D" uid="uid://bnaf5jmmstsjc" path="res://art/rhustenemy/shoot/shoot-export2.png" id="10_aifv1"]
+[ext_resource type="Texture2D" uid="uid://by0xa640xd0ci" path="res://art/rhustenemy/throw/throw-export1.png" id="13_8haym"]
+[ext_resource type="Texture2D" uid="uid://dp0yhxnddm6a7" path="res://art/rhustenemy/throw/throw-export2.png" id="14_k7uyu"]
+[ext_resource type="Texture2D" uid="uid://dce6oktq6nhs5" path="res://art/rhustenemy/throw/throw-export3.png" id="15_s7ucj"]
+[ext_resource type="Texture2D" uid="uid://xpoumlgkwd06" path="res://art/rhustenemy/throw/throw-export4.png" id="16_b4eg2"]
+[ext_resource type="Texture2D" uid="uid://j5m5ll2063he" path="res://art/rhustenemy/throw/throw-export5.png" id="17_anah3"]
+[ext_resource type="Texture2D" uid="uid://7dogaqmf3vwe" path="res://art/rhustenemy/throw/throw-export6.png" id="18_bnanr"]
+[ext_resource type="PackedScene" uid="uid://b6altf6xtkxqg" path="res://scene/health_bar_enemy.tscn" id="20_7h4oq"]
+[ext_resource type="Texture2D" uid="uid://l6t88g5oovd" path="res://art/Animations/PointsExclamation.png" id="23_nn675"]
+[ext_resource type="Texture2D" uid="uid://ihslg3nf410s" path="res://art/Animations/PointInterrogation.png" id="24_3lo44"]
+[ext_resource type="AudioStream" uid="uid://b2g0dymemfoob" path="res://audio/sfx/gus_shoot.mp3" id="25_rv65q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uyxc6"]
+height = 44.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cb710"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tv8nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7uhy3")
+}],
+"loop": true,
+"name": &"crouch-shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4qftp")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tx4h1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_t653t")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hej1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kbfdn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a62ai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x64gm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_chjfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_s8nww")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_v8snq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_aifv1")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_8haym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_k7uyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_s7ucj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_b4eg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_anah3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_bnanr")
+}],
+"loop": true,
+"name": &"throw",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_5wngd"]
+_data = [Vector2(0, 1), 0.0, -0.390476, 0, 1, Vector2(0.731707, 0.714286), -0.867725, -0.867725, 0, 0, Vector2(1, 0), -1.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4c4bn"]
+curve = SubResource("Curve_5wngd")
+
+[sub_resource type="Curve" id="Curve_xegns"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p15hw"]
+curve = SubResource("Curve_xegns")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qu8af"]
+lifetime_randomness = 0.19
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 156.24
+initial_velocity_max = 156.24
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_p15hw")
+alpha_curve = SubResource("CurveTexture_4c4bn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uqvsu"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kojhf"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4fm0"]
+size = Vector2(4.80769, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mx63"]
+size = Vector2(5, 8)
+
+[node name="EnemyRhust" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+
+[node name="RhustBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character")]
+scale = Vector2(1.3, 1.3)
+collision_layer = 4
+script = ExtResource("1_yr2tu")
+Character = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RhustBody"]
+position = Vector2(-0.769231, 3.84615)
+scale = Vector2(0.769231, 0.769231)
+shape = SubResource("CapsuleShape2D_uyxc6")
+
+[node name="Rhust" type="AnimatedSprite2D" parent="RhustBody"]
+texture_filter = 1
+scale = Vector2(0.769231, 0.769231)
+sprite_frames = SubResource("SpriteFrames_cb710")
+animation = &"run"
+autoplay = "run"
+
+[node name="DeathParticles" type="GPUParticles2D" parent="RhustBody"]
+position = Vector2(0.769231, 10)
+scale = Vector2(0.769231, 0.769231)
+emitting = false
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_qu8af")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+
+[node name="Exclamation" type="GPUParticles2D" parent="RhustBody"]
+texture_filter = 1
+position = Vector2(14.6154, -19.2308)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_uqvsu")
+texture = ExtResource("23_nn675")
+lifetime = 0.3
+one_shot = true
+local_coords = true
+
+[node name="Interrogation" type="GPUParticles2D" parent="RhustBody"]
+texture_filter = 1
+position = Vector2(14.6154, -19.2308)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_kojhf")
+texture = ExtResource("24_3lo44")
+lifetime = 0.3
+one_shot = true
+local_coords = true
+
+[node name="HealthBar" parent="RhustBody" instance=ExtResource("20_7h4oq")]
+offset_left = -6.66666
+offset_top = -20.0
+offset_right = 6.33334
+offset_bottom = -18.0
+metadata/_edit_use_anchors_ = true
+
+[node name="bulletspawnerD" type="CollisionShape2D" parent="RhustBody"]
+position = Vector2(23.0769, 3.84616)
+shape = SubResource("RectangleShape2D_s4fm0")
+disabled = true
+
+[node name="bulletspawnerG" type="CollisionShape2D" parent="RhustBody"]
+position = Vector2(-21.5385, 3.84615)
+shape = SubResource("RectangleShape2D_6mx63")
+disabled = true
+
+[node name="Audio_gun" type="AudioStreamPlayer2D" parent="RhustBody"]
+stream = ExtResource("25_rv65q")
