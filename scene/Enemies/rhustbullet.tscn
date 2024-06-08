@@ -41,3 +41,8 @@ shape = SubResource("RectangleShape2D_x0ppq")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_q5fjy")
 autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+autostart = true
