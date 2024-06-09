@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Devs.project.script.Enemies;
 
 public partial class bullet : RigidBody2D
 {
@@ -31,6 +32,16 @@ public partial class bullet : RigidBody2D
 			}
 			((PowBody)body).hurt(BulletDamge);
 		}
+		
+		if (body is RhustBody)
+		{
+			if (((RhustBody)body).Enemy.Vie <= 0)
+			{
+				QueueFree();
+			}
+			((RhustBody)body).hurt(BulletDamge);
+		}
+		
 		QueueFree();
 	}
 }

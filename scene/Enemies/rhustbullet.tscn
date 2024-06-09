@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkywsjydmcd3r"]
+[gd_scene load_steps=8 format=3 uid="uid://bkywsjydmcd3r"]
 
 [ext_resource type="Texture2D" uid="uid://dmqheom66bsc0" path="res://art/rhustenemy/Rhust-Bullet/enemy-bullet.png" id="1_3xtgd"]
+[ext_resource type="Script" path="res://script/Enemies/RhustShot.cs" id="1_up2ak"]
 [ext_resource type="AudioStream" uid="uid://ct580kfi3d70f" path="res://audio/sfx/Enemies/rhust-shot.wav" id="2_q5fjy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jjmc"]
@@ -29,7 +30,9 @@ animations = [{
 size = Vector2(8, 8)
 
 [node name="rhustbullet" type="RigidBody2D"]
-collision_layer = 4
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_up2ak")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -46,3 +49,5 @@ autoplay = true
 wait_time = 0.6
 one_shot = true
 autostart = true
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

@@ -8,4 +8,7 @@
   <ItemGroup>
     <Folder Include="scene\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="script\Enemies\RhustBullet.cs" />
+  </ItemGroup>
 </Project>
