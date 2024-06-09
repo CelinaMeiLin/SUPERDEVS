@@ -30,7 +30,7 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_cb710"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("1_tv8nv")
 }, {
 "duration": 1.0,
@@ -130,13 +130,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("22_uc1t2")
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": false,
 "name": &"default",
-"speed": 20.0
+"speed": 1.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uyxc6"]
@@ -211,15 +208,14 @@ Bullet_scn = ExtResource("2_saqd8")
 texture_filter = 1
 scale = Vector2(0.769231, 0.769231)
 sprite_frames = SubResource("SpriteFrames_cb710")
-animation = &"run"
+animation = &"crouch-shoot"
 autoplay = "run"
 
-[node name="MuzzleFlashCrouch" type="AnimatedSprite2D" parent="RhustBody"]
+[node name="FlashCrouch" type="AnimatedSprite2D" parent="RhustBody"]
 texture_filter = 1
 position = Vector2(24.1026, -5.96046e-08)
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_rrkod")
-frame = 2
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RhustBody"]
@@ -285,5 +281,7 @@ disabled = true
 [node name="Audio_gun" type="AudioStreamPlayer2D" parent="RhustBody"]
 stream = ExtResource("25_rv65q")
 
+[connection signal="animation_changed" from="RhustBody/Rhust" to="RhustBody" method="_on_rhust_animation_changed"]
+[connection signal="animation_looped" from="RhustBody/Rhust" to="RhustBody" method="_on_rhust_animation_looped"]
 [connection signal="body_entered" from="RhustBody/Area2D" to="RhustBody" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="RhustBody/Area2D" to="RhustBody" method="_on_detection_area_body_exited"]

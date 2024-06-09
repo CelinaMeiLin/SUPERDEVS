@@ -12,6 +12,7 @@ public partial class RhustBody : CharacterBody2D
 	// Rhust Variables
 	public Entity Enemy = new Entity(600, 250, 2, 120, -350);
 	private AnimatedSprite2D _animatedSprite;
+	private AnimatedSprite2D _sniperanim;
 	Vector2 dir; //direction actuelle de Rhust
 	private HealthBar healthbar;
 	float temp;
@@ -49,6 +50,7 @@ public partial class RhustBody : CharacterBody2D
 	{
 		//------ Initialisation -------//
 		_animatedSprite = GetNode<AnimatedSprite2D>("Rhust");
+		_sniperanim = GetNode<AnimatedSprite2D>("FlashCrouch");
 		healthbar = GetNode<HealthBar>("HealthBar");
 		healthbar.health_init(Enemy.Vie);
 		baseposition = Character.Position;
@@ -87,21 +89,22 @@ public partial class RhustBody : CharacterBody2D
 			if (gettinghurt == false)
 			{
 				_animatedSprite.Play("crouch-shoot");
+				//_sniperanim.Play("default");
 				
 			}
 			
 			// Shoot
-			if (time_until_fire > fire_rate)
+			if (shoot_anim)
 			{
 				//_animatedSprite.Stop();
-				_animatedSprite.Play("crouch-shoot");
+				//_animatedSprite.Play("crouch-shoot");
 
 				RigidBody2D bullet = Bullet_scn.Instantiate<RigidBody2D>();
 
 				Vector2 Spawn;
 				int b_direction = 1;
 				bool isLeft = dir.X <= -1;
-				bool isCrouch = _animatedSprite.Animation == "crouch-shoot";
+				//bool isCrouch = _animatedSprite.Animation == "crouch-shoot";
 				if (isLeft)
 				{
 					Spawn = Bullet_spawnerG.GlobalPosition;
@@ -115,6 +118,7 @@ public partial class RhustBody : CharacterBody2D
 
 				bullet.GlobalPosition = Spawn;
 				bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
+				shoot_anim = false;
 
 				//audio_gun.Play();
 				GetTree().Root.AddChild(bullet);
@@ -192,7 +196,24 @@ public partial class RhustBody : CharacterBody2D
 		}
 		
 	}
+
+	private void _on_rhust_animation_looped()
+	{
+		if (_animatedSprite.Animation == "crouch-shoot")
+		{
+			shoot_anim = true;
+		}
+		else
+		{
+			shoot_anim = false;
+		}
+		
+	}
 	
+	private void _on_rhust_animation_changed()
+	{
+		shoot_anim = false;
+	}
 
 	//--------------------------------- HP SYSTEM -----------------------------------------//
 	
