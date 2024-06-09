@@ -26,8 +26,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0ppq"]
-size = Vector2(8, 8)
+[sub_resource type="CircleShape2D" id="CircleShape2D_hk1li"]
+radius = 3.16228
 
 [node name="rhustbullet" type="RigidBody2D"]
 collision_layer = 0
@@ -39,7 +39,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ahxi5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_x0ppq")
+shape = SubResource("CircleShape2D_hk1li")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_q5fjy")

@@ -106,6 +106,6 @@ offset_bottom = -27.0
 grow_vertical = 0
 
 [node name="EnemyRhust" parent="." instance=ExtResource("10_bn081")]
-position = Vector2(448, 556)
+position = Vector2(404, 554)
 
 [editable path="PlayerSpawnPoints/Astra"]
