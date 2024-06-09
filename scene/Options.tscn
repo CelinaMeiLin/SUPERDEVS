@@ -77,7 +77,7 @@ stream = ExtResource("4_7rski")
 autoplay = true
 bus = &"Music"
 
-[node name="Back2" type="Button" parent="."]
+[node name="Back" type="Button" parent="."]
 texture_filter = 1
 offset_left = 821.0
 offset_top = 1015.0
@@ -89,4 +89,4 @@ theme_override_fonts/font = ExtResource("3_kwtpt")
 theme_override_font_sizes/font_size = 30
 text = "Back"
 
-[connection signal="pressed" from="Back2" to="." method="OnBackPressed"]
+[connection signal="pressed" from="Back" to="." method="OnBackPressed"]

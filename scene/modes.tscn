@@ -441,19 +441,6 @@ theme_override_fonts/font = ExtResource("3_f8hba")
 theme_override_font_sizes/font_size = 30
 text = "Multiplayer"
 
-[node name="Back" type="Button" parent="."]
-texture_filter = 1
-layout_mode = 2
-offset_left = 821.0
-offset_top = 1015.0
-offset_right = 1100.0
-offset_bottom = 1062.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_f8hba")
-theme_override_font_sizes/font_size = 30
-text = "Back"
-
 [node name="Astra" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(768, 787)
@@ -475,5 +462,24 @@ stream = ExtResource("69_88onx")
 autoplay = true
 bus = &"Music"
 
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -65.0
+offset_right = 140.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_f8hba")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
 [connection signal="pressed" from="VBoxContainer/Solo" to="." method="OnSoloPressed"]
 [connection signal="pressed" from="VBoxContainer/Multiplayer" to="." method="OnMultiPressed"]
+[connection signal="pressed" from="Button" to="." method="OnBackPressed"]
