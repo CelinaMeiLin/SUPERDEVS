@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dju1w020uwm3n"]
+[gd_scene load_steps=6 format=3 uid="uid://dju1w020uwm3n"]
 
 [ext_resource type="Script" path="res://script/main_menu.cs" id="1_rcoi1"]
 [ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="2_mc5b1"]
 [ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="3_kwtpt"]
 [ext_resource type="AudioStream" uid="uid://yno53hkqejo5" path="res://audio/music/DevsMain_Lobby.mp3" id="4_7rski"]
+[ext_resource type="Script" path="res://script/volume_options.cs" id="4_row57"]
 
 [node name="Options" type="Control" node_paths=PackedStringArray("variable", "backgroundMusic")]
 z_index = 4096
@@ -49,7 +50,7 @@ offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sound" type="Label" parent="VBoxContainer"]
+[node name="Master Volume" type="Label" parent="VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -57,8 +58,11 @@ theme_override_fonts/font = ExtResource("3_kwtpt")
 theme_override_font_sizes/font_size = 30
 text = "Master Volume"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+[node name="Hslider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_row57")
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 texture_filter = 1
@@ -66,11 +70,28 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_kwtpt")
 theme_override_font_sizes/font_size = 30
-text = "Sound fx"
+text = "Music Volume"
 
 [node name="HSlider2" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
 ticks_on_borders = true
+script = ExtResource("4_row57")
+
+[node name="Music Volume" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_kwtpt")
+theme_override_font_sizes/font_size = 30
+text = "Sound Effects Volume"
+
+[node name="HSlider3" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_row57")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_7rski")
@@ -89,4 +110,7 @@ theme_override_fonts/font = ExtResource("3_kwtpt")
 theme_override_font_sizes/font_size = 30
 text = "Back"
 
+[connection signal="value_changed" from="VBoxContainer/Hslider" to="." method="_OnValueChanged"]
+[connection signal="value_changed" from="VBoxContainer/HSlider2" to="." method="_OnValueChanged"]
+[connection signal="value_changed" from="VBoxContainer/HSlider3" to="." method="_OnValueChanged"]
 [connection signal="pressed" from="Back" to="." method="OnBackPressed"]

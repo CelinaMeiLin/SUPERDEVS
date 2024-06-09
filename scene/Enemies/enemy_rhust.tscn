@@ -288,6 +288,7 @@ disabled = true
 
 [node name="Audio_gun" type="AudioStreamPlayer2D" parent="RhustBody"]
 stream = ExtResource("25_rv65q")
+bus = &"SFX"
 
 [connection signal="animation_changed" from="RhustBody/Rhust" to="RhustBody" method="_on_rhust_animation_changed"]
 [connection signal="animation_looped" from="RhustBody/Rhust" to="RhustBody" method="_on_rhust_animation_looped"]
