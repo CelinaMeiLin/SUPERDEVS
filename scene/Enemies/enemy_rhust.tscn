@@ -143,7 +143,7 @@ animations = [{
 height = 44.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6wgt0"]
-radius = 344.625
+radius = 201.036
 
 [sub_resource type="Curve" id="Curve_5wngd"]
 _data = [Vector2(0, 1), 0.0, -0.390476, 0, 1, Vector2(0.731707, 0.714286), -0.867725, -0.867725, 0, 0, Vector2(1, 0), -1.0, 0.0, 0, 0]
@@ -211,9 +211,8 @@ Bullet_scn = ExtResource("2_saqd8")
 texture_filter = 1
 scale = Vector2(0.769231, 0.769231)
 sprite_frames = SubResource("SpriteFrames_cb710")
-animation = &"crouch-shoot"
+animation = &"run"
 autoplay = "run"
-frame_progress = 0.362761
 
 [node name="MuzzleFlashCrouch" type="AnimatedSprite2D" parent="RhustBody"]
 texture_filter = 1

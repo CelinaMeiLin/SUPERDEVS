@@ -68,23 +68,25 @@ public partial class RhustBody : CharacterBody2D
 			velocity.Y += Enemy.gravity * (float)delta;
 		}
 		
+		
 		if (player_chase)
-		{
+		{ 
 			temp = (playerbaseposition.X + player.Position.X) - (baseposition.X + Position.X); 
 			if (temp > 0)
 			{
-				dir = Vector2.Right;
+				//dir = Vector2.Right;
 				direction = false;
 			}
 			else
 			{
-				dir = Vector2.Left;
+				//dir = Vector2.Left;
 				direction = true;
 			}
 			velocity.X = dir.X * Enemy.Speed;
+			
 			if (gettinghurt == false)
 			{
-				_animatedSprite.Play("run");
+				_animatedSprite.Play("crouch-shoot");
 				
 			}
 			
@@ -92,7 +94,7 @@ public partial class RhustBody : CharacterBody2D
 			if (time_until_fire > fire_rate)
 			{
 				//_animatedSprite.Stop();
-				_animatedSprite.Play("shoot");
+				_animatedSprite.Play("crouch-shoot");
 
 				RigidBody2D bullet = Bullet_scn.Instantiate<RigidBody2D>();
 
@@ -125,6 +127,18 @@ public partial class RhustBody : CharacterBody2D
 			}
 			
 		}
+		else
+		{
+			
+//			temp = (playerbaseposition.X + player.Position.X) - (baseposition.X + Position.X); 
+		
+			velocity.X = dir.X * Enemy.Speed;
+			
+			if (gettinghurt == false)
+			{
+				_animatedSprite.Play("run");	
+			}
+		}
 		
 		//pour orienter Rhust
 		_animatedSprite.FlipH = direction;
@@ -140,6 +154,7 @@ public partial class RhustBody : CharacterBody2D
 		player = body;
 		playerbaseposition = body.baseposition;
 		player_chase = true;
+		dir = Vector2.Zero;
 		//GetNode<GpuParticles2D>("Exclamation").Emitting = true;
 
 		//attack simulation
@@ -149,13 +164,31 @@ public partial class RhustBody : CharacterBody2D
 	
 	private void _on_detection_area_body_exited(astra body)
 	{
+		
+		player = body;
+		playerbaseposition = body.baseposition;
 		player_chase = false;
-		dir = Vector2.Zero;
-		player = null;
+		//dir = Vector2.Zero;
+		
 		GetNode<GpuParticles2D>("Interrogation").Emitting = true;
+		
+
+		temp = (playerbaseposition.X + player.Position.X) - (baseposition.X + Position.X); 
+		if (temp > 0)
+		{
+			dir = Vector2.Right;
+			direction = false;
+		}
+		else
+		{
+			dir = Vector2.Left;
+			direction = true;
+		}
+
+		
 		if (gettinghurt == false)
 		{
-			_animatedSprite.Play("idle");	
+			_animatedSprite.Play("run");	
 		}
 		
 	}
