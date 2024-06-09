@@ -48,6 +48,41 @@ public partial class main_menu : Control
 		//var optionssceneNode=optionscene.Instantiate();
 		//GetParent().AddChild(optionssceneNode);
 	}
+	
+	private void OnSoloPressed()
+	{
+        
+		if (backgroundMusic != null && backgroundMusic.Playing)
+		{
+			backgroundMusic.Stop();
+			GD.Print("Musique de fond arrêtée.");
+		}
+
+		Visible=false;
+		GetTree().Paused = false;
+		var mainchildren=GetParent().GetChildren();
+		foreach(var child in mainchildren){
+			if(child.Name=="Tuto"){
+				return;
+			}
+		}
+
+		GetTree().ChangeSceneToFile("res://scene/Levels/tuto.tscn");
+		//var gameScene=GD.Load<PackedScene>("res://scene/tuto.tscn");
+		//var gameSceneNode=gameScene.Instantiate();
+		//GetParent().AddChild(gameSceneNode);
+	}
+	
+	private void OnMultiPressed()
+	{
+
+		Visible=false;
+		GetTree().ChangeSceneToFile("res://scene/Server.tscn");
+		//var gameScene=GD.Load<PackedScene>("res://scene/Server.tscn");
+		//var gameScenebackNode=gameScene.Instantiate();
+		//GetParent().AddChild(gameScenebackNode);
+	}
+	
 	public void OnExitPressed()
 	{
 		GetTree().Quit();

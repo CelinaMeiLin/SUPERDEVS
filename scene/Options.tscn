@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dju1w020uwm3n"]
+[gd_scene load_steps=5 format=3 uid="uid://dju1w020uwm3n"]
 
 [ext_resource type="Script" path="res://script/main_menu.cs" id="1_rcoi1"]
+[ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="2_mc5b1"]
+[ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="3_kwtpt"]
+[ext_resource type="AudioStream" uid="uid://yno53hkqejo5" path="res://audio/music/DevsMain_Lobby.mp3" id="4_7rski"]
 
-[node name="Options" type="Control"]
+[node name="Options" type="Control" node_paths=PackedStringArray("variable", "backgroundMusic")]
 z_index = 4096
 z_as_relative = false
 layout_mode = 3
@@ -13,6 +16,24 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_rcoi1")
+variable = NodePath(".")
+backgroundMusic = NodePath("AudioStreamPlayer")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1049.0
+offset_top = -551.0
+offset_right = 2790.0
+offset_bottom = 1421.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("2_mc5b1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -29,34 +50,43 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sound" type="Label" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_kwtpt")
+theme_override_font_sizes/font_size = 30
 text = "Master Volume"
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_kwtpt")
+theme_override_font_sizes/font_size = 30
 text = "Sound fx"
 
 [node name="HSlider2" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
 ticks_on_borders = true
 
-[node name="Back" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -130.0
-offset_top = -31.0
-offset_right = 130.0
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7rski")
+autoplay = true
+bus = &"Music"
+
+[node name="Back2" type="Button" parent="."]
+texture_filter = 1
+offset_left = 821.0
+offset_top = 1015.0
+offset_right = 1100.0
+offset_bottom = 1062.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_kwtpt")
+theme_override_font_sizes/font_size = 30
 text = "Back"
 
-[connection signal="pressed" from="Back" to="." method="OnBackPressed"]
+[connection signal="pressed" from="Back2" to="." method="OnBackPressed"]
