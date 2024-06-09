@@ -16,6 +16,7 @@ public partial class RhustBody : CharacterBody2D
 	Vector2 dir; //direction actuelle de Rhust
 	private HealthBar healthbar;
 	float temp;
+	private GpuParticles2D Death_particles;
 	
 	
 	// Player Variables
@@ -54,7 +55,8 @@ public partial class RhustBody : CharacterBody2D
 		healthbar = GetNode<HealthBar>("HealthBar");
 		healthbar.health_init(Enemy.Vie);
 		baseposition = Character.Position;
-
+		Death_particles = GetNode<GpuParticles2D>("DeathParticles");
+		Death_particles.OneShot = true;
 		Enemy.queuefree = false;
 		Bullet_spawnerG = GetNode<CollisionShape2D>("bulletspawnerG");
 		Bullet_spawnerD = GetNode<CollisionShape2D>("bulletspawnerD");
@@ -103,9 +105,9 @@ public partial class RhustBody : CharacterBody2D
 
 				Vector2 Spawn;
 				int b_direction = 1;
-				bool isLeft = dir.X <= -1;
+				//bool isLeft = dir.X <= -1;
 				//bool isCrouch = _animatedSprite.Animation == "crouch-shoot";
-				if (isLeft)
+				if (direction)
 				{
 					Spawn = Bullet_spawnerG.GlobalPosition;
 					b_direction = -1;
@@ -219,7 +221,7 @@ public partial class RhustBody : CharacterBody2D
 	
 	private async void _die()
 	{
-		//Death_particles.Emitting = true;
+		Death_particles.Emitting = true;
 		_animatedSprite.Visible = false;
 		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
 		QueueFree();
