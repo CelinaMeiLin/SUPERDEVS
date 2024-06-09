@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://jbr1kh508slo"]
+[gd_scene load_steps=41 format=3 uid="uid://jbr1kh508slo"]
 
 [ext_resource type="Texture2D" uid="uid://ekbje23bel28" path="res://art/rhustenemy/crouch-shoot/crouch-shoot-export1.png" id="1_tv8nv"]
 [ext_resource type="Texture2D" uid="uid://byk8x2vxdfest" path="res://art/rhustenemy/idle.png" id="1_tx4h1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cjqhu5r36i35r" path="res://art/rhustenemy/crouch-shoot/crouch-shoot-export2.png" id="2_7uhy3"]
 [ext_resource type="Texture2D" uid="uid://bqr7xsbgcr4oi" path="res://art/rhustenemy/run/run-export1.png" id="2_hej1c"]
 [ext_resource type="PackedScene" uid="uid://bkywsjydmcd3r" path="res://scene/Enemies/rhustbullet.tscn" id="2_saqd8"]
+[ext_resource type="PackedScene" uid="uid://d3d8m5k4b0126" path="res://scene/Enemies/projectile.tscn" id="3_ihwdw"]
 [ext_resource type="Texture2D" uid="uid://bsbxrixacp2vj" path="res://art/rhustenemy/run/run-export2.png" id="3_kbfdn"]
 [ext_resource type="Texture2D" uid="uid://dniy5arjegmj3" path="res://art/rhustenemy/run/run-export3.png" id="4_a62ai"]
 [ext_resource type="Texture2D" uid="uid://bo554btdiph50" path="res://art/rhustenemy/jump.png" id="5_t653t"]
@@ -30,11 +31,11 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_cb710"]
 animations = [{
 "frames": [{
-"duration": 2.0,
-"texture": ExtResource("1_tv8nv")
-}, {
 "duration": 1.0,
 "texture": ExtResource("2_7uhy3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_tv8nv")
 }],
 "loop": true,
 "name": &"crouch-shoot",
@@ -204,12 +205,19 @@ script = ExtResource("1_yr2tu")
 Character = NodePath("..")
 Bullet_scn = ExtResource("2_saqd8")
 
+[node name="Projectile" parent="RhustBody" instance=ExtResource("3_ihwdw")]
+visible = false
+position = Vector2(112.5, 0.961539)
+scale = Vector2(0.4, 0.4)
+
 [node name="Rhust" type="AnimatedSprite2D" parent="RhustBody"]
 texture_filter = 1
 scale = Vector2(0.769231, 0.769231)
 sprite_frames = SubResource("SpriteFrames_cb710")
 animation = &"crouch-shoot"
 autoplay = "run"
+frame = 1
+frame_progress = 0.298504
 
 [node name="FlashCrouch" type="AnimatedSprite2D" parent="RhustBody"]
 texture_filter = 1
@@ -269,12 +277,12 @@ one_shot = true
 local_coords = true
 
 [node name="bulletspawnerD" type="CollisionShape2D" parent="RhustBody"]
-position = Vector2(23.0769, 3.84616)
+position = Vector2(23.0769, 0.961538)
 shape = SubResource("RectangleShape2D_s4fm0")
 disabled = true
 
 [node name="bulletspawnerG" type="CollisionShape2D" parent="RhustBody"]
-position = Vector2(-21.5385, 3.84615)
+position = Vector2(-20.6731, 1.92308)
 shape = SubResource("RectangleShape2D_6mx63")
 disabled = true
 

@@ -8,6 +8,7 @@ public partial class RhustBody : CharacterBody2D
 	// Get Node2D Parent
 	[Export] public Node2D Character;
 	public Vector2 baseposition;
+	public Node2D projectile;
 	
 	// Rhust Variables
 	public Entity Enemy = new Entity(600, 250, 2, 120, -350);
@@ -60,6 +61,7 @@ public partial class RhustBody : CharacterBody2D
 		Enemy.queuefree = false;
 		Bullet_spawnerG = GetNode<CollisionShape2D>("bulletspawnerG");
 		Bullet_spawnerD = GetNode<CollisionShape2D>("bulletspawnerD");
+		projectile = GetNode<Node2D>("Projectile");
 		
 	}
 	
@@ -161,8 +163,8 @@ public partial class RhustBody : CharacterBody2D
 		playerbaseposition = body.baseposition;
 		player_chase = true;
 		dir = Vector2.Zero;
-		//GetNode<GpuParticles2D>("Exclamation").Emitting = true;
-
+		GetNode<GpuParticles2D>("Exclamation").Emitting = true;
+		
 		//attack simulation
 		//hurt(body.Astra.Attaque);
 		//body.hurt(Enemy.Attaque);
