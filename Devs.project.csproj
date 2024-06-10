@@ -10,5 +10,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="script\Enemies\RhustBullet.cs" />
+    <Compile Remove="Autoloads\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Autoloads\**" />
   </ItemGroup>
 </Project>

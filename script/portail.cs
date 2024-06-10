@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using Devs.project.Autoloads;
+using Devs.project.Ressources;
 
 public partial class portail : Sprite2D
 {
@@ -18,6 +20,17 @@ public partial class portail : Sprite2D
 		{
 			//GetTree().CallDeferred("quit");
 			Input.MouseMode = Input.MouseModeEnum.Visible;
+
+			GD.Print(GameManager.CurrentLevel);
+			GD.Print((int)UserPreferences.Data["CurrentLevel"]);
+			if (GameManager.CurrentLevel >= (int)UserPreferences.Data["CurrentLevel"])
+			{
+				GD.Print("UPDATE");
+				
+				UserPreferences.Data["CurrentLevel"] = GameManager.CurrentLevel;
+				UserPreferences.Save();
+			}
+			
 			GetTree().ChangeSceneToFile("res://scene/map.tscn");
 		}
 	}

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://couyeowk5klut"]
+
+[ext_resource type="Script" path="res://Ressources/UserPreferences.cs" id="1_6l6d3"]
+[ext_resource type="Script" path="res://Ressources/Launcher.cs" id="1_ik7og"]
+
+[node name="Launcher" type="Node"]
+script = ExtResource("1_ik7og")
+
+[node name="DataBase" type="Node" parent="."]
+script = ExtResource("1_6l6d3")

@@ -1,3 +1,5 @@
+using Devs.project.Autoloads;
+using Devs.project.Ressources;
 using Godot;
 
 namespace Devs.project.script;
@@ -7,13 +9,12 @@ public partial class Scene_Manager : Control
     [Export] Control variable;
 	[Export] private AudioStreamPlayer backgroundMusic;
 	
-	
-	
 	public string PreviousScene = "res://scene/main_menu.tscn";	
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		
 		if (backgroundMusic != null)
 		{
 			backgroundMusic.Play();
@@ -56,7 +57,7 @@ public partial class Scene_Manager : Control
 		if (backgroundMusic != null && backgroundMusic.Playing)
 		{
 			backgroundMusic.Stop();
-			GD.Print("Musique de fond arrêtée.");
+			//GD.Print("Musique de fond arrêtée.");
 		}
 
 		Visible=false;
@@ -68,7 +69,7 @@ public partial class Scene_Manager : Control
 			}
 		}
 
-		GetTree().ChangeSceneToFile("res://scene/Levels/tuto.tscn");
+		GetTree().ChangeSceneToFile("res://scene/map.tscn");
 		//var gameScene=GD.Load<PackedScene>("res://scene/tuto.tscn");
 		//var gameSceneNode=gameScene.Instantiate();
 		//GetParent().AddChild(gameSceneNode);
@@ -92,21 +93,25 @@ public partial class Scene_Manager : Control
 	
 	public void OnTutoPressed()
 	{
+		GameManager.CurrentLevel = 0;
 		GetTree().ChangeSceneToFile("res://scene/Levels/tuto.tscn");
 	}
 
 	public void OnLevel1Pressed()
 	{
+		GameManager.CurrentLevel = 1;
 		GetTree().ChangeSceneToFile("res://scene/Levels/level_1.tscn");
 	}
 	
 	public void OnLevel2Pressed()
 	{
+		GameManager.CurrentLevel = 2;
 		GetTree().ChangeSceneToFile("res://scene/Levels/level_2.tscn");
 	}
 	
 	public void OnLevel3Pressed()
 	{
+		GameManager.CurrentLevel = 3;
 		GetTree().ChangeSceneToFile("res://scene/Levels/level_3.tscn");
 	}
 
