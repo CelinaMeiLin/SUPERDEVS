@@ -13,7 +13,7 @@ variable = NodePath(".")
 _tutorial = NodePath("VBoxContainer/Tuto")
 _level1 = NodePath("VBoxContainer/Level 1")
 _level2 = NodePath("VBoxContainer/Level 2")
-_level3 = NodePath("VBoxContainer/Exit")
+_level3 = NodePath("VBoxContainer/Level 3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

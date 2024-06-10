@@ -2,6 +2,8 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Devs.project.Autoloads;
+using Devs.project.Ressources;
 using Devs.project.script;
 using Vector2 = Godot.Vector2;
 
@@ -202,10 +204,16 @@ public partial class GusBody : CharacterBody2D
 	//--------------------------------- HP SYSTEM -----------------------------------------//
 	private async void _die()
 	{
+		var pos = Position;
 		Death_particles.Emitting = true;
 		_animatedSprite.Visible = false;
 		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
-		QueueFree();
+		
+		// COIN
+		
+		GameManager.SpawnCoin(this, pos);
+		
+		QueueFree(); //this.QueueFree() de l'ennemi
 	}
 	public async void hurt(float value)
 	{

@@ -503,7 +503,7 @@ height = 46.0
 [node name="EnnemyPow" type="Node2D"]
 
 [node name="PowBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character", "AnimationPlayer")]
-collision_layer = 5
+collision_layer = 4
 script = ExtResource("1_de8qo")
 Character = NodePath("..")
 AnimationPlayer = NodePath("AnimationPlayer")

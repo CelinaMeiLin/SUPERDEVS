@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://script/GusBody.cs" id="1_a84fu"]
 [ext_resource type="Texture2D" uid="uid://trcls6u4x5vm" path="res://art/enemy/Player-idle/player-idle1.png" id="2_65u8l"]
-[ext_resource type="PackedScene" uid="uid://68n260cyn1o7" path="res://scene/GusShot.tscn" id="2_cp2tc"]
+[ext_resource type="PackedScene" uid="uid://68n260cyn1o7" path="res://scene/Enemies/GusShot.tscn" id="2_cp2tc"]
 [ext_resource type="Texture2D" uid="uid://bofyjg7xrpycs" path="res://art/enemy/Player-Hurt/player-hurt1.png" id="2_ebqbf"]
 [ext_resource type="Texture2D" uid="uid://564hoil23ulx" path="res://art/enemy/Player-Hurt/player-hurt2.png" id="3_aw31r"]
 [ext_resource type="Texture2D" uid="uid://bbfce73liw0gd" path="res://art/enemy/Player-idle/player-idle2.png" id="3_ub2i5"]

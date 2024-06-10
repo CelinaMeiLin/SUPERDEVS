@@ -1,3 +1,4 @@
+using Devs.project.Ressources;
 using Godot;
 
 namespace Devs.project.script.Enemies;
@@ -223,9 +224,13 @@ public partial class RhustBody : CharacterBody2D
 	
 	private async void _die()
 	{
+		var pos = Position;
 		Death_particles.Emitting = true;
 		_animatedSprite.Visible = false;
 		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
+		
+		GameManager.SpawnCoin(this, pos);
+		
 		QueueFree();
 	}
 	public async void hurt(float value)

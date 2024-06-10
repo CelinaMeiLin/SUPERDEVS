@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Devs.project.Ressources;
 using Devs.project.script;
 using Vector2 = Godot.Vector2;
 
@@ -183,6 +184,8 @@ public partial class PowBody : CharacterBody2D
 		//Death_particles.Emitting = true;
 		//await ToSignal(GetTree().CreateTimer(3), "timeout");
 		//QueueFree();
+		
+		GameManager.SpawnCoin(this, Position);
 	}
 	
 	public async void hurt(float value)

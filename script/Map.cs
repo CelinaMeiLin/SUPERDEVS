@@ -18,7 +18,7 @@ public partial class Map : Control
     public override void _Ready()
     {
         GD.Print(GameManager.CurrentLevel);
-        GD.Print((int)UserPreferences.Data["CurrentLevel"]);
+        //GD.Print((int)UserPreferences.Data["CurrentLevel"]);
         
         //_tutorial = GetNode<Button>("VBoxContainer/Tuto");
         //_level1 = GetNode<Button>("VBoxContainer/Level1");

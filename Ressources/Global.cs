@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Devs.project.Autoloads;
+namespace Devs.project.Ressources;
 
 public partial class Global : Node
 {
@@ -18,8 +18,5 @@ public partial class Global : Node
       score += amount;
   }
   
-  public void Reset ()
-  {
-      score = 0;
-  }
+ 
 }   

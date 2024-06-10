@@ -15,6 +15,7 @@ public partial class Launcher : Node
         {
             //UserPreferences.Data.Add("Name", "Beginner");
             UserPreferences.Data.Add("CurrentLevel", 0);
+            UserPreferences.Data.Add("Coin", 0);
 
             UserPreferences.Data.Add("Master", 50);
             UserPreferences.Data.Add("Music", 50);
@@ -24,6 +25,8 @@ public partial class Launcher : Node
         UserPreferences.Load();
 
 
-        GetTree().ChangeSceneToFile("res://scene/main_menu.tscn");
+        var optionscene=GD.Load<PackedScene>("res://scene/main_menu.tscn");
+        var optionssceneNode = optionscene.Instantiate(); 
+        AddChild(optionssceneNode);
     }
 }

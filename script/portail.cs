@@ -23,6 +23,7 @@ public partial class portail : Sprite2D
 
 			GD.Print(GameManager.CurrentLevel);
 			GD.Print((int)UserPreferences.Data["CurrentLevel"]);
+			UserPreferences.Save();
 			if (GameManager.CurrentLevel >= (int)UserPreferences.Data["CurrentLevel"])
 			{
 				GD.Print("UPDATE");

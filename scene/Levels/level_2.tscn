@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bug4f57tpssxa"]
+[gd_scene load_steps=13 format=3 uid="uid://bug4f57tpssxa"]
 
 [ext_resource type="Texture2D" uid="uid://unry366cmpt0" path="res://art/background/Level2/back.png" id="1_1ppkt"]
 [ext_resource type="Texture2D" uid="uid://bnsjd6vngxm4x" path="res://art/background/Level2/middle.png" id="2_0u083"]
 [ext_resource type="Texture2D" uid="uid://dbpnppin5ubto" path="res://art/background/Level2/sewers-2 copie.png" id="3_fcqry"]
+[ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="6_18r0d"]
 [ext_resource type="PackedScene" uid="uid://q1snnkpbyqru" path="res://scene/sol.tscn" id="6_mqpsp"]
 [ext_resource type="PackedScene" uid="uid://c8iv3ojysfds" path="res://scene/astra.tscn" id="7_16blt"]
 [ext_resource type="Script" path="res://script/CameraPlayer.cs" id="8_muj8b"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://jbr1kh508slo" path="res://scene/Enemies/enemy_rhust.tscn" id="10_bn081"]
 [ext_resource type="PackedScene" uid="uid://blj5nfok2go75" path="res://scene/health_bar.tscn" id="11_h5480"]
 [ext_resource type="PackedScene" uid="uid://botvouyo77woe" path="res://scene/skill_bar.tscn" id="12_jatgv"]
+[ext_resource type="PackedScene" uid="uid://bni3f51is1dg1" path="res://scene/portail.tscn" id="12_kywtg"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -72,6 +74,8 @@ texture = ExtResource("9_o8ln5")
 
 [node name="sol" parent="." instance=ExtResource("6_mqpsp")]
 
+[node name="UIManager" parent="." instance=ExtResource("6_18r0d")]
+
 [node name="PlayerSpawnPoints" type="Node2D" parent="."]
 
 [node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("7_16blt")]
@@ -107,5 +111,8 @@ grow_vertical = 0
 
 [node name="EnemyRhust" parent="." instance=ExtResource("10_bn081")]
 position = Vector2(404, 554)
+
+[node name="Portail" parent="." instance=ExtResource("12_kywtg")]
+position = Vector2(3574, 543)
 
 [editable path="PlayerSpawnPoints/Astra"]
