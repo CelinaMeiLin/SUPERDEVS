@@ -23,6 +23,16 @@ public partial class Map : Node
 		GetTree().ChangeSceneToFile("res://scene/Levels/level_1.tscn");
 	}
 	
+	public void OnLevel2Pressed()
+	{
+		GetTree().ChangeSceneToFile("res://scene/Levels/level_2.tscn");
+	}
+	
+	public void OnLevel3Pressed()
+	{
+		GetTree().ChangeSceneToFile("res://scene/Levels/level_3.tscn");
+	}
+	
 	public void OnOptionsPressed()
 	{
 		GetTree().ChangeSceneToFile("res://scene/options.tscn");
