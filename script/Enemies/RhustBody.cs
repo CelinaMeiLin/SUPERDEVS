@@ -5,7 +5,7 @@ namespace Devs.project.script.Enemies;
 
 public partial class RhustBody : CharacterBody2D
 {
-    //------------------------------- V a r i a b l e s ------------------------------------------//
+	//------------------------------- V a r i a b l e s ------------------------------------------//
 	// Get Node2D Parent
 	[Export] public Node2D Character;
 	public Vector2 baseposition;
@@ -29,6 +29,7 @@ public partial class RhustBody : CharacterBody2D
 	[Export] PackedScene Bullet_scn;
 	private CollisionShape2D Bullet_spawnerG;
 	private CollisionShape2D Bullet_spawnerD;
+	private MeshInstance2D AimingMesh;
 	private float bullet_speed = 800f;
 	private float bullet_per_second { get; }= 0.5f;
 	private float fire_rate = 1f / 0.5f; //bullet_per_second
@@ -63,7 +64,9 @@ public partial class RhustBody : CharacterBody2D
 		Bullet_spawnerG = GetNode<CollisionShape2D>("bulletspawnerG");
 		Bullet_spawnerD = GetNode<CollisionShape2D>("bulletspawnerD");
 		projectile = GetNode<Node2D>("Projectile");
-		
+		AimingMesh = GetNode<MeshInstance2D>("AimingMesh");
+
+
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -78,16 +81,23 @@ public partial class RhustBody : CharacterBody2D
 		
 		if (player_chase)
 		{ 
+			AimingMesh.Visible = true;
 			temp = (playerbaseposition.X + player.Position.X) - (baseposition.X + Position.X); 
 			if (temp > 0)
 			{
 				//dir = Vector2.Right;
 				direction = false;
+				//Viser à Droite
+				AimingMesh.Position = new Vector2(120, 1);
+				AimingMesh.Rotation = 0;
 			}
 			else
 			{
 				//dir = Vector2.Left;
 				direction = true;
+				//Viser à Gauche
+				AimingMesh.Position = new Vector2(-120, 1);
+				AimingMesh.RotationDegrees = 180;
 			}
 			velocity.X = dir.X * Enemy.Speed;
 			
@@ -147,6 +157,7 @@ public partial class RhustBody : CharacterBody2D
 			{
 				_animatedSprite.Play("run");	
 			}
+			AimingMesh.Visible = false;
 		}
 		
 		//pour orienter Rhust
@@ -252,5 +263,5 @@ public partial class RhustBody : CharacterBody2D
 	}
 	
 	//---------------------------------------------------------------//
-    
+	
 }

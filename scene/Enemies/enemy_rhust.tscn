@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://jbr1kh508slo"]
+[gd_scene load_steps=44 format=3 uid="uid://jbr1kh508slo"]
 
 [ext_resource type="Texture2D" uid="uid://ekbje23bel28" path="res://art/rhustenemy/crouch-shoot/crouch-shoot-export1.png" id="1_tv8nv"]
 [ext_resource type="Texture2D" uid="uid://byk8x2vxdfest" path="res://art/rhustenemy/idle.png" id="1_tx4h1"]
@@ -27,6 +27,16 @@
 [ext_resource type="Texture2D" uid="uid://l6t88g5oovd" path="res://art/Animations/PointsExclamation.png" id="23_nn675"]
 [ext_resource type="Texture2D" uid="uid://ihslg3nf410s" path="res://art/Animations/PointInterrogation.png" id="24_3lo44"]
 [ext_resource type="AudioStream" uid="uid://b2g0dymemfoob" path="res://audio/sfx/gus_shoot.mp3" id="25_rv65q"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_44opd"]
+size = Vector2(220, 1)
+
+[sub_resource type="Gradient" id="Gradient_84eik"]
+offsets = PackedFloat32Array(0, 0.87013, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0.215533, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_md35m"]
+gradient = SubResource("Gradient_84eik")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cb710"]
 animations = [{
@@ -205,6 +215,11 @@ script = ExtResource("1_yr2tu")
 Character = NodePath("..")
 Bullet_scn = ExtResource("2_saqd8")
 
+[node name="AimingMesh" type="MeshInstance2D" parent="RhustBody"]
+position = Vector2(120, 1)
+mesh = SubResource("QuadMesh_44opd")
+texture = SubResource("GradientTexture2D_md35m")
+
 [node name="Projectile" parent="RhustBody" instance=ExtResource("3_ihwdw")]
 visible = false
 position = Vector2(112.5, 0.961539)
@@ -224,7 +239,6 @@ texture_filter = 1
 position = Vector2(24.1026, -5.96046e-08)
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_rrkod")
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RhustBody"]
 position = Vector2(-0.769231, 3.84615)
