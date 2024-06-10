@@ -1,10 +1,16 @@
 using Godot;
-using System;
 
-public partial class main_menu : Control
+namespace Devs.project.script;
+
+public partial class Scene_Manager : Control
 {
-	[Export] Control variable;
+    [Export] Control variable;
 	[Export] private AudioStreamPlayer backgroundMusic;
+	
+	
+	
+	public string PreviousScene = "res://scene/main_menu.tscn";	
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -12,6 +18,8 @@ public partial class main_menu : Control
 		{
 			backgroundMusic.Play();
 		}
+		
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +33,7 @@ public partial class main_menu : Control
 	
 	public void OnplayPressed()
 	{
-		variable.Visible=false;
+//		variable.Visible=false;
 		GetTree().Paused=false;
 		GetNode<Button>("VBoxContainer/Play").Text="Resume";
 		var mainchildren=GetParent().GetChildren();
@@ -35,6 +43,7 @@ public partial class main_menu : Control
 			}
 		}
 		GetTree().ChangeSceneToFile("res://scene/modes.tscn");
+		PreviousScene = "res://scene/modes.tscn";
 		//var gameScene=GD.Load<PackedScene>("res://scene/modes.tscn");
 		//var gameSceneNode=gameScene.Instantiate();
 		//GetParent().AddChild(gameSceneNode);
@@ -42,7 +51,7 @@ public partial class main_menu : Control
 	
 	public void OnOptionsPressed()
 	{
-		Visible= false;
+		Visible = false;
 		GetTree().ChangeSceneToFile("res://scene/Options.tscn");
 		//var optionscene=GD.Load<PackedScene>("res://scene/Options.tscn");
 		//var optionssceneNode=optionscene.Instantiate();
@@ -83,17 +92,50 @@ public partial class main_menu : Control
 		//GetParent().AddChild(gameScenebackNode);
 	}
 	
-	public void OnExitPressed()
+	
+	public void OnInventoryPressed()
 	{
-		GetTree().Quit();
+		GetTree().ChangeSceneToFile("res://scene/inventory.tscn");
 	}
+	
+	public void OnTutoPressed()
+	{
+		GetTree().ChangeSceneToFile("res://scene/Levels/tuto.tscn");
+	}
+
+	public void OnLevel1Pressed()
+	{
+		GetTree().ChangeSceneToFile("res://scene/Levels/level_1.tscn");
+	}
+	
+	public void OnLevel2Pressed()
+	{
+		GetTree().ChangeSceneToFile("res://scene/Levels/level_2.tscn");
+	}
+	
+	public void OnLevel3Pressed()
+	{
+		GetTree().ChangeSceneToFile("res://scene/Levels/level_3.tscn");
+	}
+
 	private void OnBackPressed()
 	{
 		Visible=false;
-		GetTree().ChangeSceneToFile("res://scene/main_menu.tscn");
+		GetTree().ChangeSceneToFile(PreviousScene);
 		//var gameScene=GD.Load<PackedScene>("res://scene/main_menu.tscn");
 		//var gameScenebackNode=gameScene.Instantiate();
 		//GetParent().AddChild(gameScenebackNode);
 		
+	}
+	
+	private void OnBackOptionsPressed()
+	{
+		Visible=false;
+		GetTree().ChangeSceneToFile("res://scene/main_menu.tscn");
+	}
+	
+	public void OnExitPressed()
+	{
+		GetTree().Quit();
 	}
 }

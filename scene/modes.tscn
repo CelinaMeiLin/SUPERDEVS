@@ -1,6 +1,6 @@
 [gd_scene load_steps=72 format=3 uid="uid://dpj52dxct34yq"]
 
-[ext_resource type="Script" path="res://script/main_menu.cs" id="1_tanmc"]
+[ext_resource type="Script" path="res://script/Scene_Manager.cs" id="1_vet8u"]
 [ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="2_fv4qa"]
 [ext_resource type="Texture2D" uid="uid://d372k0kffqi82" path="res://art/characters/crouch/crouch.png" id="3_aelwq"]
 [ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="3_f8hba"]
@@ -395,7 +395,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_tanmc")
+script = ExtResource("1_vet8u")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

@@ -1,6 +1,6 @@
 [gd_scene load_steps=45 format=3 uid="uid://bjv744p4xwgi8"]
 
-[ext_resource type="Script" path="res://script/main_menu.cs" id="1_2u6h8"]
+[ext_resource type="Script" path="res://script/Scene_Manager.cs" id="1_27kvk"]
 [ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="2_oit33"]
 [ext_resource type="AudioStream" uid="uid://yno53hkqejo5" path="res://audio/music/DevsMain_Lobby.mp3" id="2_vuvl1"]
 [ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="3_ecll8"]
@@ -242,7 +242,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2u6h8")
+script = ExtResource("1_27kvk")
 variable = NodePath(".")
 
 [node name="TextureRect" type="TextureRect" parent="."]

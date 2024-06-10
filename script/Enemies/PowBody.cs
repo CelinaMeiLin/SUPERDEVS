@@ -176,7 +176,7 @@ public partial class PowBody : CharacterBody2D
 	
 	//--------------------------------- HP SYSTEM -----------------------------------------//
 
-	private async void _die()
+	private void _die()
 	{
 		_animatedSprite.Play("death");
 		//_animatedSprite.Modulate = basecolor;

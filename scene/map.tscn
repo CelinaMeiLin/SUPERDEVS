@@ -1,13 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0qnp2ed5qemt"]
 
-[ext_resource type="Script" path="res://script/Map.cs" id="1_hqaf8"]
+[ext_resource type="Script" path="res://script/Scene_Manager.cs" id="1_sn1ql"]
 [ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="2_1dm1f"]
 [ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="3_qk7w5"]
 
-[node name="map" type="Control"]
+[node name="map" type="Control" node_paths=PackedStringArray("variable")]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_hqaf8")
+script = ExtResource("1_sn1ql")
+variable = NodePath(".")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -86,6 +87,6 @@ text = "Exit"
 [connection signal="pressed" from="VBoxContainer/Tuto" to="." method="OnTutoPressed"]
 [connection signal="pressed" from="VBoxContainer/Level 1" to="." method="OnLevel1Pressed"]
 [connection signal="pressed" from="VBoxContainer/Level 2" to="." method="OnLevel2Pressed"]
-[connection signal="pressed" from="VBoxContainer/Level 3" to="." method="OnLevel2Pressed"]
+[connection signal="pressed" from="VBoxContainer/Level 3" to="." method="OnLevel3Pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="OnOptionsPressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="OnExitPressed"]

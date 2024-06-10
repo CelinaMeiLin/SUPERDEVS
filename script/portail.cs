@@ -4,11 +4,11 @@ using System;
 public partial class portail : Sprite2D
 {
 	
-	private CollisionShape2D collision_shape;
+	private CollisionShape2D _collisionShape;
 
 	public override void _Ready()
 	{
-		collision_shape = GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
+		_collisionShape = GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
 	   
 	}
 
