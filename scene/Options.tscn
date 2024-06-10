@@ -1,12 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dju1w020uwm3n"]
+[gd_scene load_steps=4 format=3 uid="uid://dju1w020uwm3n"]
 
-[ext_resource type="Script" path="res://script/Scene_Manager.cs" id="1_j4s62"]
 [ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="2_mc5b1"]
-[ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="3_kwtpt"]
+[ext_resource type="PackedScene" uid="uid://bgcjndlopf6p6" path="res://scene/backoptions.tscn" id="3_oe5nk"]
 [ext_resource type="PackedScene" uid="uid://uvdm7fxm6eay" path="res://scene/VolumeSetting.tscn" id="3_x3dtn"]
-[ext_resource type="AudioStream" uid="uid://yno53hkqejo5" path="res://audio/music/DevsMain_Lobby.mp3" id="4_7rski"]
 
-[node name="Options" type="Control" node_paths=PackedStringArray("variable")]
+[node name="Options" type="Control"]
 z_index = 4096
 z_as_relative = false
 layout_mode = 3
@@ -16,8 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-script = ExtResource("1_j4s62")
-variable = NodePath(".")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -35,19 +31,6 @@ grow_vertical = 2
 scale = Vector2(0.56, 0.56)
 texture = ExtResource("2_mc5b1")
 
-[node name="Back" type="Button" parent="."]
-texture_filter = 1
-layout_mode = 0
-offset_left = 821.0
-offset_top = 1015.0
-offset_right = 1100.0
-offset_bottom = 1062.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_kwtpt")
-theme_override_font_sizes/font_size = 30
-text = "Back"
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -55,10 +38,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -243.5
-offset_top = -45.0
-offset_right = 243.5
-offset_bottom = 45.0
+offset_left = -244.5
+offset_top = -128.5
+offset_right = 244.5
+offset_bottom = 128.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -76,9 +59,11 @@ layout_mode = 2
 BusName = "Sound Effects Volume"
 BusIndex = 2
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_7rski")
-autoplay = true
-bus = &"Music"
-
-[connection signal="pressed" from="Back" to="." method="OnBackOptionsPressed"]
+[node name="Back" parent="." instance=ExtResource("3_oe5nk")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 279.0
+offset_bottom = 47.0
+grow_horizontal = 1
+grow_vertical = 1

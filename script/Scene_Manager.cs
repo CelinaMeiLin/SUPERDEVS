@@ -49,14 +49,6 @@ public partial class Scene_Manager : Control
 		//GetParent().AddChild(gameSceneNode);
 	}
 	
-	public void OnOptionsPressed()
-	{
-		Visible = false;
-		GetTree().ChangeSceneToFile("res://scene/Options.tscn");
-		//var optionscene=GD.Load<PackedScene>("res://scene/Options.tscn");
-		//var optionssceneNode=optionscene.Instantiate();
-		//GetParent().AddChild(optionssceneNode);
-	}
 	
 	private void OnSoloPressed()
 	{
@@ -121,18 +113,13 @@ public partial class Scene_Manager : Control
 	private void OnBackPressed()
 	{
 		Visible=false;
-		GetTree().ChangeSceneToFile(PreviousScene);
+		GetTree().ChangeSceneToFile("res://scene/main_menu.tscn");
 		//var gameScene=GD.Load<PackedScene>("res://scene/main_menu.tscn");
 		//var gameScenebackNode=gameScene.Instantiate();
 		//GetParent().AddChild(gameScenebackNode);
-		
+
 	}
 	
-	private void OnBackOptionsPressed()
-	{
-		Visible=false;
-		GetTree().ChangeSceneToFile("res://scene/main_menu.tscn");
-	}
 	
 	public void OnExitPressed()
 	{

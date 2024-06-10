@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgcjndlopf6p6"]
+
+[ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="1_mmpyo"]
+[ext_resource type="Script" path="res://script/OptionBack.cs" id="2_5yqyf"]
+
+[node name="Back" type="Button"]
+texture_filter = 1
+offset_left = 821.0
+offset_top = 1015.0
+offset_right = 1100.0
+offset_bottom = 1062.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_mmpyo")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+script = ExtResource("2_5yqyf")
+
+[connection signal="pressed" from="." to="." method="OnBackOptionsPressed"]
