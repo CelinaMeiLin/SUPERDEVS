@@ -24,6 +24,8 @@ public partial class Launcher : Node
         }
         UserPreferences.Load();
 
+        var cursor = ResourceLoader.Load("res://art/Cursor/Cursor.png");
+        Input.SetCustomMouseCursor(cursor, 0, new Vector2(128, 128));
 
         var optionscene=GD.Load<PackedScene>("res://scene/main_menu.tscn");
         var optionssceneNode = optionscene.Instantiate(); 
