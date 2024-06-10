@@ -21,5 +21,13 @@ public partial class GameManager: Node
             spawncoinNode.Position = pos;
             node.AddSibling(spawncoinNode);
         }
+        else
+        {
+            var spawncoin = GD.Load<PackedScene>("res://scene/coin.tscn");
+            var spawncoinNode = spawncoin.Instantiate<Sprite2D>();
+            spawncoinNode.Position = pos;
+            node.AddSibling(spawncoinNode);
+            spawncoinNode.GetNode<AnimationPlayer>("AnimationPlayer").Play("Spawn");
+        }
     }
 }

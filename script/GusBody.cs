@@ -207,11 +207,8 @@ public partial class GusBody : CharacterBody2D
 		var pos = Position;
 		Death_particles.Emitting = true;
 		_animatedSprite.Visible = false;
-		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
-		
-		// COIN
-		
 		GameManager.SpawnCoin(this, pos);
+		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
 		
 		QueueFree(); //this.QueueFree() de l'ennemi
 	}

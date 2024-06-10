@@ -179,13 +179,12 @@ public partial class PowBody : CharacterBody2D
 
 	private void _die()
 	{
+		GameManager.SpawnCoin(this, Position);
 		_animatedSprite.Play("death");
 		//_animatedSprite.Modulate = basecolor;
 		//Death_particles.Emitting = true;
 		//await ToSignal(GetTree().CreateTimer(3), "timeout");
 		//QueueFree();
-		
-		GameManager.SpawnCoin(this, Position);
 	}
 	
 	public async void hurt(float value)
