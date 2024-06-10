@@ -375,7 +375,7 @@ public partial class astra : CharacterBody2D
 		Death_particles.Emitting = true;
 		_animatedSprite.Visible = false;
 		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
-		QueueFree();
+		//QueueFree();
 	}
 	//---------------------------------------------------------------//
 	
