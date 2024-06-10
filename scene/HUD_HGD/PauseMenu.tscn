@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bs0ow3mxifq3a"]
+[gd_scene load_steps=3 format=3 uid="uid://bs0ow3mxifq3a"]
 
 [ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="1_104m8"]
+[ext_resource type="Texture2D" uid="uid://j8k0hgmao6ak" path="res://art/HUD/RsumeButton.png" id="2_b5dmc"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -30,3 +31,14 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_104m8")
 theme_override_font_sizes/font_size = 50
 text = "Game paused"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 902.0
+offset_top = 613.0
+offset_right = 2094.0
+offset_bottom = 1805.0
+scale = Vector2(0.1, 0.1)
+icon = ExtResource("2_b5dmc")
+flat = true
+icon_alignment = 1
