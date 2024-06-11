@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=67 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
@@ -328,7 +328,18 @@ scale_max = 5.0
 scale_curve = SubResource("CurveTexture_jvcc4")
 alpha_curve = SubResource("CurveTexture_63baj")
 
-[node name="Astra" type="Node2D"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_scayt"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Astra:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Astra:animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="Astra" type="Node2D" groups=["Player"]]
 
 [node name="AstraBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character", "Sprite")]
 collision_layer = 3
@@ -422,3 +433,19 @@ bus = &"SFX"
 
 [node name="Audio_Dash" type="AudioStreamPlayer2D" parent="AstraBody"]
 stream = ExtResource("44_rioic")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="AstraBody"]
+replication_interval = 0.05
+delta_interval = 0.05
+replication_config = SubResource("SceneReplicationConfig_scayt")
+
+[node name="PlayerName" type="Label" parent="AstraBody"]
+visible = false
+offset_left = -18.0
+offset_top = -63.0
+offset_right = 22.0
+offset_bottom = -40.0
+text = "test
+"
+horizontal_alignment = 1
+vertical_alignment = 1

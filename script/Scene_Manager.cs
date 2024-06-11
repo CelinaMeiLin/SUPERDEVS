@@ -77,12 +77,7 @@ public partial class Scene_Manager : Control
 	
 	private void OnMultiPressed()
 	{
-
-		Visible=false;
-		GetTree().ChangeSceneToFile("res://scene/Server.tscn");
-		//var gameScene=GD.Load<PackedScene>("res://scene/Server.tscn");
-		//var gameScenebackNode=gameScene.Instantiate();
-		//GetParent().AddChild(gameScenebackNode);
+		GetTree().ChangeSceneToFile("res://scene/options_multi.tscn");
 	}
 	
 	

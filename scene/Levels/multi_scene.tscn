@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://chdyajsgwnqbt"]
+[gd_scene load_steps=12 format=3 uid="uid://vj7j071fw43s"]
 
+[ext_resource type="Script" path="res://script/multi_scene.cs" id="1_12cu4"]
 [ext_resource type="Texture2D" uid="uid://t4o8wxghw8il" path="res://art/background/parallax-industrial-pack/Sprites/bg.png" id="1_ky326"]
 [ext_resource type="Texture2D" uid="uid://bj8tlydmjh1er" path="res://art/background/parallax-industrial-pack/Sprites/far-buildings.png" id="2_0j8oe"]
 [ext_resource type="Texture2D" uid="uid://l0w6eaum51yl" path="res://art/background/parallax-industrial-pack/Sprites/buildings.png" id="3_rqbud"]
@@ -7,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dthb5wi13j2pp" path="res://scene/batiments.tscn" id="5_ushv7"]
 [ext_resource type="PackedScene" uid="uid://c8iv3ojysfds" path="res://scene/astra.tscn" id="6_q7lol"]
 [ext_resource type="Texture2D" uid="uid://cwwddqg6jnmwr" path="res://art/tilesets/tileset.png" id="6_sgbqo"]
-[ext_resource type="PackedScene" uid="uid://c5nnts6jcvh3u" path="res://scene/ekko.tscn" id="8_w04k1"]
+[ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="9_2l7lp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s2tx2"]
 texture = ExtResource("6_sgbqo")
@@ -370,8 +371,11 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_s2tx2")
 
 [node name="MultiScene" type="Node2D"]
+script = ExtResource("1_12cu4")
+playerScene = ExtResource("6_q7lol")
 
 [node name="Background" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2(-1752.85, -728.454)
 
 [node name="sky" type="ParallaxLayer" parent="Background"]
 motion_scale = Vector2(0.1, 0.1)
@@ -430,25 +434,14 @@ format = 2
 layer_0/tile_data = PackedInt32Array(1114120, 458752, 11, 1114121, 458752, 11, 1114122, 458752, 11, 1114123, 458752, 11, 1114124, 458752, 11, 1114125, 458752, 11, 1114126, 458752, 11, 1114127, 458752, 11, 1114128, 589824, 11, 786440, 458752, 11, 786441, 458752, 11, 786443, 458752, 11, 786444, 458752, 11, 786445, 458752, 11, 786446, 458752, 11, 786447, 458752, 11, 1114134, 393216, 11, 1114135, 458752, 11, 1114136, 458752, 11, 1114137, 458752, 11, 1114138, 458752, 11, 1114139, 458752, 11, 1114140, 458752, 11, 1114141, 458752, 11, 1114142, 458752, 11, 786454, 393216, 11, 786455, 458752, 11, 786456, 458752, 11, 786457, 458752, 11, 786458, 458752, 11, 786459, 458752, 11, 786460, 458752, 11, 786461, 458752, 11, 786462, 458752, 11, 786442, 458752, 11, 786439, 458752, 11, 786438, 458752, 11, 786437, 458752, 11, 786436, 458752, 11, 1114119, 458752, 11, 1114118, 458752, 11, 1114117, 458752, 11, 1114116, 458752, 11, 786463, 458752, 11, 786464, 458752, 11, 786465, 458752, 11, 786466, 458752, 11, 1114143, 458752, 11, 1114144, 458752, 11, 1114145, 458752, 11, 1114146, 458752, 11, 786448, 589824, 11)
 
 [node name="PlayerSpawnPoints" type="Node2D" parent="."]
-position = Vector2(1000, 0)
 
-[node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("6_q7lol")]
-position = Vector2(-500, 541)
+[node name="0" type="Node2D" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"]]
+position = Vector2(400, 550)
 
-[node name="CamTUTO" parent="PlayerSpawnPoints/Astra/AstraBody" index="0"]
-limit_left = -50
-limit_top = 50
-limit_right = 1030
-
-[node name="Ekko" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("8_w04k1")]
-position = Vector2(-570, 541)
-
-[node name="Ekko" parent="PlayerSpawnPoints/Ekko/EkkoBody" index="1"]
-frame = 5
-frame_progress = 0.543984
+[node name="1" type="Node2D" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"]]
+position = Vector2(600, 550)
 
 [node name="RBorderLimit" type="Node2D" parent="."]
 position = Vector2(1200, 600)
 
-[editable path="PlayerSpawnPoints/Astra"]
-[editable path="PlayerSpawnPoints/Ekko"]
+[node name="UIManager" parent="." instance=ExtResource("9_2l7lp")]
