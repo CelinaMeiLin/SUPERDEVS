@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsengf11vtlvi"]
+[gd_scene load_steps=6 format=3 uid="uid://dsengf11vtlvi"]
 
 [ext_resource type="Script" path="res://script/ResumeButton.cs" id="1_b5s1m"]
 [ext_resource type="Shader" path="res://art/materials/blur.gdshader" id="1_i7y8f"]
 [ext_resource type="PackedScene" uid="uid://bs0ow3mxifq3a" path="res://scene/HUD_HGD/PauseMenu.tscn" id="2_7on3k"]
+[ext_resource type="PackedScene" uid="uid://uvdm7fxm6eay" path="res://scene/VolumeSetting.tscn" id="4_dvaq8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xu6y4"]
 shader = ExtResource("1_i7y8f")
@@ -26,11 +27,41 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" parent="." instance=ExtResource("2_7on3k")]
-offset_left = 2040.0
-offset_top = 1720.0
-offset_right = 9348.0
-offset_bottom = 3776.0
+offset_left = 2100.0
+offset_top = 2384.0
+offset_right = 9408.0
+offset_bottom = 4440.0
 script = ExtResource("1_b5s1m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+process_mode = 3
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1772.0
+offset_top = 428.0
+offset_right = 2261.0
+offset_bottom = 685.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+
+[node name="Master Volume" parent="VBoxContainer" instance=ExtResource("4_dvaq8")]
+layout_mode = 2
+BusName = "Master Volume"
+
+[node name="Music Volume" parent="VBoxContainer" instance=ExtResource("4_dvaq8")]
+layout_mode = 2
+BusName = "Music Volume"
+BusIndex = 1
+
+[node name="Sound Effects Volume" parent="VBoxContainer" instance=ExtResource("4_dvaq8")]
+layout_mode = 2
+BusName = "Sound Effects Volume"
+BusIndex = 2
 
 [connection signal="pressed" from="Button" to="." method="OnResumePressed"]
 [connection signal="pressed" from="Button" to="Button" method="OnResumePressed"]
