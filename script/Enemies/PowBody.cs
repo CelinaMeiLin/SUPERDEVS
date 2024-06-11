@@ -111,7 +111,7 @@ public partial class PowBody : CharacterBody2D
 		else
 		{
 			velocity.X = 0;
-			if (gettinghurt == false)
+			if (gettinghurt == false && Enemy.Vie > 0)
 			{
 				_animatedSprite.Play("idle");	
 			}
@@ -154,7 +154,7 @@ public partial class PowBody : CharacterBody2D
 	{
 		if (body is astra)
 		{
-			player = body as astra;
+			player = (astra)body;
 			playerbaseposition = ((astra)body).baseposition;
 			player_chase = true;
 			GetNode<GpuParticles2D>("Exclamation").Emitting = true;
@@ -177,14 +177,14 @@ public partial class PowBody : CharacterBody2D
 	
 	//--------------------------------- HP SYSTEM -----------------------------------------//
 
-	private void _die()
+	private async void _die()
 	{
 		GameManager.SpawnCoin(this, Position);
 		_animatedSprite.Play("death");
 		//_animatedSprite.Modulate = basecolor;
 		//Death_particles.Emitting = true;
-		//await ToSignal(GetTree().CreateTimer(3), "timeout");
-		//QueueFree();
+		await ToSignal(GetTree().CreateTimer(3), "timeout");
+		QueueFree();
 	}
 	
 	public async void hurt(float value)
