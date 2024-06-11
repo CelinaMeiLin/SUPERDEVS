@@ -15,7 +15,9 @@ public partial class Launcher : Node
 		{
 			//UserPreferences.Data.Add("Name", "Beginner");
 			UserPreferences.Data.Add("CurrentLevel", 0);
+			UserPreferences.Data.Add("IsLevel", 0);
 			UserPreferences.Data.Add("Coin", 0);
+			
 
 			UserPreferences.Data.Add("Master", 50);
 			UserPreferences.Data.Add("Music", 50);

@@ -106,7 +106,7 @@ position = Vector2(0, -4)
 script = ExtResource("1_ejt1p")
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Area2D"]
 scale = Vector2(0.25, 0.25)

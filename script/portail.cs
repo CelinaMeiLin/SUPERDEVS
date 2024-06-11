@@ -33,11 +33,13 @@ public partial class portail : Sprite2D
 			}
 			if (GameManager.CurrentLevel == 1) //Pour ne pas save les pièces du tuto
 			{
-				tuto Parent = (tuto)GetParent();
-				GD.Print( Parent.NbCoinsBeforeTutorial);
-				UserPreferences.Data["Coin"] = Parent.NbCoinsBeforeTutorial;
+				Devs.project.Ressources.PauseManager parent = (Devs.project.Ressources.PauseManager)GetParent();
+				GD.Print( parent.NbCoinsBeforeTutorial);
+				UserPreferences.Data["Coin"] = parent.NbCoinsBeforeTutorial;
 				UserPreferences.Save();
 			}
+			UserPreferences.Data["IsLevel"] = 0;
+			UserPreferences.Save();
 			GetTree().ChangeSceneToFile("res://scene/map.tscn");
 		}
 	}

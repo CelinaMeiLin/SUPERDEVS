@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using Devs.project.Autoloads;
-using Global = Devs.project.Ressources.Global;
 
 public partial class coin : Sprite2D
 {

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Devs.project.Autoloads;
 using Devs.project.script;
 public partial class astra : CharacterBody2D
 {
@@ -279,6 +280,7 @@ public partial class astra : CharacterBody2D
 	
 	public override void _Input(InputEvent @event)
 	{
+		
 		if (@event.IsActionPressed("Right"))
 		{
 			if (CanDash && last_input == "Right" && doubletap_time >= 0)
@@ -306,6 +308,8 @@ public partial class astra : CharacterBody2D
 			doubletap_time = DOUBLETAP_DELAY;
 		}
 	}
+	
+	
 	//--------------------------------------------------------------------------------------//
 
 	

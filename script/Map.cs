@@ -59,24 +59,32 @@ public partial class Map : Control
 	
     public void OnTutoPressed()
     {
+        UserPreferences.Data["CurrentLevel"] = 1;
+        UserPreferences.Save();
         GameManager.CurrentLevel = 1;
         GetTree().ChangeSceneToFile("res://scene/Levels/tuto.tscn");
     }
 
     public void OnLevel1Pressed()
     {
+        UserPreferences.Data["CurrentLevel"] = 1;
+        UserPreferences.Save();
         GameManager.CurrentLevel = 2;
         GetTree().ChangeSceneToFile("res://scene/Levels/level_1.tscn");
     }
 	
     public void OnLevel2Pressed()
     {
+        UserPreferences.Data["CurrentLevel"] = 1;
+        UserPreferences.Save();
         GameManager.CurrentLevel = 3;
         GetTree().ChangeSceneToFile("res://scene/Levels/level_2.tscn");
     }
 	
     public void OnLevel3Pressed()
     {
+        UserPreferences.Data["CurrentLevel"] = 1;
+        UserPreferences.Save();
         GameManager.CurrentLevel = 4;
         GetTree().ChangeSceneToFile("res://scene/Levels/level_3.tscn");
     }
