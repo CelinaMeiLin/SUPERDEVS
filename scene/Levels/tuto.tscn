@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://de83xqqu4f7bq"]
+[gd_scene load_steps=35 format=3 uid="uid://de83xqqu4f7bq"]
 
 [ext_resource type="Script" path="res://Ressources/PauseManager.cs" id="1_4t4nd"]
 [ext_resource type="Texture2D" uid="uid://t4o8wxghw8il" path="res://art/background/parallax-industrial-pack/Sprites/bg.png" id="1_iqdgb"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://l0w6eaum51yl" path="res://art/background/parallax-industrial-pack/Sprites/buildings.png" id="3_rf10u"]
 [ext_resource type="PackedScene" uid="uid://c8iv3ojysfds" path="res://scene/astra.tscn" id="3_w336t"]
 [ext_resource type="Texture2D" uid="uid://d0ogswyv07uug" path="res://art/background/parallax-industrial-pack/Sprites/skill-foreground.png" id="4_hk6k7"]
-[ext_resource type="PackedScene" uid="uid://qboac6ykujwn" path="res://scene/Enemies/ennemy_gus.tscn" id="7_eu5w7"]
 [ext_resource type="Texture2D" uid="uid://uki2ivssk80w" path="res://art/Animations/doublejump.png" id="7_hauaq"]
 [ext_resource type="Texture2D" uid="uid://diceox2ancs5p" path="res://art/banners/banner-neon/banner-neon-1.png" id="7_ycg1g"]
 [ext_resource type="Texture2D" uid="uid://bgqci4i01trsy" path="res://art/Animations/Dash.png" id="8_f6ogj"]
@@ -28,8 +27,8 @@
 [ext_resource type="AudioStream" uid="uid://blw74ef3qi31x" path="res://audio/music/8-bit-arcade-mode-158814.mp3" id="24_xk3yu"]
 [ext_resource type="PackedScene" uid="uid://dsengf11vtlvi" path="res://scene/ui_manager_resume.tscn" id="26_7agd0"]
 [ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="26_ww4qh"]
-[ext_resource type="PackedScene" uid="uid://c1x6w8v3n1bn7" path="res://scene/coin.tscn" id="27_4r4h1"]
 [ext_resource type="PackedScene" uid="uid://b24nbq84kutqr" path="res://scene/HUD_HGD/GameOver.tscn" id="31_fhlp6"]
+[ext_resource type="Script" path="res://script/Enemies/SpawnEnemies.cs" id="31_fkfpn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttwpk"]
 bg_color = Color(0.101961, 1, 0.996078, 0.290196)
@@ -599,19 +598,31 @@ HealthBar = NodePath("../../../interface/HealthBar")
 stream = ExtResource("24_xk3yu")
 bus = &"Music"
 
-[node name="coin" parent="." instance=ExtResource("27_4r4h1")]
-position = Vector2(-299, 571)
-
-[node name="EnnemyGus" parent="." instance=ExtResource("7_eu5w7")]
-position = Vector2(2211, 555)
-
-[node name="EnnemyGus2" parent="." instance=ExtResource("7_eu5w7")]
-position = Vector2(2308, 556)
-
 [node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("31_fhlp6")]
+visible = false
 Scene = NodePath("..")
 
 [node name="RBorderLimit" type="Node2D" parent="."]
 position = Vector2(3446, 595)
+
+[node name="SpawnGus" type="Node2D" parent="." node_paths=PackedStringArray("_timer")]
+position = Vector2(1, 0)
+script = ExtResource("31_fkfpn")
+_timer = NodePath("Timer")
+
+[node name="1" type="Node2D" parent="SpawnGus"]
+position = Vector2(2062, 555)
+
+[node name="2" type="Node2D" parent="SpawnGus"]
+position = Vector2(1674, 555)
+
+[node name="3" type="Node2D" parent="SpawnGus"]
+position = Vector2(1883, 555)
+
+[node name="Timer" type="Timer" parent="SpawnGus"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="SpawnGus/Timer" to="SpawnGus" method="_on_timer_timeout"]
 
 [editable path="PlayerSpawnPoints/Astra"]
