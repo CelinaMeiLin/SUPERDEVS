@@ -38,13 +38,13 @@ offset_bottom = 765.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Inventory" type="Button" parent="VBoxContainer"]
+[node name="Player Statistic" type="Button" parent="VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(2.08165e-12, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_qk7w5")
 theme_override_font_sizes/font_size = 30
-text = "Inventory"
+text = "Player Statistics"
 
 [node name="Tuto" type="Button" parent="VBoxContainer"]
 texture_filter = 1
@@ -100,7 +100,7 @@ theme_override_fonts/font = ExtResource("3_qk7w5")
 theme_override_font_sizes/font_size = 30
 text = "Reset"
 
-[connection signal="pressed" from="VBoxContainer/Inventory" to="." method="OnInventoryPressed"]
+[connection signal="pressed" from="VBoxContainer/Player Statistic" to="." method="OnPlayerStatisticsPressed"]
 [connection signal="pressed" from="VBoxContainer/Tuto" to="." method="OnTutoPressed"]
 [connection signal="pressed" from="VBoxContainer/Level 1" to="." method="OnLevel1Pressed"]
 [connection signal="pressed" from="VBoxContainer/Level 2" to="." method="OnLevel2Pressed"]

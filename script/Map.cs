@@ -89,6 +89,11 @@ public partial class Map : Control
         GetTree().ChangeSceneToFile("res://scene/Levels/level_3.tscn");
     }
     
+    public void OnPlayerStatisticsPressed()
+    {
+        GetTree().ChangeSceneToFile("res://scene/player_statistics.tscn");
+    }
+    
     public void OnExitPressed()
     {
         GetTree().Quit();
