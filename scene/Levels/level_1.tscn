@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvbvhcttveqmn"]
+[gd_scene load_steps=20 format=3 uid="uid://bvbvhcttveqmn"]
 
 [ext_resource type="Texture2D" uid="uid://c1g1yn5n03ryi" path="res://art/background/city 8/1.png" id="1_2fndf"]
+[ext_resource type="Script" path="res://Ressources/PauseManager.cs" id="1_3iq0y"]
 [ext_resource type="PackedScene" uid="uid://q1snnkpbyqru" path="res://scene/sol.tscn" id="1_lfuap"]
 [ext_resource type="Texture2D" uid="uid://cmq8ax15nalxv" path="res://art/background/city 8/2.png" id="2_00f8k"]
 [ext_resource type="PackedScene" uid="uid://blj5nfok2go75" path="res://scene/health_bar.tscn" id="2_5c68o"]
@@ -15,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="6_omt8t"]
 [ext_resource type="PackedScene" uid="uid://xti855xtxy8g" path="res://scene/ennemy_pow.tscn" id="14_e6yc3"]
 [ext_resource type="Texture2D" uid="uid://cwwddqg6jnmwr" path="res://art/tilesets/tileset.png" id="15_isf5f"]
+[ext_resource type="PackedScene" uid="uid://dsengf11vtlvi" path="res://scene/ui_manager_resume.tscn" id="16_2dtod"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dvlcn"]
 texture = ExtResource("15_isf5f")
@@ -353,7 +355,9 @@ texture = ExtResource("15_isf5f")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dvlcn")
 
-[node name="level_1" type="Node2D"]
+[node name="level_1" type="Node2D" node_paths=PackedStringArray("Path")]
+script = ExtResource("1_3iq0y")
+Path = NodePath("UIManager2")
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
@@ -476,6 +480,8 @@ position_smoothing_speed = 20.0
 editor_draw_limits = true
 script = ExtResource("3_gulq7")
 ObjectToFollow = NodePath("../AstraBody")
+
+[node name="UIManager2" parent="." instance=ExtResource("16_2dtod")]
 
 [editable path="EnnemyPow"]
 [editable path="PlayerSpawnPoints/Astra"]
