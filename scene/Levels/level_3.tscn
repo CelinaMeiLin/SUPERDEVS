@@ -41,7 +41,7 @@ offset_bottom = -27.0
 grow_vertical = 0
 
 [node name="Portail" parent="." instance=ExtResource("8_65v8f")]
-position = Vector2(3403, 544)
+position = Vector2(3485, 544)
 
 [node name="PlayerSpawnPoints" type="Node2D" parent="."]
 
@@ -66,5 +66,8 @@ ObjectToFollow = NodePath("../AstraBody")
 
 [node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("11_72ve7")]
 Scene = NodePath("..")
+
+[node name="RBorderLimit" type="Node2D" parent="."]
+position = Vector2(3735, 596)
 
 [editable path="PlayerSpawnPoints/Astra"]

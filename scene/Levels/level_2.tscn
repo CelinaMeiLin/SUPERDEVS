@@ -109,11 +109,14 @@ grow_vertical = 0
 position = Vector2(404, 554)
 
 [node name="Portail" parent="." instance=ExtResource("12_kywtg")]
-position = Vector2(3574, 543)
+position = Vector2(3539, 544)
 
 [node name="UIManager2" parent="." instance=ExtResource("13_kio0p")]
 
 [node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("14_3q7q5")]
 Scene = NodePath("..")
+
+[node name="RBorderLimit" type="Node2D" parent="."]
+position = Vector2(3737, 597)
 
 [editable path="PlayerSpawnPoints/Astra"]

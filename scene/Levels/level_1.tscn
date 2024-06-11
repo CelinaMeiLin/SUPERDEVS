@@ -439,7 +439,7 @@ layer_0/tile_data = PackedInt32Array(-262118, 458752, 11, -262117, 589824, 11, -
 position = Vector2(2906, 558)
 
 [node name="Portail" parent="." instance=ExtResource("3_il47q")]
-position = Vector2(3197, 545)
+position = Vector2(3595, 544)
 
 [node name="UIManager" parent="." instance=ExtResource("6_omt8t")]
 
@@ -476,7 +476,11 @@ HealthBar = NodePath("../../../interface/HealthBar")
 [node name="UIManager2" parent="." instance=ExtResource("16_2dtod")]
 
 [node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("17_fao80")]
+visible = false
 Scene = NodePath("..")
+
+[node name="RBorderLimit" type="Node2D" parent="."]
+position = Vector2(3734, 596)
 
 [editable path="EnnemyPow"]
 [editable path="PlayerSpawnPoints/Astra"]

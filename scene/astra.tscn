@@ -338,6 +338,7 @@ Sprite = NodePath("Astra")
 Bullet_scn = ExtResource("2_x14kn")
 
 [node name="CamTUTO" type="Camera2D" parent="AstraBody" node_paths=PackedStringArray("ObjectToFollow")]
+scale = Vector2(0.997247, 0.976474)
 zoom = Vector2(2, 2)
 limit_left = -800
 limit_bottom = 700
