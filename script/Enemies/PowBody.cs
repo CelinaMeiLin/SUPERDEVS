@@ -191,7 +191,7 @@ public partial class PowBody : CharacterBody2D
 		_animatedSprite.Play("death");
 		//_animatedSprite.Modulate = basecolor;
 		//Death_particles.Emitting = true;
-		await ToSignal(GetTree().CreateTimer(1), "timeout");
+		await ToSignal(GetTree().CreateTimer(2), "timeout");
 		QueueFree();
 		
 		GameManager.SpawnCoin(this, Position);

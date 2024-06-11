@@ -18,7 +18,7 @@ public partial class Map : Control
     public override void _Ready()
     {
         GD.Print(GameManager.CurrentLevel);
-        //GD.Print((int)UserPreferences.Data["CurrentLevel"]);
+        GD.Print((int)UserPreferences.Data["CurrentLevel"]);
         
         //_tutorial = GetNode<Button>("VBoxContainer/Tuto");
         //_level1 = GetNode<Button>("VBoxContainer/Level1");
@@ -59,7 +59,7 @@ public partial class Map : Control
 	
     public void OnTutoPressed()
     {
-        UserPreferences.Data["CurrentLevel"] = 1;
+        //UserPreferences.Data["CurrentLevel"] = 0;
         UserPreferences.Save();
         GameManager.CurrentLevel = 1;
         GetTree().ChangeSceneToFile("res://scene/Levels/tuto.tscn");
@@ -67,7 +67,7 @@ public partial class Map : Control
 
     public void OnLevel1Pressed()
     {
-        UserPreferences.Data["CurrentLevel"] = 1;
+        //UserPreferences.Data["CurrentLevel"] = 1;
         UserPreferences.Save();
         GameManager.CurrentLevel = 2;
         GetTree().ChangeSceneToFile("res://scene/Levels/level_1.tscn");
@@ -75,7 +75,7 @@ public partial class Map : Control
 	
     public void OnLevel2Pressed()
     {
-        UserPreferences.Data["CurrentLevel"] = 1;
+        //UserPreferences.Data["CurrentLevel"] = 2;
         UserPreferences.Save();
         GameManager.CurrentLevel = 3;
         GetTree().ChangeSceneToFile("res://scene/Levels/level_2.tscn");
@@ -83,7 +83,7 @@ public partial class Map : Control
 	
     public void OnLevel3Pressed()
     {
-        UserPreferences.Data["CurrentLevel"] = 1;
+        //UserPreferences.Data["CurrentLevel"] = 3;
         UserPreferences.Save();
         GameManager.CurrentLevel = 4;
         GetTree().ChangeSceneToFile("res://scene/Levels/level_3.tscn");
