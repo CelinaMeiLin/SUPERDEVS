@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://c5nnts6jcvh3u"]
+[gd_scene load_steps=72 format=3 uid="uid://c5nnts6jcvh3u"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_2hygk"]
 [ext_resource type="PackedScene" uid="uid://b1ai6u7657apo" path="res://scene/bullet.tscn" id="2_3skay"]
@@ -46,6 +46,10 @@
 [ext_resource type="Texture2D" uid="uid://40ybos544q12" path="res://art/character2/Shoot-run/Run6.png" id="40_d28y2"]
 [ext_resource type="Texture2D" uid="uid://cl1xpbw1vkuuj" path="res://art/character2/Shoot-run/Run7.png" id="41_kpad4"]
 [ext_resource type="Texture2D" uid="uid://mtlottlsw7dr" path="res://art/character2/Shoot-run/Run8.png" id="42_0g5k7"]
+[ext_resource type="Script" path="res://script/CameraPlayer.cs" id="47_q28ga"]
+[ext_resource type="AudioStream" uid="uid://bcfcs5tbn3jrb" path="res://audio/sfx/Astra/astra_shoot.mp3" id="48_glc5c"]
+[ext_resource type="AudioStream" uid="uid://dcjdxoldj6nvl" path="res://audio/sfx/Astra/secondstep.mp3" id="49_hfm55"]
+[ext_resource type="AudioStream" uid="uid://b6ocpb18mwj4f" path="res://audio/sfx/Astra/astra_dash.mp3" id="50_tty42"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osw1a"]
 radius = 15.0
@@ -53,6 +57,23 @@ height = 98.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ifo5n"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4uitf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7nvun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_27cin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ao1x7")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_slbq3")
@@ -81,23 +102,6 @@ animations = [{
 "loop": true,
 "name": &"dash",
 "speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_4uitf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_7nvun")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_27cin")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_ao1x7")
-}],
-"loop": true,
-"name": &"duck",
-"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -344,9 +348,15 @@ scale_curve = SubResource("CurveTexture_kjkte")
 alpha_curve = SubResource("CurveTexture_1fu5r")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_25ery"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath("EkkoBody:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("EkkoBody/Astra:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("EkkoBody/Astra:animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Ekko" type="Node2D"]
 
@@ -362,12 +372,12 @@ position = Vector2(-4, 4)
 shape = SubResource("CapsuleShape2D_osw1a")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="Ekko" type="AnimatedSprite2D" parent="EkkoBody"]
+[node name="Astra" type="AnimatedSprite2D" parent="EkkoBody"]
 texture_filter = 1
 position = Vector2(-1, -11.5625)
 scale = Vector2(1.473, 1.593)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
-animation = &"jumpfirst"
+animation = &"crouch"
 autoplay = "idle"
 
 [node name="jumpparticles" type="GPUParticles2D" parent="EkkoBody"]
@@ -419,6 +429,29 @@ process_material = SubResource("ParticleProcessMaterial_4lshf")
 lifetime = 0.6
 one_shot = true
 explosiveness = 1.0
+
+[node name="CamTUTO" type="Camera2D" parent="EkkoBody" node_paths=PackedStringArray("ObjectToFollow")]
+scale = Vector2(0.997247, 0.976474)
+zoom = Vector2(2, 2)
+limit_left = -800
+limit_bottom = 700
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+editor_draw_limits = true
+script = ExtResource("47_q28ga")
+ObjectToFollow = NodePath("..")
+
+[node name="Audio_gun" type="AudioStreamPlayer2D" parent="EkkoBody"]
+stream = ExtResource("48_glc5c")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Audio_Run" type="AudioStreamPlayer2D" parent="EkkoBody"]
+stream = ExtResource("49_hfm55")
+bus = &"SFX"
+
+[node name="Audio_Dash" type="AudioStreamPlayer2D" parent="EkkoBody"]
+stream = ExtResource("50_tty42")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_25ery")

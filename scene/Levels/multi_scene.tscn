@@ -447,5 +447,8 @@ position = Vector2(-570, 541)
 frame = 5
 frame_progress = 0.543984
 
+[node name="RBorderLimit" type="Node2D" parent="."]
+position = Vector2(1200, 600)
+
 [editable path="PlayerSpawnPoints/Astra"]
 [editable path="PlayerSpawnPoints/Ekko"]
