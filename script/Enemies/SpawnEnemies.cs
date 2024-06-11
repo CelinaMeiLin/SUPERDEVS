@@ -16,7 +16,7 @@ public partial class SpawnEnemies : Node2D
         _timer = GetNode<Timer>("Timer");
         Random generator = new Random();
         Max = generator.Next(3, 7);
-        GD.Print(Max);
+        //GD.Print(Max);
         Count = 0;
     }
     
@@ -31,6 +31,30 @@ public partial class SpawnEnemies : Node2D
             var spawnpoint = GetNode<Node2D>(randomspawn.ToString());
         
             var spawnEnemy = GD.Load<PackedScene>("res://scene/Enemies/ennemy_gus.tscn");
+            var spawnEnemyNode = spawnEnemy.Instantiate<Node2D>();
+            spawnEnemyNode.Position = spawnpoint.Position;
+            AddChild(spawnEnemyNode);
+            
+            GD.Print(spawnpoint.Position);
+            
+            Count++;
+        }
+        else
+        {
+            _timer.Stop();
+        }
+    }
+
+
+    public void OnLevel1Timeout()
+    {
+        if (Count <= Max)
+        {
+            Random r = new Random();
+            int randomspawn = r.Next(1, 4);
+            var spawnpoint = GetNode<Node2D>(randomspawn.ToString());
+        
+            var spawnEnemy = GD.Load<PackedScene>("res://scene/ennemy_pow.tscn");
             var spawnEnemyNode = spawnEnemy.Instantiate<Node2D>();
             spawnEnemyNode.Position = spawnpoint.Position;
             AddChild(spawnEnemyNode);

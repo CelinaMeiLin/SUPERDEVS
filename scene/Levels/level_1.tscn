@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bvbvhcttveqmn"]
+[gd_scene load_steps=21 format=3 uid="uid://bvbvhcttveqmn"]
 
 [ext_resource type="Texture2D" uid="uid://c1g1yn5n03ryi" path="res://art/background/city 8/1.png" id="1_2fndf"]
 [ext_resource type="Script" path="res://Ressources/PauseManager.cs" id="1_3iq0y"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cwwddqg6jnmwr" path="res://art/tilesets/tileset.png" id="15_isf5f"]
 [ext_resource type="PackedScene" uid="uid://dsengf11vtlvi" path="res://scene/ui_manager_resume.tscn" id="16_2dtod"]
 [ext_resource type="PackedScene" uid="uid://b24nbq84kutqr" path="res://scene/HUD_HGD/GameOver.tscn" id="17_fao80"]
+[ext_resource type="Script" path="res://script/Enemies/SpawnEnemies.cs" id="18_x14yq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dvlcn"]
 texture = ExtResource("15_isf5f")
@@ -481,6 +482,26 @@ Scene = NodePath("..")
 
 [node name="RBorderLimit" type="Node2D" parent="."]
 position = Vector2(3734, 596)
+
+[node name="SpawPow" type="Node2D" parent="." node_paths=PackedStringArray("_timer")]
+position = Vector2(1, 0)
+script = ExtResource("18_x14yq")
+_timer = NodePath("Timer")
+
+[node name="1" type="Node2D" parent="SpawPow"]
+position = Vector2(438, 534)
+
+[node name="2" type="Node2D" parent="SpawPow"]
+position = Vector2(1131, 534)
+
+[node name="3" type="Node2D" parent="SpawPow"]
+position = Vector2(1635, 534)
+
+[node name="Timer" type="Timer" parent="SpawPow"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="SpawPow/Timer" to="SpawPow" method="OnLevel1Timeout"]
 
 [editable path="EnnemyPow"]
 [editable path="PlayerSpawnPoints/Astra"]
