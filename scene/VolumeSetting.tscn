@@ -16,15 +16,16 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6vren")
 theme_override_font_sizes/font_size = 30
-text = "Bus LaBel"
+text = "<Bus Name>"
 horizontal_alignment = 1
 
 [node name="VolumeSlider" type="HSlider" parent="."]
 layout_mode = 2
+value = 50.0
 
 [node name="VolumePercentageLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6vren")
 theme_override_font_sizes/font_size = 15
-text = "vOLUME"
+text = "50"

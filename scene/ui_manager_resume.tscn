@@ -26,10 +26,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" parent="." instance=ExtResource("2_7on3k")]
-offset_left = 2156.0
-offset_top = 1812.0
-offset_right = 9464.0
-offset_bottom = 3868.0
+offset_left = 2040.0
+offset_top = 1720.0
+offset_right = 9348.0
+offset_bottom = 3776.0
 script = ExtResource("1_b5s1m")
 
 [connection signal="pressed" from="Button" to="." method="OnResumePressed"]
