@@ -7,6 +7,7 @@ namespace Devs.project.Ressources;
 public partial class PauseManager : Node2D
 {
 	[Export] public Node Path;
+	[Export] public CanvasLayer GameOverPath;
 	
 	public int NbCoinsBeforeTutorial;
 
@@ -20,6 +21,7 @@ public partial class PauseManager : Node2D
 		_pauseMenu = GetNode<CanvasLayer>(Path.GetPath());
 		//_resumeButton = GetNode<Button>("/root/Tuto/PauseMenu/ResumeButton");
 		_pauseMenu.Hide();
+		GameOverPath.Hide();
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -54,6 +56,16 @@ public partial class PauseManager : Node2D
 		_pauseMenu.Hide();
 		Input.MouseMode = Input.MouseModeEnum.Hidden;
 		
+	}
+
+	public static void Die(CanvasLayer gameOverPath)
+	{
+		GD.Print("MET LE SCREEN");
+		gameOverPath.GetTree().Paused = true;
+		gameOverPath.Show();
+		GD.Print("c'est bon");
+
+		Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

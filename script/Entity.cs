@@ -31,17 +31,17 @@ public partial class Entity : CharacterBody2D
 			return;
 		}
 		Vie = new_vie;
-		if (Vie <= 0)
-		{
-			_die();
-		}
+		//if (Vie <= 0)
+		//{
+		//	_die();
+		//}
 	}
 
 	public void _die()
 	{
 		if (queuefree)
 		{
-			QueueFree();
+			//QueueFree();
 		}
 	}
 	

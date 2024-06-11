@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using Devs.project.Autoloads;
+using Devs.project.Ressources;
 using Devs.project.script;
 public partial class astra : CharacterBody2D
 {
@@ -9,6 +10,11 @@ public partial class astra : CharacterBody2D
 	// Get Node2D Parent
 	[Export] public Node2D Character;
 	public Vector2 baseposition; //Localisation sur la map
+	
+	[Export] public CanvasLayer GameOver;
+	
+	[Export] public AnimatedSprite2D Sprite;
+
 	
 	// Astra Variables
 	public Player Astra = new Player(1000, 200, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
@@ -355,7 +361,10 @@ public partial class astra : CharacterBody2D
 		HealthBar.set_health(Astra.Vie);
 		if (Astra.Vie <= 0)
 		{
-			_die();
+			Death_particles.Emitting = true;
+			_animatedSprite.Visible = false;
+			PauseManager.Die(GameOver);
+			//_die();
 		}
 		//animation2
 		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
@@ -381,6 +390,8 @@ public partial class astra : CharacterBody2D
 		_animatedSprite.Visible = false;
 		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
 		//QueueFree();
+		PauseManager.Die(GameOver);
+		
 	}
 	//---------------------------------------------------------------//
 	

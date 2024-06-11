@@ -12,6 +12,6 @@ public partial class CameraPlayer : Camera2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Position = ObjectToFollow.Position;
+		//Position = ObjectToFollow.Position;
 	}
 }

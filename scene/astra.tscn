@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=66 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
@@ -44,6 +44,7 @@
 [ext_resource type="AudioStream" uid="uid://bcfcs5tbn3jrb" path="res://audio/sfx/Astra/astra_shoot.mp3" id="42_unfki"]
 [ext_resource type="AudioStream" uid="uid://dcjdxoldj6nvl" path="res://audio/sfx/Astra/secondstep.mp3" id="43_0sbas"]
 [ext_resource type="AudioStream" uid="uid://b6ocpb18mwj4f" path="res://audio/sfx/Astra/astra_dash.mp3" id="44_rioic"]
+[ext_resource type="Script" path="res://script/CameraPlayer.cs" id="45_7ev4n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osw1a"]
 radius = 12.0
@@ -329,11 +330,22 @@ alpha_curve = SubResource("CurveTexture_63baj")
 
 [node name="Astra" type="Node2D"]
 
-[node name="AstraBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character")]
+[node name="AstraBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character", "Sprite")]
 collision_layer = 3
 script = ExtResource("1_4ovnt")
 Character = NodePath("..")
+Sprite = NodePath("Astra")
 Bullet_scn = ExtResource("2_x14kn")
+
+[node name="CamTUTO" type="Camera2D" parent="AstraBody" node_paths=PackedStringArray("ObjectToFollow")]
+zoom = Vector2(2, 2)
+limit_left = -800
+limit_bottom = 700
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+editor_draw_limits = true
+script = ExtResource("45_7ev4n")
+ObjectToFollow = NodePath("..")
 
 [node name="Hitbox" type="CollisionShape2D" parent="AstraBody"]
 position = Vector2(2, 5.5)

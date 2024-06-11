@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://d0ogswyv07uug" path="res://art/background/parallax-industrial-pack/Sprites/skill-foreground.png" id="4_hk6k7"]
 [ext_resource type="PackedScene" uid="uid://qboac6ykujwn" path="res://scene/Enemies/ennemy_gus.tscn" id="7_eu5w7"]
 [ext_resource type="Texture2D" uid="uid://uki2ivssk80w" path="res://art/Animations/doublejump.png" id="7_hauaq"]
-[ext_resource type="Script" path="res://script/CameraPlayer.cs" id="7_y84n5"]
 [ext_resource type="Texture2D" uid="uid://diceox2ancs5p" path="res://art/banners/banner-neon/banner-neon-1.png" id="7_ycg1g"]
 [ext_resource type="Texture2D" uid="uid://bgqci4i01trsy" path="res://art/Animations/Dash.png" id="8_f6ogj"]
 [ext_resource type="Texture2D" uid="uid://o2gaf5xcspr6" path="res://art/banners/banner-neon/banner-neon-2.png" id="8_pto2p"]
@@ -30,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://dsengf11vtlvi" path="res://scene/ui_manager_resume.tscn" id="26_7agd0"]
 [ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="26_ww4qh"]
 [ext_resource type="PackedScene" uid="uid://c1x6w8v3n1bn7" path="res://scene/coin.tscn" id="27_4r4h1"]
+[ext_resource type="PackedScene" uid="uid://b24nbq84kutqr" path="res://scene/HUD_HGD/GameOver.tscn" id="31_fhlp6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttwpk"]
 bg_color = Color(0.101961, 1, 0.996078, 0.290196)
@@ -415,9 +415,10 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Tuto" type="Node2D" node_paths=PackedStringArray("Path")]
+[node name="Tuto" type="Node2D" node_paths=PackedStringArray("Path", "GameOverPath")]
 script = ExtResource("1_4t4nd")
 Path = NodePath("UIManagerPause")
+GameOverPath = NodePath("GameOverScreen")
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
@@ -510,7 +511,7 @@ sprite_frames = SubResource("SpriteFrames_uxdmb")
 animation = &"panneau"
 autoplay = "panneau"
 frame = 3
-frame_progress = 0.136217
+frame_progress = 0.779962
 
 [node name="doublejump" type="MarginContainer" parent="."]
 offset_left = 220.0
@@ -585,18 +586,9 @@ grow_vertical = 0
 [node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("3_w336t")]
 position = Vector2(-500, 541)
 
-[node name="AstraBody" parent="PlayerSpawnPoints/Astra" index="0" node_paths=PackedStringArray("HealthBar")]
+[node name="AstraBody" parent="PlayerSpawnPoints/Astra" index="0" node_paths=PackedStringArray("GameOver", "HealthBar")]
+GameOver = NodePath("../../../GameOverScreen")
 HealthBar = NodePath("../../../interface/HealthBar")
-
-[node name="CamTUTO" type="Camera2D" parent="PlayerSpawnPoints/Astra" node_paths=PackedStringArray("ObjectToFollow")]
-zoom = Vector2(2, 2)
-limit_left = -800
-limit_bottom = 700
-position_smoothing_enabled = true
-position_smoothing_speed = 20.0
-editor_draw_limits = true
-script = ExtResource("7_y84n5")
-ObjectToFollow = NodePath("../AstraBody")
 
 [node name="UIManagerPause" parent="." instance=ExtResource("26_7agd0")]
 
@@ -614,5 +606,7 @@ position = Vector2(2211, 555)
 
 [node name="EnnemyGus2" parent="." instance=ExtResource("7_eu5w7")]
 position = Vector2(2308, 556)
+
+[node name="GameOverScreen" parent="." instance=ExtResource("31_fhlp6")]
 
 [editable path="PlayerSpawnPoints/Astra"]
