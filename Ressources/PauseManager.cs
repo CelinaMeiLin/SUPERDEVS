@@ -11,6 +11,8 @@ public partial class PauseManager : Node2D
 	
 	public int NbCoinsBeforeTutorial;
 
+	public static int Coincollectedinlevel;
+
 	private static CanvasLayer _pauseMenu;
 	private Button _resumeButton;
 

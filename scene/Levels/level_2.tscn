@@ -113,6 +113,7 @@ position = Vector2(3574, 543)
 
 [node name="UIManager2" parent="." instance=ExtResource("13_kio0p")]
 
-[node name="GameOverScreen" parent="." instance=ExtResource("14_3q7q5")]
+[node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("14_3q7q5")]
+Scene = NodePath("..")
 
 [editable path="PlayerSpawnPoints/Astra"]

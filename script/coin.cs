@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Devs.project.Autoloads;
+using Devs.project.Ressources;
 
 public partial class coin : Sprite2D
 {
@@ -17,6 +18,7 @@ public partial class coin : Sprite2D
 		if (body is CharacterBody2D)
 		{
 			UserPreferences.Data["Coin"] = (int)UserPreferences.Data["Coin"] + 1;
+			PauseManager.Coincollectedinlevel++;
 			//_global.AddScore(1);
 			QueueFree();
 		}

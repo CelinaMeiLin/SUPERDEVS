@@ -475,7 +475,8 @@ HealthBar = NodePath("../../../interface/HealthBar")
 
 [node name="UIManager2" parent="." instance=ExtResource("16_2dtod")]
 
-[node name="GameOverScreen" parent="." instance=ExtResource("17_fao80")]
+[node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("17_fao80")]
+Scene = NodePath("..")
 
 [editable path="EnnemyPow"]
 [editable path="PlayerSpawnPoints/Astra"]

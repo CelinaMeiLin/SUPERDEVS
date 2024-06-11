@@ -40,6 +40,7 @@ public partial class portail : Sprite2D
 			}
 			UserPreferences.Data["IsLevel"] = 0;
 			UserPreferences.Save();
+			PauseManager.Coincollectedinlevel = 0;
 			GetTree().ChangeSceneToFile("res://scene/map.tscn");
 		}
 	}

@@ -64,6 +64,7 @@ ObjectToFollow = NodePath("../AstraBody")
 
 [node name="UIManager2" parent="." instance=ExtResource("9_whh2o")]
 
-[node name="GameOverScreen" parent="." instance=ExtResource("11_72ve7")]
+[node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("11_72ve7")]
+Scene = NodePath("..")
 
 [editable path="PlayerSpawnPoints/Astra"]

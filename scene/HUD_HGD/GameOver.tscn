@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b24nbq84kutqr"]
+[gd_scene load_steps=5 format=3 uid="uid://b24nbq84kutqr"]
 
 [ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="1_7cwbx"]
+[ext_resource type="Script" path="res://script/HUD/GameOverButton.cs" id="1_8r72o"]
 [ext_resource type="Shader" path="res://art/materials/blur.gdshader" id="1_wqhwh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_auvgc"]
@@ -8,6 +9,7 @@ shader = ExtResource("1_wqhwh")
 shader_parameter/amount = 3.913
 
 [node name="GameOverScreen" type="CanvasLayer"]
+script = ExtResource("1_8r72o")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_auvgc")
@@ -57,10 +59,13 @@ offset_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Mesage" type="Button" parent="VBoxContainer2"]
+[node name="Retry" type="Button" parent="VBoxContainer2"]
+process_mode = 2
 texture_filter = 1
 custom_minimum_size = Vector2(279, 94)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_7cwbx")
 theme_override_font_sizes/font_size = 50
 text = "RETRY"
+
+[connection signal="pressed" from="VBoxContainer2/Retry" to="." method="OnRetryPressed"]
