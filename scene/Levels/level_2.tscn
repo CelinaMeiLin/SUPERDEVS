@@ -90,6 +90,9 @@ position = Vector2(-500, 541)
 GameOver = NodePath("../../../GameOverScreen")
 HealthBar = NodePath("../../../interface/HealthBar")
 
+[node name="CamTUTO" parent="PlayerSpawnPoints/Astra/AstraBody" index="0"]
+limit_right = 3738
+
 [node name="interface" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="interface" instance=ExtResource("11_h5480")]
@@ -114,9 +117,7 @@ position = Vector2(3539, 544)
 [node name="UIManager2" parent="." instance=ExtResource("13_kio0p")]
 
 [node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("14_3q7q5")]
+visible = false
 Scene = NodePath("..")
-
-[node name="RBorderLimit" type="Node2D" parent="."]
-position = Vector2(3737, 597)
 
 [editable path="PlayerSpawnPoints/Astra"]

@@ -474,14 +474,14 @@ position = Vector2(-500, 541)
 GameOver = NodePath("../../../GameOverScreen")
 HealthBar = NodePath("../../../interface/HealthBar")
 
+[node name="CamTUTO" parent="PlayerSpawnPoints/Astra/AstraBody" index="0"]
+limit_right = 3738
+
 [node name="UIManager2" parent="." instance=ExtResource("16_2dtod")]
 
 [node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("17_fao80")]
 visible = false
 Scene = NodePath("..")
-
-[node name="RBorderLimit" type="Node2D" parent="."]
-position = Vector2(3734, 596)
 
 [node name="SpawPow" type="Node2D" parent="." node_paths=PackedStringArray("_timer")]
 position = Vector2(1, 0)

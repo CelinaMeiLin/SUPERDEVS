@@ -52,6 +52,9 @@ position = Vector2(-500, 541)
 GameOver = NodePath("../../../GameOverScreen")
 HealthBar = NodePath("../../../interface/HealthBar")
 
+[node name="CamTUTO" parent="PlayerSpawnPoints/Astra/AstraBody" index="0"]
+limit_right = 3738
+
 [node name="CamTUTO2" type="Camera2D" parent="PlayerSpawnPoints/Astra" node_paths=PackedStringArray("ObjectToFollow")]
 zoom = Vector2(2, 2)
 limit_left = -800
@@ -65,9 +68,7 @@ ObjectToFollow = NodePath("../AstraBody")
 [node name="UIManager2" parent="." instance=ExtResource("9_whh2o")]
 
 [node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("11_72ve7")]
+visible = false
 Scene = NodePath("..")
-
-[node name="RBorderLimit" type="Node2D" parent="."]
-position = Vector2(3735, 596)
 
 [editable path="PlayerSpawnPoints/Astra"]

@@ -590,6 +590,9 @@ position = Vector2(-500, 541)
 GameOver = NodePath("../../../GameOverScreen")
 HealthBar = NodePath("../../../interface/HealthBar")
 
+[node name="CamTUTO" parent="PlayerSpawnPoints/Astra/AstraBody" index="0"]
+limit_right = 3450
+
 [node name="UIManagerPause" parent="." instance=ExtResource("26_7agd0")]
 
 [node name="UIManager" parent="." instance=ExtResource("26_ww4qh")]
@@ -601,9 +604,6 @@ bus = &"Music"
 [node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("31_fhlp6")]
 visible = false
 Scene = NodePath("..")
-
-[node name="RBorderLimit" type="Node2D" parent="."]
-position = Vector2(3446, 595)
 
 [node name="SpawnGus" type="Node2D" parent="." node_paths=PackedStringArray("_timer")]
 position = Vector2(1, 0)
