@@ -152,6 +152,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("12_0cxy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_u54si")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vbjcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jjx30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_a110o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_bkpv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3w0kg")
+}],
+"loop": true,
+"name": &"jumpfirst",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("19_ssc5g")
 }, {
 "duration": 1.0,
@@ -326,6 +352,7 @@ properties/0/replication_mode = 1
 
 [node name="EkkoBody" type="CharacterBody2D" parent="."]
 light_mask = 3
+scale = Vector2(0.9, 0.9)
 collision_layer = 3
 script = ExtResource("1_2hygk")
 Bullet_scn = ExtResource("2_3skay")
@@ -340,7 +367,7 @@ texture_filter = 1
 position = Vector2(-1, -11.5625)
 scale = Vector2(1.473, 1.593)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
-animation = &"run-shoot"
+animation = &"jumpfirst"
 autoplay = "idle"
 
 [node name="jumpparticles" type="GPUParticles2D" parent="EkkoBody"]
