@@ -23,7 +23,7 @@ public partial class portail : Sprite2D
 
 			GD.Print(GameManager.CurrentLevel);
 			GD.Print((int)UserPreferences.Data["CurrentLevel"]);
-			UserPreferences.Save();
+			UserPreferences.Save();	
 			if (GameManager.CurrentLevel >= (int)UserPreferences.Data["CurrentLevel"])
 			{
 				GD.Print("UPDATE");
@@ -31,7 +31,13 @@ public partial class portail : Sprite2D
 				UserPreferences.Data["CurrentLevel"] = GameManager.CurrentLevel;
 				UserPreferences.Save();
 			}
-			
+			if (GameManager.CurrentLevel == 1) //Pour ne pas save les pièces du tuto
+			{
+				tuto Parent = (tuto)GetParent();
+				GD.Print( Parent.NbCoinsBeforeTutorial);
+				UserPreferences.Data["Coin"] = Parent.NbCoinsBeforeTutorial;
+				UserPreferences.Save();
+			}
 			GetTree().ChangeSceneToFile("res://scene/map.tscn");
 		}
 	}

@@ -40,6 +40,7 @@ public partial class RhustBody : CharacterBody2D
 	private bool gettinghurt = false;
 	private bool direction = false;
 	public bool player_chase = false;
+	private bool dying = false;
 	
 	
 	//Sound
@@ -235,6 +236,13 @@ public partial class RhustBody : CharacterBody2D
 	
 	private async void _die()
 	{
+		if (dying)
+		{
+			return;
+		}
+
+		dying = true;
+		SetCollisionLayerValue(3, false);
 		var pos = Position;
 		Death_particles.Emitting = true;
 		_animatedSprite.Visible = false;

@@ -17,28 +17,16 @@ public partial class bullet : RigidBody2D
 	{
 		if (body is GusBody)
 		{
-			if (((GusBody)body).Enemy.Vie <= 0)
-			{
-				QueueFree();
-			}
 			((GusBody)body).hurt(BulletDamge);
 		}
 		
 		if (body is PowBody)
 		{
-			if (((PowBody)body).Enemy.Vie <= 0)
-			{
-				QueueFree();
-			}
 			((PowBody)body).hurt(BulletDamge);
 		}
 		
 		if (body is RhustBody)
 		{
-			if (((RhustBody)body).Enemy.Vie <= 0)
-			{
-				QueueFree();
-			}
 			((RhustBody)body).hurt(BulletDamge);
 		}
 		

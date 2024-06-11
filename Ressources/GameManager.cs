@@ -14,14 +14,13 @@ public partial class GameManager: Node
 
     public static void SpawnCoin(Node2D node, Vector2 pos)
     {
+        var spawncoin = GD.Load<PackedScene>("res://scene/coin.tscn");
+        var spawncoinNode = spawncoin.Instantiate<Sprite2D>();
+        spawncoinNode.Position = pos;
+        node.AddSibling(spawncoinNode);
+        spawncoinNode.GetNode<AnimationPlayer>("AnimationPlayer").Play("Spawn");
+        /*
         if (GameManager.CurrentLevel == (int) UserPreferences.Data["CurrentLevel"]+1)
-        {
-            var spawncoin = GD.Load<PackedScene>("res://scene/coin.tscn");
-            var spawncoinNode = spawncoin.Instantiate<Sprite2D>();
-            spawncoinNode.Position = pos;
-            node.AddSibling(spawncoinNode);
-        }
-        else
         {
             var spawncoin = GD.Load<PackedScene>("res://scene/coin.tscn");
             var spawncoinNode = spawncoin.Instantiate<Sprite2D>();
@@ -29,5 +28,6 @@ public partial class GameManager: Node
             node.AddSibling(spawncoinNode);
             spawncoinNode.GetNode<AnimationPlayer>("AnimationPlayer").Play("Spawn");
         }
+        */
     }
 }

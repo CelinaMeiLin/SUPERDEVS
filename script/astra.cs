@@ -10,7 +10,7 @@ public partial class astra : CharacterBody2D
 	public Vector2 baseposition; //Localisation sur la map
 	
 	// Astra Variables
-	public Player Astra = new Player(1000, 250, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
+	public Player Astra = new Player(1000, 200, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
 	private AnimatedSprite2D _animatedSprite; //LA VARIABLE D'ASTRA BODY
 	[Export] private myhealthbar HealthBar;
 	private GpuParticles2D Death_particles;
@@ -137,7 +137,7 @@ public partial class astra : CharacterBody2D
 			if (Input.IsActionJustPressed("Shoot") && time_until_fire > fire_rate)
 			{
 				isShooting = true;
-				RigidBody2D bullet = Bullet_scn.Instantiate<RigidBody2D>();
+				bullet bullet = Bullet_scn.Instantiate<bullet>();
 
 				Vector2 Spawn;
 				int b_direction = 1;
@@ -173,6 +173,7 @@ public partial class astra : CharacterBody2D
 
 				bullet.GlobalPosition = Spawn;
 				bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
+				bullet.BulletDamge = Astra.Attaque; 
 
 				audio_gun.Play();
 				GetTree().Root.AddChild(bullet);

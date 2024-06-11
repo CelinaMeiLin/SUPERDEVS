@@ -45,6 +45,7 @@ public partial class PowBody : CharacterBody2D
 	private bool gettinghurt = false;
 	private bool direction = false;
 	public bool player_chase = false;
+	private bool dying = false;
 
 	//--------------------------------------------------------------------------------------------//
 	
@@ -179,6 +180,13 @@ public partial class PowBody : CharacterBody2D
 
 	private async void _die()
 	{
+		if (dying)
+		{
+			return;
+		}
+
+		dying = true;
+		SetCollisionLayerValue(3, false);
 		GameManager.SpawnCoin(this, Position);
 		_animatedSprite.Play("death");
 		//_animatedSprite.Modulate = basecolor;
