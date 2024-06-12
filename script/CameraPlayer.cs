@@ -13,6 +13,7 @@ public partial class CameraPlayer : Camera2D
 		//LimitRight = (int)RBorderCam.Position.X;
 		
 		//Multiplayer Control
+		/*
 		if (GetParent().GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() ==
 		    Multiplayer.GetUniqueId())
 		{
@@ -21,6 +22,11 @@ public partial class CameraPlayer : Camera2D
 		else
 		{
 			Enabled = false;
+		}
+		*/
+		if (GetParent().GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() != Multiplayer.GetUniqueId())
+		{
+			MakeCurrent();
 		}
 	}
 

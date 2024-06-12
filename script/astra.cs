@@ -105,8 +105,7 @@ public partial class astra : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		//Multiplayer Controler
-		if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() !=
-		    Multiplayer.GetUniqueId())
+		if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() != Multiplayer.GetUniqueId())
 		{
 			return;
 		}
