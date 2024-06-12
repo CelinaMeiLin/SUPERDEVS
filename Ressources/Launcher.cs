@@ -21,7 +21,7 @@ public partial class Launcher : Node
 			
 			UserPreferences.Data.Add("MaxHealth", 100);
 			UserPreferences.Data.Add("AttackDamage", 200);
-			UserPreferences.Data.Add("FireRate", 5f);
+			UserPreferences.Data.Add("FireRate", 0.5f);
 			//UserPreferences.Data.Add("Health", 100);
 			//UserPreferences.Data.Add("Health", 100);
 

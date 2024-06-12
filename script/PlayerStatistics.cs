@@ -27,7 +27,7 @@ public partial class PlayerStatistics : Control
 
     public void OnFireRatePressed()
     {
-        UserPreferences.Data["FireRate"] = (float)UserPreferences.Data["FireRate"] + 1f;
+        UserPreferences.Data["FireRate"] = (float)UserPreferences.Data["FireRate"] - 0.2f;
         UserPreferences.Data["Coin"] = (int)UserPreferences.Data["Coin"] - 8;
         UserPreferences.Save();
     }
@@ -71,7 +71,7 @@ public partial class PlayerStatistics : Control
             GetNode<Button>("GridContainer/AttackDamage2").Disabled = true;
         }
 
-        if ((int)UserPreferences.Data["Coin"] >= 8)
+        if ((int)UserPreferences.Data["Coin"] >= 1)
         {
             GetNode<Button>("GridContainer/FireRate2").Disabled = false;
         }

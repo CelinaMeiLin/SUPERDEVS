@@ -66,9 +66,10 @@ icon = ExtResource("5_pwm7s")
 vertical_icon_alignment = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SkillBarPanel"]
-offset_left = -127.0
+layout_mode = 0
+offset_left = -165.0
 offset_top = 2.0
-offset_right = -14.0
+offset_right = -15.0
 offset_bottom = 130.0
 
 [node name="Skill1" type="Button" parent="SkillBarPanel/VBoxContainer"]
@@ -91,10 +92,12 @@ icon = ExtResource("7_n1pou")
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_myjnf")
 text = "Fire Rate"
 icon = ExtResource("8_x4ks4")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="SkillBarPanel"]
+layout_mode = 0
 offset_left = 543.0
 offset_top = 2.0
 offset_right = 639.0
@@ -104,12 +107,14 @@ offset_bottom = 110.0
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
-text = "xMS"
+theme_override_fonts/font = ExtResource("6_myjnf")
+text = "MS"
 icon = ExtResource("8_30y66")
 
 [node name="Skill2" type="Button" parent="SkillBarPanel/VBoxContainer2"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
-text = "Dash Timer"
+theme_override_fonts/font = ExtResource("6_myjnf")
+text = "Dash CD"
 icon = ExtResource("9_6uom4")
