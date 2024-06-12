@@ -17,16 +17,17 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -11.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_va4hx")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -89.0
-offset_top = -11.0
-offset_right = 3750.0
-offset_bottom = 1961.0
+offset_left = -91.0
+offset_right = 3748.0
+offset_bottom = 1972.0
 scale = Vector2(0.56, 0.56)
 texture = ExtResource("1_tepp3")
 
@@ -49,211 +50,13 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="CurrentStats" type="Label" parent="HBoxContainer/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_b7jbd")
-theme_override_font_sizes/font_size = 30
-text = "Current Stats"
-horizontal_alignment = 1
-
-[node name="Health" type="Button" parent="HBoxContainer/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 30
-text = "X Health"
-icon = ExtResource("3_ixhf6")
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="AttackDamage" type="Button" parent="HBoxContainer/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 30
-text = "Y Attack Damage"
-icon = ExtResource("4_85dwd")
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="FireRate" type="Button" parent="HBoxContainer/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 30
-text = "A Fire Rate"
-icon = ExtResource("5_yl1l4")
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="MovementSpeed" type="Button" parent="HBoxContainer/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 30
-text = "T Movement Speed"
-icon = ExtResource("6_4us05")
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="DashTimer" type="Button" parent="HBoxContainer/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 30
-text = "E Dash TImer"
-icon = ExtResource("7_5huwq")
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
-
-[node name="Description" type="Label" parent="HBoxContainer/VBoxContainer3"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_b7jbd")
-theme_override_font_sizes/font_size = 30
-text = "Description"
-horizontal_alignment = 1
-
-[node name="HP" type="Label" parent="HBoxContainer/VBoxContainer3"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 20
-text = "
-Add 100 to your HP 
-Cost: 3
-
-"
-horizontal_alignment = 1
-
-[node name="AD" type="Label" parent="HBoxContainer/VBoxContainer3"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 20
-text = "
-Add +Y to your AD
-Cost: 4 
-
-"
-horizontal_alignment = 1
-
-[node name="FR" type="Label" parent="HBoxContainer/VBoxContainer3"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 20
-text = "Redure your fire rate by z
-Cost: 8
-
-"
-horizontal_alignment = 1
-
-[node name="MS" type="Label" parent="HBoxContainer/VBoxContainer3"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 20
-text = "
-gaIN T MS 
-Cost: 5
-
-"
-horizontal_alignment = 1
-
-[node name="DT" type="Label" parent="HBoxContainer/VBoxContainer3"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 20
-text = "
-Redure your dash TIMER by e SEC
-
-"
-horizontal_alignment = 1
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer4"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_b7jbd")
-theme_override_font_sizes/font_size = 30
-horizontal_alignment = 1
-
-[node name="Health" type="Button" parent="HBoxContainer/VBoxContainer4"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 30
-text = "Select"
-icon = ExtResource("3_ixhf6")
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="AttackDamage" type="Button" parent="HBoxContainer/VBoxContainer4"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 30
-text = "Select"
-icon = ExtResource("4_85dwd")
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="FireRate" type="Button" parent="HBoxContainer/VBoxContainer4"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 30
-text = "Select"
-icon = ExtResource("5_yl1l4")
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="MovementSpeed" type="Button" parent="HBoxContainer/VBoxContainer4"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 30
-text = "select"
-icon = ExtResource("6_4us05")
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="DashTimer" type="Button" parent="HBoxContainer/VBoxContainer4"]
-texture_filter = 1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_vu5bw")
-theme_override_font_sizes/font_size = 30
-text = "select"
-icon = ExtResource("7_5huwq")
-flat = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
 
 [node name="Button" type="Button" parent="."]
 texture_filter = 1
@@ -273,19 +76,228 @@ theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 30
 text = "Back"
 
-[node name="coin" parent="." instance=ExtResource("11_3k4h4")]
-position = Vector2(1171, 366)
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 438.5
+offset_top = 241.5
+offset_right = 1481.5
+offset_bottom = 838.5
+columns = 3
 
-[node name="coin2" parent="." instance=ExtResource("11_3k4h4")]
-position = Vector2(1172, 487)
+[node name="CurrentStats" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_b7jbd")
+theme_override_font_sizes/font_size = 30
+text = "Current Stats"
+horizontal_alignment = 1
 
-[node name="coin3" parent="." instance=ExtResource("11_3k4h4")]
-position = Vector2(1172, 577)
+[node name="Description" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_b7jbd")
+theme_override_font_sizes/font_size = 30
+text = "Description"
+horizontal_alignment = 1
 
-[node name="coin4" parent="." instance=ExtResource("11_3k4h4")]
-position = Vector2(1174, 695)
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_b7jbd")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer4/Health" to="." method="OnHealthSelected"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer4/AttackDamage" to="." method="OnAttackDamagePressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer4/FireRate" to="." method="OnFireRatePressed"]
+[node name="Health" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "X Health"
+icon = ExtResource("3_ixhf6")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="HP" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+Add 100 to your HP 
+Cost: 3
+
+"
+horizontal_alignment = 1
+
+[node name="coin" parent="GridContainer/HP" instance=ExtResource("11_3k4h4")]
+position = Vector2(314.5, 71.5)
+
+[node name="Health2" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "Select"
+icon = ExtResource("3_ixhf6")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AttackDamage" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "Y Attack Damage"
+icon = ExtResource("4_85dwd")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AD" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+Add +Y to your AD
+Cost: 5 
+
+"
+horizontal_alignment = 1
+
+[node name="coin2" parent="GridContainer/AD" instance=ExtResource("11_3k4h4")]
+position = Vector2(315.5, 70.5)
+
+[node name="AttackDamage2" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "Select"
+icon = ExtResource("4_85dwd")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="FireRate" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "A Fire Rate"
+icon = ExtResource("5_yl1l4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="FR" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "Redure your fire rate by z
+Cost: 8
+
+"
+horizontal_alignment = 1
+
+[node name="coin2" parent="GridContainer/FR" instance=ExtResource("11_3k4h4")]
+position = Vector2(314.5, 45.5)
+
+[node name="FireRate2" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "Select"
+icon = ExtResource("5_yl1l4")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="MovementSpeed" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "T Movement Speed"
+icon = ExtResource("6_4us05")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="MS" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+gaIN T MS 
+Cost: 5
+
+"
+horizontal_alignment = 1
+
+[node name="coin3" parent="GridContainer/MS" instance=ExtResource("11_3k4h4")]
+position = Vector2(314.5, 71.5)
+
+[node name="MovementSpeed2" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "select"
+icon = ExtResource("6_4us05")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="DashTimer" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "E Dash TImer"
+icon = ExtResource("7_5huwq")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="DT" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+Redure your dash TIMER by e SEC
+Cost: 6
+
+"
+horizontal_alignment = 1
+
+[node name="coin4" parent="GridContainer/DT" instance=ExtResource("11_3k4h4")]
+position = Vector2(314.5, 71.5)
+
+[node name="DashTimer2" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "select"
+icon = ExtResource("7_5huwq")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
 [connection signal="pressed" from="Button" to="." method="OnBackPressed"]
+[connection signal="pressed" from="GridContainer/Health2" to="." method="OnHealthSelected"]
+[connection signal="pressed" from="GridContainer/AttackDamage2" to="." method="OnAttackDamagePressed"]
+[connection signal="pressed" from="GridContainer/FireRate2" to="." method="OnFireRatePressed"]
+[connection signal="pressed" from="GridContainer/MovementSpeed2" to="." method="OnMSPressed"]
+[connection signal="pressed" from="GridContainer/DashTimer2" to="." method="OnDTPressed"]

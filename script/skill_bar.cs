@@ -9,6 +9,7 @@ public partial class skill_bar : Container
 	{
 		GetNode<Button>("SkillBarPanel/VBoxContainer/Skill1").Text = UserPreferences.Data["MaxHealth"].ToString();
 		GetNode<Button>("SkillBarPanel/VBoxContainer/Skill2").Text = UserPreferences.Data["AttackDamage"].ToString();
+		GetNode<Button>("SkillBarPanel/VBoxContainer/Skill3").Text = UserPreferences.Data["FireRate"].ToString();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
