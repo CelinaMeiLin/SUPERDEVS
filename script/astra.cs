@@ -49,7 +49,7 @@ public partial class astra : CharacterBody2D
 	private CollisionShape2D Bullet_spawnerGLow;
 	private CollisionShape2D Bullet_spawnerDLow;
 	private float bullet_speed = 800f;
-	private float bullet_per_second { get; }= 5f;
+	private float bullet_per_second { get; }= (float)UserPreferences.Data["FireRate"];
 	private float fire_rate = 1f / 5f; //bullet_per_second
 	private float time_until_fire = 0f;
 	private bool shoot_anim = false;
