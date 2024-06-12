@@ -6,7 +6,7 @@ using Devs.project.script.Enemies;
 public partial class bullet : RigidBody2D
 {
 
-	public float BulletDamage = 200;
+	public float BulletDamage = (float)UserPreferences.Data["AttackDamage"];
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

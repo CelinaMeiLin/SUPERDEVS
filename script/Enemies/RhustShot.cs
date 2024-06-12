@@ -4,7 +4,7 @@ namespace Devs.project.script.Enemies;
 
 public partial class RhustShot : RigidBody2D
 {
-    public float BulletDamge = 20;
+    public float BulletDamage = 20;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -20,7 +20,7 @@ public partial class RhustShot : RigidBody2D
             {
                 QueueFree();
             }
-            ((astra)body).hurt(BulletDamge);
+            ((astra)body).hurt(BulletDamage);
         }
 		
         QueueFree();
