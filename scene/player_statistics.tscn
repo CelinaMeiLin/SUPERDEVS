@@ -274,16 +274,17 @@ theme_override_font_sizes/font_size = 30
 text = "Back"
 
 [node name="coin" parent="." instance=ExtResource("11_3k4h4")]
-position = Vector2(1146, 368)
+position = Vector2(1172, 366)
 
 [node name="coin2" parent="." instance=ExtResource("11_3k4h4")]
-position = Vector2(1146, 488)
+position = Vector2(1172, 487)
 
 [node name="coin3" parent="." instance=ExtResource("11_3k4h4")]
-position = Vector2(1146, 576)
+position = Vector2(1172, 577)
 
 [node name="coin4" parent="." instance=ExtResource("11_3k4h4")]
-position = Vector2(1148, 691)
+position = Vector2(1174, 695)
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer4/Health" to="." method="OnHealthSelected"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer4/AttackDamage" to="." method="OnAttackDamagePressed"]
 [connection signal="pressed" from="Button" to="." method="OnBackPressed"]

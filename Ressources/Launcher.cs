@@ -20,7 +20,7 @@ public partial class Launcher : Node
 			
 			
 			UserPreferences.Data.Add("MaxHealth", 100);
-			UserPreferences.Data.Add("AttackDamage", 20);
+			UserPreferences.Data.Add("AttackDamage", 200);
 			//UserPreferences.Data.Add("Health", 100);
 			//UserPreferences.Data.Add("Health", 100);
 			//UserPreferences.Data.Add("Health", 100);
