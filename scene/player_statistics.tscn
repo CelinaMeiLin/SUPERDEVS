@@ -1,0 +1,250 @@
+[gd_scene load_steps=10 format=3 uid="uid://br1f41yvebyaf"]
+
+[ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="1_tepp3"]
+[ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="2_pl8ev"]
+[ext_resource type="FontFile" uid="uid://be21ej3m55cb4" path="res://art/fonts/Silkscreen-Regular.ttf" id="3_b7jbd"]
+[ext_resource type="Texture2D" uid="uid://d4aao81m1buo8" path="res://art/PlayerStatistics/HP.png" id="3_ixhf6"]
+[ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="3_vu5bw"]
+[ext_resource type="Texture2D" uid="uid://bfsh4g7cevenh" path="res://art/PlayerStatistics/AttackDamage.png" id="4_85dwd"]
+[ext_resource type="Texture2D" uid="uid://d2x5m68bbf13h" path="res://art/PlayerStatistics/FireRate.png" id="5_yl1l4"]
+[ext_resource type="Texture2D" uid="uid://x4pcfqtt6tdj" path="res://art/PlayerStatistics/MovementSpeed.png" id="6_4us05"]
+[ext_resource type="Texture2D" uid="uid://dbupwbrywdef0" path="res://art/PlayerStatistics/DashTimer.png" id="7_5huwq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -89.0
+offset_top = -11.0
+offset_right = 3750.0
+offset_bottom = 1961.0
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("1_tepp3")
+
+[node name="UIManager" parent="." instance=ExtResource("2_pl8ev")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -85.5
+offset_right = 98.0
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CurrentStats" type="Label" parent="HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_b7jbd")
+theme_override_font_sizes/font_size = 30
+text = "Current Stats"
+horizontal_alignment = 1
+
+[node name="Health" type="Button" parent="HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "X Health"
+icon = ExtResource("3_ixhf6")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AttackDamage" type="Button" parent="HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "Y Attack Damage"
+icon = ExtResource("4_85dwd")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="FireRate" type="Button" parent="HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "Z Fire Rate"
+icon = ExtResource("5_yl1l4")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="MovementSpeed" type="Button" parent="HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "T Movement Speed"
+icon = ExtResource("6_4us05")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="DashTimer" type="Button" parent="HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "E Dash TImer"
+icon = ExtResource("7_5huwq")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="HBoxContainer/VBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_b7jbd")
+theme_override_font_sizes/font_size = 30
+text = "Description"
+horizontal_alignment = 1
+
+[node name="HP" type="Label" parent="HBoxContainer/VBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+
+Add +X to your HP 
+
+"
+horizontal_alignment = 1
+
+[node name="AD" type="Label" parent="HBoxContainer/VBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+Add +Y to your AD
+
+"
+horizontal_alignment = 1
+
+[node name="FR" type="Label" parent="HBoxContainer/VBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+Redure your fire rate by z
+
+"
+horizontal_alignment = 1
+
+[node name="MS" type="Label" parent="HBoxContainer/VBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+gaIN T MS 
+
+"
+horizontal_alignment = 1
+
+[node name="DT" type="Label" parent="HBoxContainer/VBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+Redure your dash TIMER by e SEC
+
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_b7jbd")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="Health" type="Button" parent="HBoxContainer/VBoxContainer4"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = " cHOOSE"
+icon = ExtResource("3_ixhf6")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AttackDamage" type="Button" parent="HBoxContainer/VBoxContainer4"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = " cHOOSE"
+icon = ExtResource("4_85dwd")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="FireRate" type="Button" parent="HBoxContainer/VBoxContainer4"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = " cHOOSE"
+icon = ExtResource("5_yl1l4")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="MovementSpeed" type="Button" parent="HBoxContainer/VBoxContainer4"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = " cHOOSE"
+icon = ExtResource("6_4us05")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="DashTimer" type="Button" parent="HBoxContainer/VBoxContainer4"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = " CHOOSE"
+icon = ExtResource("7_5huwq")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
