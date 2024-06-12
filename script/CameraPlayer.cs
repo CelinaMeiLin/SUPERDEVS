@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Devs.project.Ressources;
 
 public partial class CameraPlayer : Camera2D
 {
@@ -13,20 +14,17 @@ public partial class CameraPlayer : Camera2D
 		//LimitRight = (int)RBorderCam.Position.X;
 		
 		//Multiplayer Control
-		/*
-		if (GetParent().GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() ==
-		    Multiplayer.GetUniqueId())
-		{
-			Enabled = true;
-		}
-		else
-		{
-			Enabled = false;
-		}
-		*/
 		if (GetParent().GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() != Multiplayer.GetUniqueId())
 		{
 			MakeCurrent();
+		}
+
+		if (GameManager.CurrentLevel == -2) //Multiplayer Custom limit
+		{
+			LimitLeft = -70;
+			LimitTop = 50;
+			LimitRight = 1050;
+			LimitBottom = 700;
 		}
 	}
 

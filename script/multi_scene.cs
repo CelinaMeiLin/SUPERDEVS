@@ -6,10 +6,13 @@ using Devs.project.script;
 public partial class multi_scene : Node2D
 {
 	[Export] private PackedScene playerScene;
+	[Export] private PackedScene MedicalKit;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		GameManager.CurrentLevel = -2;
+		
 		int index = 0;
 		foreach (var item in GameManager.Players)
 		{
@@ -34,5 +37,27 @@ public partial class multi_scene : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+
+	public void _on_health_pack_timer_timeout()
+	{
+		int rand = new Random().Next(4);
+		Marker2D spawn = GetNode<Marker2D>("SpawnPositions/LBottom");
+		if (rand == 1)
+		{
+			spawn = GetNode<Marker2D>("SpawnPositions/LTop");
+		}
+		else if (rand == 2)
+		{
+			spawn = GetNode<Marker2D>("SpawnPositions/RTop");
+		}
+		else if (rand == 3)
+		{
+			spawn = GetNode<Marker2D>("SpawnPositions/RBottom");
+		}
+
+		medical_kit medicalKit = MedicalKit.Instantiate<medical_kit>();
+		medicalKit.GlobalPosition = spawn.GlobalPosition;
+		AddChild(medicalKit);
 	}
 }

@@ -21,6 +21,10 @@ public partial class options_multi : Control
 		Multiplayer.PeerDisconnected += PeerDisconnected;
 		Multiplayer.ConnectedToServer += ConnectedToServer;
 		Multiplayer.ConnectionFailed += ConnectionFailed;
+		if (OS.GetCmdlineArgs().Contains("--server"))
+		{
+			hostGame();
+		}
 	}
 
 	private void ConnectionFailed()
@@ -61,10 +65,11 @@ public partial class options_multi : Control
 		//var gameScenebackNode=gameScene.Instantiate();
 		//GetParent().AddChild(gameScenebackNode);
 	}
-	
-	private void _on_host_button_down()
+
+
+	private void hostGame()
 	{
-		ENetMultiplayerPeer peer = new ENetMultiplayerPeer();
+		peer = new ENetMultiplayerPeer();
 		var error = peer.CreateServer(port, 2);
 		if (error != Error.Ok)
 		{
@@ -72,8 +77,13 @@ public partial class options_multi : Control
 			return;
 		}
 		peer.Host.Compress(ENetConnection.CompressionMode.RangeCoder);
+		
 		Multiplayer.MultiplayerPeer = peer;
 		GD.Print("Waiting a player.");
+	}
+	private void _on_host_button_down()
+	{
+		hostGame();
 		sendPlayerInformation(GetNode<LineEdit>("HBoxContainer/LineEdit").Text, 1);
 	}
 

@@ -81,9 +81,7 @@ public partial class astra : CharacterBody2D
 		jumpdust = GetNode<GpuParticles2D>("jumpparticles");
 		jumpdust.OneShot = true;
 		if (HealthBar != null)
-		{
 			HealthBar.health_init(Astra.Vie);	
-		}
 		baseposition = Character.Position;
 		ghost = GetNode<GpuParticles2D>("Ghost");
 		ghost.OneShot = true;
@@ -425,7 +423,8 @@ public partial class astra : CharacterBody2D
 		
 		//set health
 		Astra.set_health(Astra.Vie - value);
-		HealthBar.set_health(Astra.Vie);
+		if (HealthBar != null)
+			HealthBar.set_health(Astra.Vie);
 		if (Astra.Vie <= 0)
 		{
 			Death_particles.Emitting = true;
@@ -443,7 +442,8 @@ public partial class astra : CharacterBody2D
 	{
 		//set health
 		Astra.set_health(Astra.Vie + value);
-		HealthBar.set_health(Astra.Vie);
+		if (HealthBar != null)
+			HealthBar.set_health(Astra.Vie);
 		
 		//animation
 		Color defaultt = _animatedSprite.Modulate;
