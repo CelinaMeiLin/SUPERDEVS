@@ -54,7 +54,7 @@ public partial class Map : Control
     
     public void OnInventoryPressed()
     {
-        GetTree().ChangeSceneToFile("res://scene/inventory.tscn");
+        GetTree().ChangeSceneToFile("res://scene/player_statistics.tscn");
     }
 	
     public void OnTutoPressed()

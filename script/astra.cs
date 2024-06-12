@@ -17,7 +17,7 @@ public partial class astra : CharacterBody2D
 
 	
 	// Astra Variables
-	public Player Astra = new Player(1000, 200, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
+	public Player Astra = new Player((int)UserPreferences.Data["MaxHealth"], 200, 4, 300, -420, new Dictionary<int, Inventory>(), 1000);
 	private AnimatedSprite2D _animatedSprite; //LA VARIABLE D'ASTRA BODY
 	[Export] private myhealthbar HealthBar;
 	private GpuParticles2D Death_particles;
@@ -195,7 +195,7 @@ public partial class astra : CharacterBody2D
 
 			bullet.GlobalPosition = Spawn;
 			bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
-			bullet.BulletDamge = Astra.Attaque; 
+			bullet.BulletDamage = Astra.Attaque; 
 
 			audio_gun.Play();
 			GetTree().Root.AddChild(bullet);
@@ -375,7 +375,7 @@ public partial class astra : CharacterBody2D
 
 		bullet.GlobalPosition = Spawn;
 		bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
-		bullet.BulletDamge = Astra.Attaque; 
+		bullet.BulletDamage = Astra.Attaque; 
 
 		audio_gun.Play();
 		GetTree().Root.AddChild(bullet);

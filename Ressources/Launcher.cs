@@ -19,8 +19,8 @@ public partial class Launcher : Node
 			UserPreferences.Data.Add("Coin", 0);
 			
 			
-			UserPreferences.Data.Add("Health", 100);
-			//UserPreferences.Data.Add("Health", 100);
+			UserPreferences.Data.Add("MaxHealth", 100);
+			UserPreferences.Data.Add("AttackDamage", 20);
 			//UserPreferences.Data.Add("Health", 100);
 			//UserPreferences.Data.Add("Health", 100);
 			//UserPreferences.Data.Add("Health", 100);

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://br1f41yvebyaf"]
+[gd_scene load_steps=12 format=3 uid="uid://br1f41yvebyaf"]
 
 [ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="1_tepp3"]
+[ext_resource type="Script" path="res://script/PlayerStatistics.cs" id="1_va4hx"]
 [ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="2_pl8ev"]
 [ext_resource type="FontFile" uid="uid://be21ej3m55cb4" path="res://art/fonts/Silkscreen-Regular.ttf" id="3_b7jbd"]
 [ext_resource type="Texture2D" uid="uid://d4aao81m1buo8" path="res://art/PlayerStatistics/HP.png" id="3_ixhf6"]
@@ -9,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d2x5m68bbf13h" path="res://art/PlayerStatistics/FireRate.png" id="5_yl1l4"]
 [ext_resource type="Texture2D" uid="uid://x4pcfqtt6tdj" path="res://art/PlayerStatistics/MovementSpeed.png" id="6_4us05"]
 [ext_resource type="Texture2D" uid="uid://dbupwbrywdef0" path="res://art/PlayerStatistics/DashTimer.png" id="7_5huwq"]
+[ext_resource type="PackedScene" uid="uid://c1x6w8v3n1bn7" path="res://scene/coin.tscn" id="11_3k4h4"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -17,8 +19,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_va4hx")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = -89.0
 offset_top = -11.0
 offset_right = 3750.0
@@ -35,10 +39,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -98.0
-offset_top = -85.5
-offset_right = 98.0
-offset_bottom = 85.5
+offset_left = -533.5
+offset_top = -254.0
+offset_right = 533.5
+offset_bottom = 254.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -130,8 +134,8 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 20
 text = "
-
-Add +X to your HP 
+Add 100 to your HP 
+Cost: 3
 
 "
 horizontal_alignment = 1
@@ -143,6 +147,7 @@ theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 20
 text = "
 Add +Y to your AD
+Cost: 4 
 
 "
 horizontal_alignment = 1
@@ -152,8 +157,8 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 20
-text = "
-Redure your fire rate by z
+text = "Redure your fire rate by z
+Cost: 8
 
 "
 horizontal_alignment = 1
@@ -165,6 +170,7 @@ theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 20
 text = "
 gaIN T MS 
+Cost: 5
 
 "
 horizontal_alignment = 1
@@ -194,7 +200,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 30
-text = " cHOOSE"
+text = "Select"
 icon = ExtResource("3_ixhf6")
 flat = true
 icon_alignment = 1
@@ -206,7 +212,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 30
-text = " cHOOSE"
+text = "Select"
 icon = ExtResource("4_85dwd")
 flat = true
 icon_alignment = 1
@@ -218,7 +224,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 30
-text = " cHOOSE"
+text = "Select"
 icon = ExtResource("5_yl1l4")
 flat = true
 icon_alignment = 1
@@ -230,7 +236,7 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 30
-text = " cHOOSE"
+text = "select"
 icon = ExtResource("6_4us05")
 flat = true
 icon_alignment = 1
@@ -242,9 +248,42 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 30
-text = " CHOOSE"
+text = "select"
 icon = ExtResource("7_5huwq")
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -65.0
+offset_right = 140.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[node name="coin" parent="." instance=ExtResource("11_3k4h4")]
+position = Vector2(1146, 368)
+
+[node name="coin2" parent="." instance=ExtResource("11_3k4h4")]
+position = Vector2(1146, 488)
+
+[node name="coin3" parent="." instance=ExtResource("11_3k4h4")]
+position = Vector2(1146, 576)
+
+[node name="coin4" parent="." instance=ExtResource("11_3k4h4")]
+position = Vector2(1148, 691)
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer4/Health" to="." method="OnHealthSelected"]
+[connection signal="pressed" from="Button" to="." method="OnBackPressed"]
