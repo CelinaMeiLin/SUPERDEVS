@@ -71,7 +71,7 @@ public partial class PlayerStatistics : Control
             GetNode<Button>("GridContainer/AttackDamage2").Disabled = true;
         }
 
-        if ((int)UserPreferences.Data["Coin"] >= 1)
+        if ((int)UserPreferences.Data["Coin"] >= 8)
         {
             GetNode<Button>("GridContainer/FireRate2").Disabled = false;
         }
