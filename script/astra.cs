@@ -54,6 +54,12 @@ public partial class astra : CharacterBody2D
 	private float time_until_fire = 0f;
 	private bool shoot_anim = false;
 	
+	// Skills
+	private AnimatedSprite2D ShildSkill;
+	private bool shildactivated = false;
+	private float shildduration = 3f;
+	private bool shildavailable = true;
+	
 	// Status
 	private bool gettinghurt = false;
 	private bool isShooting = false;
@@ -94,10 +100,11 @@ public partial class astra : CharacterBody2D
 		audio_gun = GetNode<AudioStreamPlayer2D>("Audio_gun");
 		audio_run = GetNode<AudioStreamPlayer2D>("Audio_Run");
 		audio_dash = GetNode<AudioStreamPlayer2D>("Audio_Dash");
+		ShildSkill = GetNode<AnimatedSprite2D>("SkillShild");
 		//-----------------------------//
 		//-----Test pour le multi normalement c fait pour le mult synchronizer------//
 		//GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
-		
+
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -411,10 +418,39 @@ public partial class astra : CharacterBody2D
 		shoot_anim = false;
 	}
 	
+	//--------------------------------- Skills -----------------------------------------//
+	
+	public async void SkillShild()
+	{
+		if (ShildSkill.Visible || shildavailable == false)
+		{
+			return;
+		}
+
+		GetNode<GpuParticles2D>("SkillShildParticle").Emitting = true;
+		ShildSkill.Play("Idle");
+		ShildSkill.Visible = true;
+		shildactivated = true;
+		
+		await ToSignal(GetTree().CreateTimer(shildduration), "timeout");
+		ShildSkill.Visible = false;
+		ShildSkill.Stop();
+		shildactivated = false;
+	}
+
+	public void UnlockShild()
+	{
+		shildavailable = true;
+	}
 	
 	//--------------------------------- HP SYSTEM -----------------------------------------//
 	public async void hurt(float value)
 	{
+		if (shildactivated)
+		{
+			return;
+		}
+		
 		gettinghurt = true;
 		//animation1
 		_animatedSprite.Play("hurt");

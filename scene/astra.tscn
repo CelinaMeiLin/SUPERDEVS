@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=77 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
@@ -45,6 +45,14 @@
 [ext_resource type="AudioStream" uid="uid://dcjdxoldj6nvl" path="res://audio/sfx/Astra/secondstep.mp3" id="43_0sbas"]
 [ext_resource type="AudioStream" uid="uid://b6ocpb18mwj4f" path="res://audio/sfx/Astra/astra_dash.mp3" id="44_rioic"]
 [ext_resource type="Script" path="res://script/CameraPlayer.cs" id="45_7ev4n"]
+[ext_resource type="Texture2D" uid="uid://c3rxsnqend03h" path="res://art/VFX/Shield Aura/1.png" id="46_m4ecr"]
+[ext_resource type="Texture2D" uid="uid://diqvrxp6jrgdp" path="res://art/VFX/Shield Aura/2.png" id="47_oul3i"]
+[ext_resource type="Texture2D" uid="uid://bskaga4w0v1t" path="res://art/VFX/Shield Aura/3.png" id="48_a62qu"]
+[ext_resource type="Texture2D" uid="uid://co8lkmupfhbe8" path="res://art/VFX/Shield Aura/4.png" id="49_ggnhg"]
+[ext_resource type="Texture2D" uid="uid://vwsiq4aw20vn" path="res://art/VFX/Shield Aura/5.png" id="50_kw7vt"]
+[ext_resource type="Texture2D" uid="uid://c1f16yeuo1aky" path="res://art/VFX/Shield Aura/6.png" id="51_jq4bs"]
+[ext_resource type="Texture2D" uid="uid://bi5cytgbh3gpf" path="res://art/VFX/Shield Aura/7.png" id="52_rsxuv"]
+[ext_resource type="Texture2D" uid="uid://cy1kfiutkbpvv" path="res://art/items/skills/Skillicon14_18.png" id="53_tytcs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osw1a"]
 radius = 12.0
@@ -339,9 +347,48 @@ properties/2/path = NodePath("Astra:animation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_yyer6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("46_m4ecr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_oul3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_a62qu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_ggnhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_kw7vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_jq4bs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_rsxuv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 7.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ougol"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_a64s7")
+alpha_curve = SubResource("CurveTexture_y8vkj")
+
 [node name="Astra" type="Node2D" groups=["Player"]]
 
-[node name="AstraBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character", "Sprite")]
+[node name="AstraBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character", "Sprite") groups=["Astra"]]
 collision_layer = 3
 script = ExtResource("1_4ovnt")
 Character = NodePath("..")
@@ -449,3 +496,22 @@ text = "test
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SkillShild" type="AnimatedSprite2D" parent="AstraBody"]
+visible = false
+modulate = Color(0, 0.8, 1, 0.737255)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_yyer6")
+animation = &"Idle"
+frame = 6
+frame_progress = 0.293308
+
+[node name="SkillShildParticle" type="GPUParticles2D" parent="AstraBody"]
+texture_filter = 1
+position = Vector2(1, -45)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_ougol")
+texture = ExtResource("53_tytcs")
+one_shot = true
+local_coords = true
