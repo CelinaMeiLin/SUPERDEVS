@@ -249,6 +249,7 @@ public partial class RhustBody : CharacterBody2D
 		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
 		QueueFree();
 		GameManager.SpawnCoin(this, pos);
+		GetTree().CallGroup("Astra", "GainXp", 60);
 	}
 	public async void hurt(float value)
 	{

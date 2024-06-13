@@ -195,6 +195,7 @@ public partial class PowBody : CharacterBody2D
 		QueueFree();
 		
 		GameManager.SpawnCoin(this, Position);
+		GetTree().CallGroup("Astra", "GainXp", 90);
 	}
 	
 	public async void hurt(float value)

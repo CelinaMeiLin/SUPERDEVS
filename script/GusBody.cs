@@ -221,7 +221,7 @@ public partial class GusBody : CharacterBody2D
 		QueueFree(); //this.QueueFree() de l'ennemi
 		
 		GameManager.SpawnCoin(this, pos);
-		GetTree().CallGroup("Astra", "GainXp", 60);
+		GetTree().CallGroup("Astra", "GainXp", 30);
 	}
 	public async void hurt(float value)
 	{
