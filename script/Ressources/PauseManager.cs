@@ -64,6 +64,7 @@ public partial class PauseManager : Node2D
 	{
 		GD.Print("MET LE SCREEN");
 		gameOverPath.GetTree().Paused = true;
+		GD.Print("freeze");
 		gameOverPath.Show();
 		GD.Print("c'est bon");
 

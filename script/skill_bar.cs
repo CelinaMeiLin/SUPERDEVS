@@ -14,8 +14,10 @@ public partial class skill_bar : Container
 	{
 		GetNode<Button>("SkillBarPanel/VBoxContainer/Skill1").Text = UserPreferences.Data["MaxHealth"].ToString();
 		GetNode<Button>("SkillBarPanel/VBoxContainer/Skill2").Text = UserPreferences.Data["AttackDamage"].ToString();
-		GetNode<Button>("SkillBarPanel/VBoxContainer/Skill3").Text = Math.Round((float)UserPreferences.Data["FireRate"], 3).ToString();
-		
+		GetNode<Button>("SkillBarPanel/VBoxContainer/Skill3").Text =
+			Math.Round((float)UserPreferences.Data["FireRate"], 3).ToString();
+		GetNode<Button>("SkillBarPanel/VBoxContainer2/Skill1").Text = UserPreferences.Data["MovementSpeed"].ToString();
+		GetNode<Button>("SkillBarPanel/VBoxContainer2/Skill2").Text = UserPreferences.Data["DashCooldown"].ToString();
 		ShildCooldown = GetNode<Timer>("SkillBarPanel/HBoxContainer/ShildSkill/ShildCooldown");
 		ShildBar = GetNode<TextureProgressBar>("SkillBarPanel/HBoxContainer/ShildSkill/ShildBar");
 
@@ -23,7 +25,7 @@ public partial class skill_bar : Container
 
 	public override void _Process(double delta)
 	{
-		ShildBar.Value = ShildBar.MaxValue - ShildCooldown.TimeLeft;
+		//ShildBar.Value = ShildBar.MaxValue - ShildCooldown.TimeLeft;
 	}
 
 	public void _on_shild_skill_pressed()

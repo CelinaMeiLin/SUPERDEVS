@@ -22,8 +22,8 @@ public partial class Launcher : Node
 			UserPreferences.Data.Add("MaxHealth", 100);
 			UserPreferences.Data.Add("AttackDamage", 200);
 			UserPreferences.Data.Add("FireRate", 0.5f);
-			//UserPreferences.Data.Add("Health", 100);
-			//UserPreferences.Data.Add("Health", 100);
+			UserPreferences.Data.Add("MovementSpeed", 300);
+			UserPreferences.Data.Add("DashCooldown", 1); /// à faire
 
 			
 
@@ -34,8 +34,8 @@ public partial class Launcher : Node
 		}
 		UserPreferences.Load();
 
-		var cursor = ResourceLoader.Load("res://art/Cursor/Cursor.png");
-		Input.SetCustomMouseCursor(cursor, 0, new Vector2(128, 128));
+		var cursor =(Texture) ResourceLoader.Load("res://art/Cursor/Cursor.png");
+		Input.SetCustomMouseCursor(cursor, Input.CursorShape.Arrow, new Vector2(128, 128));
 
 		var optionscene=GD.Load<PackedScene>("res://scene/main_menu.tscn");
 		var optionssceneNode = optionscene.Instantiate(); 

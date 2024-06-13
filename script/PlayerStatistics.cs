@@ -34,7 +34,9 @@ public partial class PlayerStatistics : Control
 
     public void OnMSPressed()
     {
-        
+        UserPreferences.Data["MovementSpeed"] = (int)UserPreferences.Data["MovementSpeed"] + 50;
+        UserPreferences.Data["Coin"] = (int)UserPreferences.Data["Coin"] - 5;
+        UserPreferences.Save();
     }
 
     public void OnDTPressed()
@@ -52,6 +54,7 @@ public partial class PlayerStatistics : Control
         GetNode<Button>("GridContainer/Health").Text = UserPreferences.Data["MaxHealth"].ToString() + " Health";
         GetNode<Button>("GridContainer/AttackDamage").Text = UserPreferences.Data["AttackDamage"].ToString() + " Attack Damage";
         GetNode<Button>("GridContainer/FireRate").Text = UserPreferences.Data["FireRate"].ToString() + " Fire Rate";
+        GetNode<Button>("GridContainer/MovementSpeed").Text = UserPreferences.Data["MovementSpeed"].ToString() + " Movement Speed";
         
         if ((int)UserPreferences.Data["Coin"] >= 3)
         {
@@ -80,7 +83,7 @@ public partial class PlayerStatistics : Control
             GetNode<Button>("GridContainer/FireRate2").Disabled = true;
         }
 
-        if ((int)UserPreferences.Data["Coin"] >= 10)
+        if ((int)UserPreferences.Data["Coin"] >= 5)
         {
          GetNode<Button>("GridContainer/MovementSpeed2").Disabled = false;
         }
