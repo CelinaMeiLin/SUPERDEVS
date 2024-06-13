@@ -13,6 +13,7 @@ offset_right = 168.0
 offset_bottom = -151.0
 scale = Vector2(5, 5)
 value = 41.0
+nine_patch_stretch = true
 texture_under = ExtResource("2_3m14n")
 texture_over = ExtResource("1_fcnj6")
 texture_progress = ExtResource("3_hvoqc")
