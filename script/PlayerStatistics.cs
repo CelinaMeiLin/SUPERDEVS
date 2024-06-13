@@ -41,7 +41,9 @@ public partial class PlayerStatistics : Control
 
     public void OnDTPressed()
     {
-        
+        UserPreferences.Data["DashCooldown"] = (int)UserPreferences.Data["DashCooldown"] - 0.2;
+        UserPreferences.Data["Coin"] = (int)UserPreferences.Data["Coin"] - 6;
+        UserPreferences.Save();
     }
     
     public void OnBackPressed()
@@ -55,6 +57,7 @@ public partial class PlayerStatistics : Control
         GetNode<Button>("GridContainer/AttackDamage").Text = UserPreferences.Data["AttackDamage"].ToString() + " Attack Damage";
         GetNode<Button>("GridContainer/FireRate").Text = UserPreferences.Data["FireRate"].ToString() + " Fire Rate";
         GetNode<Button>("GridContainer/MovementSpeed").Text = UserPreferences.Data["MovementSpeed"].ToString() + " Movement Speed";
+        GetNode<Button>("GridContainer/DashTimer").Text = UserPreferences.Data["DashCooldown"].ToString() + " Dash Cooldown";
         
         if ((int)UserPreferences.Data["Coin"] >= 3)
         {
@@ -76,7 +79,11 @@ public partial class PlayerStatistics : Control
 
         if ((int)UserPreferences.Data["Coin"] >= 8)
         {
-            GetNode<Button>("GridContainer/FireRate2").Disabled = false;
+            if ((float)UserPreferences.Data["FireRate"] >= 0.1f)
+            {
+                GetNode<Button>("GridContainer/FireRate2").Disabled = false;
+
+            }
         }
         else
         {
@@ -94,10 +101,15 @@ public partial class PlayerStatistics : Control
 
         if ((int)UserPreferences.Data["Coin"] >= 6)
         {
-            GetNode<Button>("GridContainer/DashTimer2").Disabled = false;
+            if ((double)UserPreferences.Data["DashCooldown"] >= 0.2)
+            {
+                GetNode<Button>("GridContainer/DashTimer2").Disabled = false;
+
+            }
         }
         else
         {
+            
             GetNode<Button>("GridContainer/DashTimer2").Disabled = true;
         }
     }

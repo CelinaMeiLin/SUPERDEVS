@@ -29,7 +29,7 @@ public partial class astra : CharacterBody2D
 	// Dash Variables
 	private bool CanDash = true;
 	private float dash_speed = 1000;
-	private double dash_reload = 1.5;
+	private double dash_reload = (float)UserPreferences.Data["DashCooldown"];
 	private static double DOUBLETAP_DELAY = 0.25;
 	private double doubletap_time = DOUBLETAP_DELAY;
 	private string last_input;

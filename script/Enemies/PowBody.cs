@@ -18,7 +18,7 @@ public partial class PowBody : CharacterBody2D
 	[Export] public AnimationPlayer AnimationPlayer;
 	
 	// Pow Variables
-	public Entity Enemy = new Entity(600, 250, 2, 120, -350);
+	public Entity Enemy = new Entity(600, 20, 2, 120, -350);
 	private AnimatedSprite2D _animatedSprite;
 	private AnimatedSprite2D  _attackanimation;
 	Vector2 dir; //direction actuelle de Gus

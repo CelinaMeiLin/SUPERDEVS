@@ -34,31 +34,6 @@ texture = ExtResource("1_tepp3")
 
 [node name="UIManager" parent="." instance=ExtResource("2_pl8ev")]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -533.5
-offset_top = -254.0
-offset_right = 533.5
-offset_bottom = 254.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
-layout_mode = 2
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
-visible = false
-layout_mode = 2
-
 [node name="Button" type="Button" parent="."]
 texture_filter = 1
 layout_mode = 1
@@ -79,10 +54,10 @@ text = "Back"
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 438.5
-offset_top = 241.5
-offset_right = 1481.5
-offset_bottom = 838.5
+offset_left = 422.0
+offset_top = 245.0
+offset_right = 1505.0
+offset_bottom = 842.0
 columns = 3
 
 [node name="CurrentStats" type="Label" parent="GridContainer"]
@@ -133,7 +108,7 @@ Cost: 3
 horizontal_alignment = 1
 
 [node name="coin" parent="GridContainer/HP" instance=ExtResource("11_3k4h4")]
-position = Vector2(314.5, 71.5)
+position = Vector2(312, 72)
 
 [node name="Health2" type="Button" parent="GridContainer"]
 texture_filter = 1
@@ -166,14 +141,14 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 20
 text = "
-Add +Y to your AD
+Add 100 to your AD
 Cost: 5 
 
 "
 horizontal_alignment = 1
 
 [node name="coin2" parent="GridContainer/AD" instance=ExtResource("11_3k4h4")]
-position = Vector2(315.5, 70.5)
+position = Vector2(315, 73)
 
 [node name="AttackDamage2" type="Button" parent="GridContainer"]
 texture_filter = 1
@@ -205,14 +180,14 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 20
-text = "Redure your fire rate by z
+text = "Redure your fire rate by 0.2
 Cost: 8
 
 "
 horizontal_alignment = 1
 
 [node name="coin2" parent="GridContainer/FR" instance=ExtResource("11_3k4h4")]
-position = Vector2(314.5, 45.5)
+position = Vector2(313, 44)
 
 [node name="FireRate2" type="Button" parent="GridContainer"]
 texture_filter = 1
@@ -245,14 +220,14 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 20
 text = "
-gaIN T MS 
+Gain 50 MS
 Cost: 5
 
 "
 horizontal_alignment = 1
 
 [node name="coin3" parent="GridContainer/MS" instance=ExtResource("11_3k4h4")]
-position = Vector2(314.5, 71.5)
+position = Vector2(313, 72)
 
 [node name="MovementSpeed2" type="Button" parent="GridContainer"]
 texture_filter = 1
@@ -285,14 +260,14 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 20
 text = "
-Redure your dash TIMER by e SEC
+ Reduce your Dash CD by 0.2 sec
 Cost: 6
 
 "
 horizontal_alignment = 1
 
 [node name="coin4" parent="GridContainer/DT" instance=ExtResource("11_3k4h4")]
-position = Vector2(314.5, 71.5)
+position = Vector2(311, 72)
 
 [node name="DashTimer2" type="Button" parent="GridContainer"]
 texture_filter = 1
