@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://br1f41yvebyaf"]
+[gd_scene load_steps=13 format=3 uid="uid://br1f41yvebyaf"]
 
 [ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="1_tepp3"]
 [ext_resource type="Script" path="res://script/PlayerStatistics.cs" id="1_va4hx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bfsh4g7cevenh" path="res://art/PlayerStatistics/AttackDamage.png" id="4_85dwd"]
 [ext_resource type="Texture2D" uid="uid://d2x5m68bbf13h" path="res://art/PlayerStatistics/FireRate.png" id="5_yl1l4"]
 [ext_resource type="Texture2D" uid="uid://x4pcfqtt6tdj" path="res://art/PlayerStatistics/MovementSpeed.png" id="6_4us05"]
+[ext_resource type="Theme" uid="uid://c7f13roog0fm0" path="res://art/Theme/SkillBar.tres" id="6_yvp2m"]
 [ext_resource type="Texture2D" uid="uid://dbupwbrywdef0" path="res://art/PlayerStatistics/DashTimer.png" id="7_5huwq"]
 [ext_resource type="PackedScene" uid="uid://c1x6w8v3n1bn7" path="res://scene/coin.tscn" id="11_3k4h4"]
 
@@ -109,8 +110,10 @@ horizontal_alignment = 1
 [node name="Health" type="Button" parent="GridContainer"]
 texture_filter = 1
 layout_mode = 2
+theme = ExtResource("6_yvp2m")
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 30
+disabled = true
 text = "X Health"
 icon = ExtResource("3_ixhf6")
 icon_alignment = 1
@@ -147,8 +150,10 @@ expand_icon = true
 [node name="AttackDamage" type="Button" parent="GridContainer"]
 texture_filter = 1
 layout_mode = 2
+theme = ExtResource("6_yvp2m")
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 30
+disabled = true
 text = "Y Attack Damage"
 icon = ExtResource("4_85dwd")
 icon_alignment = 1
@@ -185,8 +190,10 @@ expand_icon = true
 [node name="FireRate" type="Button" parent="GridContainer"]
 texture_filter = 1
 layout_mode = 2
+theme = ExtResource("6_yvp2m")
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 30
+disabled = true
 text = "A Fire Rate"
 icon = ExtResource("5_yl1l4")
 icon_alignment = 1
@@ -222,8 +229,10 @@ expand_icon = true
 [node name="MovementSpeed" type="Button" parent="GridContainer"]
 texture_filter = 1
 layout_mode = 2
+theme = ExtResource("6_yvp2m")
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 30
+disabled = true
 text = "T Movement Speed"
 icon = ExtResource("6_4us05")
 icon_alignment = 1
@@ -260,8 +269,10 @@ expand_icon = true
 [node name="DashTimer" type="Button" parent="GridContainer"]
 texture_filter = 1
 layout_mode = 2
+theme = ExtResource("6_yvp2m")
 theme_override_fonts/font = ExtResource("3_vu5bw")
 theme_override_font_sizes/font_size = 30
+disabled = true
 text = "E Dash TImer"
 icon = ExtResource("7_5huwq")
 icon_alignment = 1

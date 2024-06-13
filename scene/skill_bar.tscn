@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://botvouyo77woe"]
+[gd_scene load_steps=23 format=3 uid="uid://botvouyo77woe"]
 
 [ext_resource type="Script" path="res://script/skill_bar.cs" id="1_bxtfg"]
 [ext_resource type="Texture2D" uid="uid://d4aao81m1buo8" path="res://art/PlayerStatistics/HP.png" id="2_rpls5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c0qm6lyeinkll" path="res://art/items/skills/Skillicon14_14.png" id="4_ofuwl"]
 [ext_resource type="Texture2D" uid="uid://dnbwrhntgiyhp" path="res://art/items/skills/Skillicon14_28.png" id="5_pwm7s"]
 [ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="6_myjnf"]
+[ext_resource type="Theme" uid="uid://c7f13roog0fm0" path="res://art/Theme/SkillBar.tres" id="6_pq6cq"]
 [ext_resource type="Texture2D" uid="uid://bfsh4g7cevenh" path="res://art/PlayerStatistics/AttackDamage.png" id="7_n1pou"]
 [ext_resource type="Texture2D" uid="uid://x4pcfqtt6tdj" path="res://art/PlayerStatistics/MovementSpeed.png" id="8_30y66"]
 [ext_resource type="Texture2D" uid="uid://d2x5m68bbf13h" path="res://art/PlayerStatistics/FireRate.png" id="8_x4ks4"]
@@ -192,7 +193,9 @@ offset_bottom = 130.0
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
+theme = ExtResource("6_pq6cq")
 theme_override_fonts/font = ExtResource("6_myjnf")
+disabled = true
 text = "HP"
 icon = ExtResource("2_rpls5")
 
@@ -200,7 +203,9 @@ icon = ExtResource("2_rpls5")
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
+theme = ExtResource("6_pq6cq")
 theme_override_fonts/font = ExtResource("6_myjnf")
+disabled = true
 text = "AD"
 icon = ExtResource("7_n1pou")
 
@@ -208,7 +213,9 @@ icon = ExtResource("7_n1pou")
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
+theme = ExtResource("6_pq6cq")
 theme_override_fonts/font = ExtResource("6_myjnf")
+disabled = true
 text = "Fire Rate"
 icon = ExtResource("8_x4ks4")
 
@@ -223,7 +230,9 @@ offset_bottom = 110.0
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
+theme = ExtResource("6_pq6cq")
 theme_override_fonts/font = ExtResource("6_myjnf")
+disabled = true
 text = "MS"
 icon = ExtResource("8_30y66")
 
@@ -231,7 +240,9 @@ icon = ExtResource("8_30y66")
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
+theme = ExtResource("6_pq6cq")
 theme_override_fonts/font = ExtResource("6_myjnf")
+disabled = true
 text = "Dash CD"
 icon = ExtResource("9_6uom4")
 
