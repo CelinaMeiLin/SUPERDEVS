@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dju1w020uwm3n"]
+[gd_scene load_steps=4 format=3 uid="uid://dju1w020uwm3n"]
 
-[ext_resource type="Script" path="res://script/main_menu.cs" id="1_rcoi1"]
+[ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="2_mc5b1"]
+[ext_resource type="PackedScene" uid="uid://bgcjndlopf6p6" path="res://scene/backoptions.tscn" id="3_oe5nk"]
+[ext_resource type="PackedScene" uid="uid://uvdm7fxm6eay" path="res://scene/VolumeSetting.tscn" id="3_x3dtn"]
 
 [node name="Options" type="Control"]
 z_index = 4096
@@ -12,7 +14,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-script = ExtResource("1_rcoi1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1049.0
+offset_top = -551.0
+offset_right = 2790.0
+offset_bottom = 1421.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("2_mc5b1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -21,42 +38,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -243.5
-offset_top = -45.0
-offset_right = 243.5
-offset_bottom = 45.0
+offset_left = -244.5
+offset_top = -128.5
+offset_right = 244.5
+offset_bottom = 128.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sound" type="Label" parent="VBoxContainer"]
+[node name="Master Volume" parent="VBoxContainer" instance=ExtResource("3_x3dtn")]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Master Volume"
+BusName = "Master Volume"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+[node name="Music Volume" parent="VBoxContainer" instance=ExtResource("3_x3dtn")]
 layout_mode = 2
+BusName = "Music Volume"
+BusIndex = 1
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Sound Effects Volume" parent="VBoxContainer" instance=ExtResource("3_x3dtn")]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Sound fx"
+BusName = "Sound Effects Volume"
+BusIndex = 2
 
-[node name="HSlider2" type="HSlider" parent="VBoxContainer"]
-layout_mode = 2
-ticks_on_borders = true
-
-[node name="Back" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -130.0
-offset_top = -31.0
-offset_right = 130.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Back"
-
-[connection signal="pressed" from="Back" to="." method="OnBackPressed"]
+[node name="Back" parent="." instance=ExtResource("3_oe5nk")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 279.0
+offset_bottom = 47.0
+grow_horizontal = 1
+grow_vertical = 1

@@ -1,10 +1,76 @@
-[gd_scene load_steps=6 format=3 uid="uid://botvouyo77woe"]
+[gd_scene load_steps=27 format=3 uid="uid://botvouyo77woe"]
 
 [ext_resource type="Script" path="res://script/skill_bar.cs" id="1_bxtfg"]
-[ext_resource type="Texture2D" uid="uid://bj3skw0ctggnp" path="res://art/items/skills/Skillicon14_02.png" id="2_fkpns"]
+[ext_resource type="Texture2D" uid="uid://d4aao81m1buo8" path="res://art/PlayerStatistics/HP.png" id="2_rpls5"]
 [ext_resource type="Texture2D" uid="uid://cy1kfiutkbpvv" path="res://art/items/skills/Skillicon14_18.png" id="3_npxv3"]
+[ext_resource type="Texture2D" uid="uid://bomlywcuyhmc0" path="res://art/items/skills/Skillicon14_35.png" id="3_q25w5"]
 [ext_resource type="Texture2D" uid="uid://c0qm6lyeinkll" path="res://art/items/skills/Skillicon14_14.png" id="4_ofuwl"]
 [ext_resource type="Texture2D" uid="uid://dnbwrhntgiyhp" path="res://art/items/skills/Skillicon14_28.png" id="5_pwm7s"]
+[ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="6_myjnf"]
+[ext_resource type="Theme" uid="uid://c7f13roog0fm0" path="res://art/Theme/SkillBar.tres" id="6_pq6cq"]
+[ext_resource type="Texture2D" uid="uid://bfsh4g7cevenh" path="res://art/PlayerStatistics/AttackDamage.png" id="7_n1pou"]
+[ext_resource type="Texture2D" uid="uid://x4pcfqtt6tdj" path="res://art/PlayerStatistics/MovementSpeed.png" id="8_30y66"]
+[ext_resource type="Texture2D" uid="uid://d2x5m68bbf13h" path="res://art/PlayerStatistics/FireRate.png" id="8_x4ks4"]
+[ext_resource type="Texture2D" uid="uid://dbupwbrywdef0" path="res://art/PlayerStatistics/DashTimer.png" id="9_6uom4"]
+[ext_resource type="FontFile" uid="uid://bpaoi2sv2muxa" path="res://art/fonts/arcadeclassic.regular.ttf" id="13_lnltl"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_fvi21"]
+device = -1
+keycode = 49
+unicode = 38
+
+[sub_resource type="Shortcut" id="Shortcut_qhuks"]
+events = [SubResource("InputEventKey_fvi21")]
+
+[sub_resource type="Gradient" id="Gradient_e5t6e"]
+colors = PackedColorArray(0.627451, 0.627451, 0.627451, 0.235294, 0.627451, 0.627451, 0.627451, 0.235294)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vwrfy"]
+gradient = SubResource("Gradient_e5t6e")
+
+[sub_resource type="InputEventKey" id="InputEventKey_ncwco"]
+device = -1
+keycode = 50
+physical_keycode = 50
+key_label = 50
+unicode = 233
+
+[sub_resource type="Shortcut" id="Shortcut_amwgk"]
+events = [SubResource("InputEventKey_ncwco")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_j2rxx"]
+device = -1
+keycode = 51
+unicode = 34
+
+[sub_resource type="Shortcut" id="Shortcut_31x4b"]
+events = [SubResource("InputEventKey_j2rxx")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_sjybl"]
+device = -1
+keycode = 52
+unicode = 39
+
+[sub_resource type="Shortcut" id="Shortcut_iocfl"]
+events = [SubResource("InputEventKey_sjybl")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22xjg"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpifm"]
+bg_color = Color(0.262745, 0.662745, 0.733333, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="Theme" id="Theme_t5dyu"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_22xjg")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_kpifm")
 
 [node name="SkillBar" type="Container"]
 anchors_preset = 15
@@ -31,67 +97,199 @@ offset_right = 176.0
 offset_bottom = 45.0
 scale = Vector2(3, 3)
 
-[node name="Skill1" type="Button" parent="SkillBarPanel/HBoxContainer"]
+[node name="ShildSkill" type="Button" parent="SkillBarPanel/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
-icon = ExtResource("2_fkpns")
-vertical_icon_alignment = 0
+shortcut = SubResource("Shortcut_qhuks")
+icon = ExtResource("3_npxv3")
+icon_alignment = 1
+
+[node name="ShildCooldown" type="Timer" parent="SkillBarPanel/HBoxContainer/ShildSkill"]
+wait_time = 90.0
+one_shot = true
+
+[node name="ShildBar" type="TextureProgressBar" parent="SkillBarPanel/HBoxContainer/ShildSkill"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 70.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_vwrfy")
+tint_progress = Color(0, 0.815686, 1, 0.67451)
 
 [node name="Skill2" type="Button" parent="SkillBarPanel/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
-icon = ExtResource("3_npxv3")
+shortcut = SubResource("Shortcut_amwgk")
+icon = ExtResource("3_q25w5")
 vertical_icon_alignment = 0
+
+[node name="SkillCooldown" type="Timer" parent="SkillBarPanel/HBoxContainer/Skill2"]
+wait_time = 60.0
+one_shot = true
+
+[node name="SkillBar" type="TextureProgressBar" parent="SkillBarPanel/HBoxContainer/Skill2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 70.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_vwrfy")
+tint_progress = Color(0, 0.815686, 1, 0.67451)
 
 [node name="Skill3" type="Button" parent="SkillBarPanel/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
+shortcut = SubResource("Shortcut_31x4b")
 icon = ExtResource("4_ofuwl")
 vertical_icon_alignment = 0
+
+[node name="Skill3Cooldown" type="Timer" parent="SkillBarPanel/HBoxContainer/Skill3"]
+wait_time = 60.0
+one_shot = true
+
+[node name="Skill3Bar" type="TextureProgressBar" parent="SkillBarPanel/HBoxContainer/Skill3"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 70.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_vwrfy")
+tint_progress = Color(0, 0.815686, 1, 0.67451)
 
 [node name="Skill4" type="Button" parent="SkillBarPanel/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
+shortcut = SubResource("Shortcut_iocfl")
 icon = ExtResource("5_pwm7s")
 vertical_icon_alignment = 0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="SkillBarPanel"]
-custom_minimum_size = Vector2(100, 30)
+[node name="Skill4Cooldown" type="Timer" parent="SkillBarPanel/HBoxContainer/Skill4"]
+wait_time = 60.0
+one_shot = true
+
+[node name="Skill4Bar" type="TextureProgressBar" parent="SkillBarPanel/HBoxContainer/Skill4"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 70.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_vwrfy")
+tint_progress = Color(0, 0.815686, 1, 0.67451)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SkillBarPanel"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 5.0
-offset_right = 176.0
-offset_bottom = 45.0
-scale = Vector2(3, 3)
+offset_left = -165.0
+offset_top = 2.0
+offset_right = -15.0
+offset_bottom = 130.0
 
-[node name="Skill1" type="Button" parent="SkillBarPanel/HBoxContainer2"]
+[node name="Skill1" type="Button" parent="SkillBarPanel/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
-icon = ExtResource("2_fkpns")
-vertical_icon_alignment = 0
+theme = ExtResource("6_pq6cq")
+theme_override_fonts/font = ExtResource("6_myjnf")
+disabled = true
+text = "HP"
+icon = ExtResource("2_rpls5")
 
-[node name="Skill2" type="Button" parent="SkillBarPanel/HBoxContainer2"]
+[node name="Skill2" type="Button" parent="SkillBarPanel/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
-icon = ExtResource("3_npxv3")
-vertical_icon_alignment = 0
+theme = ExtResource("6_pq6cq")
+theme_override_fonts/font = ExtResource("6_myjnf")
+disabled = true
+text = "AD"
+icon = ExtResource("7_n1pou")
 
-[node name="Skill3" type="Button" parent="SkillBarPanel/HBoxContainer2"]
+[node name="Skill3" type="Button" parent="SkillBarPanel/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
-icon = ExtResource("4_ofuwl")
-vertical_icon_alignment = 0
+theme = ExtResource("6_pq6cq")
+theme_override_fonts/font = ExtResource("6_myjnf")
+disabled = true
+text = "Fire Rate"
+icon = ExtResource("8_x4ks4")
 
-[node name="Skill4" type="Button" parent="SkillBarPanel/HBoxContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="SkillBarPanel"]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 2.0
+offset_right = 639.0
+offset_bottom = 110.0
+
+[node name="Skill1" type="Button" parent="SkillBarPanel/VBoxContainer2"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
-icon = ExtResource("5_pwm7s")
-vertical_icon_alignment = 0
+theme = ExtResource("6_pq6cq")
+theme_override_fonts/font = ExtResource("6_myjnf")
+disabled = true
+text = "MS"
+icon = ExtResource("8_30y66")
+
+[node name="Skill2" type="Button" parent="SkillBarPanel/VBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(20, 2.08165e-12)
+layout_mode = 2
+theme = ExtResource("6_pq6cq")
+theme_override_fonts/font = ExtResource("6_myjnf")
+disabled = true
+text = "Dash CD"
+icon = ExtResource("9_6uom4")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="SkillBarPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -59.0
+offset_right = 519.0
+offset_bottom = -24.0
+
+[node name="Label" type="Label" parent="SkillBarPanel/VBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_lnltl")
+theme_override_font_sizes/font_size = 20
+text = "lv L  1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="SkillBarPanel/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_t5dyu")
+value = 40.0
+show_percentage = false
+
+[connection signal="pressed" from="SkillBarPanel/HBoxContainer/ShildSkill" to="." method="_on_shild_skill_pressed"]
+[connection signal="timeout" from="SkillBarPanel/HBoxContainer/ShildSkill/ShildCooldown" to="." method="_on_shild_cooldown_timeout"]
+[connection signal="timeout" from="SkillBarPanel/HBoxContainer/Skill2/SkillCooldown" to="." method="_on_shild_cooldown_timeout"]
+[connection signal="timeout" from="SkillBarPanel/HBoxContainer/Skill3/Skill3Cooldown" to="." method="_on_shild_cooldown_timeout"]
+[connection signal="timeout" from="SkillBarPanel/HBoxContainer/Skill4/Skill4Cooldown" to="." method="_on_shild_cooldown_timeout"]

@@ -117,10 +117,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("15_1u1qr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2akd5")
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 3.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -503,7 +506,7 @@ height = 46.0
 [node name="EnnemyPow" type="Node2D"]
 
 [node name="PowBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character", "AnimationPlayer")]
-collision_layer = 5
+collision_layer = 4
 script = ExtResource("1_de8qo")
 Character = NodePath("..")
 AnimationPlayer = NodePath("AnimationPlayer")

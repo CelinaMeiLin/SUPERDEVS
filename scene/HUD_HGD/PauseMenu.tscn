@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs0ow3mxifq3a"]
+
+[ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="1_104m8"]
+[ext_resource type="Texture2D" uid="uid://j8k0hgmao6ak" path="res://art/HUD/RsumeButton.png" id="2_b5dmc"]
+
+[node name="Button" type="Button"]
+process_mode = 2
+texture_filter = 1
+offset_left = 584.0
+offset_top = 476.0
+offset_right = 7892.0
+offset_bottom = 2532.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("1_104m8")
+theme_override_font_sizes/font_size = 800
+text = "Game paused"
+icon = ExtResource("2_b5dmc")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true

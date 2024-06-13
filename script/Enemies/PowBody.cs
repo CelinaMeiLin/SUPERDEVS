@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Devs.project.Ressources;
 using Devs.project.script;
 using Vector2 = Godot.Vector2;
 
@@ -44,6 +45,7 @@ public partial class PowBody : CharacterBody2D
 	private bool gettinghurt = false;
 	private bool direction = false;
 	public bool player_chase = false;
+	private bool dying = false;
 
 	//--------------------------------------------------------------------------------------------//
 	
@@ -110,7 +112,7 @@ public partial class PowBody : CharacterBody2D
 		else
 		{
 			velocity.X = 0;
-			if (gettinghurt == false)
+			if (gettinghurt == false && Enemy.Vie > 0)
 			{
 				_animatedSprite.Play("idle");	
 			}
@@ -153,7 +155,7 @@ public partial class PowBody : CharacterBody2D
 	{
 		if (body is astra)
 		{
-			player = body as astra;
+			player = (astra)body;
 			playerbaseposition = ((astra)body).baseposition;
 			player_chase = true;
 			GetNode<GpuParticles2D>("Exclamation").Emitting = true;
@@ -178,11 +180,21 @@ public partial class PowBody : CharacterBody2D
 
 	private async void _die()
 	{
+		if (dying)
+		{
+			return;
+		}
+
+		dying = true;
+		SetCollisionLayerValue(3, false);
+		
 		_animatedSprite.Play("death");
 		//_animatedSprite.Modulate = basecolor;
 		//Death_particles.Emitting = true;
-		//await ToSignal(GetTree().CreateTimer(3), "timeout");
-		//QueueFree();
+		await ToSignal(GetTree().CreateTimer(2), "timeout");
+		QueueFree();
+		
+		GameManager.SpawnCoin(this, Position);
 	}
 	
 	public async void hurt(float value)

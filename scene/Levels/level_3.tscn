@@ -1,13 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgx0fba1370iv"]
+[gd_scene load_steps=12 format=3 uid="uid://dgx0fba1370iv"]
 
 [ext_resource type="PackedScene" uid="uid://nrwpnfhf33q7" path="res://scene/Levels/parallax_background.tscn" id="1_5iql0"]
+[ext_resource type="Script" path="res://Ressources/PauseManager.cs" id="1_6w6ov"]
+[ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="3_ekm15"]
 [ext_resource type="PackedScene" uid="uid://q1snnkpbyqru" path="res://scene/sol.tscn" id="4_yaard"]
 [ext_resource type="PackedScene" uid="uid://c8iv3ojysfds" path="res://scene/astra.tscn" id="5_xnhlf"]
 [ext_resource type="Script" path="res://script/CameraPlayer.cs" id="6_a2qjj"]
 [ext_resource type="PackedScene" uid="uid://blj5nfok2go75" path="res://scene/health_bar.tscn" id="7_csmx0"]
+[ext_resource type="PackedScene" uid="uid://bni3f51is1dg1" path="res://scene/portail.tscn" id="8_65v8f"]
 [ext_resource type="PackedScene" uid="uid://botvouyo77woe" path="res://scene/skill_bar.tscn" id="8_odhwc"]
+[ext_resource type="PackedScene" uid="uid://dsengf11vtlvi" path="res://scene/ui_manager_resume.tscn" id="9_whh2o"]
+[ext_resource type="PackedScene" uid="uid://b24nbq84kutqr" path="res://scene/HUD_HGD/GameOver.tscn" id="11_72ve7"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("Path", "GameOverPath")]
+script = ExtResource("1_6w6ov")
+Path = NodePath("UIManager2")
+GameOverPath = NodePath("GameOverScreen")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_5iql0")]
 offset = Vector2(2.08165e-12, 140)
@@ -15,23 +23,7 @@ transform = Transform2D(1, 0, 0, 1, 2.08165e-12, 140)
 
 [node name="sol" parent="." instance=ExtResource("4_yaard")]
 
-[node name="PlayerSpawnPoints" type="Node2D" parent="."]
-
-[node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("5_xnhlf")]
-position = Vector2(-500, 541)
-
-[node name="AstraBody" parent="PlayerSpawnPoints/Astra" index="0" node_paths=PackedStringArray("HealthBar")]
-HealthBar = NodePath("../../../interface/HealthBar")
-
-[node name="CamTUTO" type="Camera2D" parent="PlayerSpawnPoints/Astra" node_paths=PackedStringArray("ObjectToFollow")]
-zoom = Vector2(2, 2)
-limit_left = -800
-limit_bottom = 700
-position_smoothing_enabled = true
-position_smoothing_speed = 20.0
-editor_draw_limits = true
-script = ExtResource("6_a2qjj")
-ObjectToFollow = NodePath("../AstraBody")
+[node name="UIManager" parent="." instance=ExtResource("3_ekm15")]
 
 [node name="interface" type="CanvasLayer" parent="."]
 
@@ -47,5 +39,36 @@ offset_top = -27.0
 offset_right = -6.0
 offset_bottom = -27.0
 grow_vertical = 0
+
+[node name="Portail" parent="." instance=ExtResource("8_65v8f")]
+position = Vector2(3485, 544)
+
+[node name="PlayerSpawnPoints" type="Node2D" parent="."]
+
+[node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("5_xnhlf")]
+position = Vector2(-500, 541)
+
+[node name="AstraBody" parent="PlayerSpawnPoints/Astra" index="0" node_paths=PackedStringArray("GameOver", "HealthBar")]
+GameOver = NodePath("../../../GameOverScreen")
+HealthBar = NodePath("../../../interface/HealthBar")
+
+[node name="CamTUTO" parent="PlayerSpawnPoints/Astra/AstraBody" index="0"]
+limit_right = 3738
+
+[node name="CamTUTO2" type="Camera2D" parent="PlayerSpawnPoints/Astra" node_paths=PackedStringArray("ObjectToFollow")]
+zoom = Vector2(2, 2)
+limit_left = -800
+limit_bottom = 700
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+editor_draw_limits = true
+script = ExtResource("6_a2qjj")
+ObjectToFollow = NodePath("../AstraBody")
+
+[node name="UIManager2" parent="." instance=ExtResource("9_whh2o")]
+
+[node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("11_72ve7")]
+visible = false
+Scene = NodePath("..")
 
 [editable path="PlayerSpawnPoints/Astra"]

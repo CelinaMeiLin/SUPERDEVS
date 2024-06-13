@@ -2,6 +2,8 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Devs.project.Autoloads;
+using Devs.project.Ressources;
 using Devs.project.script;
 using Vector2 = Godot.Vector2;
 
@@ -38,6 +40,7 @@ public partial class GusBody : CharacterBody2D
 	private bool gettinghurt = false;
 	private bool direction = false;
 	public bool player_chase = false;
+	private bool dying = false;
 	
 	//Sound
 	private AudioStreamPlayer2D audio_gun;
@@ -202,10 +205,22 @@ public partial class GusBody : CharacterBody2D
 	//--------------------------------- HP SYSTEM -----------------------------------------//
 	private async void _die()
 	{
+		if (dying)
+		{
+			return;
+		}
+
+		dying = true;
+		SetCollisionLayerValue(3, false);
+		var pos = Position;
 		Death_particles.Emitting = true;
 		_animatedSprite.Visible = false;
-		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
-		QueueFree();
+		
+		await ToSignal(GetTree().CreateTimer(0.1), "timeout");
+		
+		QueueFree(); //this.QueueFree() de l'ennemi
+		
+		GameManager.SpawnCoin(this, pos);
 	}
 	public async void hurt(float value)
 	{

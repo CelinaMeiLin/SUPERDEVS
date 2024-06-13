@@ -3,7 +3,7 @@ using System;
 
 public partial class GusShot : RigidBody2D
 {
-	public float BulletDamge = 100;
+	public float BulletDamage = 20;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -19,7 +19,7 @@ public partial class GusShot : RigidBody2D
 			{
 				QueueFree();
 			}
-			((astra)body).hurt(BulletDamge);
+			((astra)body).hurt(BulletDamage);
 		}
 		
 		QueueFree();

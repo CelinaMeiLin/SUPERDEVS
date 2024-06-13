@@ -1,9 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://bjv744p4xwgi8"]
+[gd_scene load_steps=46 format=3 uid="uid://bjv744p4xwgi8"]
 
-[ext_resource type="Script" path="res://script/main_menu.cs" id="1_2u6h8"]
+[ext_resource type="Script" path="res://script/Scene_Manager.cs" id="1_27kvk"]
 [ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="2_oit33"]
 [ext_resource type="AudioStream" uid="uid://yno53hkqejo5" path="res://audio/music/DevsMain_Lobby.mp3" id="2_vuvl1"]
 [ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="3_ecll8"]
+[ext_resource type="Script" path="res://script/OptionsButton.cs" id="4_gxkyt"]
 [ext_resource type="Texture2D" uid="uid://d372k0kffqi82" path="res://art/characters/crouch/crouch.png" id="4_xrtw1"]
 [ext_resource type="Texture2D" uid="uid://bxil18cxwxe1e" path="res://art/characters/AstraDash/Dash-7.png" id="5_i4pk5"]
 [ext_resource type="Texture2D" uid="uid://dndrs6gdcvfuf" path="res://art/characters/AstraDash/Dash-1.png" id="6_3k52q"]
@@ -240,9 +241,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2u6h8")
+script = ExtResource("1_27kvk")
 variable = NodePath(".")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -276,6 +279,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Play" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(2.08165e-12, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_ecll8")
@@ -283,13 +287,16 @@ theme_override_font_sizes/font_size = 30
 text = "Play"
 
 [node name="Options" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(2.08165e-12, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_ecll8")
 theme_override_font_sizes/font_size = 30
 text = "Options"
+script = ExtResource("4_gxkyt")
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(2.08165e-12, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_ecll8")
@@ -316,5 +323,5 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("43_iypmt")
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="OnplayPressed"]
-[connection signal="pressed" from="VBoxContainer/Options" to="." method="OnOptionsPressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="VBoxContainer/Options" method="OnOptionsPressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="OnExitPressed"]

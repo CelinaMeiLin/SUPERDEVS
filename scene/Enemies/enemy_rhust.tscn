@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://jbr1kh508slo"]
+[gd_scene load_steps=44 format=3 uid="uid://jbr1kh508slo"]
 
 [ext_resource type="Texture2D" uid="uid://ekbje23bel28" path="res://art/rhustenemy/crouch-shoot/crouch-shoot-export1.png" id="1_tv8nv"]
 [ext_resource type="Texture2D" uid="uid://byk8x2vxdfest" path="res://art/rhustenemy/idle.png" id="1_tx4h1"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dx2kh2xcnd056" path="res://art/rhustenemy/hurt.png" id="2_4qftp"]
 [ext_resource type="Texture2D" uid="uid://cjqhu5r36i35r" path="res://art/rhustenemy/crouch-shoot/crouch-shoot-export2.png" id="2_7uhy3"]
 [ext_resource type="Texture2D" uid="uid://bqr7xsbgcr4oi" path="res://art/rhustenemy/run/run-export1.png" id="2_hej1c"]
+[ext_resource type="PackedScene" uid="uid://bkywsjydmcd3r" path="res://scene/Enemies/rhustbullet.tscn" id="2_saqd8"]
+[ext_resource type="PackedScene" uid="uid://d3d8m5k4b0126" path="res://scene/Enemies/projectile.tscn" id="3_ihwdw"]
 [ext_resource type="Texture2D" uid="uid://bsbxrixacp2vj" path="res://art/rhustenemy/run/run-export2.png" id="3_kbfdn"]
 [ext_resource type="Texture2D" uid="uid://dniy5arjegmj3" path="res://art/rhustenemy/run/run-export3.png" id="4_a62ai"]
 [ext_resource type="Texture2D" uid="uid://bo554btdiph50" path="res://art/rhustenemy/jump.png" id="5_t653t"]
@@ -21,25 +23,33 @@
 [ext_resource type="Texture2D" uid="uid://j5m5ll2063he" path="res://art/rhustenemy/throw/throw-export5.png" id="17_anah3"]
 [ext_resource type="Texture2D" uid="uid://7dogaqmf3vwe" path="res://art/rhustenemy/throw/throw-export6.png" id="18_bnanr"]
 [ext_resource type="PackedScene" uid="uid://b6altf6xtkxqg" path="res://scene/health_bar_enemy.tscn" id="20_7h4oq"]
+[ext_resource type="Texture2D" uid="uid://dq5etap55urf3" path="res://art/rhustenemy/Rhust-Bullet/muzzle-flash.png" id="22_uc1t2"]
 [ext_resource type="Texture2D" uid="uid://l6t88g5oovd" path="res://art/Animations/PointsExclamation.png" id="23_nn675"]
 [ext_resource type="Texture2D" uid="uid://ihslg3nf410s" path="res://art/Animations/PointInterrogation.png" id="24_3lo44"]
 [ext_resource type="AudioStream" uid="uid://b2g0dymemfoob" path="res://audio/sfx/gus_shoot.mp3" id="25_rv65q"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uyxc6"]
-height = 44.0
+[sub_resource type="QuadMesh" id="QuadMesh_44opd"]
+size = Vector2(220, 1)
+
+[sub_resource type="Gradient" id="Gradient_84eik"]
+offsets = PackedFloat32Array(0, 0.87013, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0.215533, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_md35m"]
+gradient = SubResource("Gradient_84eik")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cb710"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_tv8nv")
+"texture": ExtResource("2_7uhy3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_7uhy3")
+"texture": ExtResource("1_tv8nv")
 }],
 "loop": true,
 "name": &"crouch-shoot",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -97,7 +107,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"shoot",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -122,6 +132,26 @@ animations = [{
 "name": &"throw",
 "speed": 5.0
 }]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rrkod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_uc1t2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uyxc6"]
+height = 44.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6wgt0"]
+radius = 201.036
 
 [sub_resource type="Curve" id="Curve_5wngd"]
 _data = [Vector2(0, 1), 0.0, -0.390476, 0, 1, Vector2(0.731707, 0.714286), -0.867725, -0.867725, 0, 0, Vector2(1, 0), -1.0, 0.0, 0, 0]
@@ -176,25 +206,57 @@ size = Vector2(4.80769, 8)
 size = Vector2(5, 8)
 
 [node name="EnemyRhust" type="Node2D"]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.6, 1.6)
 
 [node name="RhustBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character")]
 scale = Vector2(1.3, 1.3)
 collision_layer = 4
 script = ExtResource("1_yr2tu")
 Character = NodePath("..")
+Bullet_scn = ExtResource("2_saqd8")
+
+[node name="AimingMesh" type="MeshInstance2D" parent="RhustBody"]
+position = Vector2(120, 1)
+mesh = SubResource("QuadMesh_44opd")
+texture = SubResource("GradientTexture2D_md35m")
+
+[node name="Projectile" parent="RhustBody" instance=ExtResource("3_ihwdw")]
+visible = false
+position = Vector2(112.5, 0.961539)
+scale = Vector2(0.4, 0.4)
+
+[node name="Rhust" type="AnimatedSprite2D" parent="RhustBody"]
+texture_filter = 1
+scale = Vector2(0.769231, 0.769231)
+sprite_frames = SubResource("SpriteFrames_cb710")
+animation = &"crouch-shoot"
+autoplay = "run"
+frame = 1
+frame_progress = 0.298504
+
+[node name="FlashCrouch" type="AnimatedSprite2D" parent="RhustBody"]
+texture_filter = 1
+position = Vector2(24.1026, -5.96046e-08)
+scale = Vector2(0.45, 0.45)
+sprite_frames = SubResource("SpriteFrames_rrkod")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RhustBody"]
 position = Vector2(-0.769231, 3.84615)
 scale = Vector2(0.769231, 0.769231)
 shape = SubResource("CapsuleShape2D_uyxc6")
 
-[node name="Rhust" type="AnimatedSprite2D" parent="RhustBody"]
-texture_filter = 1
-scale = Vector2(0.769231, 0.769231)
-sprite_frames = SubResource("SpriteFrames_cb710")
-animation = &"run"
-autoplay = "run"
+[node name="HealthBar" parent="RhustBody" instance=ExtResource("20_7h4oq")]
+offset_left = -7.69231
+offset_top = -17.9487
+offset_right = 8.30769
+offset_bottom = -15.9487
+
+[node name="Area2D" type="Area2D" parent="RhustBody"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RhustBody/Area2D"]
+shape = SubResource("CircleShape2D_6wgt0")
 
 [node name="DeathParticles" type="GPUParticles2D" parent="RhustBody"]
 position = Vector2(0.769231, 10)
@@ -228,22 +290,21 @@ lifetime = 0.3
 one_shot = true
 local_coords = true
 
-[node name="HealthBar" parent="RhustBody" instance=ExtResource("20_7h4oq")]
-offset_left = -6.66666
-offset_top = -20.0
-offset_right = 6.33334
-offset_bottom = -18.0
-metadata/_edit_use_anchors_ = true
-
 [node name="bulletspawnerD" type="CollisionShape2D" parent="RhustBody"]
-position = Vector2(23.0769, 3.84616)
+position = Vector2(23.0769, 0.961538)
 shape = SubResource("RectangleShape2D_s4fm0")
 disabled = true
 
 [node name="bulletspawnerG" type="CollisionShape2D" parent="RhustBody"]
-position = Vector2(-21.5385, 3.84615)
+position = Vector2(-20.6731, 1.92308)
 shape = SubResource("RectangleShape2D_6mx63")
 disabled = true
 
 [node name="Audio_gun" type="AudioStreamPlayer2D" parent="RhustBody"]
 stream = ExtResource("25_rv65q")
+bus = &"SFX"
+
+[connection signal="animation_changed" from="RhustBody/Rhust" to="RhustBody" method="_on_rhust_animation_changed"]
+[connection signal="animation_looped" from="RhustBody/Rhust" to="RhustBody" method="_on_rhust_animation_looped"]
+[connection signal="body_entered" from="RhustBody/Area2D" to="RhustBody" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="RhustBody/Area2D" to="RhustBody" method="_on_detection_area_body_exited"]

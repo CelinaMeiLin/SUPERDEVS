@@ -1,9 +1,12 @@
 using Godot;
 using System;
+using Devs.project.Autoloads;
+using Devs.project.script.Enemies;
 
 public partial class bullet : RigidBody2D
 {
-	public float BulletDamge = 200;
+
+	public float BulletDamage = (float)UserPreferences.Data["AttackDamage"];
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -16,21 +19,19 @@ public partial class bullet : RigidBody2D
 	{
 		if (body is GusBody)
 		{
-			if (((GusBody)body).Enemy.Vie <= 0)
-			{
-				QueueFree();
-			}
-			((GusBody)body).hurt(BulletDamge);
+			((GusBody)body).hurt(BulletDamage);
 		}
 		
 		if (body is PowBody)
 		{
-			if (((PowBody)body).Enemy.Vie <= 0)
-			{
-				QueueFree();
-			}
-			((PowBody)body).hurt(BulletDamge);
+			((PowBody)body).hurt(BulletDamage);
 		}
+		
+		if (body is RhustBody)
+		{
+			((RhustBody)body).hurt(BulletDamage);
+		}
+		
 		QueueFree();
 	}
 }

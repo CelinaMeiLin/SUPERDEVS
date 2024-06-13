@@ -1,15 +1,23 @@
-[gd_scene load_steps=52 format=3 uid="uid://c5nnts6jcvh3u"]
+[gd_scene load_steps=72 format=3 uid="uid://c5nnts6jcvh3u"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_2hygk"]
 [ext_resource type="PackedScene" uid="uid://b1ai6u7657apo" path="res://scene/bullet.tscn" id="2_3skay"]
 [ext_resource type="Texture2D" uid="uid://brw2rvy818r3b" path="res://art/character2/Duck/Duck1.png" id="3_4uitf"]
+[ext_resource type="Texture2D" uid="uid://d23hvjypf5mv" path="res://art/character2/Dash/1.png" id="3_slbq3"]
 [ext_resource type="Texture2D" uid="uid://dteoljoco8gkj" path="res://art/character2/Duck/Duck2.png" id="4_7nvun"]
+[ext_resource type="Texture2D" uid="uid://b6vr7uhkkndey" path="res://art/character2/Dash/2.png" id="4_tcaee"]
 [ext_resource type="Texture2D" uid="uid://bcvy2wc20ovq7" path="res://art/character2/Duck/Duck3.png" id="5_27cin"]
+[ext_resource type="Texture2D" uid="uid://drrreccb4snxo" path="res://art/character2/Dash/3.png" id="5_a0r0g"]
 [ext_resource type="Texture2D" uid="uid://dcl5vepyfig7n" path="res://art/character2/Duck/Duck4.png" id="6_ao1x7"]
+[ext_resource type="Texture2D" uid="uid://dccp7whcjmdvy" path="res://art/character2/Dash/4.png" id="6_th7de"]
+[ext_resource type="Texture2D" uid="uid://ct66xkyh10vo" path="res://art/character2/Dash/5.png" id="7_4ykcv"]
 [ext_resource type="Texture2D" uid="uid://b1esbqesn0tkk" path="res://art/character2/Hurt/Hurt2.png" id="7_qx4b0"]
 [ext_resource type="Texture2D" uid="uid://b5b0h05a2srev" path="res://art/character2/Idle/Idle1.png" id="8_jrxus"]
+[ext_resource type="Texture2D" uid="uid://bg67ao27gpptw" path="res://art/character2/Dash/6.png" id="8_qrwr2"]
 [ext_resource type="Texture2D" uid="uid://dl24uwowo47bk" path="res://art/character2/Idle/Idle2.png" id="9_f35k6"]
+[ext_resource type="Texture2D" uid="uid://cwinl2kg6yng5" path="res://art/character2/Dash/7.png" id="9_hwxxg"]
 [ext_resource type="Texture2D" uid="uid://pfb5wjlatrel" path="res://art/character2/Idle/Idle3.png" id="10_gafu6"]
+[ext_resource type="Texture2D" uid="uid://cnnk6i0lmqxs0" path="res://art/character2/Dash/8.png" id="10_kn6u2"]
 [ext_resource type="Texture2D" uid="uid://ce53suu85ssub" path="res://art/character2/Idle/Idle4.png" id="11_x5v46"]
 [ext_resource type="Texture2D" uid="uid://k5arx4fv51ok" path="res://art/character2/Jump/Jump1.png" id="12_0cxy8"]
 [ext_resource type="Texture2D" uid="uid://rs7sqg3qntjg" path="res://art/character2/Jump/Jump2.png" id="13_u54si"]
@@ -30,6 +38,18 @@
 [ext_resource type="Texture2D" uid="uid://chf3v0aala5p3" path="res://art/character2/Shoot/Shoot2.png" id="28_2i0tj"]
 [ext_resource type="Texture2D" uid="uid://toohrfhhrhee" path="res://art/character2/Shoot/Shoot3.png" id="29_tl24k"]
 [ext_resource type="Texture2D" uid="uid://bdwquqa2e2xdd" path="res://art/items/Ghost.png" id="30_snaey"]
+[ext_resource type="Texture2D" uid="uid://rvfsh7lod82b" path="res://art/character2/Shoot-run/Run1.png" id="35_s314k"]
+[ext_resource type="Texture2D" uid="uid://xlrhrftpvk0o" path="res://art/character2/Shoot-run/Run2.png" id="36_ev8pg"]
+[ext_resource type="Texture2D" uid="uid://cwuehsrm1b42f" path="res://art/character2/Shoot-run/Run3.png" id="37_dvv68"]
+[ext_resource type="Texture2D" uid="uid://bygwqjfypgdcj" path="res://art/character2/Shoot-run/Run4.png" id="38_3rt5s"]
+[ext_resource type="Texture2D" uid="uid://bnvbhdijg4glj" path="res://art/character2/Shoot-run/Run5.png" id="39_wndhv"]
+[ext_resource type="Texture2D" uid="uid://40ybos544q12" path="res://art/character2/Shoot-run/Run6.png" id="40_d28y2"]
+[ext_resource type="Texture2D" uid="uid://cl1xpbw1vkuuj" path="res://art/character2/Shoot-run/Run7.png" id="41_kpad4"]
+[ext_resource type="Texture2D" uid="uid://mtlottlsw7dr" path="res://art/character2/Shoot-run/Run8.png" id="42_0g5k7"]
+[ext_resource type="Script" path="res://script/CameraPlayer.cs" id="47_q28ga"]
+[ext_resource type="AudioStream" uid="uid://bcfcs5tbn3jrb" path="res://audio/sfx/Astra/astra_shoot.mp3" id="48_glc5c"]
+[ext_resource type="AudioStream" uid="uid://dcjdxoldj6nvl" path="res://audio/sfx/Astra/secondstep.mp3" id="49_hfm55"]
+[ext_resource type="AudioStream" uid="uid://b6ocpb18mwj4f" path="res://audio/sfx/Astra/astra_dash.mp3" id="50_tty42"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osw1a"]
 radius = 15.0
@@ -37,11 +57,6 @@ height = 98.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ifo5n"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"dash",
-"speed": 12.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_4uitf")
@@ -56,8 +71,37 @@ animations = [{
 "texture": ExtResource("6_ao1x7")
 }],
 "loop": true,
-"name": &"duck",
+"name": &"crouch",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_slbq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tcaee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a0r0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_th7de")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4ykcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qrwr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hwxxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kn6u2")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -112,6 +156,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("12_0cxy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_u54si")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vbjcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jjx30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_a110o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_bkpv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3w0kg")
+}],
+"loop": true,
+"name": &"jumpfirst",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("19_ssc5g")
 }, {
 "duration": 1.0,
@@ -139,7 +209,31 @@ animations = [{
 "name": &"run",
 "speed": 13.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_s314k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_ev8pg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_dvv68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_3rt5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_wndhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_d28y2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_kpad4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_0g5k7")
+}],
 "loop": true,
 "name": &"run-shoot",
 "speed": 13.0
@@ -254,14 +348,21 @@ scale_curve = SubResource("CurveTexture_kjkte")
 alpha_curve = SubResource("CurveTexture_1fu5r")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_25ery"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath("EkkoBody:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("EkkoBody/Astra:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("EkkoBody/Astra:animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Ekko" type="Node2D"]
 
 [node name="EkkoBody" type="CharacterBody2D" parent="."]
 light_mask = 3
+scale = Vector2(0.9, 0.9)
 collision_layer = 3
 script = ExtResource("1_2hygk")
 Bullet_scn = ExtResource("2_3skay")
@@ -271,12 +372,12 @@ position = Vector2(-4, 4)
 shape = SubResource("CapsuleShape2D_osw1a")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="Ekko" type="AnimatedSprite2D" parent="EkkoBody"]
+[node name="Astra" type="AnimatedSprite2D" parent="EkkoBody"]
 texture_filter = 1
 position = Vector2(-1, -11.5625)
 scale = Vector2(1.473, 1.593)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
-animation = &"idle"
+animation = &"crouch"
 autoplay = "idle"
 
 [node name="jumpparticles" type="GPUParticles2D" parent="EkkoBody"]
@@ -328,6 +429,29 @@ process_material = SubResource("ParticleProcessMaterial_4lshf")
 lifetime = 0.6
 one_shot = true
 explosiveness = 1.0
+
+[node name="CamTUTO" type="Camera2D" parent="EkkoBody" node_paths=PackedStringArray("ObjectToFollow")]
+scale = Vector2(0.997247, 0.976474)
+zoom = Vector2(2, 2)
+limit_left = -800
+limit_bottom = 700
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+editor_draw_limits = true
+script = ExtResource("47_q28ga")
+ObjectToFollow = NodePath("..")
+
+[node name="Audio_gun" type="AudioStreamPlayer2D" parent="EkkoBody"]
+stream = ExtResource("48_glc5c")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Audio_Run" type="AudioStreamPlayer2D" parent="EkkoBody"]
+stream = ExtResource("49_hfm55")
+bus = &"SFX"
+
+[node name="Audio_Dash" type="AudioStreamPlayer2D" parent="EkkoBody"]
+stream = ExtResource("50_tty42")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_25ery")

@@ -1,13 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvbvhcttveqmn"]
+[gd_scene load_steps=21 format=3 uid="uid://bvbvhcttveqmn"]
 
 [ext_resource type="Texture2D" uid="uid://c1g1yn5n03ryi" path="res://art/background/city 8/1.png" id="1_2fndf"]
+[ext_resource type="Script" path="res://Ressources/PauseManager.cs" id="1_3iq0y"]
 [ext_resource type="PackedScene" uid="uid://q1snnkpbyqru" path="res://scene/sol.tscn" id="1_lfuap"]
 [ext_resource type="Texture2D" uid="uid://cmq8ax15nalxv" path="res://art/background/city 8/2.png" id="2_00f8k"]
 [ext_resource type="PackedScene" uid="uid://blj5nfok2go75" path="res://scene/health_bar.tscn" id="2_5c68o"]
 [ext_resource type="PackedScene" uid="uid://bimka61kji8gv" path="res://scene/medical_kit.tscn" id="2_mffbe"]
 [ext_resource type="PackedScene" uid="uid://c8iv3ojysfds" path="res://scene/astra.tscn" id="2_un3p5"]
 [ext_resource type="PackedScene" uid="uid://botvouyo77woe" path="res://scene/skill_bar.tscn" id="3_55gaa"]
-[ext_resource type="Script" path="res://script/CameraPlayer.cs" id="3_gulq7"]
 [ext_resource type="PackedScene" uid="uid://bni3f51is1dg1" path="res://scene/portail.tscn" id="3_il47q"]
 [ext_resource type="Texture2D" uid="uid://ev1s7b4y8aqv" path="res://art/background/city 8/3.png" id="3_p4dng"]
 [ext_resource type="Texture2D" uid="uid://baumfejbrbwr7" path="res://art/background/city 8/4.png" id="4_drfjn"]
@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="6_omt8t"]
 [ext_resource type="PackedScene" uid="uid://xti855xtxy8g" path="res://scene/ennemy_pow.tscn" id="14_e6yc3"]
 [ext_resource type="Texture2D" uid="uid://cwwddqg6jnmwr" path="res://art/tilesets/tileset.png" id="15_isf5f"]
+[ext_resource type="PackedScene" uid="uid://dsengf11vtlvi" path="res://scene/ui_manager_resume.tscn" id="16_2dtod"]
+[ext_resource type="PackedScene" uid="uid://b24nbq84kutqr" path="res://scene/HUD_HGD/GameOver.tscn" id="17_fao80"]
+[ext_resource type="Script" path="res://script/Enemies/SpawnEnemies.cs" id="18_x14yq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dvlcn"]
 texture = ExtResource("15_isf5f")
@@ -353,7 +356,10 @@ texture = ExtResource("15_isf5f")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dvlcn")
 
-[node name="level_1" type="Node2D"]
+[node name="level_1" type="Node2D" node_paths=PackedStringArray("Path", "GameOverPath")]
+script = ExtResource("1_3iq0y")
+Path = NodePath("UIManager2")
+GameOverPath = NodePath("GameOverScreen")
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
@@ -434,7 +440,7 @@ layer_0/tile_data = PackedInt32Array(-262118, 458752, 11, -262117, 589824, 11, -
 position = Vector2(2906, 558)
 
 [node name="Portail" parent="." instance=ExtResource("3_il47q")]
-position = Vector2(3197, 545)
+position = Vector2(3595, 544)
 
 [node name="UIManager" parent="." instance=ExtResource("6_omt8t")]
 
@@ -464,18 +470,38 @@ Astra = NodePath("../../PlayerSpawnPoints/Astra/AstraBody")
 [node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("2_un3p5")]
 position = Vector2(-500, 541)
 
-[node name="AstraBody" parent="PlayerSpawnPoints/Astra" index="0" node_paths=PackedStringArray("HealthBar")]
+[node name="AstraBody" parent="PlayerSpawnPoints/Astra" index="0" node_paths=PackedStringArray("GameOver", "HealthBar")]
+GameOver = NodePath("../../../GameOverScreen")
 HealthBar = NodePath("../../../interface/HealthBar")
 
-[node name="CamTUTO" type="Camera2D" parent="PlayerSpawnPoints/Astra" node_paths=PackedStringArray("ObjectToFollow")]
-zoom = Vector2(2, 2)
-limit_left = -800
-limit_bottom = 700
-position_smoothing_enabled = true
-position_smoothing_speed = 20.0
-editor_draw_limits = true
-script = ExtResource("3_gulq7")
-ObjectToFollow = NodePath("../AstraBody")
+[node name="CamTUTO" parent="PlayerSpawnPoints/Astra/AstraBody" index="0"]
+limit_right = 3738
+
+[node name="UIManager2" parent="." instance=ExtResource("16_2dtod")]
+
+[node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("17_fao80")]
+visible = false
+Scene = NodePath("..")
+
+[node name="SpawPow" type="Node2D" parent="." node_paths=PackedStringArray("_timer")]
+position = Vector2(1, 0)
+script = ExtResource("18_x14yq")
+_timer = NodePath("Timer")
+
+[node name="1" type="Node2D" parent="SpawPow"]
+position = Vector2(438, 534)
+
+[node name="2" type="Node2D" parent="SpawPow"]
+position = Vector2(1131, 534)
+
+[node name="3" type="Node2D" parent="SpawPow"]
+position = Vector2(1635, 534)
+
+[node name="Timer" type="Timer" parent="SpawPow"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="SpawPow/Timer" to="SpawPow" method="OnLevel1Timeout"]
 
 [editable path="EnnemyPow"]
 [editable path="PlayerSpawnPoints/Astra"]

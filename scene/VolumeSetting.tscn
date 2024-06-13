@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://uvdm7fxm6eay"]
+
+[ext_resource type="Script" path="res://script/VolumeSetting.cs" id="1_5wdel"]
+[ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="2_6vren"]
+
+[node name="VolumeSetting" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5wdel")
+
+[node name="BusNameLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6vren")
+theme_override_font_sizes/font_size = 30
+text = "<Bus Name>"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="."]
+layout_mode = 2
+value = 50.0
+
+[node name="VolumePercentageLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6vren")
+theme_override_font_sizes/font_size = 15
+text = "50"

@@ -1,11 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0qnp2ed5qemt"]
+[gd_scene load_steps=5 format=3 uid="uid://c0qnp2ed5qemt"]
 
-[ext_resource type="Script" path="res://script/Map.cs" id="1_hqaf8"]
+[ext_resource type="Script" path="res://script/Map.cs" id="1_k2xmn"]
+[ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="2_1dm1f"]
+[ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="3_qk7w5"]
+[ext_resource type="Script" path="res://script/OptionsButton.cs" id="4_qk0cy"]
 
-[node name="map" type="Control"]
+[node name="map" type="Control" node_paths=PackedStringArray("variable", "_tutorial", "_level1", "_level2", "_level3")]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_hqaf8")
+script = ExtResource("1_k2xmn")
+variable = NodePath(".")
+_tutorial = NodePath("VBoxContainer/Tuto")
+_level1 = NodePath("VBoxContainer/Level 1")
+_level2 = NodePath("VBoxContainer/Level 2")
+_level3 = NodePath("VBoxContainer/Level 3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = -89.0
+offset_top = -11.0
+offset_right = 3750.0
+offset_bottom = 1961.0
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("2_1dm1f")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -14,35 +31,80 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 836.0
-offset_top = 489.5
-offset_right = 1096.0
-offset_bottom = 684.5
+offset_left = 807.0
+offset_top = 409.0
+offset_right = 1107.0
+offset_bottom = 765.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Inventory" type="Button" parent="VBoxContainer"]
+[node name="Player Statistic" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(2.08165e-12, 50)
 layout_mode = 2
-text = "Inventory"
+theme_override_fonts/font = ExtResource("3_qk7w5")
+theme_override_font_sizes/font_size = 30
+text = "Player Statistics"
 
 [node name="Tuto" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qk7w5")
+theme_override_font_sizes/font_size = 30
 text = "Tuto"
 
 [node name="Level 1" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qk7w5")
+theme_override_font_sizes/font_size = 30
+disabled = true
 text = "Level 1"
 
-[node name="Options" type="Button" parent="VBoxContainer"]
+[node name="Level 2" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qk7w5")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Level 2"
+
+[node name="Level 3" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qk7w5")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Level 3"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(2.08165e-12, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qk7w5")
+theme_override_font_sizes/font_size = 30
 text = "Options"
+script = ExtResource("4_qk0cy")
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qk7w5")
+theme_override_font_sizes/font_size = 30
 text = "Exit"
 
-[connection signal="pressed" from="VBoxContainer/Inventory" to="." method="OnInventoryPressed"]
+[node name="Tuto2" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qk7w5")
+theme_override_font_sizes/font_size = 30
+text = "Reset"
+
+[connection signal="pressed" from="VBoxContainer/Player Statistic" to="." method="OnPlayerStatisticsPressed"]
 [connection signal="pressed" from="VBoxContainer/Tuto" to="." method="OnTutoPressed"]
 [connection signal="pressed" from="VBoxContainer/Level 1" to="." method="OnLevel1Pressed"]
-[connection signal="pressed" from="VBoxContainer/Options" to="." method="OnOptionsPressed"]
+[connection signal="pressed" from="VBoxContainer/Level 2" to="." method="OnLevel2Pressed"]
+[connection signal="pressed" from="VBoxContainer/Level 3" to="." method="OnLevel3Pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="VBoxContainer/Options" method="OnOptionsPressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="OnExitPressed"]
+[connection signal="pressed" from="VBoxContainer/Tuto2" to="." method="OnResetPressed"]

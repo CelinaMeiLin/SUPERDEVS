@@ -1,0 +1,314 @@
+[gd_scene load_steps=13 format=3 uid="uid://br1f41yvebyaf"]
+
+[ext_resource type="Texture2D" uid="uid://cugkwfkv55qhr" path="res://art/background/main_menu_background.png" id="1_tepp3"]
+[ext_resource type="Script" path="res://script/PlayerStatistics.cs" id="1_va4hx"]
+[ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="2_pl8ev"]
+[ext_resource type="FontFile" uid="uid://be21ej3m55cb4" path="res://art/fonts/Silkscreen-Regular.ttf" id="3_b7jbd"]
+[ext_resource type="Texture2D" uid="uid://d4aao81m1buo8" path="res://art/PlayerStatistics/HP.png" id="3_ixhf6"]
+[ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="3_vu5bw"]
+[ext_resource type="Texture2D" uid="uid://bfsh4g7cevenh" path="res://art/PlayerStatistics/AttackDamage.png" id="4_85dwd"]
+[ext_resource type="Texture2D" uid="uid://d2x5m68bbf13h" path="res://art/PlayerStatistics/FireRate.png" id="5_yl1l4"]
+[ext_resource type="Texture2D" uid="uid://x4pcfqtt6tdj" path="res://art/PlayerStatistics/MovementSpeed.png" id="6_4us05"]
+[ext_resource type="Theme" uid="uid://c7f13roog0fm0" path="res://art/Theme/SkillBar.tres" id="6_yvp2m"]
+[ext_resource type="Texture2D" uid="uid://dbupwbrywdef0" path="res://art/PlayerStatistics/DashTimer.png" id="7_5huwq"]
+[ext_resource type="PackedScene" uid="uid://c1x6w8v3n1bn7" path="res://scene/coin.tscn" id="11_3k4h4"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_va4hx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -91.0
+offset_right = 3748.0
+offset_bottom = 1972.0
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("1_tepp3")
+
+[node name="UIManager" parent="." instance=ExtResource("2_pl8ev")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -533.5
+offset_top = -254.0
+offset_right = 533.5
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -65.0
+offset_right = 140.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 438.5
+offset_top = 241.5
+offset_right = 1481.5
+offset_bottom = 838.5
+columns = 3
+
+[node name="CurrentStats" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_b7jbd")
+theme_override_font_sizes/font_size = 30
+text = "Current Stats"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_b7jbd")
+theme_override_font_sizes/font_size = 30
+text = "Description"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_b7jbd")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="Health" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("6_yvp2m")
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "X Health"
+icon = ExtResource("3_ixhf6")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="HP" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+Add 100 to your HP 
+Cost: 3
+
+"
+horizontal_alignment = 1
+
+[node name="coin" parent="GridContainer/HP" instance=ExtResource("11_3k4h4")]
+position = Vector2(314.5, 71.5)
+
+[node name="Health2" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "Select"
+icon = ExtResource("3_ixhf6")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AttackDamage" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("6_yvp2m")
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Y Attack Damage"
+icon = ExtResource("4_85dwd")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AD" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+Add +Y to your AD
+Cost: 5 
+
+"
+horizontal_alignment = 1
+
+[node name="coin2" parent="GridContainer/AD" instance=ExtResource("11_3k4h4")]
+position = Vector2(315.5, 70.5)
+
+[node name="AttackDamage2" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "Select"
+icon = ExtResource("4_85dwd")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="FireRate" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("6_yvp2m")
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "A Fire Rate"
+icon = ExtResource("5_yl1l4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="FR" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "Redure your fire rate by z
+Cost: 8
+
+"
+horizontal_alignment = 1
+
+[node name="coin2" parent="GridContainer/FR" instance=ExtResource("11_3k4h4")]
+position = Vector2(314.5, 45.5)
+
+[node name="FireRate2" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "Select"
+icon = ExtResource("5_yl1l4")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="MovementSpeed" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("6_yvp2m")
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "T Movement Speed"
+icon = ExtResource("6_4us05")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="MS" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+gaIN T MS 
+Cost: 5
+
+"
+horizontal_alignment = 1
+
+[node name="coin3" parent="GridContainer/MS" instance=ExtResource("11_3k4h4")]
+position = Vector2(314.5, 71.5)
+
+[node name="MovementSpeed2" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "select"
+icon = ExtResource("6_4us05")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="DashTimer" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("6_yvp2m")
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "E Dash TImer"
+icon = ExtResource("7_5huwq")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="DT" type="Label" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 20
+text = "
+Redure your dash TIMER by e SEC
+Cost: 6
+
+"
+horizontal_alignment = 1
+
+[node name="coin4" parent="GridContainer/DT" instance=ExtResource("11_3k4h4")]
+position = Vector2(314.5, 71.5)
+
+[node name="DashTimer2" type="Button" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vu5bw")
+theme_override_font_sizes/font_size = 30
+text = "select"
+icon = ExtResource("7_5huwq")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[connection signal="pressed" from="Button" to="." method="OnBackPressed"]
+[connection signal="pressed" from="GridContainer/Health2" to="." method="OnHealthSelected"]
+[connection signal="pressed" from="GridContainer/AttackDamage2" to="." method="OnAttackDamagePressed"]
+[connection signal="pressed" from="GridContainer/FireRate2" to="." method="OnFireRatePressed"]
+[connection signal="pressed" from="GridContainer/MovementSpeed2" to="." method="OnMSPressed"]
+[connection signal="pressed" from="GridContainer/DashTimer2" to="." method="OnDTPressed"]
