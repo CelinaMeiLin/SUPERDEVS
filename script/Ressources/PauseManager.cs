@@ -30,7 +30,7 @@ public partial class PauseManager : Node2D
 	{
 		if (@event.IsActionPressed("ui_cancel"))
 		{
-			if ((int)UserPreferences.Data["CurrentLevel"] == 1)
+			if ((int)UserPreferences.Data["IsLevel"] == 1)
 			{
 				_Pause();
 			}

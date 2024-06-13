@@ -59,6 +59,7 @@ public partial class Map : Control
 	
     public void OnTutoPressed()
     {
+        UserPreferences.Data["IsLevel"] = 1;
         //UserPreferences.Data["CurrentLevel"] = 0;
         UserPreferences.Save();
         GameManager.CurrentLevel = 1;
@@ -67,6 +68,7 @@ public partial class Map : Control
 
     public void OnLevel1Pressed()
     {
+        UserPreferences.Data["IsLevel"] = 1;
         //UserPreferences.Data["CurrentLevel"] = 1;
         UserPreferences.Save();
         GameManager.CurrentLevel = 2;
@@ -75,6 +77,7 @@ public partial class Map : Control
 	
     public void OnLevel2Pressed()
     {
+        UserPreferences.Data["IsLevel"] = 1;
         //UserPreferences.Data["CurrentLevel"] = 2;
         UserPreferences.Save();
         GameManager.CurrentLevel = 3;
@@ -83,6 +86,7 @@ public partial class Map : Control
 	
     public void OnLevel3Pressed()
     {
+        UserPreferences.Data["IsLevel"] = 1;
         //UserPreferences.Data["CurrentLevel"] = 3;
         UserPreferences.Save();
         GameManager.CurrentLevel = 4;

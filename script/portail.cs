@@ -18,6 +18,7 @@ public partial class portail : Sprite2D
     {
         if (body is astra)
         {
+            UserPreferences.Data["IsLevel"] = 0;
             //GetTree().CallDeferred("quit");
             Input.MouseMode = Input.MouseModeEnum.Visible;
 

@@ -418,6 +418,8 @@ scale = Vector2(1.473, 1.593)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
 animation = &"idle"
 autoplay = "idle"
+frame = 3
+frame_progress = 0.730877
 
 [node name="jumpparticles" type="GPUParticles2D" parent="AstraBody"]
 position = Vector2(1, 13)

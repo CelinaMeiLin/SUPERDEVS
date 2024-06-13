@@ -586,8 +586,8 @@ sprite_frames = SubResource("SpriteFrames_sdnfv")
 
 [node name="attackanimation2" type="AnimatedSprite2D" parent="PowBody"]
 visible = false
-position = Vector2(-123, 2.08165e-12)
-rotation = 4.79791
+position = Vector2(-50, 2)
+rotation = 3.14159
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_sdnfv")
 flip_v = true
