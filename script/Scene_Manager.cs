@@ -6,7 +6,7 @@ namespace Devs.project.script;
 
 public partial class Scene_Manager : Control
 {
-    [Export] Control variable;
+	[Export] Control variable;
 	[Export] private AudioStreamPlayer backgroundMusic;
 	
 	public string PreviousScene = "res://scene/main_menu.tscn";	
@@ -53,7 +53,7 @@ public partial class Scene_Manager : Control
 	
 	private void OnSoloPressed()
 	{
-        
+		
 		if (backgroundMusic != null && backgroundMusic.Playing)
 		{
 			backgroundMusic.Stop();

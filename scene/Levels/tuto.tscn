@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://de83xqqu4f7bq"]
 
-[ext_resource type="Script" path="res://Ressources/PauseManager.cs" id="1_4t4nd"]
+[ext_resource type="Script" path="res://script/Ressources/PauseManager.cs" id="1_4t4nd"]
 [ext_resource type="Texture2D" uid="uid://t4o8wxghw8il" path="res://art/background/parallax-industrial-pack/Sprites/bg.png" id="1_iqdgb"]
 [ext_resource type="Texture2D" uid="uid://bj8tlydmjh1er" path="res://art/background/parallax-industrial-pack/Sprites/far-buildings.png" id="2_m146g"]
 [ext_resource type="Texture2D" uid="uid://cwwddqg6jnmwr" path="res://art/tilesets/tileset.png" id="2_srho6"]

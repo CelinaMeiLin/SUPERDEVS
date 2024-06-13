@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dgx0fba1370iv"]
 
 [ext_resource type="PackedScene" uid="uid://nrwpnfhf33q7" path="res://scene/Levels/parallax_background.tscn" id="1_5iql0"]
-[ext_resource type="Script" path="res://Ressources/PauseManager.cs" id="1_6w6ov"]
+[ext_resource type="Script" path="res://script/Ressources/PauseManager.cs" id="1_6w6ov"]
 [ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="3_ekm15"]
 [ext_resource type="PackedScene" uid="uid://q1snnkpbyqru" path="res://scene/sol.tscn" id="4_yaard"]
 [ext_resource type="PackedScene" uid="uid://c8iv3ojysfds" path="res://scene/astra.tscn" id="5_xnhlf"]

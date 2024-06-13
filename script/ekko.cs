@@ -362,5 +362,10 @@ public partial class ekko : CharacterBody2D
 		await ToSignal(GetTree().CreateTimer(0.6), "timeout");
 		QueueFree();
 	}
+	public void SetUpPlayer(string name)
+	{
+		GetNode<Label>("PlayerName").Visible = true;
+		GetNode<Label>("PlayerName").Text = name;
+	}
 	//---------------------------------------------------------------//
 }

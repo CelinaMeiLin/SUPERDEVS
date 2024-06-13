@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bvbvhcttveqmn"]
 
 [ext_resource type="Texture2D" uid="uid://c1g1yn5n03ryi" path="res://art/background/city 8/1.png" id="1_2fndf"]
-[ext_resource type="Script" path="res://Ressources/PauseManager.cs" id="1_3iq0y"]
+[ext_resource type="Script" path="res://script/Ressources/PauseManager.cs" id="1_3iq0y"]
 [ext_resource type="PackedScene" uid="uid://q1snnkpbyqru" path="res://scene/sol.tscn" id="1_lfuap"]
 [ext_resource type="Texture2D" uid="uid://cmq8ax15nalxv" path="res://art/background/city 8/2.png" id="2_00f8k"]
 [ext_resource type="PackedScene" uid="uid://blj5nfok2go75" path="res://scene/health_bar.tscn" id="2_5c68o"]
@@ -470,8 +470,7 @@ Astra = NodePath("../../PlayerSpawnPoints/Astra/AstraBody")
 [node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("2_un3p5")]
 position = Vector2(-500, 541)
 
-[node name="AstraBody" parent="PlayerSpawnPoints/Astra" index="0" node_paths=PackedStringArray("GameOver", "HealthBar")]
-GameOver = NodePath("../../../GameOverScreen")
+[node name="AstraBody" parent="PlayerSpawnPoints/Astra" index="0" node_paths=PackedStringArray("HealthBar")]
 HealthBar = NodePath("../../../interface/HealthBar")
 
 [node name="CamTUTO" parent="PlayerSpawnPoints/Astra/AstraBody" index="0"]

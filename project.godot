@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Devs.project"
-run/main_scene="res://Ressources/Launcher.tscn"
+run/main_scene="res://script/Ressources/Launcher.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 boot_splash/icon="res://icon.svg"
 
