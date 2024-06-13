@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://botvouyo77woe"]
+[gd_scene load_steps=27 format=3 uid="uid://botvouyo77woe"]
 
 [ext_resource type="Script" path="res://script/skill_bar.cs" id="1_bxtfg"]
 [ext_resource type="Texture2D" uid="uid://d4aao81m1buo8" path="res://art/PlayerStatistics/HP.png" id="2_rpls5"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://x4pcfqtt6tdj" path="res://art/PlayerStatistics/MovementSpeed.png" id="8_30y66"]
 [ext_resource type="Texture2D" uid="uid://d2x5m68bbf13h" path="res://art/PlayerStatistics/FireRate.png" id="8_x4ks4"]
 [ext_resource type="Texture2D" uid="uid://dbupwbrywdef0" path="res://art/PlayerStatistics/DashTimer.png" id="9_6uom4"]
+[ext_resource type="FontFile" uid="uid://bpaoi2sv2muxa" path="res://art/fonts/arcadeclassic.regular.ttf" id="13_lnltl"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_fvi21"]
 device = -1
@@ -52,6 +53,24 @@ unicode = 39
 
 [sub_resource type="Shortcut" id="Shortcut_iocfl"]
 events = [SubResource("InputEventKey_sjybl")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22xjg"]
+bg_color = Color(0, 0, 0, 0.541176)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpifm"]
+bg_color = Color(0.262745, 0.662745, 0.733333, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="Theme" id="Theme_t5dyu"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_22xjg")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_kpifm")
 
 [node name="SkillBar" type="Container"]
 anchors_preset = 15
@@ -245,6 +264,29 @@ theme_override_fonts/font = ExtResource("6_myjnf")
 disabled = true
 text = "Dash CD"
 icon = ExtResource("9_6uom4")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="SkillBarPanel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -59.0
+offset_right = 519.0
+offset_bottom = -24.0
+
+[node name="Label" type="Label" parent="SkillBarPanel/VBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_lnltl")
+theme_override_font_sizes/font_size = 20
+text = "lv L  1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="SkillBarPanel/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_t5dyu")
+value = 40.0
+show_percentage = false
 
 [connection signal="pressed" from="SkillBarPanel/HBoxContainer/ShildSkill" to="." method="_on_shild_skill_pressed"]
 [connection signal="timeout" from="SkillBarPanel/HBoxContainer/ShildSkill/ShildCooldown" to="." method="_on_shild_cooldown_timeout"]
