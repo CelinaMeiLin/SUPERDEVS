@@ -55,6 +55,9 @@ public partial class astra : CharacterBody2D
 	private bool shoot_anim = false;
 	
 	// Skills
+	public int Xp = 0;
+	public int XpMax = 100;
+	public int Lvl = 1;
 	private AnimatedSprite2D ShildSkill;
 	private bool shildactivated = false;
 	private float shildduration = 3f;
@@ -101,6 +104,8 @@ public partial class astra : CharacterBody2D
 		audio_run = GetNode<AudioStreamPlayer2D>("Audio_Run");
 		audio_dash = GetNode<AudioStreamPlayer2D>("Audio_Dash");
 		ShildSkill = GetNode<AnimatedSprite2D>("SkillShild");
+		GetTree().CallGroup("SkillBar", "UpdateXpTxt", Lvl);
+		GetTree().CallGroup("SkillBar", "UpdateXp", Xp);
 		//-----------------------------//
 		//-----Test pour le multi normalement c fait pour le mult synchronizer------//
 		//GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
@@ -419,6 +424,18 @@ public partial class astra : CharacterBody2D
 	}
 	
 	//--------------------------------- Skills -----------------------------------------//
+
+	public void GainXp(int amount)
+	{
+		Xp += amount;
+		if (Xp >= XpMax)
+		{
+			Xp = Xp - XpMax;
+			Lvl += 1;
+			GetTree().CallGroup("SkillBar", "UpdateXpTxt", Lvl);
+		}
+		GetTree().CallGroup("SkillBar", "UpdateXp", Xp);
+	}
 	
 	public async void SkillShild()
 	{

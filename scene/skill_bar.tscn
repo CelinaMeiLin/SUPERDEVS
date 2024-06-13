@@ -72,7 +72,7 @@ corner_radius_bottom_left = 6
 ProgressBar/styles/background = SubResource("StyleBoxFlat_22xjg")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_kpifm")
 
-[node name="SkillBar" type="Container"]
+[node name="SkillBar" type="Container" groups=["SkillBar"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -265,14 +265,14 @@ disabled = true
 text = "Dash CD"
 icon = ExtResource("9_6uom4")
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="SkillBarPanel"]
+[node name="XP" type="VBoxContainer" parent="SkillBarPanel"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = -59.0
 offset_right = 519.0
 offset_bottom = -24.0
 
-[node name="Label" type="Label" parent="SkillBarPanel/VBoxContainer3"]
+[node name="Txt" type="Label" parent="SkillBarPanel/XP"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("13_lnltl")
 theme_override_font_sizes/font_size = 20
@@ -280,7 +280,7 @@ text = "lv L  1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="SkillBarPanel/VBoxContainer3"]
+[node name="Bar" type="ProgressBar" parent="SkillBarPanel/XP"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 8

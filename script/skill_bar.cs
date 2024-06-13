@@ -7,6 +7,8 @@ public partial class skill_bar : Container
 
 	private Timer ShildCooldown;
 	private TextureProgressBar ShildBar;
+	private ProgressBar XpBar;
+	private Label XpTxt;
 		
 		
 	// Called when the node enters the scene tree for the first time.
@@ -20,6 +22,8 @@ public partial class skill_bar : Container
 		GetNode<Button>("SkillBarPanel/VBoxContainer2/Skill2").Text = UserPreferences.Data["DashCooldown"].ToString();
 		ShildCooldown = GetNode<Timer>("SkillBarPanel/HBoxContainer/ShildSkill/ShildCooldown");
 		ShildBar = GetNode<TextureProgressBar>("SkillBarPanel/HBoxContainer/ShildSkill/ShildBar");
+		XpBar = GetNode<ProgressBar>("SkillBarPanel/XP/Bar");
+		XpTxt = GetNode<Label>("SkillBarPanel/XP/Txt");
 
 	}
 
@@ -47,5 +51,15 @@ public partial class skill_bar : Container
 	{
 		ShildBar.Visible = false;
 		GetTree().CallGroup("Astra", "UnlockShild");
+	}
+
+	public void UpdateXp(int amount)
+	{
+		XpBar.Value = amount;
+	}
+
+	public void UpdateXpTxt(int lvl)
+	{
+		XpTxt.Text = $"Lv L {lvl}";
 	}
 }
