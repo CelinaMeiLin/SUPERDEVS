@@ -30,6 +30,7 @@ public partial class skill_bar : Container
 		XpBar = GetNode<ProgressBar>("SkillBarPanel/XP/Bar");
 		XpTxt = GetNode<Label>("SkillBarPanel/XP/Txt");
 		SkillsAnimator = GetNode<AnimationPlayer>("SkillsUp");
+		XpBar.Value = 0;
 
 	}
 
@@ -67,30 +68,66 @@ public partial class skill_bar : Container
 	public void UpdateXpTxt(int lvl)
 	{
 		XpTxt.Text = $"Lv L {lvl}";
+		
 		SkillsAnimator.Play("Show");
 	}
 
-	private void _on_choice_1_pressed()
+	private async void _on_choice_1_pressed()
 	{
 		if (choice1 == 1)
 		{
 			GetTree().CallGroup("Astra", "UnlockShild");
 			ShildUnlocked = true;
 		}
+		else
+		{
+			GetNode<Button>("SkillBarPanel/Upgrade/Choice1").Text =
+				"--------------------------\nOut of Data\n--------------------------";
+			return;
+		}
 
 		choice1 += 1;
+		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
 		SkillsAnimator.Play("Hide");
 	}
 
-	private void _on_choice_2_pressed()
+	private async void _on_choice_2_pressed()
 	{
+		if (choice2 == 1)
+		{
+			GetNode<Button>("SkillBarPanel/Upgrade/Choice2").Text =
+				"--------------------------\nOut of Data\n--------------------------";
+			return;
+		}
+		else
+		{
+			GetNode<Button>("SkillBarPanel/Upgrade/Choice2").Text =
+				"--------------------------\nOut of Data\n--------------------------";
+			return;
+		}
+		
 		choice2 += 1;
+		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
 		SkillsAnimator.Play("Hide");
 	}
 
-	private void _on_choice_3_pressed()
+	private async void _on_choice_3_pressed()
 	{
+		if (choice3 == 1)
+		{
+			GetNode<Button>("SkillBarPanel/Upgrade/Choice3").Text =
+				"--------------------------\nOut of Data\n--------------------------";
+			return;
+		}
+		else
+		{
+			GetNode<Button>("SkillBarPanel/Upgrade/Choice3").Text =
+				"--------------------------\nOut of Data\n--------------------------";
+			return;
+		}
+		
 		choice3 += 1;
+		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
 		SkillsAnimator.Play("Hide");
 	}
 }

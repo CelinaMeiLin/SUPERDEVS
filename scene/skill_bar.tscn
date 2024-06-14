@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://botvouyo77woe"]
+[gd_scene load_steps=38 format=3 uid="uid://botvouyo77woe"]
 
 [ext_resource type="Script" path="res://script/skill_bar.cs" id="1_bxtfg"]
 [ext_resource type="Texture2D" uid="uid://d4aao81m1buo8" path="res://art/PlayerStatistics/HP.png" id="2_rpls5"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://d2x5m68bbf13h" path="res://art/PlayerStatistics/FireRate.png" id="8_x4ks4"]
 [ext_resource type="Texture2D" uid="uid://dbupwbrywdef0" path="res://art/PlayerStatistics/DashTimer.png" id="9_6uom4"]
 [ext_resource type="FontFile" uid="uid://bpaoi2sv2muxa" path="res://art/fonts/arcadeclassic.regular.ttf" id="13_lnltl"]
+[ext_resource type="Theme" uid="uid://buu3plakf3dgy" path="res://art/Theme/skill_choices.tres" id="14_lpuwd"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_fvi21"]
 device = -1
@@ -635,7 +636,6 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 8
 theme = SubResource("Theme_t5dyu")
-value = 40.0
 show_percentage = false
 
 [node name="Upgrade" type="HBoxContainer" parent="SkillBarPanel"]
@@ -650,6 +650,7 @@ alignment = 1
 [node name="Choice1" type="Button" parent="SkillBarPanel/Upgrade"]
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
+theme = ExtResource("14_lpuwd")
 shortcut = SubResource("Shortcut_grvgy")
 text = "Shild
 
@@ -668,10 +669,11 @@ vertical_alignment = 1
 [node name="Choice2" type="Button" parent="SkillBarPanel/Upgrade"]
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
+theme = ExtResource("14_lpuwd")
 shortcut = SubResource("Shortcut_mogfr")
-text = "Choice2
-
-Unlock new Ability"
+text = "--------------------------
+Out of Data
+--------------------------"
 
 [node name="Label" type="Label" parent="SkillBarPanel/Upgrade/Choice2"]
 layout_mode = 1
@@ -686,6 +688,7 @@ vertical_alignment = 1
 [node name="Choice3" type="Button" parent="SkillBarPanel/Upgrade"]
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
+theme = ExtResource("14_lpuwd")
 shortcut = SubResource("Shortcut_35auw")
 text = "Choice
 
