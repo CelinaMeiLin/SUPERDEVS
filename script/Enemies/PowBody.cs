@@ -8,39 +8,41 @@ using Vector2 = Godot.Vector2;
 
 public partial class PowBody : CharacterBody2D
 {
-	
+
 	//------------------------------- V a r i a b l e s ------------------------------------------//
-	
+
 	// Get Node2D Parent
 	[Export] public Node2D Character;
 	public Vector2 baseposition;
-	[Export] public astra Astra;
 	[Export] public AnimationPlayer AnimationPlayer;
-	
+
 	// Pow Variables
 	public Entity Enemy = new Entity(600, 20, 2, 120, -350);
 	private AnimatedSprite2D _animatedSprite;
-	private AnimatedSprite2D  _attackanimation;
-	Vector2 dir; //direction actuelle de Gus
+	private AnimatedSprite2D _attackanimation;
+	Vector2 dir; //direction actuelle de Pow
 	private HealthBar healthbar;
 	float temp;
 	private GpuParticles2D Death_particles;
 	private Color basecolor;
-	
+
 	// Player Variables
 	public CharacterBody2D player = null;
 	public Vector2 playerbaseposition;
-	
+
+	public bool ISFINISHED = false;
+
 	// Shoot Variables
 	[Export] PackedScene Bullet_scn;
+	public RigidBody2D Bullet;
 	private CollisionShape2D Bullet_spawnerG;
 	private CollisionShape2D Bullet_spawnerD;
-	private float bullet_speed = 800f;
-	private float bullet_per_second { get; }= 0.5f;
+	private float bullet_speed = 300f;
+	private float bullet_per_second { get; } = 0.5f;
 	private float fire_rate = 1f / 0.5f; //bullet_per_second
 	private float time_until_fire = 0f;
 	private bool shoot_anim = false;
-	
+
 	// Status
 	private bool gettinghurt = false;
 	private bool direction = false;
@@ -48,31 +50,33 @@ public partial class PowBody : CharacterBody2D
 	private bool dying = false;
 
 	//--------------------------------------------------------------------------------------------//
-	
-	
+
+
 	//----------------------------------GODOT FUNCTIONS-------------------------------------------//
 
-	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		//------ Initialisation -------//
 		_animatedSprite = GetNode<AnimatedSprite2D>("Pow");
-		_attackanimation = GetNode<AnimatedSprite2D>("attackanimation");
+		//_attackanimation = GetNode<AnimatedSprite2D>("attackanimation");
 		healthbar = GetNode<HealthBar>("HealthBar");
-		healthbar.health_init(Enemy.Vie); 
-		baseposition = Character.Position; 
-		//Death_particles = GetNode<GpuParticles2D>("DeathParticles");
-		//Death_particles.OneShot = true;
+		healthbar.health_init(Enemy.Vie);
+		baseposition = Character.Position;
+		Death_particles = GetNode<GpuParticles2D>("DeathParticles");
+		Death_particles.OneShot = true;
 		Enemy.queuefree = false;
 		Bullet_spawnerG = GetNode<CollisionShape2D>("bulletspawnerG");
 		Bullet_spawnerD = GetNode<CollisionShape2D>("bulletspawnerD");
 		basecolor = _animatedSprite.Modulate;
 		//-----------------------------//
 		
+		direction = true;
+
 	}
-	
-	
+
+
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -80,12 +84,12 @@ public partial class PowBody : CharacterBody2D
 		{
 			velocity.Y += Enemy.gravity * (float)delta;
 		}
-		
+
 		if (player_chase)
 		{
-			temp = (playerbaseposition.X + player.Position.X) - (baseposition.X + Position.X); 
+			temp = (playerbaseposition.X + player.Position.X) - (baseposition.X + Position.X);
 			if (temp > 0)
-			{ 
+			{
 				//dir = Vector2.Right;
 				direction = false;
 			}
@@ -94,41 +98,96 @@ public partial class PowBody : CharacterBody2D
 				//dir = Vector2.Left;
 				direction = true;
 			}
-			velocity.X = dir.X * Enemy.Speed;
-			if (gettinghurt == false)
+
+			velocity.X = 0; //////dir.X * Enemy.Speed;
+			
+			//_animatedSprite.Play("attack3");
+			if (direction)
 			{
+					//GD.Print("attack3");
 				//_animatedSprite.Play("attack3");
-				if (direction)
-				{
-					AnimationPlayer.Play("ATTACKANIMATIONLEFT");
-				}
-				else
-				{
-					AnimationPlayer.Play("attack");
-				}
+					//Wave();
+					//AnimationPlayer.Play("ATTACKANIMATIONLEFT");
+			}
+			else
+			{
+					//AnimationPlayer.Play("attack");
+			}
+				
+			_animatedSprite.Play("attack3");
+
+
+			if (_animatedSprite.Animation == "attack3" && ISFINISHED)
+			{
+				GD.Print("WAVE");
+				Wave();
+				ISFINISHED = false;
 			}
 			
+
 		}
 		else
 		{
 			velocity.X = 0;
+			
+			
 			if (gettinghurt == false && Enemy.Vie > 0)
 			{
-				_animatedSprite.Play("idle");	
+				_animatedSprite.Play("idle");
 			}
 		}
+
+
+		Velocity = velocity;
 		
 		//pour orienter Pow
 		_animatedSprite.FlipH = direction;
+
+		//MoveAndSlide();
+	}
+
+	public void Wave()
+	{
+		RigidBody2D bullet = Bullet_scn.Instantiate<RigidBody2D>();
+
+		Vector2 Spawn;
+		int b_direction = 1;
 		
+		if (direction)
+		{ 
+			Spawn = Bullet_spawnerG.GlobalPosition;
+			b_direction = -1;
+		}
+		else 
+		{ 
+			Spawn = Bullet_spawnerD.GlobalPosition;
+			GD.Print("Bullet");
+			b_direction = 1; 
+		}
+
+		bullet.GlobalPosition = Spawn;
+		bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
+		shoot_anim = false;
+
+		//audio_gun.Play();
+		GetTree().Root.AddChild(bullet);
+
+		time_until_fire = 0f;
 		
-		Velocity = velocity;
-		MoveAndSlide();
+	}
+	
+
+	public void _on_pow_frame_changed()
+	{
+		if (_animatedSprite.Animation == "attack3" && _animatedSprite.Frame == 3)
+		{
+			ISFINISHED = true;
+		}
 	}
 
 	public void _on_attack_animation_looped()
 	{
-		
+		//ISFINISHED = true;
 		if (_animatedSprite.Animation == "attack3")
 		{
 			//Astra.hurt(100);
@@ -137,9 +196,12 @@ public partial class PowBody : CharacterBody2D
 
 	public void _on_pow_animation_finished()
 	{
+		//ISFINISHED = true;
+		
+		
 		if (_animatedSprite.Animation == "death")
 		{
-			QueueFree();
+			//QueueFree();
 		}
 	}
 	
@@ -147,11 +209,11 @@ public partial class PowBody : CharacterBody2D
 	{
 		if (animName == "attack" || animName == "ATTACKANIMATIONLEFT")
 		{
-			Astra.hurt(50);
+			//
 		}
 	}
 	
-	public void _on_body_entered(CharacterBody2D body)
+	public void _on_body_entered(Node2D body)
 	{
 		if (body is astra)
 		{
@@ -186,12 +248,14 @@ public partial class PowBody : CharacterBody2D
 		}
 
 		dying = true;
-		SetCollisionLayerValue(3, false);
+		//SetCollisionLayerValue(3, false);
 		
-		_animatedSprite.Play("death");
-		//_animatedSprite.Modulate = basecolor;
-		//Death_particles.Emitting = true;
-		await ToSignal(GetTree().CreateTimer(2), "timeout");
+		//_animatedSprite.Play("death");
+		
+		
+		Death_particles.Emitting = true;
+		_animatedSprite.Visible = false;
+		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
 		QueueFree();
 		
 		GameManager.SpawnCoin(this, Position);

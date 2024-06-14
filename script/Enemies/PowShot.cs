@@ -1,9 +1,8 @@
 using Godot;
-using System;
 
 public partial class PowShot : RigidBody2D
 {
-	public float BulletDamage = 30;
+	public float BulletDamage = 20;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -11,7 +10,7 @@ public partial class PowShot : RigidBody2D
 		timer.Timeout += () => QueueFree();
 	}
 	
-	public void OnBodyEntered(Node2D body)
+	public void OnBodyEntered(astra body)
 	{
 		if (body is astra)
 		{

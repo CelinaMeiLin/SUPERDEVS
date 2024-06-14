@@ -361,6 +361,9 @@ script = ExtResource("1_3iq0y")
 Path = NodePath("UIManager2")
 GameOverPath = NodePath("GameOverScreen")
 
+[node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("17_fao80")]
+Scene = NodePath("..")
+
 [node name="Background" type="ParallaxBackground" parent="."]
 
 [node name="sky" type="ParallaxLayer" parent="Background"]
@@ -462,9 +465,6 @@ grow_vertical = 0
 [node name="EnnemyPow" parent="." instance=ExtResource("14_e6yc3")]
 position = Vector2(-171, 534)
 
-[node name="PowBody" parent="EnnemyPow" index="0" node_paths=PackedStringArray("Astra")]
-Astra = NodePath("../../PlayerSpawnPoints/Astra/AstraBody")
-
 [node name="PlayerSpawnPoints" type="Node2D" parent="."]
 
 [node name="Astra" parent="PlayerSpawnPoints" groups=["PlayerSpawnPoints"] instance=ExtResource("2_un3p5")]
@@ -477,10 +477,6 @@ HealthBar = NodePath("../../../interface/HealthBar")
 limit_right = 3738
 
 [node name="UIManager2" parent="." instance=ExtResource("16_2dtod")]
-
-[node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("17_fao80")]
-visible = false
-Scene = NodePath("..")
 
 [node name="SpawPow" type="Node2D" parent="." node_paths=PackedStringArray("_timer")]
 position = Vector2(1, 0)

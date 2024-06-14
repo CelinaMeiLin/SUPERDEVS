@@ -1,7 +1,5 @@
 using Godot;
 
-namespace Devs.project.script.Enemies;
-
 public partial class RhustShot : RigidBody2D
 {
     public float BulletDamage = 20;

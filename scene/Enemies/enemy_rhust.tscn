@@ -157,14 +157,14 @@ radius = 201.036
 _data = [Vector2(0, 1), 0.0, -0.390476, 0, 1, Vector2(0.731707, 0.714286), -0.867725, -0.867725, 0, 0, Vector2(1, 0), -1.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_4c4bn"]
+[sub_resource type="CurveTexture" id="CurveTexture_ucktx"]
 curve = SubResource("Curve_5wngd")
 
 [sub_resource type="Curve" id="Curve_xegns"]
 _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_p15hw"]
+[sub_resource type="CurveTexture" id="CurveTexture_scxjp"]
 curve = SubResource("Curve_xegns")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qu8af"]
@@ -176,8 +176,8 @@ initial_velocity_max = 156.24
 gravity = Vector3(0, 0, 0)
 scale_min = 5.0
 scale_max = 5.0
-scale_curve = SubResource("CurveTexture_p15hw")
-alpha_curve = SubResource("CurveTexture_4c4bn")
+scale_curve = SubResource("CurveTexture_scxjp")
+alpha_curve = SubResource("CurveTexture_ucktx")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uqvsu"]
 particle_flag_disable_z = true
