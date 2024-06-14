@@ -361,9 +361,6 @@ script = ExtResource("1_3iq0y")
 Path = NodePath("UIManager2")
 GameOverPath = NodePath("GameOverScreen")
 
-[node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("17_fao80")]
-Scene = NodePath("..")
-
 [node name="Background" type="ParallaxBackground" parent="."]
 
 [node name="sky" type="ParallaxLayer" parent="Background"]
@@ -476,8 +473,6 @@ HealthBar = NodePath("../../../interface/HealthBar")
 [node name="CamTUTO" parent="PlayerSpawnPoints/Astra/AstraBody" index="0"]
 limit_right = 3738
 
-[node name="UIManager2" parent="." instance=ExtResource("16_2dtod")]
-
 [node name="SpawPow" type="Node2D" parent="." node_paths=PackedStringArray("_timer")]
 position = Vector2(1, 0)
 script = ExtResource("18_x14yq")
@@ -495,6 +490,13 @@ position = Vector2(1635, 534)
 [node name="Timer" type="Timer" parent="SpawPow"]
 wait_time = 5.0
 autostart = true
+
+[node name="UIManager2" parent="." instance=ExtResource("16_2dtod")]
+visible = false
+
+[node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("17_fao80")]
+visible = false
+Scene = NodePath("..")
 
 [connection signal="timeout" from="SpawPow/Timer" to="SpawPow" method="OnLevel1Timeout"]
 

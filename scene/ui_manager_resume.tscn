@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsengf11vtlvi"]
+[gd_scene load_steps=8 format=3 uid="uid://dsengf11vtlvi"]
 
 [ext_resource type="Script" path="res://script/ResumeButton.cs" id="1_b5s1m"]
 [ext_resource type="Shader" path="res://art/materials/blur.gdshader" id="1_i7y8f"]
 [ext_resource type="PackedScene" uid="uid://bs0ow3mxifq3a" path="res://scene/HUD_HGD/PauseMenu.tscn" id="2_7on3k"]
 [ext_resource type="PackedScene" uid="uid://uvdm7fxm6eay" path="res://scene/VolumeSetting.tscn" id="4_dvaq8"]
+[ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="5_4los2"]
+[ext_resource type="Script" path="res://script/HUD/ExitButton.cs" id="5_26b0l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xu6y4"]
 shader = ExtResource("1_i7y8f")
@@ -27,11 +29,34 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" parent="." instance=ExtResource("2_7on3k")]
-offset_left = 2100.0
-offset_top = 2384.0
-offset_right = 9408.0
-offset_bottom = 4440.0
+offset_left = 2152.0
+offset_top = 2092.0
+offset_right = 9460.0
+offset_bottom = 4148.0
 script = ExtResource("1_b5s1m")
+
+[node name="Exit" type="Button" parent="."]
+process_mode = 2
+texture_filter = 1
+custom_minimum_size = Vector2(2.08165e-12, 50)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 2372.0
+offset_top = 2648.0
+offset_right = 2485.0
+offset_bottom = 2698.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(10, 10)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_4los2")
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+flat = true
+script = ExtResource("5_26b0l")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 process_mode = 3
@@ -41,10 +66,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1772.0
-offset_top = 428.0
-offset_right = 2261.0
-offset_bottom = 685.0
+offset_left = 1752.0
+offset_top = -176.0
+offset_right = 2241.0
+offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
@@ -65,3 +90,4 @@ BusIndex = 2
 
 [connection signal="pressed" from="Button" to="." method="OnResumePressed"]
 [connection signal="pressed" from="Button" to="Button" method="OnResumePressed"]
+[connection signal="pressed" from="Exit" to="Exit" method="OnExitButtonPressed"]

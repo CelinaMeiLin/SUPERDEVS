@@ -10,5 +10,10 @@ public partial class ResumeButton : Button
     {
         PauseManager._OnResume();
     }
+
+    public void OnExitButtonPressed()
+    {
+        GetTree().ChangeSceneToFile("res://scene/map.tscn");
+    }
     
 }

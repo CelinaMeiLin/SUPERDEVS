@@ -226,7 +226,7 @@ public partial class PowBody : CharacterBody2D
 
 	}
 	
-	public void _on_body_exited(astra body)
+	public void _on_body_exited(Node2D body)
 	{
 		player_chase = false;
 		dir = Vector2.Zero;

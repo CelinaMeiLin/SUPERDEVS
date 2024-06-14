@@ -50,11 +50,11 @@ autostart = true
 
 [node name="attackanimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(-13, -7)
-rotation = 4.79791
+rotation = 3.8964
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_sdnfv")
 autoplay = "default"
-frame_progress = 0.733418
+frame_progress = 0.309594
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, -1)
