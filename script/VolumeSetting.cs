@@ -1,4 +1,5 @@
 using System;
+using Devs.project.Autoloads;
 using Godot;
 using Godot.Collections;
 
@@ -45,6 +46,8 @@ public partial class VolumeSetting : VBoxContainer
         if (_volumePercentageBusIndex.ContainsKey(BusIndex))
         {
             _volumeSlider.Value = _volumePercentageBusIndex[BusIndex];
+            UserPreferences.Data[BusIndex] = _volumeSlider.Value;
+            UserPreferences.Save();
         }
         else
         {
@@ -56,6 +59,8 @@ public partial class VolumeSetting : VBoxContainer
     {
         UpdateVolumePercentageLabel();
         _volumePercentageBusIndex[BusIndex] = value;
+        UserPreferences.Data[BusIndex] = value;
+        UserPreferences.Save();
 
         if (value == 0)
         {

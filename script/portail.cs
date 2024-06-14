@@ -11,7 +11,6 @@ public partial class portail : Sprite2D
     public override void _Ready()
     {
         _collisionShape = GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
-	   
     }
 
     public void _on_area_2d_body_entered(Node body)
