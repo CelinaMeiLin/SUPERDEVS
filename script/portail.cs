@@ -35,7 +35,7 @@ public partial class portail : Sprite2D
             if (GameManager.CurrentLevel == 1) //Pour ne pas save les pièces du tuto
             {
                 Devs.project.Ressources.PauseManager parent = (Devs.project.Ressources.PauseManager)GetParent();
-                GD.Print( parent.NbCoinsBeforeTutorial);
+                //GD.Print( parent.NbCoinsBeforeTutorial);
                 UserPreferences.Data["Coin"] = parent.NbCoinsBeforeTutorial;
                 UserPreferences.Save();
             }
