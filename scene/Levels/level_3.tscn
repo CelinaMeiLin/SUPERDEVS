@@ -66,6 +66,7 @@ script = ExtResource("6_a2qjj")
 ObjectToFollow = NodePath("../AstraBody")
 
 [node name="UIManager2" parent="." instance=ExtResource("9_whh2o")]
+visible = false
 
 [node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("11_72ve7")]
 visible = false
