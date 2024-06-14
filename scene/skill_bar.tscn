@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://botvouyo77woe"]
+[gd_scene load_steps=37 format=3 uid="uid://botvouyo77woe"]
 
 [ext_resource type="Script" path="res://script/skill_bar.cs" id="1_bxtfg"]
 [ext_resource type="Texture2D" uid="uid://d4aao81m1buo8" path="res://art/PlayerStatistics/HP.png" id="2_rpls5"]
@@ -72,6 +72,288 @@ corner_radius_bottom_left = 6
 ProgressBar/styles/background = SubResource("StyleBoxFlat_22xjg")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_kpifm")
 
+[sub_resource type="InputEventKey" id="InputEventKey_ebfkb"]
+device = -1
+alt_pressed = true
+keycode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_grvgy"]
+events = [SubResource("InputEventKey_ebfkb")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_5ljq4"]
+device = -1
+alt_pressed = true
+keycode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_mogfr"]
+events = [SubResource("InputEventKey_5ljq4")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_f7fp0"]
+device = -1
+alt_pressed = true
+keycode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_35auw"]
+events = [SubResource("InputEventKey_f7fp0")]
+
+[sub_resource type="Animation" id="Animation_ade6g"]
+resource_name = "Show"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkillBarPanel/Upgrade/Choice1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkillBarPanel/Upgrade/Choice1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkillBarPanel/Upgrade/Choice2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkillBarPanel/Upgrade/Choice2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkillBarPanel/Upgrade/Choice3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SkillBarPanel/Upgrade/Choice3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkillBarPanel/Upgrade:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-40, -161), Vector2(-40, -261)]
+}
+
+[sub_resource type="Animation" id="Animation_oei0m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkillBarPanel/Upgrade/Choice1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkillBarPanel/Upgrade/Choice1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkillBarPanel/Upgrade/Choice2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkillBarPanel/Upgrade/Choice2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkillBarPanel/Upgrade/Choice3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SkillBarPanel/Upgrade/Choice3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SkillBarPanel/Upgrade:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-40, -261)]
+}
+
+[sub_resource type="Animation" id="Animation_am80q"]
+resource_name = "Hide"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkillBarPanel/Upgrade/Choice1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkillBarPanel/Upgrade/Choice1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkillBarPanel/Upgrade/Choice2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkillBarPanel/Upgrade/Choice2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkillBarPanel/Upgrade/Choice3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SkillBarPanel/Upgrade/Choice3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vibtu"]
+_data = {
+"Hide": SubResource("Animation_am80q"),
+"RESET": SubResource("Animation_oei0m"),
+"Show": SubResource("Animation_ade6g")
+}
+
 [node name="SkillBar" type="Container" groups=["SkillBar"]]
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,6 +405,23 @@ nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture1D_vwrfy")
 tint_progress = Color(0, 0.815686, 1, 0.67451)
 
+[node name="Label" type="Label" parent="SkillBarPanel/HBoxContainer/ShildSkill"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("13_lnltl")
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="Skill2" type="Button" parent="SkillBarPanel/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
@@ -148,6 +447,23 @@ fill_mode = 4
 nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture1D_vwrfy")
 tint_progress = Color(0, 0.815686, 1, 0.67451)
+
+[node name="Label" type="Label" parent="SkillBarPanel/HBoxContainer/Skill2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("13_lnltl")
+theme_override_font_sizes/font_size = 10
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="Skill3" type="Button" parent="SkillBarPanel/HBoxContainer"]
 texture_filter = 1
@@ -175,6 +491,23 @@ nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture1D_vwrfy")
 tint_progress = Color(0, 0.815686, 1, 0.67451)
 
+[node name="Label" type="Label" parent="SkillBarPanel/HBoxContainer/Skill3"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("13_lnltl")
+theme_override_font_sizes/font_size = 10
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="Skill4" type="Button" parent="SkillBarPanel/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
@@ -200,6 +533,23 @@ fill_mode = 4
 nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture1D_vwrfy")
 tint_progress = Color(0, 0.815686, 1, 0.67451)
+
+[node name="Label" type="Label" parent="SkillBarPanel/HBoxContainer/Skill4"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("13_lnltl")
+theme_override_font_sizes/font_size = 10
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SkillBarPanel"]
 layout_mode = 0
@@ -288,8 +638,80 @@ theme = SubResource("Theme_t5dyu")
 value = 40.0
 show_percentage = false
 
+[node name="Upgrade" type="HBoxContainer" parent="SkillBarPanel"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = -261.0
+offset_right = 559.0
+offset_bottom = -76.0
+theme_override_constants/separation = 23
+alignment = 1
+
+[node name="Choice1" type="Button" parent="SkillBarPanel/Upgrade"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+shortcut = SubResource("Shortcut_grvgy")
+text = "Shild
+
+Unlock new Ability"
+
+[node name="Label" type="Label" parent="SkillBarPanel/Upgrade/Choice1"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Alt + 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Choice2" type="Button" parent="SkillBarPanel/Upgrade"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+shortcut = SubResource("Shortcut_mogfr")
+text = "Choice2
+
+Unlock new Ability"
+
+[node name="Label" type="Label" parent="SkillBarPanel/Upgrade/Choice2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Alt + 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Choice3" type="Button" parent="SkillBarPanel/Upgrade"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+shortcut = SubResource("Shortcut_35auw")
+text = "Choice
+
+Unlock new Ability"
+
+[node name="Label" type="Label" parent="SkillBarPanel/Upgrade/Choice3"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Alt + 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkillsUp" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vibtu")
+}
+autoplay = "Hide"
+
 [connection signal="pressed" from="SkillBarPanel/HBoxContainer/ShildSkill" to="." method="_on_shild_skill_pressed"]
 [connection signal="timeout" from="SkillBarPanel/HBoxContainer/ShildSkill/ShildCooldown" to="." method="_on_shild_cooldown_timeout"]
 [connection signal="timeout" from="SkillBarPanel/HBoxContainer/Skill2/SkillCooldown" to="." method="_on_shild_cooldown_timeout"]
 [connection signal="timeout" from="SkillBarPanel/HBoxContainer/Skill3/Skill3Cooldown" to="." method="_on_shild_cooldown_timeout"]
 [connection signal="timeout" from="SkillBarPanel/HBoxContainer/Skill4/Skill4Cooldown" to="." method="_on_shild_cooldown_timeout"]
+[connection signal="pressed" from="SkillBarPanel/Upgrade/Choice1" to="." method="_on_choice_1_pressed"]
+[connection signal="pressed" from="SkillBarPanel/Upgrade/Choice2" to="." method="_on_choice_2_pressed"]
+[connection signal="pressed" from="SkillBarPanel/Upgrade/Choice3" to="." method="_on_choice_3_pressed"]

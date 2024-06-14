@@ -61,7 +61,7 @@ public partial class astra : CharacterBody2D
 	private AnimatedSprite2D ShildSkill;
 	private bool shildactivated = false;
 	private float shildduration = 3f;
-	private bool shildavailable = true;
+	private bool shildavailable = false;
 	
 	// Status
 	private bool gettinghurt = false;
@@ -104,7 +104,7 @@ public partial class astra : CharacterBody2D
 		audio_run = GetNode<AudioStreamPlayer2D>("Audio_Run");
 		audio_dash = GetNode<AudioStreamPlayer2D>("Audio_Dash");
 		ShildSkill = GetNode<AnimatedSprite2D>("SkillShild");
-		GetTree().CallGroup("SkillBar", "UpdateXpTxt", Lvl);
+		//GetTree().CallGroup("SkillBar", "UpdateXpTxt", Lvl);
 		GetTree().CallGroup("SkillBar", "UpdateXp", Xp);
 		//-----------------------------//
 		//-----Test pour le multi normalement c fait pour le mult synchronizer------//
@@ -437,9 +437,10 @@ public partial class astra : CharacterBody2D
 		GetTree().CallGroup("SkillBar", "UpdateXp", Xp);
 	}
 	
+	
 	public async void SkillShild()
 	{
-		if (ShildSkill.Visible || shildavailable == false)
+		if (ShildSkill.Visible || shildavailable == false || shildactivated)
 		{
 			return;
 		}
