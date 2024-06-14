@@ -11,6 +11,7 @@ public partial class GameManager: Node
     public static GlobalInfos GlobalInfos = new GlobalInfos();
     
     public static int CurrentLevel = -1;   //accessible que pendant la game
+    //public static int CurrentCoin = (int)(UserPreferences.Data["Coin"]);
 
     public static void SpawnCoin(Node2D node, Vector2 pos)
     {

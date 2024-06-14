@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Devs.project.Autoloads;
+using Devs.project.Ressources;
 using Godot.Collections;
 
 public partial class UIManager : CanvasLayer

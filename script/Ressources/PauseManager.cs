@@ -12,6 +12,8 @@ public partial class PauseManager : Node2D
 	public int NbCoinsBeforeTutorial;
 
 	public static int Coincollectedinlevel;
+	
+	public static int NbCoinsBeforeLevel;
 
 	private static CanvasLayer _pauseMenu;
 	private Button _resumeButton;
@@ -20,6 +22,8 @@ public partial class PauseManager : Node2D
 	public override void _Ready()
 	{
 		NbCoinsBeforeTutorial = (int)UserPreferences.Data["Coin"];
+		Coincollectedinlevel = 0;
+		//GameManager.CurrentCoin = (int)UserPreferences.Data["Coin"];
 		_pauseMenu = GetNode<CanvasLayer>(Path.GetPath());
 		//_resumeButton = GetNode<Button>("/root/Tuto/PauseMenu/ResumeButton");
 		_pauseMenu.Hide();
@@ -62,7 +66,8 @@ public partial class PauseManager : Node2D
 
 	public static void Die(CanvasLayer gameOverPath)
 	{
-		//UserPreferences.Data["Coin"] = (int)UserPreferences.Data["Coin"] - Coincollectedinlevel;
+		//GameManager.CurrentCoin = (int)UserPreferences.Data["Coin"];
+		UserPreferences.Data["Coin"] = NbCoinsBeforeLevel;
 		GD.Print("MET LE SCREEN");
 		gameOverPath.GetTree().Paused = true;
 		GD.Print("freeze");

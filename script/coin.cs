@@ -17,8 +17,10 @@ public partial class coin : Sprite2D
 	{
 		if (body is CharacterBody2D)
 		{
+			//GameManager.CurrentCoin++;
 			UserPreferences.Data["Coin"] = (int)UserPreferences.Data["Coin"] + 1;
 			PauseManager.Coincollectedinlevel++;
+			PauseManager.NbCoinsBeforeLevel++;
 			//_global.AddScore(1);
 			QueueFree();
 		}

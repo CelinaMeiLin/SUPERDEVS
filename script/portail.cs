@@ -36,9 +36,11 @@ public partial class portail : Sprite2D
             {
                 Devs.project.Ressources.PauseManager parent = (Devs.project.Ressources.PauseManager)GetParent();
                 //GD.Print( parent.NbCoinsBeforeTutorial);
-                UserPreferences.Data["Coin"] = parent.NbCoinsBeforeTutorial;
-                UserPreferences.Save();
+               UserPreferences.Data["Coin"] = parent.NbCoinsBeforeTutorial;
+               UserPreferences.Save();
             }
+            
+            
             UserPreferences.Data["IsLevel"] = 0;
             UserPreferences.Save();
             PauseManager.Coincollectedinlevel = 0;
