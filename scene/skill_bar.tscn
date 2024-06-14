@@ -423,7 +423,7 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Skill2" type="Button" parent="SkillBarPanel/HBoxContainer"]
+[node name="ShockSkill" type="Button" parent="SkillBarPanel/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
@@ -431,11 +431,11 @@ shortcut = SubResource("Shortcut_amwgk")
 icon = ExtResource("3_q25w5")
 vertical_icon_alignment = 0
 
-[node name="SkillCooldown" type="Timer" parent="SkillBarPanel/HBoxContainer/Skill2"]
-wait_time = 60.0
+[node name="ShockCooldown" type="Timer" parent="SkillBarPanel/HBoxContainer/ShockSkill"]
+wait_time = 90.0
 one_shot = true
 
-[node name="SkillBar" type="TextureProgressBar" parent="SkillBarPanel/HBoxContainer/Skill2"]
+[node name="ShockBar" type="TextureProgressBar" parent="SkillBarPanel/HBoxContainer/ShockSkill"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -449,7 +449,7 @@ nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture1D_vwrfy")
 tint_progress = Color(0, 0.815686, 1, 0.67451)
 
-[node name="Label" type="Label" parent="SkillBarPanel/HBoxContainer/Skill2"]
+[node name="Label" type="Label" parent="SkillBarPanel/HBoxContainer/ShockSkill"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 12
@@ -671,9 +671,9 @@ custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 theme = ExtResource("14_lpuwd")
 shortcut = SubResource("Shortcut_mogfr")
-text = "--------------------------
-Out of Data
---------------------------"
+text = "Shock
+
+Unlock New Ability"
 
 [node name="Label" type="Label" parent="SkillBarPanel/Upgrade/Choice2"]
 layout_mode = 1
@@ -690,9 +690,9 @@ custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 theme = ExtResource("14_lpuwd")
 shortcut = SubResource("Shortcut_35auw")
-text = "Choice
-
-Unlock new Ability"
+text = "--------------------------
+Out of Data
+--------------------------"
 
 [node name="Label" type="Label" parent="SkillBarPanel/Upgrade/Choice3"]
 layout_mode = 1
@@ -712,7 +712,8 @@ autoplay = "Hide"
 
 [connection signal="pressed" from="SkillBarPanel/HBoxContainer/ShildSkill" to="." method="_on_shild_skill_pressed"]
 [connection signal="timeout" from="SkillBarPanel/HBoxContainer/ShildSkill/ShildCooldown" to="." method="_on_shild_cooldown_timeout"]
-[connection signal="timeout" from="SkillBarPanel/HBoxContainer/Skill2/SkillCooldown" to="." method="_on_shild_cooldown_timeout"]
+[connection signal="pressed" from="SkillBarPanel/HBoxContainer/ShockSkill" to="." method="_on_shock_skill_pressed"]
+[connection signal="timeout" from="SkillBarPanel/HBoxContainer/ShockSkill/ShockCooldown" to="." method="_on_shock_cooldown_timeout"]
 [connection signal="timeout" from="SkillBarPanel/HBoxContainer/Skill3/Skill3Cooldown" to="." method="_on_shild_cooldown_timeout"]
 [connection signal="timeout" from="SkillBarPanel/HBoxContainer/Skill4/Skill4Cooldown" to="." method="_on_shild_cooldown_timeout"]
 [connection signal="pressed" from="SkillBarPanel/Upgrade/Choice1" to="." method="_on_choice_1_pressed"]

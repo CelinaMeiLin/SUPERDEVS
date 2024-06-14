@@ -8,6 +8,11 @@ public partial class skill_bar : Container
 	private Timer ShildCooldown;
 	private TextureProgressBar ShildBar;
 	private bool ShildUnlocked = false;
+
+	private Timer ShockCooldown;
+	private TextureProgressBar ShockBar;
+	private bool ShockUnlocked = false;
+	
 	private ProgressBar XpBar;
 	private Label XpTxt;
 	private AnimationPlayer SkillsAnimator;
@@ -25,8 +30,15 @@ public partial class skill_bar : Container
 			Math.Round((float)UserPreferences.Data["FireRate"], 3).ToString();
 		GetNode<Button>("SkillBarPanel/VBoxContainer2/Skill1").Text = UserPreferences.Data["MovementSpeed"].ToString();
 		GetNode<Button>("SkillBarPanel/VBoxContainer2/Skill2").Text = UserPreferences.Data["DashCooldown"].ToString();
+		
+		GetNode<Button>("SkillBarPanel/Upgrade/Choice1").Text = "Shild\n\nUnlock new Ability";
+		GetNode<Button>("SkillBarPanel/Upgrade/Choice2").Text = "Shock\n\nUnlock New Ability";
+		
 		ShildCooldown = GetNode<Timer>("SkillBarPanel/HBoxContainer/ShildSkill/ShildCooldown");
 		ShildBar = GetNode<TextureProgressBar>("SkillBarPanel/HBoxContainer/ShildSkill/ShildBar");
+		ShockCooldown = GetNode<Timer>("SkillBarPanel/HBoxContainer/ShockSkill/ShockCooldown");
+		ShockBar = GetNode<TextureProgressBar>("SkillBarPanel/HBoxContainer/ShockSkill/ShockBar");
+		
 		XpBar = GetNode<ProgressBar>("SkillBarPanel/XP/Bar");
 		XpTxt = GetNode<Label>("SkillBarPanel/XP/Txt");
 		SkillsAnimator = GetNode<AnimationPlayer>("SkillsUp");
@@ -36,7 +48,10 @@ public partial class skill_bar : Container
 
 	public override void _Process(double delta)
 	{
-		ShildBar.Value = ShildBar.MaxValue - ShildCooldown.TimeLeft;
+		if (ShildUnlocked && !ShildCooldown.IsStopped())
+			ShildBar.Value = ShildBar.MaxValue - ShildCooldown.TimeLeft;
+		if (ShockUnlocked && !ShockCooldown.IsStopped())
+			ShockBar.Value = ShockBar.MaxValue - ShockCooldown.TimeLeft;
 	}
 
 	public void _on_shild_skill_pressed()
@@ -60,6 +75,28 @@ public partial class skill_bar : Container
 		GetTree().CallGroup("Astra", "UnlockShild");
 	}
 
+
+	private void _on_shock_skill_pressed()
+	{
+		if (!ShockCooldown.IsStopped() || ShockUnlocked == false)
+		{
+			return;
+		}
+
+		ShockBar.Visible = true;
+		int cooldown = 90;
+		ShockBar.MaxValue = cooldown;
+		ShockCooldown.WaitTime = cooldown; //easy to change
+		ShockCooldown.Start();
+		GetTree().CallGroup("Astra", "SkillShock");
+	}
+
+	private void _on_shock_cooldown_timeout()
+	{
+		ShockBar.Visible = false;
+		GetTree().CallGroup("Astra", "UnlockShock");
+	}
+	
 	public void UpdateXp(int amount)
 	{
 		XpBar.Value = amount;
@@ -78,6 +115,9 @@ public partial class skill_bar : Container
 		{
 			GetTree().CallGroup("Astra", "UnlockShild");
 			ShildUnlocked = true;
+			//for next choice
+			GetNode<Button>("SkillBarPanel/Upgrade/Choice1").Text =
+				"--------------------------\nOut of Data\n--------------------------";
 		}
 		else
 		{
@@ -95,9 +135,11 @@ public partial class skill_bar : Container
 	{
 		if (choice2 == 1)
 		{
+			GetTree().CallGroup("Astra", "UnlockShock");
+			ShockUnlocked = true;
+			//for next choice
 			GetNode<Button>("SkillBarPanel/Upgrade/Choice2").Text =
 				"--------------------------\nOut of Data\n--------------------------";
-			return;
 		}
 		else
 		{

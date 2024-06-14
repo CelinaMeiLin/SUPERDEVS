@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Devs.project.Autoloads;
 using Devs.project.Ressources;
 using Devs.project.script;
+using Devs.project.script.Enemies;
+
 public partial class astra : CharacterBody2D
 {
 	//------------------------------- V a r i a b l e s ------------------------------------------//
@@ -62,6 +64,11 @@ public partial class astra : CharacterBody2D
 	private bool shildactivated = false;
 	private float shildduration = 3f;
 	private bool shildavailable = false;
+	private AnimatedSprite2D ShockSkill;
+	private int shockdamage = 800;
+	private bool shockactivated = false;
+	private bool shockavailable = false;
+	private List<CharacterBody2D> shockenemies = new List<CharacterBody2D>();
 	
 	// Status
 	private bool gettinghurt = false;
@@ -104,6 +111,7 @@ public partial class astra : CharacterBody2D
 		audio_run = GetNode<AudioStreamPlayer2D>("Audio_Run");
 		audio_dash = GetNode<AudioStreamPlayer2D>("Audio_Dash");
 		ShildSkill = GetNode<AnimatedSprite2D>("SkillShild");
+		ShockSkill = GetNode<AnimatedSprite2D>("SkillShock");
 		//GetTree().CallGroup("SkillBar", "UpdateXpTxt", Lvl);
 		GetTree().CallGroup("SkillBar", "UpdateXp", Xp);
 		//-----------------------------//
@@ -459,6 +467,46 @@ public partial class astra : CharacterBody2D
 	public void UnlockShild()
 	{
 		shildavailable = true;
+	}
+
+	
+	public async void SkillShock()
+	{
+		ShockSkill.Play("Shock");
+		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
+		foreach (var enemy in shockenemies)
+		{
+			if (enemy is GusBody)
+			{
+				((GusBody)enemy).hurt(shockdamage);
+			}
+			else if (enemy is PowBody)
+			{
+				((PowBody)enemy).hurt(shockdamage);
+			}
+			else if (enemy is RhustBody)
+			{
+				((RhustBody)enemy).hurt(shockdamage);
+			}
+		}
+	}
+
+	private void _on_shock_area_body_entered(CharacterBody2D body)
+	{
+		shockenemies.Add(body);
+	}
+
+	private void _on_shock_area_body_exited(CharacterBody2D body)
+	{
+		if (shockenemies.Contains(body))
+		{
+			shockenemies.Remove(body);
+		}
+	}
+	
+	public void UnlockShock()
+	{
+		shockavailable = true;
 	}
 	
 	//--------------------------------- HP SYSTEM -----------------------------------------//

@@ -22,14 +22,18 @@ public partial class bullet : RigidBody2D
 			((GusBody)body).hurt(BulletDamage);
 		}
 		
-		if (body is PowBody)
+		else if (body is PowBody)
 		{
 			((PowBody)body).hurt(BulletDamage);
 		}
 		
-		if (body is RhustBody)
+		else if (body is RhustBody)
 		{
 			((RhustBody)body).hurt(BulletDamage);
+		}
+		else
+		{
+			return;
 		}
 		
 		QueueFree();

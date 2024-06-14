@@ -151,7 +151,7 @@ public partial class PowBody : CharacterBody2D
 		}
 	}
 	
-	public void _on_body_entered(Node body)
+	public void _on_body_entered(CharacterBody2D body)
 	{
 		if (body is astra)
 		{

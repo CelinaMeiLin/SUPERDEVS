@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=87 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
@@ -53,6 +53,14 @@
 [ext_resource type="Texture2D" uid="uid://c1f16yeuo1aky" path="res://art/VFX/Shield Aura/6.png" id="51_jq4bs"]
 [ext_resource type="Texture2D" uid="uid://bi5cytgbh3gpf" path="res://art/VFX/Shield Aura/7.png" id="52_rsxuv"]
 [ext_resource type="Texture2D" uid="uid://cy1kfiutkbpvv" path="res://art/items/skills/Skillicon14_18.png" id="53_tytcs"]
+[ext_resource type="Texture2D" uid="uid://c807tmljd7uoj" path="res://art/VFX/Type 5/1.png" id="54_4j2i5"]
+[ext_resource type="Texture2D" uid="uid://dapectiyxlg1t" path="res://art/VFX/Type 5/2.png" id="55_jty6p"]
+[ext_resource type="Texture2D" uid="uid://nr34oft3desu" path="res://art/VFX/Type 5/3.png" id="56_uvchk"]
+[ext_resource type="Texture2D" uid="uid://coq14fwxrh74x" path="res://art/VFX/Type 5/4.png" id="57_6673n"]
+[ext_resource type="Texture2D" uid="uid://7aixef784wtt" path="res://art/VFX/Type 5/5.png" id="58_8475i"]
+[ext_resource type="Texture2D" uid="uid://uwy103ootmgo" path="res://art/VFX/Type 5/6.png" id="59_w1cw1"]
+[ext_resource type="Texture2D" uid="uid://dfqddq2htvkq2" path="res://art/VFX/Type 5/7.png" id="60_abeyp"]
+[ext_resource type="Texture2D" uid="uid://bggaxlqm112ou" path="res://art/VFX/Type 5/Sans titre.png" id="61_w6yco"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osw1a"]
 radius = 12.0
@@ -386,6 +394,49 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_a64s7")
 alpha_curve = SubResource("CurveTexture_y8vkj")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfdsx"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"Blank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("61_w6yco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_4j2i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_jty6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_uvchk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_6673n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_8475i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_w1cw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_abeyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_w6yco")
+}],
+"loop": false,
+"name": &"Shock",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j17bb"]
+radius = 14.5279
+
 [node name="Astra" type="Node2D" groups=["Player"]]
 
 [node name="AstraBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Character", "Sprite") groups=["Astra"]]
@@ -502,11 +553,11 @@ vertical_alignment = 1
 [node name="SkillShild" type="AnimatedSprite2D" parent="AstraBody"]
 visible = false
 modulate = Color(0, 0.8, 1, 0.737255)
+texture_filter = 1
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_yyer6")
 animation = &"Idle"
-frame = 6
-frame_progress = 0.293308
+frame_progress = 0.915222
 
 [node name="SkillShildParticle" type="GPUParticles2D" parent="AstraBody"]
 texture_filter = 1
@@ -517,3 +568,23 @@ process_material = SubResource("ParticleProcessMaterial_ougol")
 texture = ExtResource("53_tytcs")
 one_shot = true
 local_coords = true
+
+[node name="SkillShock" type="AnimatedSprite2D" parent="AstraBody"]
+texture_filter = 1
+position = Vector2(4, -115)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_gfdsx")
+animation = &"Blank"
+autoplay = "Blank"
+
+[node name="ShockArea" type="Area2D" parent="AstraBody/SkillShock"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AstraBody/SkillShock/ShockArea"]
+position = Vector2(-0.1, 5.5)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_j17bb")
+
+[connection signal="body_entered" from="AstraBody/SkillShock/ShockArea" to="AstraBody" method="_on_shock_area_body_entered"]
+[connection signal="body_exited" from="AstraBody/SkillShock/ShockArea" to="AstraBody" method="_on_shock_area_body_exited"]
