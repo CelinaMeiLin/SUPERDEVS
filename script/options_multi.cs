@@ -11,12 +11,26 @@ public partial class options_multi : Control
 	private int port = 8910;
 
 	[Export]
-	private string adress = "127.0.0.1";
+	private string ip_address = "test";
 
 	private ENetMultiplayerPeer peer;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if (OS.GetName() == "Windows")
+		{
+			ip_address = IP.GetLocalAddresses()[3];
+		}
+		foreach (var ip in IP.GetLocalAddresses())
+		{
+			if (ip.StartsWith("192.168."))
+			{
+				ip_address = ip;
+			}
+		}
+
+		GetNode<Label>("VBoxContainer/Label").Text = ip_address;
+		
 		Multiplayer.PeerConnected += PeerConected;
 		Multiplayer.PeerDisconnected += PeerDisconnected;
 		Multiplayer.ConnectedToServer += ConnectedToServer;
@@ -91,7 +105,7 @@ public partial class options_multi : Control
 	private void _on_join_button_down()
 	{
 		peer = new ENetMultiplayerPeer();
-		peer.CreateClient(adress, port);
+		peer.CreateClient(ip_address, port);
 		
 		peer.Host.Compress(ENetConnection.CompressionMode.RangeCoder);
 		Multiplayer.MultiplayerPeer = peer;

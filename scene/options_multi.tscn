@@ -44,6 +44,12 @@ offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "127.28.0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Host" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Host"
