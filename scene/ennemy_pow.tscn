@@ -87,7 +87,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack3",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -172,7 +172,7 @@ radius = 29.0
 height = 104.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehp8x"]
-size = Vector2(686, 278)
+size = Vector2(564, 211)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vu75i"]
 radius = 155.013
@@ -555,7 +555,7 @@ offset_bottom = -46.0
 [node name="DetectionArea2D" type="Area2D" parent="PowBody"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PowBody/DetectionArea2D"]
-position = Vector2(11, -3)
+position = Vector2(10, -37)
 shape = SubResource("RectangleShape2D_ehp8x")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PowBody/DetectionArea2D"]

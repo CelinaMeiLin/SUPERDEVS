@@ -2,7 +2,7 @@ using Godot;
 
 public partial class PowShot : RigidBody2D
 {
-	public float BulletDamage = 20;
+	public float BulletDamage = 10;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
