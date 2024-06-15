@@ -23,8 +23,9 @@ public partial class Launcher : Node
 			UserPreferences.Data.Add("AttackDamage", 200);
 			UserPreferences.Data.Add("FireRate", 0.5f);
 			UserPreferences.Data.Add("MovementSpeed", 300);
-			UserPreferences.Data.Add("DashCooldown", 2); /// à faire
+			UserPreferences.Data.Add("DashCooldown", 2);
 
+			//UserPreferences.Data.Add("EnemyKilled", 0); 
 			
 
 			UserPreferences.Data.Add("Master", 50); // à save/faire

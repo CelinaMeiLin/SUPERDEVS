@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Devs.project.Ressources;
 using Godot;
 
 namespace Devs.project.script.Enemies;
@@ -27,7 +28,10 @@ public partial class SpawnEnemies : Node2D
 	{
 		_liste = new List<Node2D> {GetNode<Node2D>("1"), GetNode<Node2D>("2"), GetNode<Node2D>("3"), GetNode<Node2D>("4")};
 		_listelvl1 = new List<Node2D> {GetNode<Node2D>("1"), GetNode<Node2D>("2"), GetNode<Node2D>("3")};
-		_listelvl2 = new List<Node2D> {GetNode<Node2D>("1"), GetNode<Node2D>("2"), GetNode<Node2D>("3"), GetNode<Node2D>("4"), GetNode<Node2D>("5"), GetNode<Node2D>("6"), GetNode<Node2D>("7"), GetNode<Node2D>("8"), GetNode<Node2D>("9")};
+		if (GameManager.CurrentLevel == 3)
+		{
+			_listelvl2 = new List<Node2D> {GetNode<Node2D>("1"), GetNode<Node2D>("2"), GetNode<Node2D>("3"), GetNode<Node2D>("4"), GetNode<Node2D>("5"), GetNode<Node2D>("6"), GetNode<Node2D>("7"), GetNode<Node2D>("8"), GetNode<Node2D>("9")};
+		}
 		_timer = GetNode<Timer>("Timer");
 		_timerlvl1 = GetNode<Timer>("Timer");
 		Random generator = new Random();

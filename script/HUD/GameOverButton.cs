@@ -13,6 +13,7 @@ public partial class GameOverButton: CanvasLayer
         GD.Print("Retry");
         GetTree().Paused = false;
         UserPreferences.Data["Coin"] = (int)UserPreferences.Data["Coin"] - PauseManager.Coincollectedinlevel;
+        GameManager.EnemyKilled = 0;
         Scene.GetTree().ReloadCurrentScene();
     }
 }

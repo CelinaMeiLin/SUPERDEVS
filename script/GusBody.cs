@@ -212,6 +212,10 @@ public partial class GusBody : CharacterBody2D
 
 		dying = true;
 		SetCollisionLayerValue(3, false);
+		
+		GameManager.EnemyKilled++;
+		//UserPreferences.Data["EnemyKilled"] = (int)UserPreferences.Data["EnemyKilled"] + 1;
+		
 		var pos = Position;
 		Death_particles.Emitting = true;
 		_animatedSprite.Visible = false;

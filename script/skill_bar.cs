@@ -83,13 +83,13 @@ public partial class skill_bar : Container
 		ShildBar.MaxValue = cooldown;
 		ShildCooldown.WaitTime = cooldown; //easy to change
 		ShildCooldown.Start();
-		GetTree().CallGroup("Astra", "SkillShild");
+		GetTree().CallGroup("Astra", "SkillShield");
 	}
 
 	private void _on_shild_cooldown_timeout()
 	{
 		ShildBar.Visible = false;
-		GetTree().CallGroup("Astra", "UnlockShild");
+		GetTree().CallGroup("Astra", "UnlockShield");
 	}
 
 
@@ -174,7 +174,7 @@ public partial class skill_bar : Container
 	{
 		if (choice1 == 1)
 		{
-			GetTree().CallGroup("Astra", "UnlockShild");
+			GetTree().CallGroup("Astra", "UnlockShield");
 			ShildUnlocked = true;
 			//for next choice
 			if (OcUnlocked == false)

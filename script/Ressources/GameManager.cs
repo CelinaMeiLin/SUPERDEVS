@@ -13,6 +13,8 @@ public partial class GameManager: Node
     public static int CurrentLevel = -1;   //accessible que pendant la game
     //public static int CurrentCoin = (int)(UserPreferences.Data["Coin"]);
 
+    public static int EnemyKilled = 0;
+
     public static void SpawnCoin(Node2D node, Vector2 pos)
     {
         var spawncoin = GD.Load<PackedScene>("res://scene/coin.tscn");

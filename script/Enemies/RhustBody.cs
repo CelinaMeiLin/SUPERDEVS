@@ -243,6 +243,9 @@ public partial class RhustBody : CharacterBody2D
 
 		dying = true;
 		SetCollisionLayerValue(3, false);
+		
+		GameManager.EnemyKilled += 1;
+
 		var pos = Position;
 		Death_particles.Emitting = true;
 		_animatedSprite.Visible = false;

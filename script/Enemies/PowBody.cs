@@ -252,7 +252,8 @@ public partial class PowBody : CharacterBody2D
 		
 		//_animatedSprite.Play("death");
 		
-		
+		GameManager.EnemyKilled += 1;
+
 		Death_particles.Emitting = true;
 		_animatedSprite.Visible = false;
 		await ToSignal(GetTree().CreateTimer(0.2), "timeout");

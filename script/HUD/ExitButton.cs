@@ -10,6 +10,7 @@ public partial class ExitButton : Button
     {
         GetTree().Paused = false;
         UserPreferences.Data["Coin"] = (int)UserPreferences.Data["Coin"] - PauseManager.Coincollectedinlevel;
+        GameManager.EnemyKilled = 0;
 
         GetTree().ChangeSceneToFile("res://scene/map.tscn");
     }
