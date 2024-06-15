@@ -499,10 +499,8 @@ wait_time = 5.0
 autostart = true
 
 [node name="UIManager2" parent="." instance=ExtResource("16_2dtod")]
-visible = false
 
 [node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("17_fao80")]
-visible = false
 Scene = NodePath("..")
 
 [node name="Medical Kit2" parent="." instance=ExtResource("2_mffbe")]
