@@ -595,8 +595,10 @@ HealthBar = NodePath("../../../interface/HealthBar")
 limit_right = 3995
 
 [node name="UIManagerPause" parent="." instance=ExtResource("26_7agd0")]
+visible = false
 
 [node name="UIManager" parent="." instance=ExtResource("26_ww4qh")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_xk3yu")
