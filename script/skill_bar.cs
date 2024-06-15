@@ -19,7 +19,7 @@ public partial class skill_bar : Container
 
 	private Timer OcCooldown;
 	private TextureProgressBar OcBar;
-	private bool OcUnlocked = true;
+	private bool OcUnlocked = false;
 	
 	private ProgressBar XpBar;
 	private Label XpTxt;
@@ -177,6 +177,18 @@ public partial class skill_bar : Container
 			GetTree().CallGroup("Astra", "UnlockShild");
 			ShildUnlocked = true;
 			//for next choice
+			if (OcUnlocked == false)
+				GetNode<Button>("SkillBarPanel/Upgrade/Choice1").Text =
+				"- Overcharged -\n\nUnlock new Ability";
+			else
+				GetNode<Button>("SkillBarPanel/Upgrade/Choice1").Text =
+					"--------------------------\nOut of Data\n--------------------------";
+		}
+		else if (choice1 == 2 && OcUnlocked == false)
+		{
+			GetTree().CallGroup("Astra", "UnlockOvercharged");
+			OcUnlocked = true;
+
 			GetNode<Button>("SkillBarPanel/Upgrade/Choice1").Text =
 				"--------------------------\nOut of Data\n--------------------------";
 		}
@@ -199,6 +211,18 @@ public partial class skill_bar : Container
 			GetTree().CallGroup("Astra", "UnlockShock");
 			ShockUnlocked = true;
 			//for next choice
+			if (OcUnlocked == false)
+				GetNode<Button>("SkillBarPanel/Upgrade/Choice2").Text =
+					"- Overcharged -\n\nUnlock new Ability";
+			else
+				GetNode<Button>("SkillBarPanel/Upgrade/Choice2").Text =
+				"--------------------------\nOut of Data\n--------------------------";
+		}
+		else if (choice2 == 2 && OcUnlocked == false)
+		{
+			GetTree().CallGroup("Astra", "UnlockOvercharged");
+			OcUnlocked = true;
+			
 			GetNode<Button>("SkillBarPanel/Upgrade/Choice2").Text =
 				"--------------------------\nOut of Data\n--------------------------";
 		}
@@ -220,6 +244,18 @@ public partial class skill_bar : Container
 		{
 			GetTree().CallGroup("Astra", "UnlockZap");
 			ZapUnlocked = true;
+			
+			if (OcUnlocked == false)
+				GetNode<Button>("SkillBarPanel/Upgrade/Choice3").Text =
+					"- Overcharged -\n\nUnlock new Ability";
+			else
+				GetNode<Button>("SkillBarPanel/Upgrade/Choice3").Text =
+				"--------------------------\nOut of Data\n--------------------------";
+		}
+		else if (choice3 == 2 && OcUnlocked == false)
+		{
+			GetTree().CallGroup("Astra", "UnlockOvercharged");
+			OcUnlocked = true;
 			
 			GetNode<Button>("SkillBarPanel/Upgrade/Choice3").Text =
 				"--------------------------\nOut of Data\n--------------------------";

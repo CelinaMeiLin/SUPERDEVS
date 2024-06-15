@@ -652,7 +652,7 @@ custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 theme = ExtResource("14_lpuwd")
 shortcut = SubResource("Shortcut_grvgy")
-text = "- Shild -
+text = "- Overcharged -
 
 Unlock new Ability"
 

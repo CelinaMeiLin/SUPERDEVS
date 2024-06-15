@@ -77,7 +77,7 @@ public partial class astra : CharacterBody2D
 	private AnimatedSprite2D OverchargedSkill;
 	private ProgressBar OcBar;
 	private bool Ocactivated = false;
-	private bool Ocavailable = true;
+	private bool Ocavailable = false;
 	private float Ocduration = 7f;
 	private int OcAttaque = 200;
 	
