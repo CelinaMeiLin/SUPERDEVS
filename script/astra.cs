@@ -69,6 +69,11 @@ public partial class astra : CharacterBody2D
 	private bool shockactivated = false;
 	private bool shockavailable = false;
 	private List<CharacterBody2D> shockenemies = new List<CharacterBody2D>();
+	private AnimatedSprite2D ZapSkill;
+	private int zapdamage = 600;
+	private bool zapactivated = false;
+	private bool zapavailable = false;
+	private List<CharacterBody2D> zapenemies = new List<CharacterBody2D>();
 	
 	// Status
 	private bool gettinghurt = false;
@@ -112,6 +117,7 @@ public partial class astra : CharacterBody2D
 		audio_dash = GetNode<AudioStreamPlayer2D>("Audio_Dash");
 		ShildSkill = GetNode<AnimatedSprite2D>("SkillShild");
 		ShockSkill = GetNode<AnimatedSprite2D>("SkillShock");
+		ZapSkill = GetNode<AnimatedSprite2D>("SkillZap");
 		//GetTree().CallGroup("SkillBar", "UpdateXpTxt", Lvl);
 		GetTree().CallGroup("SkillBar", "UpdateXp", Xp);
 		//-----------------------------//
@@ -507,6 +513,46 @@ public partial class astra : CharacterBody2D
 	public void UnlockShock()
 	{
 		shockavailable = true;
+	}
+
+	
+	public async void SkillZap()
+	{
+		ZapSkill.Play("Zap");
+		ZapSkill.GetNode<AnimatedSprite2D>("Thunder").Play("elec");
+		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
+		foreach (var enemy in zapenemies)
+		{
+			if (enemy is GusBody)
+			{
+				((GusBody)enemy).hurt(zapdamage);
+			}
+			else if (enemy is PowBody)
+			{
+				((PowBody)enemy).hurt(zapdamage);
+			}
+			else if (enemy is RhustBody)
+			{
+				((RhustBody)enemy).hurt(zapdamage);
+			}
+		}
+	}
+	private void _on_zap_area_body_entered(CharacterBody2D body)
+	{
+		zapenemies.Add(body);
+	}
+
+	private void _on_zap_area_body_exited(CharacterBody2D body)
+	{
+		if (zapenemies.Contains(body))
+		{
+			zapenemies.Remove(body);
+		}
+	}
+	
+	public void UnlockZap()
+	{
+		zapavailable = true;
 	}
 	
 	//--------------------------------- HP SYSTEM -----------------------------------------//

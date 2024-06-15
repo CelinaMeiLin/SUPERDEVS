@@ -12,6 +12,10 @@ public partial class skill_bar : Container
 	private Timer ShockCooldown;
 	private TextureProgressBar ShockBar;
 	private bool ShockUnlocked = false;
+
+	private Timer ZapCooldown;
+	private TextureProgressBar ZapBar;
+	private bool ZapUnlocked = false;
 	
 	private ProgressBar XpBar;
 	private Label XpTxt;
@@ -31,13 +35,16 @@ public partial class skill_bar : Container
 		GetNode<Button>("SkillBarPanel/VBoxContainer2/Skill1").Text = UserPreferences.Data["MovementSpeed"].ToString();
 		GetNode<Button>("SkillBarPanel/VBoxContainer2/Skill2").Text = UserPreferences.Data["DashCooldown"].ToString();
 		
-		GetNode<Button>("SkillBarPanel/Upgrade/Choice1").Text = "Shild\n\nUnlock new Ability";
-		GetNode<Button>("SkillBarPanel/Upgrade/Choice2").Text = "Shock\n\nUnlock New Ability";
+		GetNode<Button>("SkillBarPanel/Upgrade/Choice1").Text = "- Shild -\n\nUnlock new Ability";
+		GetNode<Button>("SkillBarPanel/Upgrade/Choice2").Text = "- Shock -\n\nUnlock New Ability";
+		GetNode<Button>("SkillBarPanel/Upgrade/Choice3").Text = "- Zap -\n\nUnlock New Ability";
 		
 		ShildCooldown = GetNode<Timer>("SkillBarPanel/HBoxContainer/ShildSkill/ShildCooldown");
 		ShildBar = GetNode<TextureProgressBar>("SkillBarPanel/HBoxContainer/ShildSkill/ShildBar");
 		ShockCooldown = GetNode<Timer>("SkillBarPanel/HBoxContainer/ShockSkill/ShockCooldown");
 		ShockBar = GetNode<TextureProgressBar>("SkillBarPanel/HBoxContainer/ShockSkill/ShockBar");
+		ZapCooldown = GetNode<Timer>("SkillBarPanel/HBoxContainer/ZapSkill/ZapCooldown");
+		ZapBar = GetNode<TextureProgressBar>("SkillBarPanel/HBoxContainer/ZapSkill/ZapBar");
 		
 		XpBar = GetNode<ProgressBar>("SkillBarPanel/XP/Bar");
 		XpTxt = GetNode<Label>("SkillBarPanel/XP/Txt");
@@ -52,6 +59,8 @@ public partial class skill_bar : Container
 			ShildBar.Value = ShildBar.MaxValue - ShildCooldown.TimeLeft;
 		if (ShockUnlocked && !ShockCooldown.IsStopped())
 			ShockBar.Value = ShockBar.MaxValue - ShockCooldown.TimeLeft;
+		if (ZapUnlocked && !ZapCooldown.IsStopped())
+			ZapBar.Value = ZapBar.MaxValue - ZapCooldown.TimeLeft;
 	}
 
 	public void _on_shild_skill_pressed()
@@ -96,6 +105,29 @@ public partial class skill_bar : Container
 		ShockBar.Visible = false;
 		GetTree().CallGroup("Astra", "UnlockShock");
 	}
+
+
+	private void _on_zap_skill_pressed()
+	{
+		if (!ZapCooldown.IsStopped() || ZapUnlocked == false)
+		{
+			return;
+		}
+
+		ZapBar.Visible = true;
+		int cooldown = 60;
+		ZapBar.MaxValue = cooldown;
+		ZapCooldown.WaitTime = cooldown;
+		ZapCooldown.Start();
+		GetTree().CallGroup("Astra", "SkillZap");
+	}
+
+	private void _on_zap_cooldown_timeout()
+	{
+		ZapBar.Visible = false;
+		GetTree().CallGroup("Astra", "UnlockZap");
+	}
+	
 	
 	public void UpdateXp(int amount)
 	{
@@ -157,9 +189,11 @@ public partial class skill_bar : Container
 	{
 		if (choice3 == 1)
 		{
+			GetTree().CallGroup("Astra", "UnlockZap");
+			ZapUnlocked = true;
+			
 			GetNode<Button>("SkillBarPanel/Upgrade/Choice3").Text =
 				"--------------------------\nOut of Data\n--------------------------";
-			return;
 		}
 		else
 		{

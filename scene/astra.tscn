@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://c8iv3ojysfds"]
+[gd_scene load_steps=105 format=3 uid="uid://c8iv3ojysfds"]
 
 [ext_resource type="Script" path="res://script/astra.cs" id="1_4ovnt"]
 [ext_resource type="Texture2D" uid="uid://bitkixrjnl13g" path="res://art/characters/idle/idle-1.png" id="2_78wnn"]
@@ -61,6 +61,8 @@
 [ext_resource type="Texture2D" uid="uid://uwy103ootmgo" path="res://art/VFX/Type 5/6.png" id="59_w1cw1"]
 [ext_resource type="Texture2D" uid="uid://dfqddq2htvkq2" path="res://art/VFX/Type 5/7.png" id="60_abeyp"]
 [ext_resource type="Texture2D" uid="uid://bggaxlqm112ou" path="res://art/VFX/Type 5/Sans titre.png" id="61_w6yco"]
+[ext_resource type="Texture2D" uid="uid://nlb42bxljon" path="res://art/VFX/projetilNew.png" id="62_8hsss"]
+[ext_resource type="Texture2D" uid="uid://eocldrt5whip" path="res://art/VFX/Thunder.png" id="63_ua1wv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osw1a"]
 radius = 12.0
@@ -396,7 +398,10 @@ alpha_curve = SubResource("CurveTexture_y8vkj")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gfdsx"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("61_w6yco")
+}],
 "loop": false,
 "name": &"Blank",
 "speed": 5.0
@@ -436,6 +441,144 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j17bb"]
 radius = 14.5279
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxb8t"]
+atlas = ExtResource("62_8hsss")
+region = Rect2(0, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vjta"]
+atlas = ExtResource("62_8hsss")
+region = Rect2(0, 64, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvtcx"]
+atlas = ExtResource("62_8hsss")
+region = Rect2(0, 128, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duhyr"]
+atlas = ExtResource("62_8hsss")
+region = Rect2(0, 192, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxy3x"]
+atlas = ExtResource("62_8hsss")
+region = Rect2(0, 256, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd4cq"]
+atlas = ExtResource("62_8hsss")
+region = Rect2(0, 320, 256, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jt8g6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("61_w6yco")
+}],
+"loop": false,
+"name": &"Blank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("61_w6yco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxb8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vjta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvtcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duhyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxy3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd4cq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_w6yco")
+}],
+"loop": false,
+"name": &"Zap",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vb8i"]
+size = Vector2(264, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65wky"]
+atlas = ExtResource("63_ua1wv")
+region = Rect2(0, 0, 65, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u3l2"]
+atlas = ExtResource("63_ua1wv")
+region = Rect2(65, 0, 65, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g2av"]
+atlas = ExtResource("63_ua1wv")
+region = Rect2(130, 0, 65, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11m5x"]
+atlas = ExtResource("63_ua1wv")
+region = Rect2(195, 0, 65, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xphyw"]
+atlas = ExtResource("63_ua1wv")
+region = Rect2(260, 0, 65, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnld4"]
+atlas = ExtResource("63_ua1wv")
+region = Rect2(325, 0, 65, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr8s8"]
+atlas = ExtResource("63_ua1wv")
+region = Rect2(390, 0, 65, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hk6ew"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("61_w6yco")
+}],
+"loop": false,
+"name": &"blank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("61_w6yco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65wky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u3l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g2av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11m5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xphyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnld4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr8s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_w6yco")
+}],
+"loop": false,
+"name": &"elec",
+"speed": 10.0
+}]
 
 [node name="Astra" type="Node2D" groups=["Player"]]
 
@@ -574,7 +717,7 @@ texture_filter = 1
 position = Vector2(4, -115)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_gfdsx")
-animation = &"Blank"
+animation = &"Shock"
 autoplay = "Blank"
 
 [node name="ShockArea" type="Area2D" parent="AstraBody/SkillShock"]
@@ -583,8 +726,35 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AstraBody/SkillShock/ShockArea"]
 position = Vector2(-0.1, 5.5)
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_j17bb")
+
+[node name="SkillZap" type="AnimatedSprite2D" parent="AstraBody"]
+texture_filter = 1
+position = Vector2(220, -15)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_jt8g6")
+animation = &"Zap"
+autoplay = "Blank"
+frame = 7
+frame_progress = 1.0
+
+[node name="ZapArea" type="Area2D" parent="AstraBody/SkillZap"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AstraBody/SkillZap/ZapArea"]
+position = Vector2(9, 1.5)
+shape = SubResource("RectangleShape2D_2vb8i")
+
+[node name="Thunder" type="AnimatedSprite2D" parent="AstraBody/SkillZap"]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_hk6ew")
+animation = &"elec"
+autoplay = "blank"
+frame = 8
+frame_progress = 1.0
 
 [connection signal="body_entered" from="AstraBody/SkillShock/ShockArea" to="AstraBody" method="_on_shock_area_body_entered"]
 [connection signal="body_exited" from="AstraBody/SkillShock/ShockArea" to="AstraBody" method="_on_shock_area_body_exited"]
+[connection signal="body_entered" from="AstraBody/SkillZap/ZapArea" to="AstraBody" method="_on_zap_area_body_entered"]
+[connection signal="body_exited" from="AstraBody/SkillZap/ZapArea" to="AstraBody" method="_on_zap_area_body_exited"]
