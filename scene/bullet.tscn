@@ -14,7 +14,7 @@ collision_layer = 0
 collision_mask = 4
 gravity_scale = 0.0
 lock_rotation = true
-max_contacts_reported = 1
+max_contacts_reported = 20
 contact_monitor = true
 script = ExtResource("1_3wt2k")
 

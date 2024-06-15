@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://d4aao81m1buo8" path="res://art/PlayerStatistics/HP.png" id="2_rpls5"]
 [ext_resource type="Texture2D" uid="uid://cy1kfiutkbpvv" path="res://art/items/skills/Skillicon14_18.png" id="3_npxv3"]
 [ext_resource type="Texture2D" uid="uid://bomlywcuyhmc0" path="res://art/items/skills/Skillicon14_35.png" id="3_q25w5"]
-[ext_resource type="Texture2D" uid="uid://c0qm6lyeinkll" path="res://art/items/skills/Skillicon14_14.png" id="4_ofuwl"]
-[ext_resource type="Texture2D" uid="uid://dnbwrhntgiyhp" path="res://art/items/skills/Skillicon14_28.png" id="5_pwm7s"]
+[ext_resource type="Texture2D" uid="uid://bq655fuj54cfc" path="res://art/items/skills/Skillicon14_23.png" id="5_a5wih"]
 [ext_resource type="FontFile" uid="uid://csbm4767rwgwu" path="res://art/fonts/Silkscreen-Bold.ttf" id="6_myjnf"]
 [ext_resource type="Theme" uid="uid://c7f13roog0fm0" path="res://art/Theme/SkillBar.tres" id="6_pq6cq"]
+[ext_resource type="Texture2D" uid="uid://bhkdp4csl4a26" path="res://art/items/skills/Skillicon14_33.png" id="6_vmtho"]
 [ext_resource type="Texture2D" uid="uid://bfsh4g7cevenh" path="res://art/PlayerStatistics/AttackDamage.png" id="7_n1pou"]
 [ext_resource type="Texture2D" uid="uid://x4pcfqtt6tdj" path="res://art/PlayerStatistics/MovementSpeed.png" id="8_30y66"]
 [ext_resource type="Texture2D" uid="uid://d2x5m68bbf13h" path="res://art/PlayerStatistics/FireRate.png" id="8_x4ks4"]
@@ -471,7 +471,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
 shortcut = SubResource("Shortcut_31x4b")
-icon = ExtResource("4_ofuwl")
+icon = ExtResource("5_a5wih")
 vertical_icon_alignment = 0
 
 [node name="ZapCooldown" type="Timer" parent="SkillBarPanel/HBoxContainer/ZapSkill"]
@@ -509,19 +509,19 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Skill4" type="Button" parent="SkillBarPanel/HBoxContainer"]
+[node name="OverchargedSkill" type="Button" parent="SkillBarPanel/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 2.08165e-12)
 layout_mode = 2
 shortcut = SubResource("Shortcut_iocfl")
-icon = ExtResource("5_pwm7s")
+icon = ExtResource("6_vmtho")
 vertical_icon_alignment = 0
 
-[node name="Skill4Cooldown" type="Timer" parent="SkillBarPanel/HBoxContainer/Skill4"]
+[node name="OcCooldown" type="Timer" parent="SkillBarPanel/HBoxContainer/OverchargedSkill"]
 wait_time = 60.0
 one_shot = true
 
-[node name="Skill4Bar" type="TextureProgressBar" parent="SkillBarPanel/HBoxContainer/Skill4"]
+[node name="OcBar" type="TextureProgressBar" parent="SkillBarPanel/HBoxContainer/OverchargedSkill"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -535,7 +535,7 @@ nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture1D_vwrfy")
 tint_progress = Color(0, 0.815686, 1, 0.67451)
 
-[node name="Label" type="Label" parent="SkillBarPanel/HBoxContainer/Skill4"]
+[node name="Label" type="Label" parent="SkillBarPanel/HBoxContainer/OverchargedSkill"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 12
@@ -716,6 +716,8 @@ autoplay = "Hide"
 [connection signal="timeout" from="SkillBarPanel/HBoxContainer/ShockSkill/ShockCooldown" to="." method="_on_shock_cooldown_timeout"]
 [connection signal="pressed" from="SkillBarPanel/HBoxContainer/ZapSkill" to="." method="_on_zap_skill_pressed"]
 [connection signal="timeout" from="SkillBarPanel/HBoxContainer/ZapSkill/ZapCooldown" to="." method="_on_zap_cooldown_timeout"]
+[connection signal="pressed" from="SkillBarPanel/HBoxContainer/OverchargedSkill" to="." method="_on_overcharged_skill_pressed"]
+[connection signal="timeout" from="SkillBarPanel/HBoxContainer/OverchargedSkill/OcCooldown" to="." method="_on_oc_cooldown_timeout"]
 [connection signal="pressed" from="SkillBarPanel/Upgrade/Choice1" to="." method="_on_choice_1_pressed"]
 [connection signal="pressed" from="SkillBarPanel/Upgrade/Choice2" to="." method="_on_choice_2_pressed"]
 [connection signal="pressed" from="SkillBarPanel/Upgrade/Choice3" to="." method="_on_choice_3_pressed"]

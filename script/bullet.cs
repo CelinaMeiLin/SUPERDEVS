@@ -31,10 +31,6 @@ public partial class bullet : RigidBody2D
 		{
 			((RhustBody)body).hurt(BulletDamage);
 		}
-		else
-		{
-			return;
-		}
 		
 		QueueFree();
 	}

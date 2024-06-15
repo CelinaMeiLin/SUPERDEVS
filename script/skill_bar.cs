@@ -16,6 +16,10 @@ public partial class skill_bar : Container
 	private Timer ZapCooldown;
 	private TextureProgressBar ZapBar;
 	private bool ZapUnlocked = false;
+
+	private Timer OcCooldown;
+	private TextureProgressBar OcBar;
+	private bool OcUnlocked = true;
 	
 	private ProgressBar XpBar;
 	private Label XpTxt;
@@ -45,6 +49,8 @@ public partial class skill_bar : Container
 		ShockBar = GetNode<TextureProgressBar>("SkillBarPanel/HBoxContainer/ShockSkill/ShockBar");
 		ZapCooldown = GetNode<Timer>("SkillBarPanel/HBoxContainer/ZapSkill/ZapCooldown");
 		ZapBar = GetNode<TextureProgressBar>("SkillBarPanel/HBoxContainer/ZapSkill/ZapBar");
+		OcCooldown = GetNode<Timer>("SkillBarPanel/HBoxContainer/OverchargedSkill/OcCooldown");
+		OcBar = GetNode<TextureProgressBar>("SkillBarPanel/HBoxContainer/OverchargedSkill/OcBar");
 		
 		XpBar = GetNode<ProgressBar>("SkillBarPanel/XP/Bar");
 		XpTxt = GetNode<Label>("SkillBarPanel/XP/Txt");
@@ -61,6 +67,8 @@ public partial class skill_bar : Container
 			ShockBar.Value = ShockBar.MaxValue - ShockCooldown.TimeLeft;
 		if (ZapUnlocked && !ZapCooldown.IsStopped())
 			ZapBar.Value = ZapBar.MaxValue - ZapCooldown.TimeLeft;
+		if (OcUnlocked && !OcCooldown.IsStopped())
+			OcBar.Value = OcBar.MaxValue - OcCooldown.TimeLeft;
 	}
 
 	public void _on_shild_skill_pressed()
@@ -126,6 +134,27 @@ public partial class skill_bar : Container
 	{
 		ZapBar.Visible = false;
 		GetTree().CallGroup("Astra", "UnlockZap");
+	}
+
+
+	private void _on_overcharged_skill_pressed()
+	{
+		if (!OcCooldown.IsStopped() || OcUnlocked == false)
+		{
+			return;
+		}
+
+		OcBar.Visible = true;
+		int cooldown = 120;
+		OcBar.MaxValue = cooldown;
+		OcCooldown.WaitTime = cooldown; //easy to change
+		OcCooldown.Start();
+		GetTree().CallGroup("Astra", "SkillOvercharged");
+	}
+	private void _on_oc_cooldown_timeout()
+	{
+		OcBar.Visible = false;
+		GetTree().CallGroup("Astra", "UnlockOvercharged");
 	}
 	
 	

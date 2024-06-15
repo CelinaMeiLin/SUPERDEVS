@@ -74,6 +74,12 @@ public partial class astra : CharacterBody2D
 	private bool zapactivated = false;
 	private bool zapavailable = false;
 	private List<CharacterBody2D> zapenemies = new List<CharacterBody2D>();
+	private AnimatedSprite2D OverchargedSkill;
+	private ProgressBar OcBar;
+	private bool Ocactivated = false;
+	private bool Ocavailable = true;
+	private float Ocduration = 7f;
+	private int OcAttaque = 200;
 	
 	// Status
 	private bool gettinghurt = false;
@@ -118,6 +124,8 @@ public partial class astra : CharacterBody2D
 		ShildSkill = GetNode<AnimatedSprite2D>("SkillShild");
 		ShockSkill = GetNode<AnimatedSprite2D>("SkillShock");
 		ZapSkill = GetNode<AnimatedSprite2D>("SkillZap");
+		OverchargedSkill = GetNode<AnimatedSprite2D>("SkillOvercharged");
+		OcBar = GetNode<ProgressBar>("OverchargedBar");
 		//GetTree().CallGroup("SkillBar", "UpdateXpTxt", Lvl);
 		GetTree().CallGroup("SkillBar", "UpdateXp", Xp);
 		//-----------------------------//
@@ -128,6 +136,10 @@ public partial class astra : CharacterBody2D
 	
 	public override void _PhysicsProcess(double delta)
 	{
+		if (Ocactivated)
+		{
+			OcBar.Value = GetNode<Timer>("OcTimer").TimeLeft;
+		}
 		//Multiplayer Controler
 		if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() != Multiplayer.GetUniqueId())
 		{
@@ -144,7 +156,11 @@ public partial class astra : CharacterBody2D
 			CanDash = false;
 			//audio_dash.Play();   (mis en commentaire car faisait bugger le lvl1)
 			_animatedSprite.Play("dash");
-			velocity.X = (direction.X * dash_speed);
+			
+			float speedy = dash_speed;
+			if (Ocactivated)
+				speedy += 200;
+			velocity.X = (direction.X * speedy);
 			DashTimer();
 		}
 		else if (direction != Vector2.Zero)
@@ -154,11 +170,17 @@ public partial class astra : CharacterBody2D
 			bool isLeft = _lastDirection.X < 0;
 			_animatedSprite.FlipH = isLeft;
 
-			velocity.X = direction.X * Astra.Speed;
+			float speed = Astra.Speed;
+			if (Ocactivated)
+				speed += 200;
+			velocity.X = direction.X * speed;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Astra.Speed);
+			float speed = Astra.Speed;
+			if (Ocactivated)
+				speed += 200;
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, speed);
 		}
 
 		//Handle Jump.
@@ -178,7 +200,10 @@ public partial class astra : CharacterBody2D
 		}
 
 		// Shoot
-		if (Input.IsActionJustPressed("Shoot") && time_until_fire > fire_rate)
+		float firerate = fire_rate;
+		if (Ocactivated)
+			firerate /= 3;
+		if (Input.IsActionJustPressed("Shoot") && time_until_fire > firerate)
 		{
 			//shoot();
 			//Rpc("shoot");
@@ -221,7 +246,11 @@ public partial class astra : CharacterBody2D
 
 			bullet.GlobalPosition = Spawn;
 			bullet.LinearVelocity = bullet.Transform.X * bullet_speed * b_direction;
-			bullet.BulletDamage = Astra.Attaque; 
+			bullet.BulletDamage = Astra.Attaque;
+			if (Ocactivated)
+			{
+				bullet.BulletDamage = Astra.Attaque + OcAttaque;
+			}
 
 			audio_gun.Play();
 			GetTree().Root.AddChild(bullet);
@@ -553,6 +582,36 @@ public partial class astra : CharacterBody2D
 	public void UnlockZap()
 	{
 		zapavailable = true;
+	}
+
+
+	public async void SkillOvercharged()
+	{
+		if (Ocavailable == false || Ocactivated)
+		{
+			return;
+		}
+
+		Ocactivated = true;
+		OverchargedSkill.Play("play");
+		OcBar.Visible = true;
+		OcBar.Value = 0;
+		OcBar.MaxValue = Ocduration;
+
+		Timer octimer = GetNode<Timer>("OcTimer");
+		octimer.WaitTime = Ocduration;
+		octimer.Start();
+	}
+
+	private void _on_oc_timer_timeout()
+	{
+		Ocactivated = false;
+		OverchargedSkill.Play("blank");
+		OcBar.Visible = false;
+	}
+	public void UnlockOvercharged()
+	{
+		Ocavailable = true;
 	}
 	
 	//--------------------------------- HP SYSTEM -----------------------------------------//
