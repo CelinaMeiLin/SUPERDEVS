@@ -222,7 +222,7 @@ radius = 15.0
 height = 55.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8i8e"]
-size = Vector2(414.423, 100)
+size = Vector2(566.803, 100)
 
 [sub_resource type="Curve" id="Curve_r2wnh"]
 _data = [Vector2(0, 1), 0.0, -0.390476, 0, 1, Vector2(0.731707, 0.714286), -0.867725, -0.867725, 0, 0, Vector2(1, 0), -1.0, 0.0, 0, 0]
@@ -307,7 +307,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GusBody/detectionArea"]
-position = Vector2(-2.30769, -17.6923)
+position = Vector2(-9.53674e-07, -19.2308)
 shape = SubResource("RectangleShape2D_k8i8e")
 
 [node name="DeathParticles" type="GPUParticles2D" parent="GusBody"]

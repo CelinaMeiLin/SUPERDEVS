@@ -119,7 +119,6 @@ public partial class PowBody : CharacterBody2D
 
 			if (_animatedSprite.Animation == "attack3" && ISFINISHED)
 			{
-				GD.Print("WAVE");
 				Wave();
 				ISFINISHED = false;
 			}
@@ -161,7 +160,6 @@ public partial class PowBody : CharacterBody2D
 		else 
 		{ 
 			Spawn = Bullet_spawnerD.GlobalPosition;
-			GD.Print("Bullet");
 			b_direction = 1; 
 		}
 

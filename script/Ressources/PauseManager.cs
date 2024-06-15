@@ -69,6 +69,7 @@ public partial class PauseManager : Node2D
 		//GameManager.CurrentCoin = (int)UserPreferences.Data["Coin"];
 		UserPreferences.Data["Coin"] = NbCoinsBeforeLevel;
 		GD.Print("MET LE SCREEN");
+		
 		gameOverPath.GetTree().Paused = true;
 		GD.Print("freeze");
 		gameOverPath.Show();
