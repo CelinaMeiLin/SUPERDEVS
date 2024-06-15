@@ -104,6 +104,7 @@ public partial class options_multi : Control
 
 	private void _on_join_button_down()
 	{
+		ip_address = GetNode<LineEdit>("Ip").Text;
 		peer = new ENetMultiplayerPeer();
 		peer.CreateClient(ip_address, port);
 		

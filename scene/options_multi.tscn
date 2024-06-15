@@ -11,6 +11,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fas7e")
 
+[node name="Ip" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -183.0
+offset_top = 337.0
+offset_right = 234.0
+offset_bottom = 368.0
+grow_horizontal = 2
+placeholder_text = "Enter IP address "
+alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
