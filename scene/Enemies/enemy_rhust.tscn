@@ -150,8 +150,8 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uyxc6"]
 height = 44.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6wgt0"]
-radius = 201.036
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tupyw"]
+size = Vector2(334.615, 44.2188)
 
 [sub_resource type="Curve" id="Curve_5wngd"]
 _data = [Vector2(0, 1), 0.0, -0.390476, 0, 1, Vector2(0.731707, 0.714286), -0.867725, -0.867725, 0, 0, Vector2(1, 0), -1.0, 0.0, 0, 0]
@@ -256,7 +256,8 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RhustBody/Area2D"]
-shape = SubResource("CircleShape2D_6wgt0")
+position = Vector2(-6.73076, 0.95553)
+shape = SubResource("RectangleShape2D_tupyw")
 
 [node name="DeathParticles" type="GPUParticles2D" parent="RhustBody"]
 position = Vector2(0.769231, 10)

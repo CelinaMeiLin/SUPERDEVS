@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://xti855xtxy8g"]
+[gd_scene load_steps=58 format=3 uid="uid://xti855xtxy8g"]
 
 [ext_resource type="Script" path="res://script/Enemies/PowBody.cs" id="1_de8qo"]
 [ext_resource type="Texture2D" uid="uid://bumntks0clcp0" path="res://art/powennemy/Attack1/Attack1-1.png" id="2_62iww"]
@@ -173,12 +173,6 @@ height = 104.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehp8x"]
 size = Vector2(564, 211)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_vu75i"]
-radius = 155.013
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_rmb5n"]
-radius = 148.408
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2me4l"]
 particle_flag_disable_z = true
@@ -557,14 +551,6 @@ offset_bottom = -46.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PowBody/DetectionArea2D"]
 position = Vector2(10, -37)
 shape = SubResource("RectangleShape2D_ehp8x")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="PowBody/DetectionArea2D"]
-position = Vector2(119, 0)
-shape = SubResource("CircleShape2D_vu75i")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="PowBody/DetectionArea2D"]
-position = Vector2(-95, -2)
-shape = SubResource("CircleShape2D_rmb5n")
 
 [node name="Interrogation" type="GPUParticles2D" parent="PowBody"]
 texture_filter = 1
