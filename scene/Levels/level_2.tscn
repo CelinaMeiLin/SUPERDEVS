@@ -109,6 +109,7 @@ offset_bottom = -27.0
 grow_vertical = 0
 
 [node name="EnemyRhust" parent="." instance=ExtResource("10_bn081")]
+visible = false
 position = Vector2(404, 554)
 
 [node name="Portail" parent="." instance=ExtResource("12_kywtg")]
