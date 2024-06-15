@@ -70,10 +70,12 @@ public partial class astra : CharacterBody2D
 	private bool shockavailable = false;
 	private List<CharacterBody2D> shockenemies = new List<CharacterBody2D>();
 	private AnimatedSprite2D ZapSkill;
+	private AnimatedSprite2D ZapSkill2;
 	private int zapdamage = 600;
 	private bool zapactivated = false;
 	private bool zapavailable = false;
 	private List<CharacterBody2D> zapenemies = new List<CharacterBody2D>();
+	private List<CharacterBody2D> zapenemies2 = new List<CharacterBody2D>();
 	private AnimatedSprite2D OverchargedSkill;
 	private ProgressBar OcBar;
 	private bool Ocactivated = false;
@@ -124,6 +126,7 @@ public partial class astra : CharacterBody2D
 		ShildSkill = GetNode<AnimatedSprite2D>("SkillShild");
 		ShockSkill = GetNode<AnimatedSprite2D>("SkillShock");
 		ZapSkill = GetNode<AnimatedSprite2D>("SkillZap");
+		ZapSkill2 = GetNode<AnimatedSprite2D>("SkillZapLeft");
 		OverchargedSkill = GetNode<AnimatedSprite2D>("SkillOvercharged");
 		OcBar = GetNode<ProgressBar>("OverchargedBar");
 		//GetTree().CallGroup("SkillBar", "UpdateXpTxt", Lvl);
@@ -547,22 +550,47 @@ public partial class astra : CharacterBody2D
 	
 	public async void SkillZap()
 	{
-		ZapSkill.Play("Zap");
-		ZapSkill.GetNode<AnimatedSprite2D>("Thunder").Play("elec");
-		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
-		foreach (var enemy in zapenemies)
+		bool isLeft = _lastDirection.X < 0;
+		if (isLeft)
 		{
-			if (enemy is GusBody)
+			ZapSkill2.Play("Zap");
+			ZapSkill2.GetNode<AnimatedSprite2D>("Thunder").Play("elec");
+			await ToSignal(GetTree().CreateTimer(0.2), "timeout");
+			foreach (var enemy in zapenemies2)
 			{
-				((GusBody)enemy).hurt(zapdamage);
+				if (enemy is GusBody)
+				{
+					((GusBody)enemy).hurt(zapdamage);
+				}
+				else if (enemy is PowBody)
+				{
+					((PowBody)enemy).hurt(zapdamage);
+				}
+				else if (enemy is RhustBody)
+				{
+					((RhustBody)enemy).hurt(zapdamage);
+				}
 			}
-			else if (enemy is PowBody)
+		}
+		else
+		{
+			ZapSkill.Play("Zap");
+			ZapSkill.GetNode<AnimatedSprite2D>("Thunder").Play("elec");
+			await ToSignal(GetTree().CreateTimer(0.2), "timeout");
+			foreach (var enemy in zapenemies)
 			{
-				((PowBody)enemy).hurt(zapdamage);
-			}
-			else if (enemy is RhustBody)
-			{
-				((RhustBody)enemy).hurt(zapdamage);
+				if (enemy is GusBody)
+				{
+					((GusBody)enemy).hurt(zapdamage);
+				}
+				else if (enemy is PowBody)
+				{
+					((PowBody)enemy).hurt(zapdamage);
+				}
+				else if (enemy is RhustBody)
+				{
+					((RhustBody)enemy).hurt(zapdamage);
+				}
 			}
 		}
 	}
@@ -576,6 +604,19 @@ public partial class astra : CharacterBody2D
 		if (zapenemies.Contains(body))
 		{
 			zapenemies.Remove(body);
+		}
+	}
+
+	private void _on_zap_area_left_body_entered(CharacterBody2D body)
+	{
+		zapenemies2.Add(body);
+	}
+
+	private void _on_zap_area_left_body_exited(CharacterBody2D body2D)
+	{
+		if (zapenemies2.Contains(body2D))
+		{
+			zapenemies2.Remove(body2D);
 		}
 	}
 	
