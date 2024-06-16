@@ -81,9 +81,18 @@ public partial class PauseManager : Node2D
 	
 	private void ShowDialogueBox()
 	{
-		CanvasLayer dialogueBoxInstance = (CanvasLayer)ResourceLoader.Load<PackedScene>("res://scene/dialogue/dialogue1.tscn").Instantiate();
-		GD.Print("show");
-		AddChild(dialogueBoxInstance);
+		GetTree().Paused = true;
+		
+		if (GameManager.CurrentLevel == 1)
+		{
+			CanvasLayer dialogueBoxInstance = (CanvasLayer)ResourceLoader.Load<PackedScene>("res://scene/dialogue/dialogue1.tscn").Instantiate();
+			AddChild(dialogueBoxInstance);
+		}
+
+
+		
+
+
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

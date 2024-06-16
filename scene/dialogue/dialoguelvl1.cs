@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class dialogue : Control
+public partial class dialoguelvl1 : Control
 {
 
 	private Label _dialogueLabel;
@@ -17,9 +17,9 @@ public partial class dialogue : Control
 		// Charger les dialogues (ici un exemple simplifié avec des dialogues en dur)
 		_dialogueLines = new List<string>
 		{
-			"waf waf !!",
-			"Ça te dit de jouer ensemble aujourd’hui ? ",
-			"Aller on y va, le premier qui atteint le portail a gagné ! \n" +
+			"waf waf...",
+			"...",
+			"J'ai vu quelques cho \n" +
 			"Attention j'ai vu de drôle de personne en jaune au bout..."
 		};
 
@@ -59,3 +59,4 @@ public partial class dialogue : Control
 		}
 	}
 }
+
