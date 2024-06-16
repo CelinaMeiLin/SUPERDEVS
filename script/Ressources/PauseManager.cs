@@ -102,7 +102,7 @@ public partial class PauseManager : Node2D
 		
 		if (GameManager.CurrentLevel == 4)
 		{
-			CanvasLayer dialogueBoxInstance = (CanvasLayer)ResourceLoader.Load<PackedScene>("res://scene/dialogue/dialoguelvl2.tscn").Instantiate();
+			CanvasLayer dialogueBoxInstance = (CanvasLayer)ResourceLoader.Load<PackedScene>("res://scene/dialogue/dialoguelvlfinal.tscn").Instantiate();
 			AddChild(dialogueBoxInstance);
 		}
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cmvv5unlyoguk"]
+[gd_scene load_steps=21 format=3 uid="uid://bredra8qxgo4f"]
 
 [ext_resource type="Texture2D" uid="uid://buo8jekrt5xr5" path="res://art/background/level_3bis/Base Color.png" id="1_lwjih"]
 [ext_resource type="Script" path="res://script/Ressources/PauseManager.cs" id="1_u4jxr"]
@@ -857,10 +857,8 @@ grow_vertical = 0
 [node name="UIManager" parent="." instance=ExtResource("11_2oypa")]
 
 [node name="UIManagerPause" parent="." instance=ExtResource("12_fmkyx")]
-visible = false
 
 [node name="GameOverScreen" parent="." instance=ExtResource("13_s0wq7")]
-visible = false
 
 [connection signal="timeout" from="SpawnEnemies/Timer" to="SpawnEnemies" method="_on_level_3_timer_timeout"]
 
