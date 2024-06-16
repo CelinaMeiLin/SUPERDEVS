@@ -28,6 +28,7 @@ public partial class PauseManager : Node2D
 		//_resumeButton = GetNode<Button>("/root/Tuto/PauseMenu/ResumeButton");
 		_pauseMenu.Hide();
 		GameOverPath.Hide();
+		ShowDialogueBox();
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -77,7 +78,13 @@ public partial class PauseManager : Node2D
 
 		Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
-
+	
+	private void ShowDialogueBox()
+	{
+		CanvasLayer dialogueBoxInstance = (CanvasLayer)ResourceLoader.Load<PackedScene>("res://scene/dialogue/dialogue1.tscn").Instantiate();
+		GD.Print("show");
+		AddChild(dialogueBoxInstance);
+	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{

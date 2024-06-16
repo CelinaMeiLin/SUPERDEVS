@@ -4,10 +4,12 @@ using Devs.project.Autoloads;
 
 public partial class tuto : Node2D
 {
+	
 	public int NbCoinsBeforeTutorial;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		
 		NbCoinsBeforeTutorial = (int)UserPreferences.Data["Coin"];
 	}
 
