@@ -156,6 +156,3 @@ public partial class options_multi : Control
 		}
 	}
 }
-
-
-

@@ -627,7 +627,6 @@ stream = ExtResource("24_xk3yu")
 bus = &"Music"
 
 [node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("31_fhlp6")]
-visible = false
 Scene = NodePath("..")
 
 [node name="EnnemyGus" parent="." instance=ExtResource("29_8lw3q")]
