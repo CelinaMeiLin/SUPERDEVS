@@ -90,7 +90,7 @@ public partial class Map : Control
         //UserPreferences.Data["CurrentLevel"] = 3;
         UserPreferences.Save();
         GameManager.CurrentLevel = 4;
-        GetTree().ChangeSceneToFile("res://scene/Levels/level_3.tscn");
+        GetTree().ChangeSceneToFile("res://scene/Levels/level_final.tscn");
     }
     
     public void OnPlayerStatisticsPressed()

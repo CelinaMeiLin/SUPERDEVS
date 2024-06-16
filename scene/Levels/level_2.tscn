@@ -1347,10 +1347,8 @@ grow_vertical = 0
 position = Vector2(2826, 545)
 
 [node name="UIManager2" parent="." instance=ExtResource("13_kio0p")]
-visible = false
 
 [node name="GameOverScreen" parent="." node_paths=PackedStringArray("Scene") instance=ExtResource("14_3q7q5")]
-visible = false
 Scene = NodePath("..")
 
 [node name="oneway" type="TileMap" parent="."]

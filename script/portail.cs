@@ -86,7 +86,15 @@ public partial class portail : Sprite2D
             {
                 _sprite.Visible = true;
                 _collisionShape.Disabled = false;
-                
+            }
+        }
+
+        if (GameManager.CurrentLevel == 4)
+        {
+            if (GameManager.EnemyKilled == 17)
+            {
+                _sprite.Visible = true;
+                _collisionShape.Disabled = false;
             }
         }
         

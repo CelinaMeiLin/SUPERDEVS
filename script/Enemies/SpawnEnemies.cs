@@ -18,6 +18,7 @@ public partial class SpawnEnemies : Node2D
 	private List<Node2D> _liste;
 	private List<Node2D> _listelvl1;
 	private List<Node2D> _listelvl2;
+	private List<Node2D> _listelvl3;
 	
 	private Timer _timerlvl1;
 	
@@ -31,6 +32,10 @@ public partial class SpawnEnemies : Node2D
 		if (GameManager.CurrentLevel == 3)
 		{
 			_listelvl2 = new List<Node2D> {GetNode<Node2D>("1"), GetNode<Node2D>("2"), GetNode<Node2D>("3"), GetNode<Node2D>("4"), GetNode<Node2D>("5"), GetNode<Node2D>("6"), GetNode<Node2D>("7"), GetNode<Node2D>("8"), GetNode<Node2D>("9")};
+		}
+		else if (GameManager.CurrentLevel == 4)
+		{
+			_listelvl3 = new List<Node2D> {GetNode<Node2D>("1"), GetNode<Node2D>("2"), GetNode<Node2D>("3"), GetNode<Node2D>("4"), GetNode<Node2D>("5"), GetNode<Node2D>("6"), GetNode<Node2D>("7"), GetNode<Node2D>("8"), GetNode<Node2D>("9"), GetNode<Node2D>("10"), GetNode<Node2D>("11"), GetNode<Node2D>("12"), GetNode<Node2D>("13"), GetNode<Node2D>("14"), GetNode<Node2D>("15"), GetNode<Node2D>("16"), GetNode<Node2D>("17")};
 		}
 		_timer = GetNode<Timer>("Timer");
 		_timerlvl1 = GetNode<Timer>("Timer");
@@ -102,7 +107,7 @@ public partial class SpawnEnemies : Node2D
 
 	public void OnLevel2TimerTimeout()
 	{
-		if (Count <= Maxtuto && _listelvl2.Count > 0)
+		if (Count <= MaxLevel2 && _listelvl2.Count > 0)
 		{
 			
 			//Random rdm = new Random();
@@ -149,8 +154,53 @@ public partial class SpawnEnemies : Node2D
 			_timerlvl1.Stop();
 		}
 	}
+
+	private void _on_level_3_timer_timeout()
+	{
+		if (Count <= 17 && _liste.Count > 0)
+		{
+			if (_listelvl3.Count <= 0)
+			{
+				_timer.Stop();
+				_timerlvl1.Stop();
+				return;
+			}
+			Node2D spawn = _listelvl3.First();
+			_listelvl3.Remove(spawn);
+			
+			if (spawn ==  GetNode<Node2D>("1")|| spawn == GetNode<Node2D>("3") || spawn == GetNode<Node2D>("4") || spawn == GetNode<Node2D>("7") || spawn == GetNode<Node2D>("10") || spawn == GetNode<Node2D>("13") || spawn == GetNode<Node2D>("17"))
+			{
+				var spawnEnemy = GD.Load<PackedScene>("res://scene/Enemies/ennemy_gus.tscn");
+				var spawnEnemyNode = spawnEnemy.Instantiate<Node2D>();
+				spawnEnemyNode.Position = spawn.Position;
+				AddChild(spawnEnemyNode);
+			}
+
+			if (spawn == GetNode<Node2D>("2") || spawn == GetNode<Node2D>("5") || spawn == GetNode<Node2D>("8") || spawn == GetNode<Node2D>("11") || spawn == GetNode<Node2D>("16"))
+			{
+				var spawnEnemy = GD.Load<PackedScene>("res://scene/ennemy_pow.tscn");
+				var spawnEnemyNode = spawnEnemy.Instantiate<Node2D>();
+				spawnEnemyNode.Position = spawn.Position;
+				AddChild(spawnEnemyNode);
+			}
+
+			if (spawn == GetNode<Node2D>("6") || spawn == GetNode<Node2D>("12") || spawn == GetNode<Node2D>("9") || spawn == GetNode<Node2D>("14") || spawn == GetNode<Node2D>("15"))
+			{
+				var spawnEnemy = GD.Load<PackedScene>("res://scene/Enemies/enemy_rhust.tscn");
+				var spawnEnemyNode = spawnEnemy.Instantiate<Node2D>();
+				spawnEnemyNode.Position = spawn.Position;
+				AddChild(spawnEnemyNode);
+			}
+			
+			Count++;
+		}
+		else
+		{
+			_timer.Stop();
+			_timerlvl1.Stop();
+		}
 		
-	
+	}
 	
 	
 }
