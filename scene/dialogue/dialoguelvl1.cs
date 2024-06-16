@@ -55,7 +55,7 @@ public partial class dialoguelvl1 : Control
 
 	public override void _Input(InputEvent @event)
 	{
-		if (Input.IsActionJustPressed("ui_accept")) 
+		if (Input.IsActionJustPressed("SuiteD")) 
 		{
 			NextDialogue();
 		}
