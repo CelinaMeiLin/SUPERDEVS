@@ -82,14 +82,23 @@ public partial class PauseManager : Node2D
 	private void ShowDialogueBox()
 	{
 		GetTree().Paused = true;
-		
 		if (GameManager.CurrentLevel == 1)
 		{
 			CanvasLayer dialogueBoxInstance = (CanvasLayer)ResourceLoader.Load<PackedScene>("res://scene/dialogue/dialogue1.tscn").Instantiate();
 			AddChild(dialogueBoxInstance);
 		}
 
-
+		if (GameManager.CurrentLevel == 2)
+		{
+			CanvasLayer dialogueBoxInstance = (CanvasLayer)ResourceLoader.Load<PackedScene>("res://scene/dialogue/dialoguelvl1.tscn").Instantiate();
+			AddChild(dialogueBoxInstance);
+		}
+		
+		if (GameManager.CurrentLevel == 3)
+		{
+			CanvasLayer dialogueBoxInstance = (CanvasLayer)ResourceLoader.Load<PackedScene>("res://scene/dialogue/dialoguelvl2.tscn").Instantiate();
+			AddChild(dialogueBoxInstance);
+		}
 		
 
 

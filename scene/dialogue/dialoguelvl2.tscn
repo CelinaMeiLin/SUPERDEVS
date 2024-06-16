@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://celgsdqxkv2xr"]
+[gd_scene load_steps=6 format=3 uid="uid://663sajpur242"]
 
-[ext_resource type="Script" path="res://scene/dialogue/dialoguelvl1.cs" id="1_3hx5x"]
-[ext_resource type="FontFile" uid="uid://c1l5ghiyhaahq" path="res://art/fonts/PixelOperator.ttf" id="2_rhu6p"]
-[ext_resource type="Texture2D" uid="uid://d3573kfdqta0f" path="res://art/logo/VD-2VjGsjF4drztY-IAMZ-transformed.png" id="3_g64u4"]
+[ext_resource type="Script" path="res://scene/dialogue/dialoguelvl2.cs" id="1_2a1jo"]
+[ext_resource type="FontFile" uid="uid://c1l5ghiyhaahq" path="res://art/fonts/PixelOperator.ttf" id="2_s1gwl"]
+[ext_resource type="Texture2D" uid="uid://d3573kfdqta0f" path="res://art/logo/VD-2VjGsjF4drztY-IAMZ-transformed.png" id="3_7ia38"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qobpk"]
 bg_color = Color(0.101961, 0.101961, 0.101961, 0.803922)
@@ -33,7 +33,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1151.0
 offset_bottom = 478.0
-script = ExtResource("1_3hx5x")
+script = ExtResource("1_2a1jo")
 
 [node name="name" type="Panel" parent="dialogue"]
 layout_mode = 0
@@ -54,7 +54,7 @@ offset_left = -54.608
 offset_top = -25.5
 offset_right = 54.874
 offset_bottom = 24.534
-theme_override_fonts/font = ExtResource("2_rhu6p")
+theme_override_fonts/font = ExtResource("2_s1gwl")
 theme_override_font_sizes/font_size = 50
 text = "SHACO
 "
@@ -86,7 +86,7 @@ offset_left = -505.646
 offset_top = -141.055
 offset_right = 506.354
 offset_bottom = -0.0550995
-theme_override_fonts/font = ExtResource("2_rhu6p")
+theme_override_fonts/font = ExtResource("2_s1gwl")
 theme_override_font_sizes/font_size = 45
 metadata/_edit_use_anchors_ = true
 
@@ -95,6 +95,6 @@ offset_left = 1189.0
 offset_top = 742.0
 offset_right = 1743.0
 offset_bottom = 1051.0
-texture = ExtResource("3_g64u4")
+texture = ExtResource("3_7ia38")
 expand_mode = 1
 stretch_mode = 5

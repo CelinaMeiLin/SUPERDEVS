@@ -2,9 +2,8 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class dialoguelvl1 : Control
+public partial class dialoguelvl2 : Control
 {
-
 	private Label _dialogueLabel;
 	private List<string> _dialogueLines;
 	private int _currentLineIndex = 0;
@@ -17,12 +16,11 @@ public partial class dialoguelvl1 : Control
 		// Charger les dialogues (ici un exemple simplifié avec des dialogues en dur)
 		_dialogueLines = new List<string>
 		{
-			"waf waf...",
-			"...",
-			"J’ai vu quelque chose d’étrange... \n",
-			"...",
-			"Certains de ces grands monsieurs robots sont partis \navec papa vers ce portail.",
-			"J'Y COURS !!!!!!!"
+			"OH ! Tu es là !",
+			"J'ai pas retrouvé papa...",
+			"Mais j’ai vu maman aller vers la bas, \net toujours avec des personnes bizarres…",
+			"euh...",
+			"C'est quoi ce point rouge sur ta tête ?"
 		};
 
 		// Afficher le premier dialogue
@@ -61,4 +59,3 @@ public partial class dialoguelvl1 : Control
 		}
 	}
 }
-
