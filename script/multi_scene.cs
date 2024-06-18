@@ -7,6 +7,7 @@ public partial class multi_scene : Node2D
 {
 	[Export] private PackedScene playerScene;
 	[Export] private PackedScene MedicalKit;
+	[Export] private PackedScene GusBody_;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -37,6 +38,7 @@ public partial class multi_scene : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		
 	}
 
 	public void _on_health_pack_timer_timeout()
@@ -60,4 +62,30 @@ public partial class multi_scene : Node2D
 		medicalKit.GlobalPosition = spawn.GlobalPosition;
 		AddChild(medicalKit);
 	}
+	
+	public void _on_gus_timer_timeout()
+	{
+		int rand = new Random().Next(4);
+		Marker2D spawn = GetNode<Marker2D>("SpawnPositiongus/LBottom");
+		if (rand == 1)
+		{
+			spawn = GetNode<Marker2D>("SpawnPositiongus/LTop");
+		}
+		else if (rand == 2)
+		{
+			spawn = GetNode<Marker2D>("SpawnPositiongus/RTop");
+		}
+		else if (rand == 3)
+		{
+			spawn = GetNode<Marker2D>("SpawnPositiongus/RBottom");
+		}
+
+		var spawnEnemy = GD.Load<PackedScene>("res://scene/Enemies/ennemy_gus.tscn");
+		var spawnEnemyNode = spawnEnemy.Instantiate<Node2D>();
+		spawnEnemyNode.Position = spawn.Position;
+		AddChild(spawnEnemyNode);
+	}
 }
+
+
+

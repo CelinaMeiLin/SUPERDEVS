@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://vj7j071fw43s"]
+[gd_scene load_steps=14 format=3 uid="uid://vj7j071fw43s"]
 
 [ext_resource type="Script" path="res://script/multi_scene.cs" id="1_12cu4"]
 [ext_resource type="Texture2D" uid="uid://t4o8wxghw8il" path="res://art/background/parallax-industrial-pack/Sprites/bg.png" id="1_ky326"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c8iv3ojysfds" path="res://scene/astra.tscn" id="6_q7lol"]
 [ext_resource type="Texture2D" uid="uid://cwwddqg6jnmwr" path="res://art/tilesets/tileset.png" id="6_sgbqo"]
 [ext_resource type="PackedScene" uid="uid://dlk28wid3ryi6" path="res://scene/ui_manager.tscn" id="9_2l7lp"]
+[ext_resource type="PackedScene" uid="uid://qboac6ykujwn" path="res://scene/Enemies/ennemy_gus.tscn" id="11_mf167"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s2tx2"]
 texture = ExtResource("6_sgbqo")
@@ -375,6 +376,7 @@ sources/0 = SubResource("TileSetAtlasSource_s2tx2")
 script = ExtResource("1_12cu4")
 playerScene = ExtResource("6_q7lol")
 MedicalKit = ExtResource("3_f0vtb")
+GusBody_ = ExtResource("11_mf167")
 
 [node name="Background" type="ParallaxBackground" parent="."]
 scroll_offset = Vector2(-1752.85, -728.454)
@@ -407,9 +409,10 @@ motion_mirroring = Vector2(1254, 0)
 
 [node name="blackbuildings" type="TextureRect" parent="Background/backbuildings"]
 texture_filter = 1
-offset_top = 58.0
-offset_right = 1254.0
-offset_bottom = 612.0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 1260.0
+offset_bottom = 557.0
 texture = ExtResource("3_rqbud")
 
 [node name="foreground" type="ParallaxLayer" parent="Background"]
@@ -463,4 +466,23 @@ position = Vector2(924, 564)
 wait_time = 7.0
 autostart = true
 
+[node name="SpawnPositiongus" type="Node2D" parent="."]
+
+[node name="LBottom" type="Marker2D" parent="SpawnPositiongus"]
+position = Vector2(103, 559)
+
+[node name="LTop" type="Marker2D" parent="SpawnPositiongus"]
+position = Vector2(268, 398)
+
+[node name="RTop" type="Marker2D" parent="SpawnPositiongus"]
+position = Vector2(691, 237)
+
+[node name="RBottom" type="Marker2D" parent="SpawnPositiongus"]
+position = Vector2(685, 559)
+
+[node name="gusTimer" type="Timer" parent="SpawnPositiongus"]
+wait_time = 4.0
+autostart = true
+
 [connection signal="timeout" from="SpawnPositions/HealthPackTimer" to="." method="_on_health_pack_timer_timeout"]
+[connection signal="timeout" from="SpawnPositiongus/gusTimer" to="." method="_on_gus_timer_timeout"]

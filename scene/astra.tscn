@@ -416,6 +416,9 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath("Astra:animation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
+properties/3/path = NodePath(".:shoot")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yyer6"]
 animations = [{
@@ -872,10 +875,8 @@ texture_filter = 1
 position = Vector2(-1, -11.5625)
 scale = Vector2(1.473, 1.593)
 sprite_frames = SubResource("SpriteFrames_ifo5n")
-animation = &"idle"
+animation = &"shoot"
 autoplay = "idle"
-frame = 3
-frame_progress = 0.730877
 
 [node name="jumpparticles" type="GPUParticles2D" parent="AstraBody"]
 position = Vector2(1, 13)
