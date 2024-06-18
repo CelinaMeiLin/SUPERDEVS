@@ -17,7 +17,7 @@ public partial class dialogue : Control
 		// Charger les dialogues (ici un exemple simplifié avec des dialogues en dur)
 		_dialogueLines = new List<string>
 		{
-			"woof woodddddddf !!",
+			"woof woof !!",
 			"Do you want to play together today? ",
 			"Let's go, the first one to reach the portal wins! \n" +
 			"Be careful, I saw a strange person in yellow a little \nfurther on…"
