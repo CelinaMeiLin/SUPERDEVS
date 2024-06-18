@@ -481,7 +481,7 @@ position = Vector2(691, 237)
 position = Vector2(685, 559)
 
 [node name="gusTimer" type="Timer" parent="SpawnPositiongus"]
-wait_time = 4.0
+wait_time = 7.0
 autostart = true
 
 [connection signal="timeout" from="SpawnPositions/HealthPackTimer" to="." method="_on_health_pack_timer_timeout"]
