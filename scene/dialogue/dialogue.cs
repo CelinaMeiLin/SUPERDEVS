@@ -17,10 +17,10 @@ public partial class dialogue : Control
 		// Charger les dialogues (ici un exemple simplifié avec des dialogues en dur)
 		_dialogueLines = new List<string>
 		{
-			"waf waf !!",
-			"Ça te dit de jouer ensemble aujourd’hui ? ",
-			"Aller on y va, le premier qui atteint le portail a gagné ! \n" +
-			"Attention j'ai vu de drôle de personne en jaune au bout..."
+			"woof woodddddddf !!",
+			"Do you want to play together today? ",
+			"Let's go, the first one to reach the portal wins! \n" +
+			"Be careful, I saw a strange person in yellow a little \nfurther on…"
 		};
 
 		// Afficher le premier dialogue

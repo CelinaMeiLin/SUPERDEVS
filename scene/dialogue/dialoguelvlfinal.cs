@@ -16,9 +16,9 @@ public partial class dialoguelvlfinal : Control
 		// Charger les dialogues (ici un exemple simplifié avec des dialogues en dur)
 		_dialogueLines = new List<string>
 		{
-			"Je les vois là- bas !!",
-			"Allez vite on y va !!",
-			"WAF WAF !!",
+			"I see them there!!",
+			"Come on, let's go!!",
+			"WOOF WOOF !!",
 		};
 
 		// Afficher le premier dialogue

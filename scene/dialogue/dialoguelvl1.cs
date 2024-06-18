@@ -17,12 +17,12 @@ public partial class dialoguelvl1 : Control
 		// Charger les dialogues (ici un exemple simplifié avec des dialogues en dur)
 		_dialogueLines = new List<string>
 		{
-			"waf waf...",
+			"woof woof...",
 			"...",
-			"J’ai vu quelque chose d’étrange... \n",
+			"I saw something strange...\n",
 			"...",
-			"Certains de ces grands monsieurs robots sont partis \navec papa vers ce portail.",
-			"J'Y COURS !!!!!!!"
+			"Some of these big robots went with dad to this portal.",
+			"I GO !!!!!!!"
 		};
 
 		// Afficher le premier dialogue

@@ -16,11 +16,11 @@ public partial class dialoguelvl2 : Control
 		// Charger les dialogues (ici un exemple simplifié avec des dialogues en dur)
 		_dialogueLines = new List<string>
 		{
-			"OH ! Tu es là !",
-			"J'ai pas retrouvé papa...",
-			"Mais j’ai vu maman aller vers la bas, \net toujours avec des personnes bizarres…",
-			"euh...",
-			"C'est quoi ce point rouge sur ta tête ?"
+			"OH ! You are here !",
+			"I couldn't find dad....",
+			"But I saw mom going down there, and always with \nstrange people...",
+			"uh...",
+			"What's that red dot on your head?"
 		};
 
 		// Afficher le premier dialogue
