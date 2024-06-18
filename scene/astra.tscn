@@ -963,7 +963,8 @@ texture_filter = 1
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_yyer6")
 animation = &"Idle"
-frame_progress = 0.915222
+frame = 4
+frame_progress = 0.0583974
 
 [node name="SkillShildParticle" type="GPUParticles2D" parent="AstraBody"]
 texture_filter = 1

@@ -39,7 +39,7 @@ public partial class skill_bar : Container
 		GetNode<Button>("SkillBarPanel/VBoxContainer2/Skill1").Text = UserPreferences.Data["MovementSpeed"].ToString();
 		GetNode<Button>("SkillBarPanel/VBoxContainer2/Skill2").Text = UserPreferences.Data["DashCooldown"].ToString();
 		
-		GetNode<Button>("SkillBarPanel/Upgrade/Choice1").Text = "- Shild -\n\nUnlock new Ability";
+		GetNode<Button>("SkillBarPanel/Upgrade/Choice1").Text = "- Shield -\n\nUnlock new Ability";
 		GetNode<Button>("SkillBarPanel/Upgrade/Choice2").Text = "- Shock -\n\nUnlock New Ability";
 		GetNode<Button>("SkillBarPanel/Upgrade/Choice3").Text = "- Zap -\n\nUnlock New Ability";
 		

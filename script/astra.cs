@@ -484,7 +484,7 @@ public partial class astra : CharacterBody2D
 	}
 	
 	
-	public async void SkillShild()
+	public async void SkillShield()
 	{
 		if (ShildSkill.Visible || shildavailable == false || shildactivated)
 		{
@@ -502,7 +502,7 @@ public partial class astra : CharacterBody2D
 		shildactivated = false;
 	}
 
-	public void UnlockShild()
+	public void UnlockShield()
 	{
 		shildavailable = true;
 	}
